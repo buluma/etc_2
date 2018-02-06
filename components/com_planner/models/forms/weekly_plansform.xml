@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="week" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_WEEK" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_WEEK" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_WEEK"/>
+    <field name="month" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_MONTH" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_MONTH" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_MONTH"/>
+    <field name="year" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_YEAR" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_YEAR" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_YEAR"/>
+    <field name="routeplan" multiple="true" formsource="components/com_planner/models/forms/subform_assignment.xml" layout="joomla.form.field.subform.repeatable" type="subform" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_ROUTEPLAN" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_ROUTEPLAN" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_ROUTEPLAN"/>
+    <field name="inputdate" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_INPUTDATE" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_INPUTDATE" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_INPUTDATE"/>
+    <field name="coordinates" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_COORDINATES" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_COORDINATES" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_COORDINATES"/>
+    <field name="first_insert" default="0000-00-00 00:00:00" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_FIRST_INSERT" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_FIRST_INSERT" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_FIRST_INSERT"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_SUBMITTED_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="sku_available" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_SKU_AVAILABLE" type="list" onchange="this.form.submit();" default="COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_FILTER">
+  <option value="">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_FILTER</option>
+  <option value="1">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_1</option>
+  <option value="2">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_2</option>
+</field>
+
+
+    </fields>
+</form>
