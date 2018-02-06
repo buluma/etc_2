@@ -23,6 +23,13 @@ $document->addStyleSheet(JUri::root() . 'media/com_products/css/form.css');
 	js = jQuery.noConflict();
 	js(document).ready(function () {
 		
+	js('input:hidden.category').each(function(){
+		var name = js(this).attr('name');
+		if(name.indexOf('categoryhidden')){
+			js('#jform_category option[value="'+js(this).val()+'"]').attr('selected',true);
+		}
+	});
+	js("#jform_category").trigger("liszt:updated");
 	});
 
 	Joomla.submitbutton = function (task) {
@@ -61,8 +68,25 @@ $document->addStyleSheet(JUri::root() . 'media/com_products/css/form.css');
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
 				<?php echo $this->form->renderField('created_by'); ?>
-				<?php echo $this->form->renderField('modified_by'); ?>				<?php echo $this->form->renderField('product_name'); ?>
+				<?php echo $this->form->renderField('modified_by'); ?>				<?php echo $this->form->renderField('product_code'); ?>
+				<?php echo $this->form->renderField('product_name'); ?>
 				<?php echo $this->form->renderField('category'); ?>
+
+			<?php
+				foreach((array)$this->item->category as $value): 
+					if(!is_array($value)):
+						echo '<input type="hidden" class="category" name="jform[categoryhidden]['.$value.']" value="'.$value.'" />';
+					endif;
+				endforeach;
+			?>				<?php echo $this->form->renderField('product_classification'); ?>
+				<?php echo $this->form->renderField('product_type'); ?>
+				<?php echo $this->form->renderField('product_uom'); ?>
+				<?php echo $this->form->renderField('product_price'); ?>
+				<?php echo $this->form->renderField('product_size'); ?>
+				<?php echo $this->form->renderField('product_cases'); ?>
+				<?php echo $this->form->renderField('published'); ?>
+				<?php echo $this->form->renderField('must_have'); ?>
+				<?php echo $this->form->renderField('deleted'); ?>
 
 
 					<?php if ($this->state->params->get('save_history', 1)) : ?>

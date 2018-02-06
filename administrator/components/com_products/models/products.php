@@ -36,8 +36,18 @@ class ProductsModelProducts extends JModelList
 				'state', 'a.`state`',
 				'created_by', 'a.`created_by`',
 				'modified_by', 'a.`modified_by`',
+				'product_code', 'a.`product_code`',
 				'product_name', 'a.`product_name`',
 				'category', 'a.`category`',
+				'product_classification', 'a.`product_classification`',
+				'product_type', 'a.`product_type`',
+				'product_uom', 'a.`product_uom`',
+				'product_price', 'a.`product_price`',
+				'product_size', 'a.`product_size`',
+				'product_cases', 'a.`product_cases`',
+				'published', 'a.`published`',
+				'must_have', 'a.`must_have`',
+				'deleted', 'a.`deleted`',
 			);
 		}
 
@@ -67,6 +77,9 @@ class ProductsModelProducts extends JModelList
 
 		$published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
 		$this->setState('filter.state', $published);
+		// Filtering category
+		$this->setState('filter.category', $app->getUserStateFromRequest($this->context.'.filter.category', 'filter_category', '', 'string'));
+
 
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_products');
@@ -159,6 +172,14 @@ class ProductsModelProducts extends JModelList
 			}
 		}
 
+
+		// Filtering category
+		$filter_category = $this->state->get("filter.category");
+
+		if ($filter_category !== null && !empty($filter_category))
+		{
+			$query->where("a.`category` = '".$db->escape($filter_category)."'");
+		}
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
 		$orderDirn = $this->state->get('list.direction');
@@ -180,6 +201,25 @@ class ProductsModelProducts extends JModelList
 	{
 		$items = parent::getItems();
 
+		foreach ($items as $oneItem)
+		{
+
+			if (isset($oneItem->category))
+			{
+				$db    = JFactory::getDbo();
+				$query = $db->getQuery(true);
+
+				$query
+					->select($db->quoteName('title'))
+					->from($db->quoteName('#__categories'))
+					->where('FIND_IN_SET(' . $db->quoteName('id') . ', ' . $db->quote($oneItem->category) . ')');
+
+				$db->setQuery($query);
+				$result = $db->loadColumn();
+
+				$oneItem->category = !empty($result) ? implode(', ', $result) : '';
+			}
+		}
 
 		return $items;
 	}

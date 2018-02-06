@@ -150,8 +150,10 @@ class ProductsViewBrandstocks extends JViewLegacy
 			'a.`id`' => JText::_('JGRID_HEADING_ID'),
 			'a.`ordering`' => JText::_('JGRID_HEADING_ORDERING'),
 			'a.`state`' => JText::_('JSTATUS'),
+			'a.`product_code`' => JText::_('COM_PRODUCTS_PRODUCTS_PRODUCT_CODE'),
 			'a.`product_name`' => JText::_('COM_PRODUCTS_PRODUCTS_PRODUCT_NAME'),
 			'a.`category`' => JText::_('COM_PRODUCTS_PRODUCTS_CATEGORY'),
+			'a.`product_price`' => JText::_('COM_PRODUCTS_PRODUCTS_PRODUCT_PRICE'),
 		);
 	}
 

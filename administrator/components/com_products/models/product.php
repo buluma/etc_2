@@ -104,6 +104,19 @@ class ProductsModelProduct extends JModelAdmin
 			}
 
 			$data = $this->item;
+
+			// Support for multiple or not foreign key field: category
+			$array = array();
+
+			foreach ((array) $data->category as $value)
+			{
+				if (!is_array($value))
+				{
+					$array[] = $value;
+				}
+			}
+
+			$data->category = $array;
 		}
 
 		return $data;

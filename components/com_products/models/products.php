@@ -39,8 +39,18 @@ class ProductsModelProducts extends JModelList
 				'state', 'a.state',
 				'created_by', 'a.created_by',
 				'modified_by', 'a.modified_by',
+				'product_code', 'a.product_code',
 				'product_name', 'a.product_name',
 				'category', 'a.category',
+				'product_classification', 'a.product_classification',
+				'product_type', 'a.product_type',
+				'product_uom', 'a.product_uom',
+				'product_price', 'a.product_price',
+				'product_size', 'a.product_size',
+				'product_cases', 'a.product_cases',
+				'published', 'a.published',
+				'must_have', 'a.must_have',
+				'deleted', 'a.deleted',
 			);
 		}
 
@@ -150,10 +160,18 @@ class ProductsModelProducts extends JModelList
 			else
 			{
 				$search = $db->Quote('%' . $db->escape($search, true) . '%');
-				$query->where('( a.product_name LIKE ' . $search . ' )');
+				$query->where('( a.product_name LIKE ' . $search . '  OR categories_2925743.title LIKE ' . $search . ' )');
 			}
 		}
 		
+
+		// Filtering category
+		$filter_category = $this->state->get("filter.category");
+
+		if ($filter_category)
+		{
+			$query->where("a.`category` = '".$db->escape($filter_category)."'");
+		}
 
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
@@ -176,6 +194,27 @@ class ProductsModelProducts extends JModelList
 	{
 		$items = parent::getItems();
 		
+		foreach ($items as $item)
+		{
+
+		if (isset($item->category) && $item->category != '')
+		{
+
+			$db    = Factory::getDbo();
+			$query = $db->getQuery(true);
+
+			$query
+				->select($db->quoteName('title'))
+				->from($db->quoteName('#__categories'))
+				->where('FIND_IN_SET(' . $db->quoteName('id') . ', ' . $db->quote($item->category) . ')');
+
+			$db->setQuery($query);
+
+			$result = $db->loadColumn();
+
+			$item->category = !empty($result) ? implode(', ', $result) : '';
+		}
+		}
 
 		return $items;
 	}

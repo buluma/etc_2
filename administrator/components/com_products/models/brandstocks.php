@@ -96,6 +96,25 @@ class ProductsModelBrandstocks extends JModelList
 	{
 		$items = parent::getItems();
 
+		foreach ($items as $oneItem)
+		{
+
+			if (isset($oneItem->category))
+			{
+				$db    = JFactory::getDbo();
+				$query = $db->getQuery(true);
+
+				$query
+					->select($db->quoteName('title'))
+					->from($db->quoteName('#__categories'))
+					->where('FIND_IN_SET(' . $db->quoteName('id') . ', ' . $db->quote($oneItem->category) . ')');
+
+				$db->setQuery($query);
+				$result = $db->loadColumn();
+
+				$oneItem->category = !empty($result) ? implode(', ', $result) : '';
+			}
+		}
 
 		return $items;
 	}

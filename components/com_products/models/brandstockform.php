@@ -115,6 +115,10 @@ class ProductsModelBrandstockForm extends JModelForm
 				$properties = $table->getProperties(1);
 				$this->item = ArrayHelper::toObject($properties, 'JObject');
 				
+		if (is_object($this->item->category))
+		{
+			$this->item->category = ArrayHelper::fromObject($this->item->category);
+		}
 			}
 		}
 

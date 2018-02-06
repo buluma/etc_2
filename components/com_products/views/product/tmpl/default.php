@@ -23,6 +23,11 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_products')
 		
 
 		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CODE'); ?></th>
+			<td><?php echo $this->item->product_code; ?></td>
+		</tr>
+
+		<tr>
 			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_NAME'); ?></th>
 			<td><?php echo $this->item->product_name; ?></td>
 		</tr>
@@ -30,6 +35,51 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_products')
 		<tr>
 			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_CATEGORY'); ?></th>
 			<td><?php echo $this->item->category; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CLASSIFICATION'); ?></th>
+			<td><?php echo $this->item->product_classification; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_TYPE'); ?></th>
+			<td><?php echo $this->item->product_type; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_UOM'); ?></th>
+			<td><?php echo $this->item->product_uom; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_PRICE'); ?></th>
+			<td><?php echo $this->item->product_price; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_SIZE'); ?></th>
+			<td><?php echo $this->item->product_size; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CASES'); ?></th>
+			<td><?php echo $this->item->product_cases; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED'); ?></th>
+			<td><?php echo $this->item->published; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_MUST_HAVE'); ?></th>
+			<td><?php echo $this->item->must_have; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_PRODUCTS_FORM_LBL_PRODUCT_DELETED'); ?></th>
+			<td><?php echo $this->item->deleted; ?></td>
 		</tr>
 
 	</table>

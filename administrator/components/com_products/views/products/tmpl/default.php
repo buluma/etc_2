@@ -72,10 +72,16 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_PRODUCTS_PRODUCTS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_PRODUCTS_PRODUCTS_PRODUCT_CODE', 'a.`product_code`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PRODUCTS_PRODUCTS_PRODUCT_NAME', 'a.`product_name`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PRODUCTS_PRODUCTS_CATEGORY', 'a.`category`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_PRODUCTS_PRODUCTS_PRODUCT_PRICE', 'a.`product_price`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -139,14 +145,20 @@ $sortFields = $this->getSortFields();
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_products&task=product.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->product_name); ?></a>
+					<?php echo $this->escape($item->product_code); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->product_name); ?>
+					<?php echo $this->escape($item->product_code); ?>
 				<?php endif; ?>
 
 				</td>				<td>
 
+					<?php echo $item->product_name; ?>
+				</td>				<td>
+
 					<?php echo $item->category; ?>
+				</td>				<td>
+
+					<?php echo $item->product_price; ?>
 				</td>
 
 					</tr>

@@ -54,9 +54,29 @@ $canEdit = ProductsHelpersProducts::canUserEdit($this->item, $user);
 
 				<?php echo $this->form->getInput('created_by'); ?>
 				<?php echo $this->form->getInput('modified_by'); ?>
+	<?php echo $this->form->renderField('product_code'); ?>
+
 	<?php echo $this->form->renderField('product_name'); ?>
 
 	<?php echo $this->form->renderField('category'); ?>
+
+	<?php echo $this->form->renderField('product_classification'); ?>
+
+	<?php echo $this->form->renderField('product_type'); ?>
+
+	<?php echo $this->form->renderField('product_uom'); ?>
+
+	<?php echo $this->form->renderField('product_price'); ?>
+
+	<?php echo $this->form->renderField('product_size'); ?>
+
+	<?php echo $this->form->renderField('product_cases'); ?>
+
+	<?php echo $this->form->renderField('published'); ?>
+
+	<?php echo $this->form->renderField('must_have'); ?>
+
+	<?php echo $this->form->renderField('deleted'); ?>
 
 			<div class="control-group">
 				<div class="controls">

@@ -64,6 +64,27 @@ class ProductsTableproduct extends JTable
 			$array['modified_by'] = JFactory::getUser()->id;
 		}
 
+		// Support for multiple field: category
+		if (isset($array['category']))
+		{
+			if (is_array($array['category']))
+			{
+				$array['category'] = implode(',',$array['category']);
+			}
+			elseif (strpos($array['category'], ',') != false)
+			{
+				$array['category'] = explode(',',$array['category']);
+			}
+			elseif (strlen($array['category']) == 0)
+			{
+				$array['category'] = '';
+			}
+		}
+		else
+		{
+			$array['category'] = '';
+		}
+
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			$registry = new JRegistry;

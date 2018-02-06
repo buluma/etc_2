@@ -42,10 +42,16 @@ $canDelete  = $user->authorise('core.delete', 'com_products');
 				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_ID', 'a.id', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_PRODUCT_CODE', 'a.product_code', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_PRODUCT_NAME', 'a.product_name', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_CATEGORY', 'a.category', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_PRODUCT_PRICE', 'a.product_price', $listDirn, $listOrder); ?>
 				</th>
 
 
@@ -96,11 +102,19 @@ $canDelete  = $user->authorise('core.delete', 'com_products');
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'products.', $canCheckin); ?>
 				<?php endif; ?>
 				<a href="<?php echo JRoute::_('index.php?option=com_products&view=product&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->product_name); ?></a>
+				<?php echo $this->escape($item->product_code); ?></a>
+				</td>
+				<td>
+
+					<?php echo $item->product_name; ?>
 				</td>
 				<td>
 
 					<?php echo $item->category; ?>
+				</td>
+				<td>
+
+					<?php echo $item->product_price; ?>
 				</td>
 
 

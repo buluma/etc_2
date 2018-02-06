@@ -125,6 +125,33 @@ class ProductsModelProduct extends JModelItem
 			$this->_item->modified_by_name = Factory::getUser($this->_item->modified_by)->name;
 		}
 
+		if (isset($this->_item->category) && $this->_item->category != '')
+		{
+			if (is_object($this->_item->category))
+			{
+				$this->_item->category = ArrayHelper::fromObject($this->_item->category);
+			}
+
+			if (is_array($this->_item->category))
+			{
+				$this->_item->category = implode(',', $this->_item->category);
+			}
+
+			$db    = Factory::getDbo();
+			$query = $db->getQuery(true);
+
+			$query
+				->select($db->quoteName('title'))
+				->from($db->quoteName('#__categories'))
+				->where('FIND_IN_SET(' . $db->quoteName('id') . ', ' . $db->quote($this->_item->category) . ')');
+
+			$db->setQuery($query);
+
+			$result = $db->loadColumn();
+
+			$this->_item->category = !empty($result) ? implode(', ', $result) : '';
+		}
+
 		return $this->_item;
 	}
 

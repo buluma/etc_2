@@ -33,6 +33,15 @@ class ProductsHelper
 		);
 
 		JHtmlSidebar::addEntry(
+			JText::_('JCATEGORIES') . ' (' . JText::_('COM_PRODUCTS_TITLE_PRODUCTS') . ')',
+			"index.php?option=com_categories&extension=com_products",
+			$vName == 'categories'
+		);
+		if ($vName=='categories') {
+			JToolBarHelper::title('Products: JCATEGORIES (COM_PRODUCTS_TITLE_PRODUCTS)');
+		}
+
+		JHtmlSidebar::addEntry(
 			JText::_('COM_PRODUCTS_TITLE_BRANDSTOCKS'),
 			'index.php?option=com_products&view=brandstocks',
 			$vName == 'brandstocks'

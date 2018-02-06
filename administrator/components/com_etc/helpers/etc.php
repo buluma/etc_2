@@ -32,11 +32,17 @@ class EtcHelper
 			$vName == 'outlets'
 		);
 
-		JHtmlSidebar::addEntry(
-			JText::_('COM_ETC_TITLE_PRODUCTS'),
-			'index.php?option=com_etc&view=products',
-			$vName == 'products'
-		);
+		// JHtmlSidebar::addEntry(
+		// 	JText::_('COM_ETC_TITLE_PRODUCTS'),
+		// 	'index.php?option=com_etc&view=products',
+		// 	$vName == 'products'
+		// );
+
+		// JHtmlSidebar::addEntry(
+		// 	JText::_('COM_ETC_TITLE_PRODUCTS'),
+		// 	'index.php?option=com_etc&view=products',
+		// 	$vName == 'products'
+		// );
 	}
 
 	/**
