@@ -173,6 +173,24 @@ class ProductsModelProducts extends JModelList
 			$query->where("a.`category` = '".$db->escape($filter_category)."'");
 		}
 
+		// Filtering published
+		$filter_published = $this->state->get("filter.published");
+		if ($filter_published != '') {
+			$query->where("a.`published` = '".$db->escape($filter_published)."'");
+		}
+
+		// Filtering must_have
+		$filter_must_have = $this->state->get("filter.must_have");
+		if ($filter_must_have != '') {
+			$query->where("a.`must_have` = '".$db->escape($filter_must_have)."'");
+		}
+
+		// Filtering deleted
+		$filter_deleted = $this->state->get("filter.deleted");
+		if ($filter_deleted != '') {
+			$query->where("a.`deleted` = '".$db->escape($filter_deleted)."'");
+		}
+
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
 		$orderDirn = $this->state->get('list.direction');
@@ -214,6 +232,12 @@ class ProductsModelProducts extends JModelList
 
 			$item->category = !empty($result) ? implode(', ', $result) : '';
 		}
+
+			$item->published = JText::_('COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_' . strtoupper($item->published));
+
+			$item->must_have = JText::_('COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_' . strtoupper($item->must_have));
+
+			$item->deleted = JText::_('COM_PRODUCTS_PRODUCTS_DELETED_OPTION_' . strtoupper($item->deleted));
 		}
 
 		return $items;

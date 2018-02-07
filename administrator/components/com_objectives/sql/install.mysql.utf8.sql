@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `#__objective` (
+CREATE TABLE IF NOT EXISTS `#__objectives` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 
 `ordering` INT(11)  NOT NULL ,
@@ -7,9 +7,14 @@ CREATE TABLE IF NOT EXISTS `#__objective` (
 `checked_out_time` DATETIME NOT NULL ,
 `created_by` INT(11)  NOT NULL ,
 `modified_by` INT(11)  NOT NULL ,
+`objective` VARCHAR(255)  NOT NULL ,
 `response_type` VARCHAR(255)  NOT NULL ,
 `category` TEXT NOT NULL ,
 `target_score` VARCHAR(255)  NOT NULL ,
+`published` VARCHAR(255)  NOT NULL ,
+`deleted` VARCHAR(255)  NOT NULL ,
+`created_on` TIMESTAMP NOT NULL ,
+`modified_on` TIMESTAMP NOT NULL ,
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8mb4_unicode_ci;
 

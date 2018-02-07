@@ -25,7 +25,7 @@ class ObjectivesCategories extends JCategories
      */
     public function __construct($options = array())
     {
-        $options['table'] = '#__objective';
+        $options['table'] = '#__objectives';
         $options['extension'] = 'com_objectives';
 
         parent::__construct($options);

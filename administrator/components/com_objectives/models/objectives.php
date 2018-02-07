@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @version    CVS: 1.0.0
  * @package    Com_Objectives
@@ -6,227 +7,240 @@
  * @copyright  2018 Michael Buluma
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
-
-// No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modeladmin');
+jimport('joomla.application.component.modellist');
 
 /**
- * Objectives model.
+ * Methods supporting a list of Objectives records.
  *
  * @since  1.6
  */
-class ObjectivesModelObjectives extends JModelAdmin
+class ObjectivesModelObjectives extends JModelList
 {
-	/**
-	 * @var      string    The prefix to use with controller messages.
-	 * @since    1.6
-	 */
-	protected $text_prefix = 'COM_OBJECTIVES';
-
-	/**
-	 * @var   	string  	Alias to manage history control
-	 * @since   3.2
-	 */
-	public $typeAlias = 'com_objectives.objectives';
-
-	/**
-	 * @var null  Item data
-	 * @since  1.6
-	 */
-	protected $item = null;
-
-	/**
-	 * Returns a reference to the a Table object, always creating it.
-	 *
-	 * @param   string  $type    The table type to instantiate
-	 * @param   string  $prefix  A prefix for the table class name. Optional.
-	 * @param   array   $config  Configuration array for model. Optional.
-	 *
-	 * @return    JTable    A database object
-	 *
-	 * @since    1.6
-	 */
-	public function getTable($type = 'Objectives', $prefix = 'ObjectivesTable', $config = array())
+/**
+	* Constructor.
+	*
+	* @param   array  $config  An optional associative array of configuration settings.
+	*
+	* @see        JController
+	* @since      1.6
+	*/
+	public function __construct($config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		if (empty($config['filter_fields']))
+		{
+			$config['filter_fields'] = array(
+				'id', 'a.`id`',
+				'ordering', 'a.`ordering`',
+				'state', 'a.`state`',
+				'created_by', 'a.`created_by`',
+				'modified_by', 'a.`modified_by`',
+				'objective', 'a.`objective`',
+				'response_type', 'a.`response_type`',
+				'category', 'a.`category`',
+				'target_score', 'a.`target_score`',
+				'published', 'a.`published`',
+				'deleted', 'a.`deleted`',
+				'created_on', 'a.`created_on`',
+				'modified_on', 'a.`modified_on`',
+			);
+		}
+
+		parent::__construct($config);
 	}
 
 	/**
-	 * Method to get the record form.
+	 * Method to auto-populate the model state.
 	 *
-	 * @param   array    $data      An optional array of data for the form to interogate.
-	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
+	 * Note. Calling getState in this method will result in recursion.
 	 *
-	 * @return  JForm  A JForm object on success, false on failure
-	 *
-	 * @since    1.6
-	 */
-	public function getForm($data = array(), $loadData = true)
-	{
-		// Initialise variables.
-		$app = JFactory::getApplication();
-
-		// Get the form.
-		$form = $this->loadForm(
-			'com_objectives.objectives', 'objectives',
-			array('control' => 'jform',
-				'load_data' => $loadData
-			)
-		);
-
-		if (empty($form))
-		{
-			return false;
-		}
-
-		return $form;
-	}
-
-	/**
-	 * Method to get the data that should be injected in the form.
-	 *
-	 * @return   mixed  The data for the form.
-	 *
-	 * @since    1.6
-	 */
-	protected function loadFormData()
-	{
-		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_objectives.edit.objectives.data', array());
-
-		if (empty($data))
-		{
-			if ($this->item === null)
-			{
-				$this->item = $this->getItem();
-			}
-
-			$data = $this->item;
-
-			// Support for multiple or not foreign key field: category
-			$array = array();
-
-			foreach ((array) $data->category as $value)
-			{
-				if (!is_array($value))
-				{
-					$array[] = $value;
-				}
-			}
-
-			$data->category = $array;
-		}
-
-		return $data;
-	}
-
-	/**
-	 * Method to get a single record.
-	 *
-	 * @param   integer  $pk  The id of the primary key.
-	 *
-	 * @return  mixed    Object on success, false on failure.
-	 *
-	 * @since    1.6
-	 */
-	public function getItem($pk = null)
-	{
-		if ($item = parent::getItem($pk))
-		{
-			// Do any procesing on fields here if needed
-		}
-
-		return $item;
-	}
-
-	/**
-	 * Method to duplicate an Objectives
-	 *
-	 * @param   array  &$pks  An array of primary key IDs.
-	 *
-	 * @return  boolean  True if successful.
-	 *
-	 * @throws  Exception
-	 */
-	public function duplicate(&$pks)
-	{
-		$user = JFactory::getUser();
-
-		// Access checks.
-		if (!$user->authorise('core.create', 'com_objectives'))
-		{
-			throw new Exception(JText::_('JERROR_CORE_CREATE_NOT_PERMITTED'));
-		}
-
-		$dispatcher = JEventDispatcher::getInstance();
-		$context    = $this->option . '.' . $this->name;
-
-		// Include the plugins for the save events.
-		JPluginHelper::importPlugin($this->events_map['save']);
-
-		$table = $this->getTable();
-
-		foreach ($pks as $pk)
-		{
-			if ($table->load($pk, true))
-			{
-				// Reset the id to create a new record.
-				$table->id = 0;
-
-				if (!$table->check())
-				{
-					throw new Exception($table->getError());
-				}
-				
-
-				// Trigger the before save event.
-				$result = $dispatcher->trigger($this->event_before_save, array($context, &$table, true));
-
-				if (in_array(false, $result, true) || !$table->store())
-				{
-					throw new Exception($table->getError());
-				}
-
-				// Trigger the after save event.
-				$dispatcher->trigger($this->event_after_save, array($context, &$table, true));
-			}
-			else
-			{
-				throw new Exception($table->getError());
-			}
-		}
-
-		// Clean cache
-		$this->cleanCache();
-
-		return true;
-	}
-
-	/**
-	 * Prepare and sanitise the table prior to saving.
-	 *
-	 * @param   JTable  $table  Table Object
+	 * @param   string  $ordering   Elements order
+	 * @param   string  $direction  Order direction
 	 *
 	 * @return void
 	 *
+	 * @throws Exception
+	 */
+	protected function populateState($ordering = null, $direction = null)
+	{
+		// Initialise variables.
+		$app = JFactory::getApplication('administrator');
+
+		// Load the filter state.
+		$search = $app->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
+		$this->setState('filter.search', $search);
+
+		$published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
+		$this->setState('filter.state', $published);
+		// Filtering category
+		$this->setState('filter.category', $app->getUserStateFromRequest($this->context.'.filter.category', 'filter_category', '', 'string'));
+
+		// Filtering published
+		$this->setState('filter.published', $app->getUserStateFromRequest($this->context.'.filter.published', 'filter_published', '', 'string'));
+
+		// Filtering deleted
+		$this->setState('filter.deleted', $app->getUserStateFromRequest($this->context.'.filter.deleted', 'filter_deleted', '', 'string'));
+
+
+		// Load the parameters.
+		$params = JComponentHelper::getParams('com_objectives');
+		$this->setState('params', $params);
+
+		// List state information.
+		parent::populateState('a.objective', 'asc');
+	}
+
+	/**
+	 * Method to get a store id based on model configuration state.
+	 *
+	 * This is necessary because the model is used by the component and
+	 * different modules that might need different sets of data or different
+	 * ordering requirements.
+	 *
+	 * @param   string  $id  A prefix for the store id.
+	 *
+	 * @return   string A store id.
+	 *
 	 * @since    1.6
 	 */
-	protected function prepareTable($table)
+	protected function getStoreId($id = '')
 	{
-		jimport('joomla.filter.output');
+		// Compile the store id.
+		$id .= ':' . $this->getState('filter.search');
+		$id .= ':' . $this->getState('filter.state');
 
-		if (empty($table->id))
+		return parent::getStoreId($id);
+	}
+
+	/**
+	 * Build an SQL query to load the list data.
+	 *
+	 * @return   JDatabaseQuery
+	 *
+	 * @since    1.6
+	 */
+	protected function getListQuery()
+	{
+		// Create a new query object.
+		$db    = $this->getDbo();
+		$query = $db->getQuery(true);
+
+		// Select the required fields from the table.
+		$query->select(
+			$this->getState(
+				'list.select', 'DISTINCT a.*'
+			)
+		);
+		$query->from('`#__objectives` AS a');
+
+		// Join over the users for the checked out user
+		$query->select("uc.name AS uEditor");
+		$query->join("LEFT", "#__users AS uc ON uc.id=a.checked_out");
+
+		// Join over the user field 'created_by'
+		$query->select('`created_by`.name AS `created_by`');
+		$query->join('LEFT', '#__users AS `created_by` ON `created_by`.id = a.`created_by`');
+
+		// Join over the user field 'modified_by'
+		$query->select('`modified_by`.name AS `modified_by`');
+		$query->join('LEFT', '#__users AS `modified_by` ON `modified_by`.id = a.`modified_by`');
+
+		// Filter by published state
+		$published = $this->getState('filter.state');
+
+		if (is_numeric($published))
 		{
-			// Set ordering to the last item if not set
-			if (@$table->ordering === '')
+			$query->where('a.state = ' . (int) $published);
+		}
+		elseif ($published === '')
+		{
+			$query->where('(a.state IN (0, 1))');
+		}
+
+		// Filter by search in title
+		$search = $this->getState('filter.search');
+
+		if (!empty($search))
+		{
+			if (stripos($search, 'id:') === 0)
 			{
-				$db = JFactory::getDbo();
-				$db->setQuery('SELECT MAX(ordering) FROM #__objective');
-				$max             = $db->loadResult();
-				$table->ordering = $max + 1;
+				$query->where('a.id = ' . (int) substr($search, 3));
+			}
+			else
+			{
+				$search = $db->Quote('%' . $db->escape($search, true) . '%');
+				$query->where('( a.objective LIKE ' . $search . ' )');
 			}
 		}
+
+
+		// Filtering category
+		$filter_category = $this->state->get("filter.category");
+
+		if ($filter_category !== null && !empty($filter_category))
+		{
+			$query->where("a.`category` = '".$db->escape($filter_category)."'");
+		}
+
+		// Filtering published
+		$filter_published = $this->state->get("filter.published");
+
+		if ($filter_published !== null && (is_numeric($filter_published) || !empty($filter_published)))
+		{
+			$query->where("a.`published` = '".$db->escape($filter_published)."'");
+		}
+
+		// Filtering deleted
+		$filter_deleted = $this->state->get("filter.deleted");
+
+		if ($filter_deleted !== null && (is_numeric($filter_deleted) || !empty($filter_deleted)))
+		{
+			$query->where("a.`deleted` = '".$db->escape($filter_deleted)."'");
+		}
+		// Add the list ordering clause.
+		$orderCol  = $this->state->get('list.ordering');
+		$orderDirn = $this->state->get('list.direction');
+
+		if ($orderCol && $orderDirn)
+		{
+			$query->order($db->escape($orderCol . ' ' . $orderDirn));
+		}
+
+		return $query;
+	}
+
+	/**
+	 * Get an array of data items
+	 *
+	 * @return mixed Array of data items on success, false on failure.
+	 */
+	public function getItems()
+	{
+		$items = parent::getItems();
+
+		foreach ($items as $oneItem)
+		{
+
+			if (isset($oneItem->category))
+			{
+				$db    = JFactory::getDbo();
+				$query = $db->getQuery(true);
+
+				$query
+					->select($db->quoteName('title'))
+					->from($db->quoteName('#__categories'))
+					->where('FIND_IN_SET(' . $db->quoteName('id') . ', ' . $db->quote($oneItem->category) . ')');
+
+				$db->setQuery($query);
+				$result = $db->loadColumn();
+
+				$oneItem->category = !empty($result) ? implode(', ', $result) : '';
+			}
+					$oneItem->published = ($oneItem->published == '') ? '' : JText::_('COM_OBJECTIVES_OBJECTIVES_PUBLISHED_OPTION_' . strtoupper($oneItem->published));
+					$oneItem->deleted = ($oneItem->deleted == '') ? '' : JText::_('COM_OBJECTIVES_OBJECTIVES_DELETED_OPTION_' . strtoupper($oneItem->deleted));
+		}
+
+		return $items;
 	}
 }

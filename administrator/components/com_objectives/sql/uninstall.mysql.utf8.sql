@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS `#__objective`;
+DROP TABLE IF EXISTS `#__objectives`;

@@ -13,17 +13,17 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
 /**
- * View to edit
+ * View class for a list of Objectives.
  *
  * @since  1.6
  */
 class ObjectivesViewObjectives extends JViewLegacy
 {
+	protected $items;
+
+	protected $pagination;
+
 	protected $state;
-
-	protected $item;
-
-	protected $form;
 
 	/**
 	 * Display the view
@@ -37,8 +37,10 @@ class ObjectivesViewObjectives extends JViewLegacy
 	public function display($tpl = null)
 	{
 		$this->state = $this->get('State');
-		$this->item  = $this->get('Item');
-		$this->form  = $this->get('Form');
+		$this->items = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
+        $this->filterForm = $this->get('FilterForm');
+        $this->activeFilters = $this->get('ActiveFilters');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -46,7 +48,11 @@ class ObjectivesViewObjectives extends JViewLegacy
 			throw new Exception(implode("\n", $errors));
 		}
 
+		ObjectivesHelper::addSubmenu('objectives');
+
 		$this->addToolbar();
+
+		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
 	}
 
@@ -55,58 +61,114 @@ class ObjectivesViewObjectives extends JViewLegacy
 	 *
 	 * @return void
 	 *
-	 * @throws Exception
+	 * @since    1.6
 	 */
 	protected function addToolbar()
 	{
-		JFactory::getApplication()->input->set('hidemainmenu', true);
-
-		$user  = JFactory::getUser();
-		$isNew = ($this->item->id == 0);
-
-		if (isset($this->item->checked_out))
-		{
-			$checkedOut = !($this->item->checked_out == 0 || $this->item->checked_out == $user->get('id'));
-		}
-		else
-		{
-			$checkedOut = false;
-		}
-
+		$state = $this->get('State');
 		$canDo = ObjectivesHelper::getActions();
 
 		JToolBarHelper::title(JText::_('COM_OBJECTIVES_TITLE_OBJECTIVES'), 'objectives.png');
 
-		// If not checked out, can save the item.
-		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))
+		// Check if the form exists before showing the add/edit buttons
+		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/objective';
+
+		if (file_exists($formPath))
 		{
-			JToolBarHelper::apply('objectives.apply', 'JTOOLBAR_APPLY');
-			JToolBarHelper::save('objectives.save', 'JTOOLBAR_SAVE');
+			if ($canDo->get('core.create'))
+			{
+				JToolBarHelper::addNew('objective.add', 'JTOOLBAR_NEW');
+
+				if (isset($this->items[0]))
+				{
+					JToolbarHelper::custom('objectives.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+				}
+			}
+
+			if ($canDo->get('core.edit') && isset($this->items[0]))
+			{
+				JToolBarHelper::editList('objective.edit', 'JTOOLBAR_EDIT');
+			}
 		}
 
-		if (!$checkedOut && ($canDo->get('core.create')))
+		if ($canDo->get('core.edit.state'))
 		{
-			JToolBarHelper::custom('objectives.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
+			if (isset($this->items[0]->state))
+			{
+				JToolBarHelper::divider();
+				JToolBarHelper::custom('objectives.publish', 'publish.png', 'publish_f2.png', 'JTOOLBAR_PUBLISH', true);
+				JToolBarHelper::custom('objectives.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);
+			}
+			elseif (isset($this->items[0]))
+			{
+				// If this component does not use state then show a direct delete button as we can not trash
+				JToolBarHelper::deleteList('', 'objectives.delete', 'JTOOLBAR_DELETE');
+			}
+
+			if (isset($this->items[0]->state))
+			{
+				JToolBarHelper::divider();
+				JToolBarHelper::archiveList('objectives.archive', 'JTOOLBAR_ARCHIVE');
+			}
+
+			if (isset($this->items[0]->checked_out))
+			{
+				JToolBarHelper::custom('objectives.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
+			}
 		}
 
-		// If an existing item, can save to a copy.
-		if (!$isNew && $canDo->get('core.create'))
+		// Show trash and delete for components that uses the state field
+		if (isset($this->items[0]->state))
 		{
-			JToolBarHelper::custom('objectives.save2copy', 'save-copy.png', 'save-copy_f2.png', 'JTOOLBAR_SAVE_AS_COPY', false);
+			if ($state->get('filter.state') == -2 && $canDo->get('core.delete'))
+			{
+				JToolBarHelper::deleteList('', 'objectives.delete', 'JTOOLBAR_EMPTY_TRASH');
+				JToolBarHelper::divider();
+			}
+			elseif ($canDo->get('core.edit.state'))
+			{
+				JToolBarHelper::trash('objectives.trash', 'JTOOLBAR_TRASH');
+				JToolBarHelper::divider();
+			}
 		}
 
-		// Button for version control
-		if ($this->state->params->get('save_history', 1) && $user->authorise('core.edit')) {
-			JToolbarHelper::versions('com_objectives.objectives', $this->item->id);
+		if ($canDo->get('core.admin'))
+		{
+			JToolBarHelper::preferences('com_objectives');
 		}
 
-		if (empty($this->item->id))
-		{
-			JToolBarHelper::cancel('objectives.cancel', 'JTOOLBAR_CANCEL');
-		}
-		else
-		{
-			JToolBarHelper::cancel('objectives.cancel', 'JTOOLBAR_CLOSE');
-		}
+		// Set sidebar action - New in 3.0
+		JHtmlSidebar::setAction('index.php?option=com_objectives&view=objectives');
 	}
+
+	/**
+	 * Method to order fields 
+	 *
+	 * @return void 
+	 */
+	protected function getSortFields()
+	{
+		return array(
+			'a.`id`' => JText::_('JGRID_HEADING_ID'),
+			'a.`ordering`' => JText::_('JGRID_HEADING_ORDERING'),
+			'a.`state`' => JText::_('JSTATUS'),
+			'a.`objective`' => JText::_('COM_OBJECTIVES_OBJECTIVES_OBJECTIVE'),
+			'a.`category`' => JText::_('COM_OBJECTIVES_OBJECTIVES_CATEGORY'),
+			'a.`target_score`' => JText::_('COM_OBJECTIVES_OBJECTIVES_TARGET_SCORE'),
+			'a.`published`' => JText::_('COM_OBJECTIVES_OBJECTIVES_PUBLISHED'),
+			'a.`deleted`' => JText::_('COM_OBJECTIVES_OBJECTIVES_DELETED'),
+		);
+	}
+
+    /**
+     * Check if state is set
+     *
+     * @param   mixed  $state  State
+     *
+     * @return bool
+     */
+    public function getState($state)
+    {
+        return isset($this->state->{$state}) ? $this->state->{$state} : false;
+    }
 }

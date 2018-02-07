@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
     <name>com_objectives</name>
-    <creationDate>2018-02-05</creationDate>
+    <creationDate>2018-02-07</creationDate>
     <copyright>2018 Michael Buluma</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Michael Buluma</author>
@@ -50,9 +50,9 @@
         <menu>COM_OBJECTIVES</menu>
         <submenu>
             
-			<menu link="option=com_objectives&amp;view=objectivess" view="objectivess" alt="Objectives/Objectivess">COM_OBJECTIVES_TITLE_OBJECTIVESS</menu>
+			<menu link="option=com_objectives&amp;view=objectives" view="objectives" alt="Objectives/Objectives">COM_OBJECTIVES_TITLE_OBJECTIVES</menu>
 
-			<menu link="option=com_categories&amp;extension=com_objectives" view="categories" alt="Objectives/Categories">COM_OBJECTIVES_OBJECTIVESS_CATEGORY</menu>
+			<menu link="option=com_categories&amp;extension=com_objectives" view="categories" alt="Objectives/Categories">COM_OBJECTIVES_OBJECTIVES_CATEGORY</menu>
 
         </submenu>
         <files folder="administrator">

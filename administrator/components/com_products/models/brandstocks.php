@@ -114,6 +114,9 @@ class ProductsModelBrandstocks extends JModelList
 
 				$oneItem->category = !empty($result) ? implode(', ', $result) : '';
 			}
+					$oneItem->published = JText::_('COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_' . strtoupper($oneItem->published));
+					$oneItem->must_have = JText::_('COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_' . strtoupper($oneItem->must_have));
+					$oneItem->deleted = JText::_('COM_PRODUCTS_PRODUCTS_DELETED_OPTION_' . strtoupper($oneItem->deleted));
 		}
 
 		return $items;

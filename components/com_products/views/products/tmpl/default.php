@@ -53,6 +53,15 @@ $canDelete  = $user->authorise('core.delete', 'com_products');
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_PRODUCT_PRICE', 'a.product_price', $listDirn, $listOrder); ?>
 				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_PUBLISHED', 'a.published', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_MUST_HAVE', 'a.must_have', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_PRODUCTS_PRODUCTS_DELETED', 'a.deleted', $listDirn, $listOrder); ?>
+				</th>
 
 
 							<?php if ($canEdit || $canDelete): ?>
@@ -115,6 +124,18 @@ $canDelete  = $user->authorise('core.delete', 'com_products');
 				<td>
 
 					<?php echo $item->product_price; ?>
+				</td>
+				<td>
+
+					<?php echo $item->published; ?>
+				</td>
+				<td>
+
+					<?php echo $item->must_have; ?>
+				</td>
+				<td>
+
+					<?php echo $item->deleted; ?>
 				</td>
 
 

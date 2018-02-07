@@ -154,6 +154,9 @@ class ProductsViewBrandstocks extends JViewLegacy
 			'a.`product_name`' => JText::_('COM_PRODUCTS_PRODUCTS_PRODUCT_NAME'),
 			'a.`category`' => JText::_('COM_PRODUCTS_PRODUCTS_CATEGORY'),
 			'a.`product_price`' => JText::_('COM_PRODUCTS_PRODUCTS_PRODUCT_PRICE'),
+			'a.`published`' => JText::_('COM_PRODUCTS_PRODUCTS_PUBLISHED'),
+			'a.`must_have`' => JText::_('COM_PRODUCTS_PRODUCTS_MUST_HAVE'),
+			'a.`deleted`' => JText::_('COM_PRODUCTS_PRODUCTS_DELETED'),
 		);
 	}
 

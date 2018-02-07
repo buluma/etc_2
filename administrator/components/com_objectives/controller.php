@@ -29,7 +29,7 @@ class ObjectivesController extends JControllerLegacy
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
-		$view = JFactory::getApplication()->input->getCmd('view', 'objectivess');
+		$view = JFactory::getApplication()->input->getCmd('view', 'objectives');
 		JFactory::getApplication()->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);

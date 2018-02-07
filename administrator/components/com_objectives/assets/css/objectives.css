@@ -1,14 +1,14 @@
-.icon-48-objectivess {
-      background-image: url(../images/l_objectivess.png);
-      padding-left:60px!important;
-}
-
 .icon-48-objectives {
-      background-image: url(../images/l_objectivess.png);
+      background-image: url(../images/l_objectives.png);
       padding-left:60px!important;
 }
 
-.color-box-objectivess { 
+.icon-48-objective {
+      background-image: url(../images/l_objectives.png);
+      padding-left:60px!important;
+}
+
+.color-box-objectives { 
       float: left;      width: 15px;      height: 15px;      margin-right: 5px;      border: 1px solid rgba(0, 0, 0, .2);}
 
 

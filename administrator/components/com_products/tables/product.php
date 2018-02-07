@@ -85,6 +85,69 @@ class ProductsTableproduct extends JTable
 			$array['category'] = '';
 		}
 
+		// Support for multiple field: published
+		if (isset($array['published']))
+		{
+			if (is_array($array['published']))
+			{
+				$array['published'] = implode(',',$array['published']);
+			}
+			elseif (strpos($array['published'], ',') != false)
+			{
+				$array['published'] = explode(',',$array['published']);
+			}
+			elseif (strlen($array['published']) == 0)
+			{
+				$array['published'] = '';
+			}
+		}
+		else
+		{
+			$array['published'] = '';
+		}
+
+		// Support for multiple field: must_have
+		if (isset($array['must_have']))
+		{
+			if (is_array($array['must_have']))
+			{
+				$array['must_have'] = implode(',',$array['must_have']);
+			}
+			elseif (strpos($array['must_have'], ',') != false)
+			{
+				$array['must_have'] = explode(',',$array['must_have']);
+			}
+			elseif (strlen($array['must_have']) == 0)
+			{
+				$array['must_have'] = '';
+			}
+		}
+		else
+		{
+			$array['must_have'] = '';
+		}
+
+		// Support for multiple field: deleted
+		if (isset($array['deleted']))
+		{
+			if (is_array($array['deleted']))
+			{
+				$array['deleted'] = implode(',',$array['deleted']);
+			}
+			elseif (strpos($array['deleted'], ',') != false)
+			{
+				$array['deleted'] = explode(',',$array['deleted']);
+			}
+			elseif (strlen($array['deleted']) == 0)
+			{
+				$array['deleted'] = '';
+			}
+		}
+		else
+		{
+			$array['deleted'] = '';
+		}
+
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			$registry = new JRegistry;

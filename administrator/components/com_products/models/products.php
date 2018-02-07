@@ -80,6 +80,15 @@ class ProductsModelProducts extends JModelList
 		// Filtering category
 		$this->setState('filter.category', $app->getUserStateFromRequest($this->context.'.filter.category', 'filter_category', '', 'string'));
 
+		// Filtering published
+		$this->setState('filter.published', $app->getUserStateFromRequest($this->context.'.filter.published', 'filter_published', '', 'string'));
+
+		// Filtering must_have
+		$this->setState('filter.must_have', $app->getUserStateFromRequest($this->context.'.filter.must_have', 'filter_must_have', '', 'string'));
+
+		// Filtering deleted
+		$this->setState('filter.deleted', $app->getUserStateFromRequest($this->context.'.filter.deleted', 'filter_deleted', '', 'string'));
+
 
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_products');
@@ -180,6 +189,30 @@ class ProductsModelProducts extends JModelList
 		{
 			$query->where("a.`category` = '".$db->escape($filter_category)."'");
 		}
+
+		// Filtering published
+		$filter_published = $this->state->get("filter.published");
+
+		if ($filter_published !== null && (is_numeric($filter_published) || !empty($filter_published)))
+		{
+			$query->where("a.`published` = '".$db->escape($filter_published)."'");
+		}
+
+		// Filtering must_have
+		$filter_must_have = $this->state->get("filter.must_have");
+
+		if ($filter_must_have !== null && (is_numeric($filter_must_have) || !empty($filter_must_have)))
+		{
+			$query->where("a.`must_have` = '".$db->escape($filter_must_have)."'");
+		}
+
+		// Filtering deleted
+		$filter_deleted = $this->state->get("filter.deleted");
+
+		if ($filter_deleted !== null && (is_numeric($filter_deleted) || !empty($filter_deleted)))
+		{
+			$query->where("a.`deleted` = '".$db->escape($filter_deleted)."'");
+		}
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
 		$orderDirn = $this->state->get('list.direction');
@@ -219,6 +252,9 @@ class ProductsModelProducts extends JModelList
 
 				$oneItem->category = !empty($result) ? implode(', ', $result) : '';
 			}
+					$oneItem->published = JText::_('COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_' . strtoupper($oneItem->published));
+					$oneItem->must_have = JText::_('COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_' . strtoupper($oneItem->must_have));
+					$oneItem->deleted = JText::_('COM_PRODUCTS_PRODUCTS_DELETED_OPTION_' . strtoupper($oneItem->deleted));
 		}
 
 		return $items;

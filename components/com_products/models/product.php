@@ -152,6 +152,21 @@ class ProductsModelProduct extends JModelItem
 			$this->_item->category = !empty($result) ? implode(', ', $result) : '';
 		}
 
+		if (!empty($this->_item->published))
+		{
+			$this->_item->published = JText::_('COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_' . $this->_item->published);
+		}
+
+		if (!empty($this->_item->must_have))
+		{
+			$this->_item->must_have = JText::_('COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_' . $this->_item->must_have);
+		}
+
+		if (!empty($this->_item->deleted))
+		{
+			$this->_item->deleted = JText::_('COM_PRODUCTS_PRODUCTS_DELETED_OPTION_' . $this->_item->deleted);
+		}
+
 		return $this->_item;
 	}
 

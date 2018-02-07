@@ -22,9 +22,18 @@
     <field name="product_price" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_PRICE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_PRICE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_PRICE"/>
     <field name="product_size" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_SIZE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_SIZE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_SIZE"/>
     <field name="product_cases" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CASES" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_CASES" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CASES"/>
-    <field name="published" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PUBLISHED" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED"/>
-    <field name="must_have" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_MUST_HAVE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_MUST_HAVE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_MUST_HAVE"/>
-    <field name="deleted" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_DELETED" description="COM_PRODUCTS_FORM_DESC_PRODUCT_DELETED" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_DELETED"/>
+    <field name="published" default="1" type="list" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PUBLISHED" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED">
+      <option value="1">COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_1</option>
+      <option value="0">COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_0</option>
+    </field>
+    <field name="must_have" default="0" type="list" label="COM_PRODUCTS_FORM_LBL_PRODUCT_MUST_HAVE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_MUST_HAVE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_MUST_HAVE">
+      <option value="0">COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_0</option>
+      <option value="1">COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_1</option>
+    </field>
+    <field name="deleted" default="0" type="list" label="COM_PRODUCTS_FORM_LBL_PRODUCT_DELETED" description="COM_PRODUCTS_FORM_DESC_PRODUCT_DELETED" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_DELETED">
+      <option value="0">COM_PRODUCTS_PRODUCTS_DELETED_OPTION_0</option>
+      <option value="1">COM_PRODUCTS_PRODUCTS_DELETED_OPTION_1</option>
+    </field>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
 </form>

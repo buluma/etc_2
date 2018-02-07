@@ -275,6 +275,42 @@ class ProductsModelProductForm extends JModelForm
 			$data = $this->getItem();
 		}
 		
+		// Support for multiple or not foreign key field: published
+		$array = array();
+
+		foreach ((array) $data->published as $value)
+		{
+			if (!is_array($value))
+			{
+				$array[] = $value;
+			}
+		}
+
+		$data->published = $array;
+		// Support for multiple or not foreign key field: must_have
+		$array = array();
+
+		foreach ((array) $data->must_have as $value)
+		{
+			if (!is_array($value))
+			{
+				$array[] = $value;
+			}
+		}
+
+		$data->must_have = $array;
+		// Support for multiple or not foreign key field: deleted
+		$array = array();
+
+		foreach ((array) $data->deleted as $value)
+		{
+			if (!is_array($value))
+			{
+				$array[] = $value;
+			}
+		}
+
+		$data->deleted = $array;
 
 		return $data;
 	}
