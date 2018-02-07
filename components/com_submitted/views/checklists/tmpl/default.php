@@ -56,6 +56,9 @@ $canDelete  = $user->authorise('core.delete', 'com_submitted');
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_STORE_ID', 'a.store_id', $listDirn, $listOrder); ?>
 				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_DATEFORMAT', 'a.dateformat', $listDirn, $listOrder); ?>
+				</th>
 
 
 							<?php if ($canEdit || $canDelete): ?>
@@ -122,6 +125,10 @@ $canDelete  = $user->authorise('core.delete', 'com_submitted');
 				<td>
 
 					<?php echo $item->store_id; ?>
+				</td>
+				<td>
+
+					<?php echo $item->dateformat; ?>
 				</td>
 
 

@@ -57,6 +57,11 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_submitted'
 			<td><?php echo $this->item->store_id; ?></td>
 		</tr>
 
+		<tr>
+			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_DATEFORMAT'); ?></th>
+			<td><?php echo $this->item->dateformat; ?></td>
+		</tr>
+
 	</table>
 
 </div>

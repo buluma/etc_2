@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="library" version="2.5" method="upgrade">
+  <name>TBS</name>
+  <libraryname>tbs</libraryname>
+  <version>3.8.1</version>
+  <creationDate>2012-03-04</creationDate>
+  <author>Skrol29dev</author>
+  <authorUrl>http://www.tinybutstrong.com/onlyyou.html</authorUrl>
+  <authorEmail>skrol29dev@gmail.com</authorEmail>
+  <description><![CDATA[TinyButStrong library for Joomla!. <br/>
+  Please note that Javier Gómez has only created an installation package, all credit belongs to Skrol29dev]]>
+  </description>
+  
+  <files folder="tcpdf">
+    <file>tbs.xml</file>
+    <file>tbs_class.php</file>
+    <file>tbs_plugin_excel.php</file>
+    <file>tbs_plugin_opentbs.php</file>
+    <file>tbs_plugin_opentbs.html</file>
+    <file>tbs_us_manual.htm</file>
+    <file>xml_synopsis.txt</file>
+    <folder>plugins</folder>
+    <folder>examples</folder>
+    <folder>demo</folder>
+  </files>
+</extension>

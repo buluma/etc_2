@@ -157,6 +157,7 @@ class SubmittedViewChecklists extends JViewLegacy
 			'a.`merchandising`' => JText::_('COM_SUBMITTED_CHECKLISTS_MERCHANDISING'),
 			'a.`shelf_quantity`' => JText::_('COM_SUBMITTED_CHECKLISTS_SHELF_QUANTITY'),
 			'a.`store_id`' => JText::_('COM_SUBMITTED_CHECKLISTS_STORE_ID'),
+			'a.`dateformat`' => JText::_('COM_SUBMITTED_CHECKLISTS_DATEFORMAT'),
 		);
 	}
 

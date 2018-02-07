@@ -25,11 +25,13 @@ $canChange  = $user->authorise('core.edit.state', 'com_oulets');
 $canDelete  = $user->authorise('core.delete', 'com_oulets');
 ?>
 
+
 <form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post"
       name="adminForm" id="adminForm">
 
 	<?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
-	<table class="table table-striped" id="outletList">
+	<br/>
+	<table class="table table-striped table-bordered table-condensed" id="outletList">
 		<thead>
 		<tr>
 			<?php if (isset($this->items[0]->state)): ?>

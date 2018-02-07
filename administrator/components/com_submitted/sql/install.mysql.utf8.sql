@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `#__perfect_checklist` (
 `right_prices` VARCHAR(255)  NOT NULL ,
 `visible_tags` VARCHAR(255)  NOT NULL ,
 `store_id` TEXT NOT NULL ,
+`dateformat` DATE NOT NULL ,
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8mb4_unicode_ci;
 

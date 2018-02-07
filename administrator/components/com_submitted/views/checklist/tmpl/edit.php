@@ -84,7 +84,8 @@ $document->addStyleSheet(JUri::root() . 'media/com_submitted/css/form.css');
 						echo '<input type="hidden" class="store_id" name="jform[store_idhidden]['.$value.']" value="'.$value.'" />';
 					endif;
 				endforeach;
-			?>
+			?>				<?php echo $this->form->renderField('dateformat'); ?>
+
 
 					<?php if ($this->state->params->get('save_history', 1)) : ?>
 					<div class="control-group">

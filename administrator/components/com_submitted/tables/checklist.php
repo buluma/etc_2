@@ -106,6 +106,12 @@ class SubmittedTablechecklist extends JTable
 			$array['store_id'] = '';
 		}
 
+		// Support for empty date field: dateformat
+		if($array['dateformat'] == '0000-00-00' )
+		{
+			$array['dateformat'] = '';
+		}
+
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			$registry = new JRegistry;

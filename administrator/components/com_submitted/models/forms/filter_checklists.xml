@@ -20,6 +20,8 @@
   <option value="2">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_2</option>
 </field>
 <field name="store_id" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID" type="sql" query="SELECT '' AS `id`, 'COM_SUBMITTED_CHECKLISTS_STORE_ID_FILTER' AS `shop_name` UNION (SELECT id, shop_name FROM `#__outlets`)" translate="true" key_field="id" value_field="shop_name" onchange="this.form.submit();"/>
+<field name="dateformat.from" label="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_FROM"/>
+<field name="dateformat.to" label="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_TO"/>
 
 
     </fields>
@@ -34,7 +36,7 @@
                default="a.id DESC"
         >
             <option value="">JGLOBAL_SORT_BY</option>
-            <option value="a.`id` ASC">ID Ascending</option><option value="a.`id` DESC">ID Descending</option><option value="a.`ordering` ASC">Order Ascending</option><option value="a.`ordering` DESC">Order Descending</option><option value="a.`state` ASC">State Ascending</option><option value="a.`state` DESC">State Descending</option><option value="a.`shop_mml` ASC">Shop MML Ascending</option><option value="a.`shop_mml` DESC">Shop MML Descending</option><option value="a.`sku_available` ASC">SKU Availability Ascending</option><option value="a.`sku_available` DESC">SKU Availability Descending</option><option value="a.`merchandising` ASC">Merchandising Ascending</option><option value="a.`merchandising` DESC">Merchandising Descending</option><option value="a.`shelf_quantity` ASC">Shelf Quantity Ascending</option><option value="a.`shelf_quantity` DESC">Shelf Quantity Descending</option><option value="a.`store_id` ASC">Store Ids Ascending</option><option value="a.`store_id` DESC">Store Ids Descending</option>
+            <option value="a.`id` ASC">ID Ascending</option><option value="a.`id` DESC">ID Descending</option><option value="a.`ordering` ASC">Order Ascending</option><option value="a.`ordering` DESC">Order Descending</option><option value="a.`state` ASC">State Ascending</option><option value="a.`state` DESC">State Descending</option><option value="a.`shop_mml` ASC">Shop MML Ascending</option><option value="a.`shop_mml` DESC">Shop MML Descending</option><option value="a.`sku_available` ASC">SKU Availability Ascending</option><option value="a.`sku_available` DESC">SKU Availability Descending</option><option value="a.`merchandising` ASC">Merchandising Ascending</option><option value="a.`merchandising` DESC">Merchandising Descending</option><option value="a.`shelf_quantity` ASC">Shelf Quantity Ascending</option><option value="a.`shelf_quantity` DESC">Shelf Quantity Descending</option><option value="a.`store_id` ASC">Store Ids Ascending</option><option value="a.`store_id` DESC">Store Ids Descending</option><option value="a.`dateformat` ASC">Dateformats Ascending</option><option value="a.`dateformat` DESC">Dateformats Descending</option>
 
         </field>
 

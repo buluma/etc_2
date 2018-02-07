@@ -29,7 +29,7 @@ $canDelete  = $user->authorise('core.delete', 'com_objectives');
       name="adminForm" id="adminForm">
 
 	<?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
-	<table class="table table-striped" id="objectiveList">
+	<table class="table table-striped table-bordered table-condensed" id="objectiveList">
 		<thead>
 		<tr>
 			<?php if (isset($this->items[0]->state)): ?>

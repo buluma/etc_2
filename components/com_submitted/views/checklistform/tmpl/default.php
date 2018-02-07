@@ -76,7 +76,9 @@ $canEdit = SubmittedHelpersSubmitted::canUserEdit($this->item, $user);
 		<?php if(!is_array($value)): ?>
 			<input type="hidden" class="store_id" name="jform[store_idhidden][<?php echo $value; ?>]" value="<?php echo $value; ?>" />';
 		<?php endif; ?>
-	<?php endforeach; ?>				<div class="fltlft" <?php if (!JFactory::getUser()->authorise('core.admin','submitted')): ?> style="display:none;" <?php endif; ?> >
+	<?php endforeach; ?>
+	<?php echo $this->form->renderField('dateformat'); ?>
+				<div class="fltlft" <?php if (!JFactory::getUser()->authorise('core.admin','submitted')): ?> style="display:none;" <?php endif; ?> >
                 <?php echo JHtml::_('sliders.start', 'permissions-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
                 <?php echo JHtml::_('sliders.panel', JText::_('ACL Configuration'), 'access-rules'); ?>
                 <fieldset class="panelform">

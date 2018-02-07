@@ -37,7 +37,12 @@ class ProductsViewBrandstocks extends JViewLegacy
 	public function display($tpl = null)
 	{
 		$this->state = $this->get('State');
+		$this->items = $this->get('Items');
+		// $this->pagination = $this->get('Pagination');
+        // $this->filterForm = $this->get('FilterForm');
+        // $this->activeFilters = $this->get('ActiveFilters');
         
+        	// var_dump($this->items);
         
 
 		// Check for errors.

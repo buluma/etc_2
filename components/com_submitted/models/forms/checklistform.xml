@@ -23,6 +23,7 @@
     <field name="right_prices" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_RIGHT_PRICES" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_RIGHT_PRICES" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_RIGHT_PRICES"/>
     <field name="visible_tags" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_VISIBLE_TAGS" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_VISIBLE_TAGS" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_VISIBLE_TAGS"/>
     <field name="store_id" query="SELECT id, shop_name FROM `#__outlets`" key_field="id" value_field="shop_name" type="sql" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_STORE_ID" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID"/>
+    <field name="dateformat" class="inputbox" timeformat="12" filter="server_utc" showtime="false" singleheader="false" todaybutton="true" weeknumbers="true" filltable="true" type="calendar" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_DATEFORMAT" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_DATEFORMAT" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_DATEFORMAT"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
   <fieldset name="accesscontrol">

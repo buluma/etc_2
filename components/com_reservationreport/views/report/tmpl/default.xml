@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_RESERVATIONREPORT_VIEW_REPORT_LAYOUT_DEFAULT_TITLE">_
+		<message><![CDATA[COM_RESERVATIONREPORT_VIEW_REPORT_LAYOUT_DEFAULT_DESC]]></message>
+	</layout>
+	<fields name="params">
+		<!-- Basic options. -->
+		<fieldset name="basic" label="COM_RESERVATIONREPORT_BASIC_OPTIONS_FIELDSET_LABEL">
+			<field name="server" type="text" default="localhost" label="COM_RESERVATIONREPORT_CONFIG_SERVER_LABEL" description="COM_RESERVATIONREPORT_CONFIG_SERVER_DESC" />
+			<field name="database" type="text" label="COM_RESERVATIONREPORT_CONFIG_DATABASE_LABEL" description="COM_RESERVATIONREPORT_CONFIG_DATABASE_DESC" />
+			<field name="user" type="text" label="COM_RESERVATIONREPORT_CONFIG_USER_LABEL" description="COM_RESERVATIONREPORT_CONFIG_USER_DESC" />
+			<field name="password" type="text" label="COM_RESERVATIONREPORT_CONFIG_PASSWORD_LABEL" description="COM_RESERVATIONREPORT_CONFIG_PASSWORD_DESC" />
+			<field name="daystarttime" type="text" label="COM_RESERVATIONREPORT_CONFIG_DAY_START_TIME_LABEL" description="COM_RESERVATIONREPORT_CONFIG_DAY_START_TIME_DESC" />
+			<field name="pretext" type="editor" label="COM_RESERVATIONREPORT_CONFIG_PRE_TEXT_LABEL" description="COM_RESERVATIONREPORT_CONFIG_PRE_TEXT_DESC" filter="safehtml" />
+			<field name="posttext" type="editor" label="COM_RESERVATIONREPORT_CONFIG_POST_TEXT_LABEL" description="COM_RESERVATIONREPORT_CONFIG_POST_TEXT_DESC" filter="safehtml" />
+		</fieldset>
+	</fields>
+</metadata>

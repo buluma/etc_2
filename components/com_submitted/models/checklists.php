@@ -48,6 +48,7 @@ class SubmittedModelChecklists extends JModelList
 				'right_prices', 'a.right_prices',
 				'visible_tags', 'a.visible_tags',
 				'store_id', 'a.store_id',
+				'dateformat', 'a.dateformat',
 			);
 		}
 
@@ -171,6 +172,24 @@ class SubmittedModelChecklists extends JModelList
 		$filter_store_id = $this->state->get("filter.store_id");
 		if ($filter_store_id != '') {
 			$query->where("a.`store_id` = '".$db->escape($filter_store_id)."'");
+		}
+
+		// Filtering dateformat
+		// Checking "_dateformat"
+		$filter_dateformat_from = $this->state->get("filter.dateformat_from_dateformat");
+		$filter_Qdateformat_from = (!empty($filter_dateformat_from)) ? $this->isValidDate($filter_dateformat_from) : null;
+
+		if ($filter_Qdateformat_from != null)
+		{
+			$query->where("a.dateformat >= '" . $db->escape($filter_Qdateformat_from) . "'");
+		}
+
+		$filter_dateformat_to = $this->state->get("filter.dateformat_to_dateformat");
+		$filter_Qdateformat_to = (!empty($filter_dateformat_to)) ? $this->isValidDate($filter_dateformat_to) : null ;
+
+		if ($filter_Qdateformat_to != null)
+		{
+			$query->where("a.dateformat <= '" . $db->escape($filter_Qdateformat_to) . "'");
 		}
 
 		// Add the list ordering clause.

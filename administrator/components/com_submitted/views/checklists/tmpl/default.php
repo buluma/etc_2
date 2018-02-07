@@ -86,6 +86,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_STORE_ID', 'a.`store_id`', $listDirn, $listOrder); ?>
 				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_DATEFORMAT', 'a.`dateformat`', $listDirn, $listOrder); ?>
+				</th>
 
 					
 				</tr>
@@ -165,6 +168,9 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->store_id; ?>
+				</td>				<td>
+
+					<?php echo $item->dateformat; ?>
 				</td>
 
 					</tr>
