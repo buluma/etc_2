@@ -23,16 +23,6 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_submitted'
 		
 
 		<tr>
-			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_INPUTDATE'); ?></th>
-			<td><?php echo $this->item->inputdate; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_CLIENT_ID'); ?></th>
-			<td><?php echo $this->item->client_id; ?></td>
-		</tr>
-
-		<tr>
 			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_SHOP_MML'); ?></th>
 			<td><?php echo $this->item->shop_mml; ?></td>
 		</tr>
@@ -40,6 +30,31 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_submitted'
 		<tr>
 			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_SKU_AVAILABLE'); ?></th>
 			<td><?php echo $this->item->sku_available; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_MERCHANDISING'); ?></th>
+			<td><?php echo $this->item->merchandising; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_SHELF_QUANTITY'); ?></th>
+			<td><?php echo $this->item->shelf_quantity; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_RIGHT_PRICES'); ?></th>
+			<td><?php echo $this->item->right_prices; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_VISIBLE_TAGS'); ?></th>
+			<td><?php echo $this->item->visible_tags; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID'); ?></th>
+			<td><?php echo $this->item->store_id; ?></td>
 		</tr>
 
 	</table>

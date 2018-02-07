@@ -54,14 +54,29 @@ $canEdit = SubmittedHelpersSubmitted::canUserEdit($this->item, $user);
 
 				<?php echo $this->form->getInput('created_by'); ?>
 				<?php echo $this->form->getInput('modified_by'); ?>
-	<?php echo $this->form->renderField('inputdate'); ?>
+	<input type="hidden" name="jform[inputdate]" value="<?php echo $this->item->inputdate; ?>" />
 
-	<?php echo $this->form->renderField('client_id'); ?>
+	<input type="hidden" name="jform[client_id]" value="<?php echo $this->item->client_id; ?>" />
 
 	<?php echo $this->form->renderField('shop_mml'); ?>
 
 	<?php echo $this->form->renderField('sku_available'); ?>
-				<div class="fltlft" <?php if (!JFactory::getUser()->authorise('core.admin','submitted')): ?> style="display:none;" <?php endif; ?> >
+
+	<?php echo $this->form->renderField('merchandising'); ?>
+
+	<?php echo $this->form->renderField('shelf_quantity'); ?>
+
+	<?php echo $this->form->renderField('right_prices'); ?>
+
+	<?php echo $this->form->renderField('visible_tags'); ?>
+
+	<?php echo $this->form->renderField('store_id'); ?>
+
+	<?php foreach((array)$this->item->store_id as $value): ?>
+		<?php if(!is_array($value)): ?>
+			<input type="hidden" class="store_id" name="jform[store_idhidden][<?php echo $value; ?>]" value="<?php echo $value; ?>" />';
+		<?php endif; ?>
+	<?php endforeach; ?>				<div class="fltlft" <?php if (!JFactory::getUser()->authorise('core.admin','submitted')): ?> style="display:none;" <?php endif; ?> >
                 <?php echo JHtml::_('sliders.start', 'permissions-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
                 <?php echo JHtml::_('sliders.panel', JText::_('ACL Configuration'), 'access-rules'); ?>
                 <fieldset class="panelform">

@@ -10,6 +10,7 @@
   <option value="1">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_1</option>
   <option value="2">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_2</option>
 </field>
+<field name="store_id" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID" type="sql" query="SELECT '' AS `id`, 'COM_SUBMITTED_CHECKLISTS_STORE_ID_FILTER' AS `shop_name` UNION (SELECT id, shop_name FROM `#__outlets`)" translate="true" key_field="id" value_field="shop_name" onchange="this.form.submit();"/>
 
 
     </fields>

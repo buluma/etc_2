@@ -130,6 +130,34 @@ class SubmittedModelChecklist extends JModelItem
 			$this->_item->sku_available = JText::_('COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_' . $this->_item->sku_available);
 		}
 
+		if (isset($this->_item->store_id) && $this->_item->store_id != '')
+		{
+			if (is_object($this->_item->store_id))
+			{
+				$this->_item->store_id = ArrayHelper::fromObject($this->_item->store_id);
+			}
+
+			$values = (is_array($this->_item->store_id)) ? $this->_item->store_id : explode(',',$this->_item->store_id);
+
+			$textValue = array();
+
+			foreach ($values as $value)
+			{
+				$db    = Factory::getDbo();
+				$query = "SELECT id, shop_name FROM `#__outlets`";
+
+				$db->setQuery($query);
+				$results = $db->loadObject();
+
+				if ($results)
+				{
+					$textValue[] = $results->shop_name;
+				}
+			}
+
+			$this->_item->store_id = !empty($textValue) ? implode(', ', $textValue) : $this->_item->store_id;
+		}
+
 		return $this->_item;
 	}
 

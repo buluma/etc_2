@@ -13,6 +13,11 @@ CREATE TABLE IF NOT EXISTS `#__perfect_checklist` (
 `client_id` VARCHAR(255)  NOT NULL ,
 `shop_mml` VARCHAR(255)  NOT NULL ,
 `sku_available` VARCHAR(255)  NOT NULL ,
+`merchandising` VARCHAR(255)  NOT NULL ,
+`shelf_quantity` VARCHAR(255)  NOT NULL ,
+`right_prices` VARCHAR(255)  NOT NULL ,
+`visible_tags` VARCHAR(255)  NOT NULL ,
+`store_id` TEXT NOT NULL ,
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8mb4_unicode_ci;
 

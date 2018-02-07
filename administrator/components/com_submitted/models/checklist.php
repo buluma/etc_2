@@ -117,6 +117,19 @@ class SubmittedModelChecklist extends JModelAdmin
 			}
 
 			$data->sku_available = $array;
+
+			// Support for multiple or not foreign key field: store_id
+			$array = array();
+
+			foreach ((array) $data->store_id as $value)
+			{
+				if (!is_array($value))
+				{
+					$array[] = $value;
+				}
+			}
+
+			$data->store_id = implode(',',$array);
 		}
 
 		return $data;

@@ -43,6 +43,11 @@ class SubmittedModelChecklists extends JModelList
 				'client_id', 'a.client_id',
 				'shop_mml', 'a.shop_mml',
 				'sku_available', 'a.sku_available',
+				'merchandising', 'a.merchandising',
+				'shelf_quantity', 'a.shelf_quantity',
+				'right_prices', 'a.right_prices',
+				'visible_tags', 'a.visible_tags',
+				'store_id', 'a.store_id',
 			);
 		}
 
@@ -162,6 +167,12 @@ class SubmittedModelChecklists extends JModelList
 			$query->where("a.`sku_available` = '".$db->escape($filter_sku_available)."'");
 		}
 
+		// Filtering store_id
+		$filter_store_id = $this->state->get("filter.store_id");
+		if ($filter_store_id != '') {
+			$query->where("a.`store_id` = '".$db->escape($filter_store_id)."'");
+		}
+
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
 		$orderDirn = $this->state->get('list.direction');
@@ -187,6 +198,31 @@ class SubmittedModelChecklists extends JModelList
 		{
 
 			$item->sku_available = JText::_('COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_' . strtoupper($item->sku_available));
+
+			if (isset($item->store_id))
+			{
+				$values    = explode(',', $item->store_id);
+				$textValue = array();
+
+				foreach ($values as $value)
+				{
+					if (!empty($value))
+					{
+						$db    = Factory::getDbo();
+						$query = "SELECT id, shop_name FROM `#__outlets`";
+
+						$db->setQuery($query);
+						$results = $db->loadObject();
+
+						if ($results)
+						{
+							$textValue[] = $results->shop_name;
+						}
+					}
+				}
+
+				$item->store_id = !empty($textValue) ? implode(', ', $textValue) : $item->store_id;
+			}
 		}
 
 		return $items;

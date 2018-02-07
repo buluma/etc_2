@@ -11,13 +11,18 @@
     </field>
     <field name="checked_out" type="hidden" filter="unset"/>
     <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
-    <field name="inputdate" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_INPUTDATE" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_INPUTDATE" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_INPUTDATE"/>
-    <field name="client_id" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_CLIENT_ID" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_CLIENT_ID" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_CLIENT_ID"/>
+    <field name="inputdate" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_INPUTDATE" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_INPUTDATE" hidden="true" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_INPUTDATE"/>
+    <field name="client_id" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_CLIENT_ID" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_CLIENT_ID" hidden="true" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_CLIENT_ID"/>
     <field name="shop_mml" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_SHOP_MML" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_SHOP_MML" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_SHOP_MML"/>
     <field name="sku_available" default="1" type="list" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_SKU_AVAILABLE" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_SKU_AVAILABLE" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_SKU_AVAILABLE">
       <option value="1">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_1</option>
       <option value="2">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_2</option>
     </field>
+    <field name="merchandising" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_MERCHANDISING" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_MERCHANDISING" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_MERCHANDISING"/>
+    <field name="shelf_quantity" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_SHELF_QUANTITY" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_SHELF_QUANTITY" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_SHELF_QUANTITY"/>
+    <field name="right_prices" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_RIGHT_PRICES" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_RIGHT_PRICES" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_RIGHT_PRICES"/>
+    <field name="visible_tags" filter="safehtml" type="text" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_VISIBLE_TAGS" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_VISIBLE_TAGS" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_VISIBLE_TAGS"/>
+    <field name="store_id" query="SELECT id, shop_name FROM `#__outlets`" key_field="id" value_field="shop_name" type="sql" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID" description="COM_SUBMITTED_FORM_DESC_CHECKLIST_STORE_ID" hint="COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
   <fieldset name="accesscontrol">

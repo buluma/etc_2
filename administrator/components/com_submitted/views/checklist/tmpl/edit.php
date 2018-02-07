@@ -23,6 +23,13 @@ $document->addStyleSheet(JUri::root() . 'media/com_submitted/css/form.css');
 	js = jQuery.noConflict();
 	js(document).ready(function () {
 		
+	js('input:hidden.store_id').each(function(){
+		var name = js(this).attr('name');
+		if(name.indexOf('store_idhidden')){
+			js('#jform_store_id option[value="'+js(this).val()+'"]').attr('selected',true);
+		}
+	});
+	js("#jform_store_id").trigger("liszt:updated");
 	});
 
 	Joomla.submitbutton = function (task) {
@@ -61,11 +68,23 @@ $document->addStyleSheet(JUri::root() . 'media/com_submitted/css/form.css');
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
 				<?php echo $this->form->renderField('created_by'); ?>
-				<?php echo $this->form->renderField('modified_by'); ?>				<?php echo $this->form->renderField('inputdate'); ?>
-				<?php echo $this->form->renderField('client_id'); ?>
+				<?php echo $this->form->renderField('modified_by'); ?>				<input type="hidden" name="jform[inputdate]" value="<?php echo $this->item->inputdate; ?>" />
+				<input type="hidden" name="jform[client_id]" value="<?php echo $this->item->client_id; ?>" />
 				<?php echo $this->form->renderField('shop_mml'); ?>
 				<?php echo $this->form->renderField('sku_available'); ?>
+				<?php echo $this->form->renderField('merchandising'); ?>
+				<?php echo $this->form->renderField('shelf_quantity'); ?>
+				<?php echo $this->form->renderField('right_prices'); ?>
+				<?php echo $this->form->renderField('visible_tags'); ?>
+				<?php echo $this->form->renderField('store_id'); ?>
 
+			<?php
+				foreach((array)$this->item->store_id as $value): 
+					if(!is_array($value)):
+						echo '<input type="hidden" class="store_id" name="jform[store_idhidden]['.$value.']" value="'.$value.'" />';
+					endif;
+				endforeach;
+			?>
 
 					<?php if ($this->state->params->get('save_history', 1)) : ?>
 					<div class="control-group">

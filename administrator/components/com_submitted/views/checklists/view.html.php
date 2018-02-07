@@ -152,9 +152,11 @@ class SubmittedViewChecklists extends JViewLegacy
 			'a.`id`' => JText::_('JGRID_HEADING_ID'),
 			'a.`ordering`' => JText::_('JGRID_HEADING_ORDERING'),
 			'a.`state`' => JText::_('JSTATUS'),
-			'a.`client_id`' => JText::_('COM_SUBMITTED_CHECKLISTS_CLIENT_ID'),
 			'a.`shop_mml`' => JText::_('COM_SUBMITTED_CHECKLISTS_SHOP_MML'),
 			'a.`sku_available`' => JText::_('COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE'),
+			'a.`merchandising`' => JText::_('COM_SUBMITTED_CHECKLISTS_MERCHANDISING'),
+			'a.`shelf_quantity`' => JText::_('COM_SUBMITTED_CHECKLISTS_SHELF_QUANTITY'),
+			'a.`store_id`' => JText::_('COM_SUBMITTED_CHECKLISTS_STORE_ID'),
 		);
 	}
 

@@ -72,13 +72,19 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_SHOP_MML', 'a.`shop_mml`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE', 'a.`sku_available`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_MERCHANDISING', 'a.`merchandising`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_SHELF_QUANTITY', 'a.`shelf_quantity`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SUBMITTED_CHECKLISTS_STORE_ID', 'a.`store_id`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -142,17 +148,23 @@ $sortFields = $this->getSortFields();
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_submitted&task=checklist.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->client_id); ?></a>
+					<?php echo $this->escape($item->shop_mml); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->client_id); ?>
+					<?php echo $this->escape($item->shop_mml); ?>
 				<?php endif; ?>
 
 				</td>				<td>
 
-					<?php echo $item->shop_mml; ?>
+					<?php echo $item->sku_available; ?>
 				</td>				<td>
 
-					<?php echo $item->sku_available; ?>
+					<?php echo $item->merchandising; ?>
+				</td>				<td>
+
+					<?php echo $item->shelf_quantity; ?>
+				</td>				<td>
+
+					<?php echo $item->store_id; ?>
 				</td>
 
 					</tr>

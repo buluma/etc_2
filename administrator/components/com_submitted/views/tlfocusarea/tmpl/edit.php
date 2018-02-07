@@ -23,6 +23,13 @@ $document->addStyleSheet(JUri::root() . 'media/com_submitted/css/form.css');
 	js = jQuery.noConflict();
 	js(document).ready(function () {
 		
+	js('input:hidden.store_id').each(function(){
+		var name = js(this).attr('name');
+		if(name.indexOf('store_idhidden')){
+			js('#jform_store_id option[value="'+js(this).val()+'"]').attr('selected',true);
+		}
+	});
+	js("#jform_store_id").trigger("liszt:updated");
 	});
 
 	Joomla.submitbutton = function (task) {

@@ -122,6 +122,31 @@ class SubmittedModelTlfocusareas extends JModelList
 		{
 
 			$item->sku_available = JText::_('COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_' . strtoupper($item->sku_available));
+
+			if (isset($item->store_id))
+			{
+				$values    = explode(',', $item->store_id);
+				$textValue = array();
+
+				foreach ($values as $value)
+				{
+					if (!empty($value))
+					{
+						$db    = Factory::getDbo();
+						$query = "SELECT id, shop_name FROM `#__outlets`";
+
+						$db->setQuery($query);
+						$results = $db->loadObject();
+
+						if ($results)
+						{
+							$textValue[] = $results->shop_name;
+						}
+					}
+				}
+
+				$item->store_id = !empty($textValue) ? implode(', ', $textValue) : $item->store_id;
+			}
 		}
 
 		return $items;

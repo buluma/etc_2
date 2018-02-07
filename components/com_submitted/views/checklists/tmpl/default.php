@@ -42,13 +42,19 @@ $canDelete  = $user->authorise('core.delete', 'com_submitted');
 				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_ID', 'a.id', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_CLIENT_ID', 'a.client_id', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_SHOP_MML', 'a.shop_mml', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE', 'a.sku_available', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_MERCHANDISING', 'a.merchandising', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_SHELF_QUANTITY', 'a.shelf_quantity', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_SUBMITTED_CHECKLISTS_STORE_ID', 'a.store_id', $listDirn, $listOrder); ?>
 				</th>
 
 
@@ -99,15 +105,23 @@ $canDelete  = $user->authorise('core.delete', 'com_submitted');
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'checklists.', $canCheckin); ?>
 				<?php endif; ?>
 				<a href="<?php echo JRoute::_('index.php?option=com_submitted&view=checklist&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->client_id); ?></a>
-				</td>
-				<td>
-
-					<?php echo $item->shop_mml; ?>
+				<?php echo $this->escape($item->shop_mml); ?></a>
 				</td>
 				<td>
 
 					<?php echo $item->sku_available; ?>
+				</td>
+				<td>
+
+					<?php echo $item->merchandising; ?>
+				</td>
+				<td>
+
+					<?php echo $item->shelf_quantity; ?>
+				</td>
+				<td>
+
+					<?php echo $item->store_id; ?>
 				</td>
 
 

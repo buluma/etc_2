@@ -85,6 +85,27 @@ class SubmittedTablechecklist extends JTable
 			$array['sku_available'] = '';
 		}
 
+		// Support for multiple field: store_id
+		if (isset($array['store_id']))
+		{
+			if (is_array($array['store_id']))
+			{
+				$array['store_id'] = implode(',',$array['store_id']);
+			}
+			elseif (strpos($array['store_id'], ',') != false)
+			{
+				$array['store_id'] = explode(',',$array['store_id']);
+			}
+			elseif (strlen($array['store_id']) == 0)
+			{
+				$array['store_id'] = '';
+			}
+		}
+		else
+		{
+			$array['store_id'] = '';
+		}
+
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			$registry = new JRegistry;
