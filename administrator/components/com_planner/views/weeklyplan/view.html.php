@@ -154,11 +154,8 @@ class PlannerViewWeeklyplan extends JViewLegacy
 			'a.`state`' => JText::_('JSTATUS'),
 			'a.`submitter`' => JText::_('COM_PLANNER_WEEKLYPLAN_SUBMITTER'),
 			'a.`user_id`' => JText::_('COM_PLANNER_WEEKLYPLAN_USER_ID'),
-			'a.`week`' => JText::_('COM_PLANNER_WEEKLYPLAN_WEEK'),
-			'a.`month`' => JText::_('COM_PLANNER_WEEKLYPLAN_MONTH'),
-			'a.`year`' => JText::_('COM_PLANNER_WEEKLYPLAN_YEAR'),
 			'a.`routeplan`' => JText::_('COM_PLANNER_WEEKLYPLAN_ROUTEPLAN'),
-			'a.`coordinates`' => JText::_('COM_PLANNER_WEEKLYPLAN_COORDINATES'),
+			'a.`first_insert`' => JText::_('COM_PLANNER_WEEKLYPLAN_FIRST_INSERT'),
 		);
 	}
 

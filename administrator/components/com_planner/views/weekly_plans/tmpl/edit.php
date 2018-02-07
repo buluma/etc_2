@@ -61,15 +61,15 @@ $document->addStyleSheet(JUri::root() . 'media/com_planner/css/form.css');
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
 				<?php echo $this->form->renderField('created_by'); ?>
-				<?php echo $this->form->renderField('modified_by'); ?>				<?php echo $this->form->renderField('submitter'); ?>
+				<?php echo $this->form->renderField('modified_by'); ?>				<input type="hidden" name="jform[submitter]" value="<?php echo $this->item->submitter; ?>" />
 				<?php echo $this->form->renderField('user_id'); ?>
-				<?php echo $this->form->renderField('week'); ?>
-				<?php echo $this->form->renderField('month'); ?>
-				<?php echo $this->form->renderField('year'); ?>
+				<input type="hidden" name="jform[week]" value="<?php echo $this->item->week; ?>" />
+				<input type="hidden" name="jform[month]" value="<?php echo $this->item->month; ?>" />
+				<input type="hidden" name="jform[year]" value="<?php echo $this->item->year; ?>" />
 				<?php echo $this->form->renderField('routeplan'); ?>
-				<?php echo $this->form->renderField('inputdate'); ?>
-				<?php echo $this->form->renderField('coordinates'); ?>
-				<?php echo $this->form->renderField('first_insert'); ?>
+				<input type="hidden" name="jform[inputdate]" value="<?php echo $this->item->inputdate; ?>" />
+				<input type="hidden" name="jform[coordinates]" value="<?php echo $this->item->coordinates; ?>" />
+				<input type="hidden" name="jform[first_insert]" value="<?php echo $this->item->first_insert; ?>" />
 
 
 					<?php if ($this->state->params->get('save_history', 1)) : ?>

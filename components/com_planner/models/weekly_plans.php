@@ -125,11 +125,6 @@ class PlannerModelWeekly_plans extends JModelItem
 			$this->_item->modified_by_name = Factory::getUser($this->_item->modified_by)->name;
 		}
 
-		if (isset($this->_item->submitter))
-		{
-			$this->_item->submitter_name = Factory::getUser($this->_item->submitter)->name;
-		}
-
 		if (isset($this->_item->user_id))
 		{
 			$this->_item->user_id_name = Factory::getUser($this->_item->user_id)->name;

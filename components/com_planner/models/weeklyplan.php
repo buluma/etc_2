@@ -162,12 +162,6 @@ class PlannerModelWeeklyplan extends JModelList
 		
 
 		// Filtering submitter
-		$filter_submitter = $this->state->get("filter.submitter");
-
-		if ($filter_submitter)
-		{
-			$query->where("a.`submitter` = '" . $db->escape($filter_submitter) . "'");
-		}
 
 		// Filtering user_id
 		$filter_user_id = $this->state->get("filter.user_id");

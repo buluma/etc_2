@@ -54,23 +54,23 @@ $canEdit = PlannerHelpersPlanner::canUserEdit($this->item, $user);
 
 				<?php echo $this->form->getInput('created_by'); ?>
 				<?php echo $this->form->getInput('modified_by'); ?>
-	<?php echo $this->form->renderField('submitter'); ?>
+	<input type="hidden" name="jform[submitter]" value="<?php echo $this->item->submitter; ?>" />
 
 	<?php echo $this->form->renderField('user_id'); ?>
 
-	<?php echo $this->form->renderField('week'); ?>
+	<input type="hidden" name="jform[week]" value="<?php echo $this->item->week; ?>" />
 
-	<?php echo $this->form->renderField('month'); ?>
+	<input type="hidden" name="jform[month]" value="<?php echo $this->item->month; ?>" />
 
-	<?php echo $this->form->renderField('year'); ?>
+	<input type="hidden" name="jform[year]" value="<?php echo $this->item->year; ?>" />
 
 	<?php echo $this->form->renderField('routeplan'); ?>
 
-	<?php echo $this->form->renderField('inputdate'); ?>
+	<input type="hidden" name="jform[inputdate]" value="<?php echo $this->item->inputdate; ?>" />
 
-	<?php echo $this->form->renderField('coordinates'); ?>
+	<input type="hidden" name="jform[coordinates]" value="<?php echo $this->item->coordinates; ?>" />
 
-	<?php echo $this->form->renderField('first_insert'); ?>
+	<input type="hidden" name="jform[first_insert]" value="<?php echo $this->item->first_insert; ?>" />
 
 			<div class="control-group">
 				<div class="controls">

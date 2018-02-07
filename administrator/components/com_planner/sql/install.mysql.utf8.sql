@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `#__planner` (
 `checked_out_time` DATETIME NOT NULL ,
 `created_by` INT(11)  NOT NULL ,
 `modified_by` INT(11)  NOT NULL ,
-`submitter` INT(11)  NOT NULL ,
+`submitter` INT NOT NULL ,
 `user_id` INT(11)  NOT NULL ,
 `week` VARCHAR(255)  NOT NULL ,
 `month` VARCHAR(255)  NOT NULL ,

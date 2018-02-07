@@ -144,10 +144,6 @@ class PlannerModelWeeklyplan extends JModelList
 		$query->select('`modified_by`.name AS `modified_by`');
 		$query->join('LEFT', '#__users AS `modified_by` ON `modified_by`.id = a.`modified_by`');
 
-		// Join over the user field 'submitter'
-		$query->select('`submitter`.name AS `submitter`');
-		$query->join('LEFT', '#__users AS `submitter` ON `submitter`.id = a.`submitter`');
-
 		// Join over the user field 'user_id'
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
@@ -182,12 +178,6 @@ class PlannerModelWeeklyplan extends JModelList
 
 
 		// Filtering submitter
-		$filter_submitter = $this->state->get("filter.submitter");
-
-		if ($filter_submitter !== null && !empty($filter_submitter))
-		{
-			$query->where("a.`submitter` = '".$db->escape($filter_submitter)."'");
-		}
 
 		// Filtering user_id
 		$filter_user_id = $this->state->get("filter.user_id");

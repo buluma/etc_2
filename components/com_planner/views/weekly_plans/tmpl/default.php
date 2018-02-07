@@ -23,48 +23,13 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_planner'))
 		
 
 		<tr>
-			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_SUBMITTER'); ?></th>
-			<td><?php echo $this->item->submitter_name; ?></td>
-		</tr>
-
-		<tr>
 			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_USER_ID'); ?></th>
 			<td><?php echo $this->item->user_id_name; ?></td>
 		</tr>
 
 		<tr>
-			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_WEEK'); ?></th>
-			<td><?php echo $this->item->week; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_MONTH'); ?></th>
-			<td><?php echo $this->item->month; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_YEAR'); ?></th>
-			<td><?php echo $this->item->year; ?></td>
-		</tr>
-
-		<tr>
 			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_ROUTEPLAN'); ?></th>
 			<td><?php echo $this->item->routeplan; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_INPUTDATE'); ?></th>
-			<td><?php echo $this->item->inputdate; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_COORDINATES'); ?></th>
-			<td><?php echo $this->item->coordinates; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_PLANNER_FORM_LBL_WEEKLY_PLANS_FIRST_INSERT'); ?></th>
-			<td><?php echo $this->item->first_insert; ?></td>
 		</tr>
 
 	</table>

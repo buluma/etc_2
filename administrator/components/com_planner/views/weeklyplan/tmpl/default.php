@@ -78,19 +78,10 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_WEEK', 'a.`week`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_MONTH', 'a.`month`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_YEAR', 'a.`year`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_ROUTEPLAN', 'a.`routeplan`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_FIRST_INSERT', 'a.`first_insert`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -155,28 +146,11 @@ $sortFields = $this->getSortFields();
 
 					<?php echo $item->user_id; ?>
 				</td>				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'weeklyplan.', $canCheckin); ?>
-				<?php endif; ?>
-				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_planner&task=weekly_plans.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->week); ?></a>
-				<?php else : ?>
-					<?php echo $this->escape($item->week); ?>
-				<?php endif; ?>
-
-				</td>				<td>
-
-					<?php echo $item->month; ?>
-				</td>				<td>
-
-					<?php echo $item->year; ?>
-				</td>				<td>
 
 					<?php echo $item->routeplan; ?>
 				</td>				<td>
 
-					<?php echo $item->coordinates; ?>
+					<?php echo $item->first_insert; ?>
 				</td>
 
 					</tr>

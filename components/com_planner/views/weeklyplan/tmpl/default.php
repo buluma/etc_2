@@ -48,19 +48,10 @@ $canDelete  = $user->authorise('core.delete', 'com_planner');
 				<?php echo JHtml::_('grid.sort',  'COM_PLANNER_WEEKLYPLAN_USER_ID', 'a.user_id', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_PLANNER_WEEKLYPLAN_WEEK', 'a.week', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_PLANNER_WEEKLYPLAN_MONTH', 'a.month', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_PLANNER_WEEKLYPLAN_YEAR', 'a.year', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_PLANNER_WEEKLYPLAN_ROUTEPLAN', 'a.routeplan', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_PLANNER_WEEKLYPLAN_COORDINATES', 'a.coordinates', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('grid.sort',  'COM_PLANNER_WEEKLYPLAN_FIRST_INSERT', 'a.first_insert', $listDirn, $listOrder); ?>
 				</th>
 
 
@@ -108,32 +99,18 @@ $canDelete  = $user->authorise('core.delete', 'com_planner');
 				</td>
 				<td>
 
-							<?php echo JFactory::getUser($item->submitter)->name; ?>				</td>
+					<?php echo $item->submitter; ?>
+				</td>
 				<td>
 
 							<?php echo JFactory::getUser($item->user_id)->name; ?>				</td>
-				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'weeklyplan.', $canCheckin); ?>
-				<?php endif; ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_planner&view=weekly_plans&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->week); ?></a>
-				</td>
-				<td>
-
-					<?php echo $item->month; ?>
-				</td>
-				<td>
-
-					<?php echo $item->year; ?>
-				</td>
 				<td>
 
 					<?php echo $item->routeplan; ?>
 				</td>
 				<td>
 
-					<?php echo $item->coordinates; ?>
+					<?php echo $item->first_insert; ?>
 				</td>
 
 
