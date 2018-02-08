@@ -1,3 +1,6 @@
+a{
+  color: #570200 !important;
+}
 #sp-main-body {
     padding: 10px 0 !important;
     color: #6a0e0f !important;
@@ -39,4 +42,23 @@
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
   border-image: none;
+}
+
+
+#sp-header{
+  height: 108px !important
+}
+
+#sp-footer {
+    background: #570200 !important;
+    color: #fff;
+}
+
+#sp-footer a{
+    color: #fff;
+}
+
+.btn-primary, .sppb-btn-primary {
+    border-color: #c87d08 !important;
+    background-color: #c87d08 !important;
 }
