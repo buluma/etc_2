@@ -104,7 +104,11 @@ $sortFields = $this->getSortFields();
 				</tr>
 				</tfoot>
 			<tbody>
-				<?php foreach ($this->items as $i => $item) :
+				<?php 
+				// echo '<pre>';
+	   //      	var_dump($this->items);
+	   //      	echo '<pre/>';
+				foreach ($this->items as $i => $item) :
 				// var_dump($item);
 					$ordering   = ($listOrder == 'a.ordering');
 					$canCreate  = $user->authorise('core.create', 'com_products');
@@ -146,7 +150,7 @@ $sortFields = $this->getSortFields();
 						</td>
 						<td>
 
-					<?php echo $item->id; ?>
+					<?php echo 'hapa' . $item->id; ?>
 				</td>		
 				<td><?php echo $item->stockdate; ?></td>
 				<td>

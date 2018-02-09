@@ -25,7 +25,31 @@ class SubmittedHelper
 	 * @return void
 	 */
 	public static function addSubmenu($vName = '')
-	{
+	{	
+		JHtmlSidebar::addEntry(
+			JText::_('Assets'),
+			'index.php?option=com_submitted&view=assets',
+			$vName == 'assets'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('Competitor Activities'),
+			'index.php?option=com_submitted&view=activities',
+			$vName == 'activities'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('Field - Focus Areas'),
+			'index.php?option=com_submitted&view=tlfocusareas',
+			$vName == 'flfocusareas'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('Listings'),
+			'index.php?option=com_submitted&view=listings',
+			$vName == 'listings'
+		);
+
 		JHtmlSidebar::addEntry(
 			JText::_('COM_SUBMITTED_TITLE_CHECKLISTS'),
 			'index.php?option=com_submitted&view=checklists',
@@ -33,10 +57,41 @@ class SubmittedHelper
 		);
 
 		JHtmlSidebar::addEntry(
+			JText::_('Photos'),
+			'index.php?option=com_photos&view=photos',
+			$vName == 'photos'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('Price Index Survey'),
+			'index.php?option=com_submitted&view=psi',
+			$vName == 'psi'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('Promotions'),
+			'index.php?option=com_submitted&view=promotions',
+			$vName == 'promotions'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('Quality Issues'),
+			'index.php?option=com_submitted&view=qa',
+			$vName == 'qa'
+		);
+
+		JHtmlSidebar::addEntry(
 			JText::_('COM_SUBMITTED_TITLE_TLFOCUSAREAS'),
 			'index.php?option=com_submitted&view=tlfocusareas',
 			$vName == 'tlfocusareas'
 		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('Voice of Customer'),
+			'index.php?option=com_submitted&view=voc',
+			$vName == 'voc'
+		);
+
 	}
 
 	/**
