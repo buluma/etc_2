@@ -88,7 +88,7 @@ class SubmittedHelper
 
 		JHtmlSidebar::addEntry(
 			JText::_('Voice of Customer'),
-			'index.php?option=com_submitted&view=voc',
+			'index.php?option=com_voc&view=vocs',
 			$vName == 'voc'
 		);
 
