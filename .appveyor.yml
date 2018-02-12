@@ -1,7 +1,7 @@
 build: false
 platform:
   - x64
-clone_folder: C:\projects\joomla-cms
+clone_folder: C:\projects\etc_2
 ## Build matrix for lowest and highest possible targets
 environment:
   matrix:
@@ -94,7 +94,7 @@ install:
     - IF %PHP%==1 echo extension=php_ldap.dll >> php.ini
     - IF %PHP%==1 echo @php %%~dp0composer.phar %%* > composer.bat
     - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
-    - cd C:\projects\joomla-cms
+    - cd C:\projects\etc_2
     - ls -l
     - appveyor-retry composer install --no-progress --profile
 
@@ -118,5 +118,5 @@ before_test:
   - ps: sqlcmd -S "$sqlInstance" -U "sa" -P "Password12!" -i $env:APPVEYOR_BUILD_FOLDER\tests\unit\schema\sqlsrv.sql
 
 test_script:
-  - cd C:\projects\joomla-cms
+  - cd C:\projects\etc_2
 #  - libraries/vendor/bin/phpunit -c appveyor-phpunit.xml
