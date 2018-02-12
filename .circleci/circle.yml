@@ -1,13 +1,18 @@
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
-
 machine:
   environment:
     CC_TEST_REPORTER_ID: 9ecbf12a1597beaa707a8e291db3ab14f42e1c7f730dfe87f8a06f26392f14b4
+  pre:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
+  php:
+    version: 7.1.0
+
+test:
+  override:
+    - php --version
+
+#machine:
+#  environment:
+#    CC_TEST_REPORTER_ID: 9ecbf12a1597beaa707a8e291db3ab14f42e1c7f730dfe87f8a06f26392f14b4
 
 dependencies:
   post:
