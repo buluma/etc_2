@@ -4,10 +4,10 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.1.8-browsers
-    working_directory: ~/JB_proj
+    working_directory: ~/home
     steps:
       - checkout
-      - run: apt install -y libsqlite3-dev
+      - run: sudo apt install -y libsqlite3-dev
       - run: composer self-update
       - restore_cache:
           keys:
