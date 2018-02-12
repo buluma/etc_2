@@ -1,22 +1,13 @@
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
-
 machine:
-  environment:
-    CC_TEST_REPORTER_ID: 9ecbf12a1597beaa707a8e291db3ab14f42e1c7f730dfe87f8a06f26392f14b4
+  php:
+    version: 7.1.6
 
 dependencies:
-  post:
-    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-    - chmod +x ./cc-test-reporter
+  pre:
+    - curl -s http://getcomposer.org/installer | php
+    - php composer.phar install -n
 
 test:
-  pre:
-    - ./cc-test-reporter before-build
-
   post:
-    - ./cc-test-reporter after-build --exit-code $EXIT_CODE
+    - php vendor/bin/phpunit --coverage-clover build/coverage/xml tests
+    - php bin/codacycoverage clover build/coverage/xml
