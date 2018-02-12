@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CREATED_BY" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_CREATED_BY" hidden="true" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_MODIFIED_BY" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_MODIFIED_BY" hidden="true" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_MODIFIED_BY"/>
+    <field name="brand" filter="safehtml" type="text" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_BRAND" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_BRAND" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_BRAND"/>
+    <field name="brandcode" filter="safehtml" type="text" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_BRANDCODE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_BRANDCODE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_BRANDCODE"/>
+    <field name="currentstock" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CURRENTSTOCK" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_CURRENTSTOCK" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CURRENTSTOCK"/>
+    <field name="order_placed" type="radio" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_ORDER_PLACED" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_ORDER_PLACED" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_ORDER_PLACED">
+      <option value="1">COM_BRANDSTOCKS_TBRANDSTOCKS_ORDER_PLACED_OPTION_1</option>
+      <option value="0">COM_BRANDSTOCKS_TBRANDSTOCKS_ORDER_PLACED_OPTION_0</option>
+    </field>
+    <field name="orderplaced" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_ORDERPLACED" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_ORDERPLACED" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_ORDERPLACED" showon="order_placed:1"/>
+    <field name="order_date" class="inputbox" timeformat="12" filter="server_utc" showtime="false" singleheader="false" todaybutton="false" weeknumbers="false" filltable="false" type="calendar" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_ORDER_DATE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_ORDER_DATE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_ORDER_DATE" showon="order_placed:1"/>
+    <field name="lpo_number" filter="safehtml" type="text" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_LPO_NUMBER" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_LPO_NUMBER" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_LPO_NUMBER" showon="order_placed:1"/>
+    <field name="delivered" type="radio" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_DELIVERED" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_DELIVERED" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_DELIVERED">
+      <option value="1">COM_BRANDSTOCKS_TBRANDSTOCKS_DELIVERED_OPTION_1</option>
+      <option value="0">COM_BRANDSTOCKS_TBRANDSTOCKS_DELIVERED_OPTION_0</option>
+    </field>
+    <field name="sale" filter="safehtml" type="text" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_SALE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_SALE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_SALE"/>
+    <field name="stockout" default="0" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STOCKOUT" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_STOCKOUT" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STOCKOUT"/>
+    <field name="submitter" type="createdby" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_SUBMITTER" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_SUBMITTER" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_SUBMITTER"/>
+    <field name="client_id" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CLIENT_ID" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_CLIENT_ID" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CLIENT_ID"/>
+    <field name="stockdate" default="0000-00-00 00:00:00" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" showtime="true" translateformat="true" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STOCKDATE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_STOCKDATE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STOCKDATE"/>
+    <field name="store_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STORE_ID" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_STORE_ID" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STORE_ID"/>
+    <field name="store_server_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STORE_SERVER_ID" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_STORE_SERVER_ID" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STORE_SERVER_ID"/>
+    <field name="client_modified_date" type="timecreated" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CLIENT_MODIFIED_DATE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_CLIENT_MODIFIED_DATE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CLIENT_MODIFIED_DATE"/>
+    <field name="store" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STORE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_STORE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_STORE"/>
+    <field name="remarks" filter="safehtml" type="textarea" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_REMARKS" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_REMARKS" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_REMARKS"/>
+    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_COORDINATES" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_COORDINATES" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_COORDINATES"/>
+    <field name="created" type="timecreated" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CREATED" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_CREATED" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_CREATED"/>
+    <field name="first_insert" default="0000-00-00 00:00:00" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_FIRST_INSERT" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_FIRST_INSERT" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_FIRST_INSERT"/>
+    <field name="server_modified_date" type="timecreated" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_SERVER_MODIFIED_DATE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_SERVER_MODIFIED_DATE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_SERVER_MODIFIED_DATE"/>
+    <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_LAST_SYNC_DATE" description="COM_BRANDSTOCKS_FORM_DESC_TBRANDSTOCK_LAST_SYNC_DATE" hint="COM_BRANDSTOCKS_FORM_LBL_TBRANDSTOCK_LAST_SYNC_DATE"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>
