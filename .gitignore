@@ -3,6 +3,7 @@ configuration.php
 error_log
 /vender/
 /tests/
+/node/
 /import-database-sql-file-using-PHP-script-master/
 /cache
 /logs
