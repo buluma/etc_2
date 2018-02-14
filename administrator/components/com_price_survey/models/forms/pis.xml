@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_PRICE_SURVEY_FORM_LBL_PIS_CREATED_BY" description="COM_PRICE_SURVEY_FORM_DESC_PIS_CREATED_BY" hidden="true" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_PRICE_SURVEY_FORM_LBL_PIS_MODIFIED_BY" description="COM_PRICE_SURVEY_FORM_DESC_PIS_MODIFIED_BY" hidden="true" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_MODIFIED_BY"/>
+    <field name="brand" filter="safehtml" type="text" label="COM_PRICE_SURVEY_FORM_LBL_PIS_BRAND" description="COM_PRICE_SURVEY_FORM_DESC_PIS_BRAND" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_BRAND"/>
+    <field name="type" type="editor" buttons="true" class="inputbox" filter="safehtml" label="COM_PRICE_SURVEY_FORM_LBL_PIS_TYPE" description="COM_PRICE_SURVEY_FORM_DESC_PIS_TYPE" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_TYPE"/>
+    <field name="inputdate" default="0000-00-00 00:00:00" class="inputbox" timeformat="12" filter="user_utc" showtime="false" singleheader="false" todaybutton="false" weeknumbers="false" filltable="false" type="calendar" label="COM_PRICE_SURVEY_FORM_LBL_PIS_INPUTDATE" description="COM_PRICE_SURVEY_FORM_DESC_PIS_INPUTDATE" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_INPUTDATE"/>
+    <field name="week" filter="safehtml" type="text" label="COM_PRICE_SURVEY_FORM_LBL_PIS_WEEK" description="COM_PRICE_SURVEY_FORM_DESC_PIS_WEEK" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_WEEK"/>
+    <field name="month" filter="safehtml" type="text" label="COM_PRICE_SURVEY_FORM_LBL_PIS_MONTH" description="COM_PRICE_SURVEY_FORM_DESC_PIS_MONTH" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_MONTH"/>
+    <field name="year" filter="safehtml" type="text" label="COM_PRICE_SURVEY_FORM_LBL_PIS_YEAR" description="COM_PRICE_SURVEY_FORM_DESC_PIS_YEAR" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_YEAR"/>
+    <field name="submitter" type="createdby" label="COM_PRICE_SURVEY_FORM_LBL_PIS_SUBMITTER" description="COM_PRICE_SURVEY_FORM_DESC_PIS_SUBMITTER" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_SUBMITTER"/>
+    <field name="client_id" label="COM_PRICE_SURVEY_FORM_LBL_PIS_CLIENT_ID" description="COM_PRICE_SURVEY_FORM_DESC_PIS_CLIENT_ID" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_CLIENT_ID"/>
+    <field name="user_id" type="createdby" label="COM_PRICE_SURVEY_FORM_LBL_PIS_USER_ID" description="COM_PRICE_SURVEY_FORM_DESC_PIS_USER_ID" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_USER_ID"/>
+    <field name="store" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_PRICE_SURVEY_FORM_LBL_PIS_STORE" description="COM_PRICE_SURVEY_FORM_DESC_PIS_STORE" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_STORE"/>
+    <field name="store_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_PRICE_SURVEY_FORM_LBL_PIS_STORE_ID" description="COM_PRICE_SURVEY_FORM_DESC_PIS_STORE_ID" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_STORE_ID"/>
+    <field name="store_server_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_PRICE_SURVEY_FORM_LBL_PIS_STORE_SERVER_ID" description="COM_PRICE_SURVEY_FORM_DESC_PIS_STORE_SERVER_ID" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_STORE_SERVER_ID"/>
+    <field name="client_modified_date" type="timecreated" label="COM_PRICE_SURVEY_FORM_LBL_PIS_CLIENT_MODIFIED_DATE" description="COM_PRICE_SURVEY_FORM_DESC_PIS_CLIENT_MODIFIED_DATE" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_CLIENT_MODIFIED_DATE"/>
+    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_PRICE_SURVEY_FORM_LBL_PIS_COORDINATES" description="COM_PRICE_SURVEY_FORM_DESC_PIS_COORDINATES" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_COORDINATES"/>
+    <field name="created_on" type="timecreated" label="COM_PRICE_SURVEY_FORM_LBL_PIS_CREATED_ON" description="COM_PRICE_SURVEY_FORM_DESC_PIS_CREATED_ON" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_CREATED_ON"/>
+    <field name="first_insert" default="0000-00-00 00:00:00" label="COM_PRICE_SURVEY_FORM_LBL_PIS_FIRST_INSERT" description="COM_PRICE_SURVEY_FORM_DESC_PIS_FIRST_INSERT" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_FIRST_INSERT"/>
+    <field name="server_modified_date" type="timecreated" label="COM_PRICE_SURVEY_FORM_LBL_PIS_SERVER_MODIFIED_DATE" description="COM_PRICE_SURVEY_FORM_DESC_PIS_SERVER_MODIFIED_DATE" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_SERVER_MODIFIED_DATE"/>
+    <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_PRICE_SURVEY_FORM_LBL_PIS_LAST_SYNC_DATE" description="COM_PRICE_SURVEY_FORM_DESC_PIS_LAST_SYNC_DATE" hint="COM_PRICE_SURVEY_FORM_LBL_PIS_LAST_SYNC_DATE"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>
