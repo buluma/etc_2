@@ -79,7 +79,10 @@ class Helix3
 		$layout    = $app->input->getCmd('layout', '');
 		$task      = $app->input->getCmd('task', '');
 		$itemid    = $app->input->getCmd('Itemid', '');
-		$sitename  = $app->get('sitename');
+		$menu      = $app->getMenu()->getActive();
+		if ($menu) {
+			$pageclass = $menu->params->get('pageclass_sfx');
+		}
 
 		if ($view == 'modules')
 		{
@@ -93,6 +96,7 @@ class Helix3
 		. ($itemid ? ' itemid-' . $itemid : '')
 		. ($language ? ' ' . $language : '')
 		. ($direction ? ' ' . $direction : '')
+		. ($pageclass ? ' ' . $pageclass : '')
 		. ($class ? ' ' . $class : '');
 	}
 
@@ -951,7 +955,7 @@ class Helix3
 				$output .= '&amp;subset=' . implode(',', $subset);
 			}
 
-			$doc->addStylesheet('https://fonts.googleapis.com/css?family=' . $output);
+			$doc->addStylesheet('//fonts.googleapis.com/css?family=' . $output);
 		}
 
 		//Add font to Selector
