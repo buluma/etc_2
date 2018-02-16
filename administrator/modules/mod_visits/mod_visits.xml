@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="administrator" method="upgrade">
+    <name>Outlet Visits</name>
+    <author>Buluma</author>
+    <creationDate>Feb 2018</creationDate>
+    <copyright>Copyright (C) 2018 ShadowNet</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>me@buluma.me.ke</authorEmail>
+    <authorUrl>www.buluma.me.ke</authorUrl>
+    <version>1.0.0</version>
+    <description>Visits module for Administrator</description>
+    <files>
+        <filename module="mod_visits">mod_visits.php</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_visits.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_visits.sys.ini</language>
+    </languages>
+</extension>

@@ -84,6 +84,7 @@ $stickyToolbar = $params->get('stickyToolbar', '1');
 		<link href="<?php echo JUri::root(true) . $file; ?>" rel="stylesheet" />
 	<?php endif; ?>
 	<link href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template<?php echo ($this->direction == 'rtl' ? '-rtl' : ''); ?>.css" rel="stylesheet" />
+	<link href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/custom.css" rel="stylesheet" />
 	<link href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	<?php // Template color ?>
 	<?php if ($params->get('templateColor')) : ?>
@@ -183,11 +184,11 @@ $stickyToolbar = $params->get('stickyToolbar', '1');
 	</nav>
 	<!-- Header -->
 	<header class="header">
-		<?php if ($displayHeader) : ?>
-		<div class="container-logo">
+		<?php /*if ($displayHeader) : ?>
+		<div class="container-logo hidden">
 			<img src="<?php echo $logo; ?>" class="logo" />
 		</div>
-		<?php endif; ?>
+		<?php endif; */?>
 		<div class="container-title">
 			<h1 class="page-title"><?php echo JText::_('ERROR'); ?></h1>
 		</div>
