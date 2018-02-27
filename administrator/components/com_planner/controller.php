@@ -29,7 +29,7 @@ class PlannerController extends JControllerLegacy
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
-		$view = JFactory::getApplication()->input->getCmd('view', 'weeklyplan');
+		$view = JFactory::getApplication()->input->getCmd('view', 'weekly_plans');
 		JFactory::getApplication()->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);

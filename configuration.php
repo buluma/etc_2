@@ -20,7 +20,7 @@ class JConfig {
 	public $live_site = '';
 	public $secret = 'iElE64RuAAWOhdZq';
 	public $gzip = '0';
-	public $error_reporting = 'maximum';
+	public $error_reporting = 'default';
 	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
 	public $ftp_host = '';
 	public $ftp_port = '';
@@ -28,7 +28,7 @@ class JConfig {
 	public $ftp_pass = '';
 	public $ftp_root = '';
 	public $ftp_enable = '0';
-	public $offset = 'UTC';
+	public $offset = 'Africa/Nairobi';
 	public $mailonline = '1';
 	public $mailer = 'mail';
 	public $mailfrom = 'michael@buluma.me.ke';

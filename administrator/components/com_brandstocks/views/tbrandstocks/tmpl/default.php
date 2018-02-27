@@ -191,7 +191,18 @@ $sortFields = $this->getSortFields();
 					<?php echo $item->delivered; ?>
 				</td>				<td>
 
-					<?php echo $item->stockout; ?>
+					<?php //
+						$stockstatus = $item->stockout;
+						if ($stockstatus == 0) {
+							# code...
+							echo 'No';
+						} else {
+							# code...
+							echo 'Yes';
+						}
+						
+
+					//echo $item->stockout; ?>
 				</td>				<td>
 
 					<?php echo $item->submitter; ?>

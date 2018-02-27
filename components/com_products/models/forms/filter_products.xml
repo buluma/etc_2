@@ -5,7 +5,10 @@
                label="COM_USERS_FILTER_SEARCH_DESC"
                class="js-stools-search-string" />
 
-        <field name="category" label="COM_PRODUCTS_FORM_LBL_PRODUCT_CATEGORY" type="category" extension="com_products" show_root="1" onchange="this.form.submit();"/>
+        <field name="category" label="COM_PRODUCTS_FORM_LBL_PRODUCT_CATEGORY" type="category" extension="com_products.products" onchange="this.form.submit();" default="">
+  <option value=""/>
+  <option value="">JOPTION_SELECT_CATEGORY</option>
+</field>
 <field name="published" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED" type="list" onchange="this.form.submit();" default="COM_PRODUCTS_PRODUCTS_PUBLISHED_FILTER">
   <option value="">COM_PRODUCTS_PRODUCTS_PUBLISHED_FILTER</option>
   <option value="1">COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_1</option>

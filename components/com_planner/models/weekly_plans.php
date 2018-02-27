@@ -7,267 +7,235 @@
  * @copyright  2018 Michael Buluma
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
-// No direct access.
+
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modelitem');
-jimport('joomla.event.dispatcher');
-
 use Joomla\CMS\Factory;
-use Joomla\Utilities\ArrayHelper;
+
+jimport('joomla.application.component.modellist');
 
 /**
- * Planner model.
+ * Methods supporting a list of Planner records.
  *
  * @since  1.6
  */
-class PlannerModelWeekly_plans extends JModelItem
+class PlannerModelWeekly_plans extends JModelList
 {
-    public $_item;
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  $config  An optional associative array of configuration settings.
+	 *
+	 * @see        JController
+	 * @since      1.6
+	 */
+	public function __construct($config = array())
+	{
+		if (empty($config['filter_fields']))
+		{
+			$config['filter_fields'] = array(
+				'id', 'a.id',
+				'user_id', 'a.user_id',
+				'ordering', 'a.ordering',
+				'state', 'a.state',
+				'created_by', 'a.created_by',
+				'modified_by', 'a.modified_by',
+				'submitter', 'a.submitter',
+				'week', 'a.week',
+				'month', 'a.month',
+				'year', 'a.year',
+				'routeplan', 'a.routeplan',
+				'inputdate', 'a.inputdate',
+				'coordinates', 'a.coordinates',
+				'first_insert', 'a.first_insert',
+			);
+		}
+
+		parent::__construct($config);
+	}
 
 	/**
 	 * Method to auto-populate the model state.
 	 *
 	 * Note. Calling getState in this method will result in recursion.
 	 *
+	 * @param   string  $ordering   Elements order
+	 * @param   string  $direction  Order direction
+	 *
 	 * @return void
 	 *
-	 * @since    1.6
+	 * @throws Exception
 	 *
+	 * @since    1.6
 	 */
-	protected function populateState()
+	protected function populateState($ordering = null, $direction = null)
 	{
-		$app  = Factory::getApplication('com_planner');
-		$user = Factory::getUser();
+		$app  = Factory::getApplication();
+		$list = $app->getUserState($this->context . '.list');
 
-		// Check published state
-		if ((!$user->authorise('core.edit.state', 'com_planner')) && (!$user->authorise('core.edit', 'com_planner')))
-		{
-			$this->setState('filter.published', 1);
-			$this->setState('filter.archived', 2);
-		}
+		$ordering  = isset($list['filter_order'])     ? $list['filter_order']     : null;
+		$direction = isset($list['filter_order_Dir']) ? $list['filter_order_Dir'] : null;
 
-		// Load state from the request userState on edit or from the passed variable on default
-		if (Factory::getApplication()->input->get('layout') == 'edit')
-		{
-			$id = Factory::getApplication()->getUserState('com_planner.edit.weekly_plans.id');
-		}
-		else
-		{
-			$id = Factory::getApplication()->input->get('id');
-			Factory::getApplication()->setUserState('com_planner.edit.weekly_plans.id', $id);
-		}
+		$list['limit']     = (int) Factory::getConfig()->get('list_limit', 20);
+		$list['start']     = $app->input->getInt('start', 0);
+		$list['ordering']  = $ordering;
+		$list['direction'] = $direction;
 
-		$this->setState('weekly_plans.id', $id);
+		$app->setUserState($this->context . '.list', $list);
+		$app->input->set('list', null);
 
-		// Load the parameters.
-		$params       = $app->getParams();
-		$params_array = $params->toArray();
+		// List state information.
+		parent::populateState($ordering, $direction);
 
-		if (isset($params_array['item_id']))
-		{
-			$this->setState('weekly_plans.id', $params_array['item_id']);
-		}
+        $app = Factory::getApplication();
 
-		$this->setState('params', $params);
+        $ordering  = $app->getUserStateFromRequest($this->context . '.ordercol', 'filter_order', $ordering);
+        $direction = $app->getUserStateFromRequest($this->context . '.orderdirn', 'filter_order_Dir', $ordering);
+
+        $this->setState('list.ordering', $ordering);
+        $this->setState('list.direction', $direction);
+
+        $start = $app->getUserStateFromRequest($this->context . '.limitstart', 'limitstart', 0, 'int');
+        $limit = $app->getUserStateFromRequest($this->context . '.limit', 'limit', 0, 'int');
+
+        if ($limit == 0)
+        {
+            $limit = $app->get('list_limit', 0);
+        }
+
+        $this->setState('list.limit', $limit);
+        $this->setState('list.start', $start);
 	}
 
 	/**
-	 * Method to get an object.
+	 * Build an SQL query to load the list data.
 	 *
-	 * @param   integer $id The id of the object to get.
+	 * @return   JDatabaseQuery
 	 *
-	 * @return  mixed    Object on success, false on failure.
-     *
-     * @throws Exception
+	 * @since    1.6
 	 */
-	public function getItem($id = null)
+	protected function getListQuery()
 	{
-		if ($this->_item === null)
+		// Create a new query object.
+		$db    = $this->getDbo();
+		$query = $db->getQuery(true);
+
+		// Select the required fields from the table.
+		$query
+			->select(
+				$this->getState(
+					'list.select', 'DISTINCT a.*'
+				)
+			);
+
+		$query->from('`#__planner` AS a');
+		
+		// Join over the users for the checked out user.
+		$query->select('uc.name AS uEditor');
+		$query->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');
+
+		// Join over the created by field 'created_by'
+		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
+
+		// Join over the created by field 'modified_by'
+		$query->join('LEFT', '#__users AS modified_by ON modified_by.id = a.modified_by');
+		
+		if (!Factory::getUser()->authorise('core.edit', 'com_planner'))
 		{
-			$this->_item = false;
-
-			if (empty($id))
-			{
-				$id = $this->getState('weekly_plans.id');
-			}
-
-			// Get a level row instance.
-			$table = $this->getTable();
-
-			// Attempt to load the row.
-			if ($table->load($id))
-			{
-				// Check published state.
-				if ($published = $this->getState('filter.published'))
-				{
-					if (isset($table->state) && $table->state != $published)
-					{
-						throw new Exception(JText::_('COM_PLANNER_ITEM_NOT_LOADED'), 403);
-					}
-				}
-
-				// Convert the JTable to a clean JObject.
-				$properties  = $table->getProperties(1);
-				$this->_item = ArrayHelper::toObject($properties, 'JObject');
-			}
+			$query->where('a.state = 1');
 		}
 
+		// Filter by search in title
+		$search = $this->getState('filter.search');
+
+		if (!empty($search))
+		{
+			if (stripos($search, 'id:') === 0)
+			{
+				$query->where('a.id = ' . (int) substr($search, 3));
+			}
+			else
+			{
+				$search = $db->Quote('%' . $db->escape($search, true) . '%');
+			}
+		}
 		
 
-		if (isset($this->_item->created_by))
+		// Filtering user_id
+		$filter_user_id = $this->state->get("filter.user_id");
+
+		if ($filter_user_id)
 		{
-			$this->_item->created_by_name = Factory::getUser($this->_item->created_by)->name;
+			$query->where("a.`user_id` = '" . $db->escape($filter_user_id) . "'");
 		}
 
-		if (isset($this->_item->modified_by))
+		// Filtering submitter
+
+		// Add the list ordering clause.
+		$orderCol  = $this->state->get('list.ordering');
+		$orderDirn = $this->state->get('list.direction');
+
+		if ($orderCol && $orderDirn)
 		{
-			$this->_item->modified_by_name = Factory::getUser($this->_item->modified_by)->name;
+			$query->order($db->escape($orderCol . ' ' . $orderDirn));
 		}
 
-		if (isset($this->_item->user_id))
-		{
-			$this->_item->user_id_name = Factory::getUser($this->_item->user_id)->name;
-		}
-
-		return $this->_item;
+		return $query;
 	}
 
 	/**
-	 * Get an instance of JTable class
+	 * Method to get an array of data items
 	 *
-	 * @param   string $type   Name of the JTable class to get an instance of.
-	 * @param   string $prefix Prefix for the table class name. Optional.
-	 * @param   array  $config Array of configuration values for the JTable object. Optional.
-	 *
-	 * @return  JTable|bool JTable if success, false on failure.
+	 * @return  mixed An array of data on success, false on failure.
 	 */
-	public function getTable($type = 'Weekly_plans', $prefix = 'PlannerTable', $config = array())
+	public function getItems()
 	{
-		$this->addTablePath(JPATH_ADMINISTRATOR . '/components/com_planner/tables');
+		$items = parent::getItems();
+		
 
-		return JTable::getInstance($type, $prefix, $config);
+		return $items;
 	}
 
 	/**
-	 * Get the id of an item by alias
+	 * Overrides the default function to check Date fields format, identified by
+	 * "_dateformat" suffix, and erases the field if it's not correct.
 	 *
-	 * @param   string $alias Item alias
-	 *
-	 * @return  mixed
+	 * @return void
 	 */
-	public function getItemIdByAlias($alias)
+	protected function loadFormData()
 	{
-		$table      = $this->getTable();
-		$properties = $table->getProperties();
-		$result     = null;
+		$app              = Factory::getApplication();
+		$filters          = $app->getUserState($this->context . '.filter', array());
+		$error_dateformat = false;
 
-		if (key_exists('alias', $properties))
+		foreach ($filters as $key => $value)
 		{
-            $table->load(array('alias' => $alias));
-            $result = $table->id;
-		}
-
-		return $result;
-	}
-
-	/**
-	 * Method to check in an item.
-	 *
-	 * @param   integer $id The id of the row to check out.
-	 *
-	 * @return  boolean True on success, false on failure.
-	 *
-	 * @since    1.6
-	 */
-	public function checkin($id = null)
-	{
-		// Get the id.
-		$id = (!empty($id)) ? $id : (int) $this->getState('weekly_plans.id');
-
-		if ($id)
-		{
-			// Initialise the table
-			$table = $this->getTable();
-
-			// Attempt to check the row in.
-			if (method_exists($table, 'checkin'))
+			if (strpos($key, '_dateformat') && !empty($value) && $this->isValidDate($value) == null)
 			{
-				if (!$table->checkin($id))
-				{
-					return false;
-				}
+				$filters[$key]    = '';
+				$error_dateformat = true;
 			}
 		}
 
-		return true;
-	}
-
-	/**
-	 * Method to check out an item for editing.
-	 *
-	 * @param   integer $id The id of the row to check out.
-	 *
-	 * @return  boolean True on success, false on failure.
-	 *
-	 * @since    1.6
-	 */
-	public function checkout($id = null)
-	{
-		// Get the user id.
-		$id = (!empty($id)) ? $id : (int) $this->getState('weekly_plans.id');
-
-		if ($id)
+		if ($error_dateformat)
 		{
-			// Initialise the table
-			$table = $this->getTable();
-
-			// Get the current user object.
-			$user = Factory::getUser();
-
-			// Attempt to check the row out.
-			if (method_exists($table, 'checkout'))
-			{
-				if (!$table->checkout($user->get('id'), $id))
-				{
-					return false;
-				}
-			}
+			$app->enqueueMessage(JText::_("COM_PLANNER_SEARCH_FILTER_DATE_FORMAT"), "warning");
+			$app->setUserState($this->context . '.filter', $filters);
 		}
 
-		return true;
+		return parent::loadFormData();
 	}
 
 	/**
-	 * Publish the element
+	 * Checks if a given date is valid and in a specified format (YYYY-MM-DD)
 	 *
-	 * @param   int $id    Item id
-	 * @param   int $state Publish state
+	 * @param   string  $date  Date to be checked
 	 *
-	 * @return  boolean
+	 * @return bool
 	 */
-	public function publish($id, $state)
+	private function isValidDate($date)
 	{
-		$table = $this->getTable();
-		$table->load($id);
-		$table->state = $state;
-
-		return $table->store();
+		$date = str_replace('/', '-', $date);
+		return (date_create($date)) ? Factory::getDate($date)->format("Y-m-d") : null;
 	}
-
-	/**
-	 * Method to delete an item
-	 *
-	 * @param   int $id Element id
-	 *
-	 * @return  bool
-	 */
-	public function delete($id)
-	{
-		$table = $this->getTable();
-
-		return $table->delete($id);
-	}
-
-	
 }

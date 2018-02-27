@@ -28,8 +28,8 @@
       <option value="1">COM_OBJECTIVES_OBJECTIVES_DELETED_OPTION_1</option>
       <option value="0">COM_OBJECTIVES_OBJECTIVES_DELETED_OPTION_0</option>
     </field>
-    <field name="created_on" default="0000-00-00 00:00:00" label="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_CREATED_ON" description="COM_OBJECTIVES_FORM_DESC_OBJECTIVE_CREATED_ON" hint="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_CREATED_ON"/>
-    <field name="modified_on" default="0000-00-00 00:00:00" label="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_MODIFIED_ON" description="COM_OBJECTIVES_FORM_DESC_OBJECTIVE_MODIFIED_ON" hint="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_MODIFIED_ON"/>
+    <field name="created_on" default="0000-00-00 00:00:00" readonly="true" label="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_CREATED_ON" description="COM_OBJECTIVES_FORM_DESC_OBJECTIVE_CREATED_ON" hint="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_CREATED_ON"/>
+    <field name="modified_on" default="0000-00-00 00:00:00" readonly="true" label="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_MODIFIED_ON" description="COM_OBJECTIVES_FORM_DESC_OBJECTIVE_MODIFIED_ON" hint="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_MODIFIED_ON"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
 </form>

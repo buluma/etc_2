@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
     <name>com_planner</name>
-    <creationDate>2018-02-07</creationDate>
+    <creationDate>2018-02-26</creationDate>
     <copyright>2018 Michael Buluma</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Michael Buluma</author>
     <authorEmail>michael@buluma.me.ke</authorEmail>
-    <authorUrl>http://buluma.me.ke</authorUrl>
+    <authorUrl>http://buluma.co.ke</authorUrl>
     <version>CVS: 1.0.0</version>
     <description>Weekly Planner</description>
     
@@ -50,7 +50,7 @@
         <menu>COM_PLANNER</menu>
         <submenu>
             
-			<menu link="option=com_planner&amp;view=weeklyplan" view="weeklyplan" alt="Planner/Weeklyplan">COM_PLANNER_TITLE_WEEKLYPLAN</menu>
+			<menu link="option=com_planner&amp;view=weekly_plans" view="weekly_plans" alt="Planner/Weekly_plans">COM_PLANNER_TITLE_WEEKLY_PLANS</menu>
 
         </submenu>
         <files folder="administrator">

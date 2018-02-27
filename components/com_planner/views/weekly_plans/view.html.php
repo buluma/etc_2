@@ -13,17 +13,17 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
 /**
- * View to edit
+ * View class for a list of Planner.
  *
  * @since  1.6
  */
 class PlannerViewWeekly_plans extends JViewLegacy
 {
+	protected $items;
+
+	protected $pagination;
+
 	protected $state;
-
-	protected $item;
-
-	protected $form;
 
 	protected $params;
 
@@ -38,17 +38,14 @@ class PlannerViewWeekly_plans extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$app  = JFactory::getApplication();
-		$user = JFactory::getUser();
+		$app = JFactory::getApplication();
 
-		$this->state  = $this->get('State');
-		$this->item   = $this->get('Item');
+		$this->state = $this->get('State');
+		$this->items = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
 		$this->params = $app->getParams('com_planner');
-
-		if (!empty($this->item))
-		{
-			$this->form = $this->get('Form');
-		}
+		$this->filterForm = $this->get('FilterForm');
+		$this->activeFilters = $this->get('ActiveFilters');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -56,20 +53,7 @@ class PlannerViewWeekly_plans extends JViewLegacy
 			throw new Exception(implode("\n", $errors));
 		}
 
-		
-
-		if ($this->_layout == 'edit')
-		{
-			$authorised = $user->authorise('core.create', 'com_planner');
-
-			if ($authorised !== true)
-			{
-				throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
-			}
-		}
-
 		$this->_prepareDocument();
-
 		parent::display($tpl);
 	}
 
@@ -87,7 +71,7 @@ class PlannerViewWeekly_plans extends JViewLegacy
 		$title = null;
 
 		// Because the application sets a default page title,
-		// We need to get it from the menu item itself
+		// we need to get it from the menu item itself
 		$menu = $menus->getActive();
 
 		if ($menu)
@@ -130,5 +114,17 @@ class PlannerViewWeekly_plans extends JViewLegacy
 		{
 			$this->document->setMetadata('robots', $this->params->get('robots'));
 		}
+	}
+
+	/**
+	 * Check if state is set
+	 *
+	 * @param   mixed  $state  State
+	 *
+	 * @return bool
+	 */
+	public function getState($state)
+	{
+		return isset($this->state->{$state}) ? $this->state->{$state} : false;
 	}
 }

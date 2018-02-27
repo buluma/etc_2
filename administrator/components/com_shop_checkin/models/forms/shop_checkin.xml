@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CREATED_BY" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CREATED_BY" hidden="true" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CREATED_BY"/>
+    <field name="client_id" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CLIENT_ID" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CLIENT_ID" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CLIENT_ID"/>
+    <field name="session_id" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_SESSION_ID" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_SESSION_ID" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_SESSION_ID"/>
+    <field name="day" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_DAY" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_DAY" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_DAY"/>
+    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_COORDINATES" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_COORDINATES" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_COORDINATES"/>
+    <field name="checkin_time" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKIN_TIME" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CHECKIN_TIME" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKIN_TIME"/>
+    <field name="checkin_place" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKIN_PLACE" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CHECKIN_PLACE" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKIN_PLACE"/>
+    <field name="checkout_time" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKOUT_TIME" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CHECKOUT_TIME" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKOUT_TIME"/>
+    <field name="checkout_place" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKOUT_PLACE" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CHECKOUT_PLACE" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKOUT_PLACE"/>
+    <field name="comments" filter="safehtml" type="textarea" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_COMMENTS" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_COMMENTS" hidden="true" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_COMMENTS"/>
+    <field name="accompaniment" filter="safehtml" type="textarea" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_ACCOMPANIMENT" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_ACCOMPANIMENT" hidden="true" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_ACCOMPANIMENT"/>
+    <field name="quality" filter="safehtml" type="text" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_QUALITY" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_QUALITY" hidden="true" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_QUALITY"/>
+    <field name="created_on" type="timecreated" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CREATED_ON" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CREATED_ON" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CREATED_ON"/>
+    <field name="store" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_STORE" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_STORE" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_STORE"/>
+    <field name="store_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_STORE_ID" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_STORE_ID" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_STORE_ID"/>
+    <field name="store_server_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_STORE_SERVER_ID" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_STORE_SERVER_ID" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_STORE_SERVER_ID"/>
+    <field name="first_insert_date" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_FIRST_INSERT_DATE" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_FIRST_INSERT_DATE" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_FIRST_INSERT_DATE"/>
+    <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_LAST_SYNC_DATE" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_LAST_SYNC_DATE" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_LAST_SYNC_DATE"/>
+    <field name="client_modified_date" type="timecreated" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CLIENT_MODIFIED_DATE" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_CLIENT_MODIFIED_DATE" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CLIENT_MODIFIED_DATE"/>
+    <field name="submitter" type="createdby" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_SUBMITTER" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_SUBMITTER" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_SUBMITTER"/>
+    <field name="user_id" type="createdby" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_USER_ID" description="COM_SHOP_CHECKIN_FORM_DESC_SHOP_CHECKIN_USER_ID" hint="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_USER_ID"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_COMPETITOR_ACTIVITIES_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="brand" label="COM_COMPETITOR_ACTIVITIES_FORM_LBL_COMP_ACTIVITY_BRAND" type="sql" query="SELECT '' AS `id`, 'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_BRAND_FILTER' AS `text` UNION (SELECT id as value, product_name as text FROM #__products)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+<field name="category" label="COM_COMPETITOR_ACTIVITIES_FORM_LBL_COMP_ACTIVITY_CATEGORY" type="category" extension="com_competitor_activities.comp_activities" onchange="this.form.submit();" default="">
+  <option value=""/>
+  <option value="">JOPTION_SELECT_CATEGORY</option>
+</field>
+<field name="start_date.from" label="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_START_DATE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_START_DATE_FILTER_FROM"/>
+<field name="start_date.to" label="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_START_DATE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_START_DATE_FILTER_TO"/>
+<field name="end_date.from" label="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_END_DATE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_END_DATE_FILTER_FROM"/>
+<field name="end_date.to" label="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_END_DATE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_END_DATE_FILTER_TO"/>
+<field name="store" label="COM_COMPETITOR_ACTIVITIES_FORM_LBL_COMP_ACTIVITY_STORE" type="sql" query="SELECT '' AS `id`, 'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
+
+    </fields>
+</form>

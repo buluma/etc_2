@@ -98,7 +98,7 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_VOC_VOCS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
+				<th class='left hidden'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_VOC_VOCS_STORE_ID', 'a.`store_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -189,7 +189,7 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->store; ?>
-				</td>				<td>
+				</td>				<td class="hidden">
 
 					<?php echo $item->store_id; ?>
 				</td>				<td>

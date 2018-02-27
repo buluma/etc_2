@@ -77,7 +77,7 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
+				<th class='left hidden'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLYPLAN_ROUTEPLAN', 'a.`routeplan`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -145,7 +145,7 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->user_id; ?>
-				</td>				<td>
+				</td>				<td class="hidden">
 
 					<?php echo $item->routeplan; ?>
 				</td>				<td>

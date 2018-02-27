@@ -27,9 +27,9 @@ class PlannerHelper
 	public static function addSubmenu($vName = '')
 	{
 		JHtmlSidebar::addEntry(
-			JText::_('COM_PLANNER_TITLE_WEEKLYPLAN'),
-			'index.php?option=com_planner&view=weeklyplan',
-			$vName == 'weeklyplan'
+			JText::_('COM_PLANNER_TITLE_WEEKLY_PLANS'),
+			'index.php?option=com_planner&view=weekly_plans',
+			$vName == 'weekly_plans'
 		);
 
 	}

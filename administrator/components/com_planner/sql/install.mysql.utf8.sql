@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `#__planner` (
 `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 
+`user_id` INT(11)  NOT NULL ,
 `ordering` INT(11)  NOT NULL ,
 `state` TINYINT(1)  NOT NULL ,
 `checked_out` INT(11)  NOT NULL ,
@@ -8,7 +9,6 @@ CREATE TABLE IF NOT EXISTS `#__planner` (
 `created_by` INT(11)  NOT NULL ,
 `modified_by` INT(11)  NOT NULL ,
 `submitter` INT NOT NULL ,
-`user_id` INT(11)  NOT NULL ,
 `week` VARCHAR(255)  NOT NULL ,
 `month` VARCHAR(255)  NOT NULL ,
 `year` VARCHAR(255)  NOT NULL ,

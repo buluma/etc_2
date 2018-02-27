@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="focus_type" filter="safehtml" type="text" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_FOCUS_TYPE" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_FOCUS_TYPE" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_FOCUS_TYPE"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CREATED_BY" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_CREATED_BY" hidden="true" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_MODIFIED_BY" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_MODIFIED_BY" hidden="true" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_MODIFIED_BY"/>
+    <field name="client_id" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CLIENT_ID" readonly="true" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_CLIENT_ID" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CLIENT_ID"/>
+    <field name="description" filter="safehtml" type="textarea" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_DESCRIPTION" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_DESCRIPTION" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_DESCRIPTION"/>
+    <field name="action_input" filter="safehtml" type="textarea" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_ACTION_INPUT" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_ACTION_INPUT" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_ACTION_INPUT"/>
+    <field name="submitter" type="createdby" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_SUBMITTER" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_SUBMITTER" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_SUBMITTER"/>
+    <field name="user_id" type="createdby" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_USER_ID" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_USER_ID" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_USER_ID"/>
+    <field name="store" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_STORE" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_STORE" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_STORE"/>
+    <field name="store_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_STORE_ID" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_STORE_ID" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_STORE_ID"/>
+    <field name="store_server_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_STORE_SERVER_ID" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_STORE_SERVER_ID" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_STORE_SERVER_ID"/>
+    <field name="created_on" type="timecreated" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CREATED_ON" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_CREATED_ON" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CREATED_ON"/>
+    <field name="client_modified_date" type="timecreated" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CLIENT_MODIFIED_DATE" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_CLIENT_MODIFIED_DATE" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_CLIENT_MODIFIED_DATE"/>
+    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_COORDINATES" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_COORDINATES" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_COORDINATES"/>
+    <field name="first_insert" default="0000-00-00 00:00:00" readonly="true" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_FIRST_INSERT" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_FIRST_INSERT" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_FIRST_INSERT"/>
+    <field name="server_modified_date" type="timecreated" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_SERVER_MODIFIED_DATE" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_SERVER_MODIFIED_DATE" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_SERVER_MODIFIED_DATE"/>
+    <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_LAST_SYNC_DATE" description="COM_FOCUSAREAS_FORM_DESC_FOCUS_AREA_LAST_SYNC_DATE" hint="COM_FOCUSAREAS_FORM_LBL_FOCUS_AREA_LAST_SYNC_DATE"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

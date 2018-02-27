@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
     <name>com_products</name>
-    <creationDate>2018-02-07</creationDate>
+    <creationDate>2018-02-26</creationDate>
     <copyright>2018 Michael Buluma</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <author>Michael Buluma</author>
@@ -52,7 +52,7 @@
             
 			<menu link="option=com_products&amp;view=products" view="products" alt="Products/Products">COM_PRODUCTS_TITLE_PRODUCTS</menu>
 
-			<menu link="option=com_categories&amp;extension=com_products" view="categories" alt="Products/Categories">COM_PRODUCTS_PRODUCTS_CATEGORY</menu>
+			<menu link="option=com_categories&amp;extension=com_products.products" view="categories" alt="Products/Categories">COM_PRODUCTS_PRODUCTS_CATEGORY</menu>
 
 			<menu link="option=com_products&amp;view=brandstocks" view="brandstocks" alt="Products/Brandstocks">COM_PRODUCTS_TITLE_BRANDSTOCKS</menu>
 

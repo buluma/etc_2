@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_PROMOTIONS_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="brand" label="COM_PROMOTIONS_FORM_LBL_PROMOTION_BRAND" type="sql" query="SELECT '' AS `id`, 'COM_PROMOTIONS_PROMOTIONS_BRAND_FILTER' AS `text` UNION (SELECT id as value, product_name as text FROM #__products)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+<field name="brandcode" label="COM_PROMOTIONS_FORM_LBL_PROMOTION_BRANDCODE" type="sql" query="SELECT '' AS `id`, 'COM_PROMOTIONS_PROMOTIONS_BRANDCODE_FILTER' AS `text` UNION (SELECT id as value, product_name as text FROM #__products)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+<field name="category" label="COM_PROMOTIONS_FORM_LBL_PROMOTION_CATEGORY" type="category" extension="com_promotions.promotions" onchange="this.form.submit();" default="">
+  <option value=""/>
+  <option value="">JOPTION_SELECT_CATEGORY</option>
+</field>
+<field name="store" label="COM_PROMOTIONS_FORM_LBL_PROMOTION_STORE" type="sql" query="SELECT '' AS `id`, 'COM_PROMOTIONS_PROMOTIONS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+<field name="start_date.from" label="COM_PROMOTIONS_PROMOTIONS_START_DATE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_PROMOTIONS_PROMOTIONS_START_DATE_FILTER_FROM"/>
+<field name="start_date.to" label="COM_PROMOTIONS_PROMOTIONS_START_DATE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_PROMOTIONS_PROMOTIONS_START_DATE_FILTER_TO"/>
+<field name="end_date.from" label="COM_PROMOTIONS_PROMOTIONS_END_DATE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_PROMOTIONS_PROMOTIONS_END_DATE_FILTER_FROM"/>
+<field name="end_date.to" label="COM_PROMOTIONS_PROMOTIONS_END_DATE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_PROMOTIONS_PROMOTIONS_END_DATE_FILTER_TO"/>
+
+
+    </fields>
+</form>

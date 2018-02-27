@@ -49,7 +49,7 @@ class OutletsViewOutlet extends JViewLegacy
 		$this->addToolbar();
 		parent::display($tpl);
 
-		var_dump($this->item);
+		// var_dump($this->item);
 	}
 
 	/**

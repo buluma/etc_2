@@ -14,7 +14,7 @@
     <field name="created_by" type="createdby" default="0" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_CREATED_BY" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_CREATED_BY" hidden="true" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_CREATED_BY"/>
     <field name="modified_by" type="modifiedby" default="0" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_MODIFIED_BY" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_MODIFIED_BY" hidden="true" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_MODIFIED_BY"/>
     <field name="submitter" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_SUBMITTER" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_SUBMITTER" hidden="true" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_SUBMITTER"/>
-    <field name="user_id" type="user" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_USER_ID" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_USER_ID" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_USER_ID"/>
+    <field name="user_id" type="user" required="true" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_USER_ID" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_USER_ID" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_USER_ID"/>
     <field name="week" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_WEEK" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_WEEK" hidden="true" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_WEEK"/>
     <field name="month" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_MONTH" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_MONTH" hidden="true" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_MONTH"/>
     <field name="year" filter="safehtml" type="text" label="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_YEAR" description="COM_PLANNER_FORM_DESC_WEEKLY_PLANS_YEAR" hidden="true" hint="COM_PLANNER_FORM_LBL_WEEKLY_PLANS_YEAR"/>

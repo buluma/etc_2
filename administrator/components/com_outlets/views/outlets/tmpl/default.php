@@ -87,6 +87,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_OUTLETS_OUTLETS_DATE_CREATED', 'a.`date_created`', $listDirn, $listOrder); ?>
 				</th>
+				<th class='left hidden'>
+				<?php echo JHtml::_('searchtools.sort',  'gmap', 'a.`gmap`', $listDirn, $listOrder); ?>
+				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_OUTLETS_OUTLETS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
@@ -169,6 +172,9 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->date_created; ?>
+				</td>
+				<td class="hidden">
+					<?php echo $item->gmap; ?>
 				</td>
 				<td>
 					<?php echo $item->id; ?>
