@@ -2,7 +2,6 @@
 configuration.php
 *.configuration.php
 error_log
-/vender/
 /node/
 /import-database-sql-file-using-PHP-script-master/
 /cache
