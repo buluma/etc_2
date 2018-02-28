@@ -3,8 +3,6 @@ version: "1"
 plugins:
   fixme:
     enabled: true
-    exclude_paths:
-      - api
 exclude_patterns:
   - api/**/*
   - sync/**/*
