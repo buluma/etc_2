@@ -189,6 +189,12 @@ class Competitor_activitiesModelComp_activities extends JModelList
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
 
+		// Join over the images field 'image_id'
+		$query->select('`comp_images`.id AS `image_id`');
+		$query->join('LEFT', '#__competitor_images AS `comp_images` ON `comp_images`.id = a.`id`');
+
+		// var_dump($query);
+
 		// Filter by published state
 		$published = $this->getState('filter.state');
 
@@ -309,8 +315,9 @@ class Competitor_activitiesModelComp_activities extends JModelList
 		{
 			$query->order($db->escape($orderCol . ' ' . $orderDirn));
 		}
-
+		// var_dump($query);
 		return $query;
+
 	}
 
 	/**
@@ -321,6 +328,7 @@ class Competitor_activitiesModelComp_activities extends JModelList
 	public function getItems()
 	{
 		$items = parent::getItems();
+		// var_dump($items);
 
 		foreach ($items as $oneItem)
 		{

@@ -37,6 +37,9 @@ class Competitor_activitiesViewCompeimages extends JViewLegacy
 	public function display($tpl = null)
 	{
 		$this->state = $this->get('State');
+		$this->items = $this->get('Items');
+
+		// var_dump($this->items);
         
         
 

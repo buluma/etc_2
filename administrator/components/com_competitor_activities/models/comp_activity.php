@@ -173,7 +173,7 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 
 			$data->store_id = implode(',',$array);
 		}
-
+		// var_dump($data);
 		return $data;
 	}
 
@@ -191,6 +191,7 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 		if ($item = parent::getItem($pk))
 		{
 			// Do any procesing on fields here if needed
+			// var_dump($item);
 		}
 
 		return $item;
@@ -283,5 +284,32 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 				$table->ordering = $max + 1;
 			}
 		}
+	}
+
+	public function getImage()
+	{
+		$input = JFactory::getApplication()->input;
+		$pk = $input->get('id');
+
+		// var_dump($pk);
+
+		// Get a db connection.
+		$some_value = '1';
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query->select('*');
+		$query->from($db->quoteName('#__competitor_images'));
+		$query->where($db->quoteName('id')." = ".$db->quote($pk));
+
+		$db->setQuery($query);
+		// $result = $db->loadResult();
+		$row = $db->loadRow();
+
+
+		// var_dump($row);
+		// return $row;
+		// return $db->loadRow();
+
+		// print_r($row);
 	}
 }

@@ -167,9 +167,21 @@ $document->addStyleSheet(JUri::root() . 'media/com_competitor_activities/css/for
 		</div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
+		<!-- Images view -->
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'images', JText::_('Images')); ?>
+
+		<?php //echo $this->form->renderField('brand'); ?>
+		<?php echo 'To Do'; 
+		// var_dump($this->images);
+		 // var_dump($abc);
+		?>
+
+		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+		<!-- Images view -->
 		
 
 		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+
 
 		<input type="hidden" name="task" value=""/>
 		<?php echo JHtml::_('form.token'); ?>

@@ -84,6 +84,18 @@ class Competitor_activitiesModelCompeimages extends JModelList
 		$db	= $this->getDbo();
 		$query	= $db->getQuery(true);
 
+		$value = 1;
+
+		$query->select('COUNT(*)');
+		$query->from($db->quoteName('#__competitor_images'));
+		// $query->where($db->quoteName('submitter')." = ".$db->quote($value));
+
+		// Reset the query using our newly populated query object.
+		$db->setQuery($query);
+		$count = $db->loadResult();
+
+		var_dump($count);
+
 		return $query;
 	}
 
@@ -94,75 +106,89 @@ class Competitor_activitiesModelCompeimages extends JModelList
 	 */
 	public function getItems()
 	{
-		$items = parent::getItems();
+		// $items = parent::getItems();
 
-		foreach ($items as $oneItem)
-		{
+		// foreach ($items as $oneItem)
+		// {
 
-			if (isset($oneItem->brand))
-			{
-				$values    = explode(',', $oneItem->brand);
-				$textValue = array();
+		// 	if (isset($oneItem->brand))
+		// 	{
+		// 		$values    = explode(',', $oneItem->brand);
+		// 		$textValue = array();
 
-				foreach ($values as $value)
-				{
-					if (!empty($value))
-					{
-						$db = JFactory::getDbo();
-						$query = "SELECT id as value, product_name as text FROM #__products HAVING value LIKE '" . $value . "'";
-						$db->setQuery($query);
-						$results = $db->loadObject();
+		// 		foreach ($values as $value)
+		// 		{
+		// 			if (!empty($value))
+		// 			{
+		// 				$db = JFactory::getDbo();
+		// 				$query = "SELECT id as value, product_name as text FROM #__products HAVING value LIKE '" . $value . "'";
+		// 				$db->setQuery($query);
+		// 				$results = $db->loadObject();
 
-						if ($results)
-						{
-							$textValue[] = $results->text;
-						}
-					}
-				}
+		// 				if ($results)
+		// 				{
+		// 					$textValue[] = $results->text;
+		// 				}
+		// 			}
+		// 		}
 
-				$oneItem->brand = !empty($textValue) ? implode(', ', $textValue) : $oneItem->brand;
-			}
+		// 		$oneItem->brand = !empty($textValue) ? implode(', ', $textValue) : $oneItem->brand;
+		// 	}
 
-			if (isset($oneItem->category))
-			{
-				$db    = JFactory::getDbo();
-				$query = $db->getQuery(true);
+		// 	if (isset($oneItem->category))
+		// 	{
+		// 		$db    = JFactory::getDbo();
+		// 		$query = $db->getQuery(true);
 
-				$query
-					->select($db->quoteName('title'))
-					->from($db->quoteName('#__categories'))
-					->where('FIND_IN_SET(' . $db->quoteName('id') . ', ' . $db->quote($oneItem->category) . ')');
+		// 		$query
+		// 			->select($db->quoteName('title'))
+		// 			->from($db->quoteName('#__categories'))
+		// 			->where('FIND_IN_SET(' . $db->quoteName('id') . ', ' . $db->quote($oneItem->category) . ')');
 
-				$db->setQuery($query);
-				$result = $db->loadColumn();
+		// 		$db->setQuery($query);
+		// 		$result = $db->loadColumn();
 
-				$oneItem->category = !empty($result) ? implode(', ', $result) : '';
-			}
+		// 		$oneItem->category = !empty($result) ? implode(', ', $result) : '';
+		// 	}
 
-			if (isset($oneItem->store))
-			{
-				$values    = explode(',', $oneItem->store);
-				$textValue = array();
+		// 	if (isset($oneItem->store))
+		// 	{
+		// 		$values    = explode(',', $oneItem->store);
+		// 		$textValue = array();
 
-				foreach ($values as $value)
-				{
-					if (!empty($value))
-					{
-						$db = JFactory::getDbo();
-						$query = "SELECT id as value, shop_name as text from #__outlets HAVING value LIKE '" . $value . "'";
-						$db->setQuery($query);
-						$results = $db->loadObject();
+		// 		foreach ($values as $value)
+		// 		{
+		// 			if (!empty($value))
+		// 			{
+		// 				$db = JFactory::getDbo();
+		// 				$query = "SELECT id as value, shop_name as text from #__outlets HAVING value LIKE '" . $value . "'";
+		// 				$db->setQuery($query);
+		// 				$results = $db->loadObject();
 
-						if ($results)
-						{
-							$textValue[] = $results->text;
-						}
-					}
-				}
+		// 				if ($results)
+		// 				{
+		// 					$textValue[] = $results->text;
+		// 				}
+		// 			}
+		// 		}
 
-				$oneItem->store = !empty($textValue) ? implode(', ', $textValue) : $oneItem->store;
-			}
-		}
+		// 		$oneItem->store = !empty($textValue) ? implode(', ', $textValue) : $oneItem->store;
+		// 	}
+		// }
+
+		$db	= $this->getDbo();
+		$query	= $db->getQuery(true);
+
+		$value = 1;
+
+		$query->select('COUNT(*)');
+		$query->from($db->quoteName('#__competitor_images'));
+		// $query->where($db->quoteName('submitter')." = ".$db->quote($value));
+
+		// Reset the query using our newly populated query object.
+		$db->setQuery($query);
+		$items = $db->loadResult();
+		var_dump($items);
 
 		return $items;
 	}

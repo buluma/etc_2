@@ -36,9 +36,38 @@ class Competitor_activitiesViewComp_activity extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		// $model      = $this->getModel();
+		// $model = $this->getModel('comp_activity'); 
 		$this->state = $this->get('State');
 		$this->item  = $this->get('Item');
 		$this->form  = $this->get('Form');
+
+		$imagesx  = $this->get('Image');
+
+		// $vv = $model->getImage();
+
+		$model = $this->getModel();
+		$results = $model->getImage();
+
+		// var_dump($model);
+		// exit();
+
+		// $model = JModel::getInstance('Competitor_activitiesModel', 'Comp_activity');
+		// $settings = $model->getSettings ();
+
+		// $this->imagesx  = $this->get('Image');
+		// $images = $this->imagesx;
+		
+		// echo '<pre>';
+		// var_dump($model);
+		// echo '<pre/>';
+
+		
+		// $abc = $model->Image();
+		// $abc= $model->getImage();
+		$images33 = $model->getImage();
+		// var_dump($model);
+
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
