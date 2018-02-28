@@ -24,6 +24,10 @@ checks:
 plugins:
   fixme:
     enabled: true
+  sonar-php:
+    enabled: true
+    config:
+      minimum_severity: critical
 exclude_patterns:
   - api/*
   - sync/*
