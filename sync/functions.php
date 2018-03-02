@@ -101,12 +101,16 @@ function saveListings($clientData, $syncDate){
 		// save the item to database
 	    $sqlData = array(
             'client_id' => $item->id,
+            'state' => '1',
+            'ordering' => '1',
             'coordinates' => $item->coords,
             //'description' => $item->description,
-	    'listing' => $item->listing,
-	    'listed' => $item->listed,
-            'submitter' => $item->submitter,
+	       'listing' => $item->listing,
+	       'listed' => $item->listed,
+            // 'submitter' => $item->submitter,
             'user_id' => setUserID($item->submitter),
+            'submitter' => setUserID($item->submitter),
+            'created_by' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
             'store_server_id' => $item->store_server_id,
@@ -116,7 +120,7 @@ function saveListings($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_tl_listings(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_listings(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'listings added with client_id: '.$item->id);
@@ -430,7 +434,7 @@ function saveBrandStocks($clientData, $syncDate,$appversion = null){
         $newsale = $item->sale;
         // check if this brandcode data exists for this outlet
 
-        $aquery = 'SELECT id,currentstock,orderplaced,order_placed,order_date,delivered,sale FROM data_brandstocks ';
+        $aquery = 'SELECT id,currentstock,orderplaced,order_placed,order_date,delivered,sale FROM dxcr2_brandstocks ';
         $aquery .= ' WHERE store_server_id = "'.$item->store_server_id.'" AND brandcode ="'.$item->brandcode.'"';
         $res = mysqli_query($mysqli,$aquery) or die(mysqli_error($mysqli));
         $total = mysqli_num_rows($res);
@@ -448,7 +452,7 @@ function saveBrandStocks($clientData, $syncDate,$appversion = null){
                     $newstock = ($row->currentstock + $newdelivery) - $newsale;
                 }
 
-                $query = 'UPDATE data_brandstocks SET currentstock = "'.$newstock.'", orderplaced = "'.$neworder.'", order_placed = "'.$order_placed.'", order_date = "'.$order_date.'", delivered = "'.$newdelivery.'", lpo_number = "'.$lpo_number.'", sale = "'.$newsale.'" WHERE id = "'.$row->id.'"';
+                $query = 'UPDATE dxcr2_brandstocks SET currentstock = "'.$newstock.'", orderplaced = "'.$neworder.'", order_placed = "'.$order_placed.'", order_date = "'.$order_date.'", delivered = "'.$newdelivery.'", lpo_number = "'.$lpo_number.'", sale = "'.$newsale.'" WHERE id = "'.$row->id.'"';
                 $update = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
                 if ($update){
                     array_push($resultarray, 'brand stock updated with id '.$row->id.' ,oldstock: '.$row->currentstock.', newstock: '.$newstock);
@@ -484,7 +488,7 @@ function saveBrandStocks($clientData, $syncDate,$appversion = null){
                 );
             $columns = array_keys($sqlData);
             $values = array_values($sqlData);
-            $query = 'INSERT INTO data_brandstocks(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+            $query = 'INSERT INTO dxcr2_brandstocks(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
             $insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
             if ($insert){
                 array_push($resultarray, 'brand stocks added with client_id: '.$item->id);
@@ -688,7 +692,12 @@ function saveAssetManagmnt($clientData, $syncDate){
             'imagepath' => isset($item->imagepath) ? $item->imagepath : '',
             'serial_number' => $item->serial_number,
             'asset_type' => $item->asset_type,
-            'submitter' => $item->submitter,
+            // 'submitter' => $item->submitter,
+            'submitter' => setUserID($item->submitter),
+            'user_id' => setUserID($item->submitter),
+            'created_by' => setUserID($item->submitter),
+            'state' => '1',
+            'ordering' => '1',
             'user_id' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
@@ -699,7 +708,7 @@ function saveAssetManagmnt($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO asset_management(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_asset_management(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'asset management added with client_id: '.$item->id);
@@ -717,12 +726,16 @@ function saveFocusAreas($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
             'client_id' => $item->id,
+            'state' => '1',
+            'ordering' => '1',
             'coordinates' => $item->coords,
             'description' => $item->description,
             'focus_type' => $item->focus_type,
             'action_input' => $item->action_input,
-            'submitter' => $item->submitter,
+            // 'submitter' => $item->submitter,
             'user_id' => setUserID($item->submitter),
+            'created_by' => setUserID($item->submitter),
+            'submitter' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
             'store_server_id' => $item->store_server_id,
@@ -732,7 +745,7 @@ function saveFocusAreas($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_focus_areas(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_focusareas(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'focus areas added with client_id: '.$item->id);
@@ -765,7 +778,7 @@ function saveTLFocusAreas($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_tl_focus_areas(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_focusareas(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'tl focus areas added with client_id: '.$item->id);
@@ -820,7 +833,8 @@ function saveLocations($clientData, $syncDate){
 	    $sqlData = array(
             'client_id' => $item->id,
             'coordinates' => $item->coordinates,
-            'submitter' => $item->submitter,
+            'submitter' => setUserID($item->submitter),
+            'created_by' => setUserID($item->submitter),
             'user_id' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
@@ -831,7 +845,8 @@ function saveLocations($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_locations(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		// $query = 'INSERT INTO data_locations(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+        $query = 'INSERT INTO dxcr2_locations(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'location added with client_id: '.$item->id);
@@ -849,7 +864,7 @@ function saveObjectives($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
         // check if this code data exists for this outlet
 
-        $aquery = 'SELECT id,targetscore,targetfacings,current_percent,current_facings FROM data_objectives ';
+        $aquery = 'SELECT id,targetscore,targetfacings,current_percent,current_facings FROM dxcr2_data_objectives ';
         $aquery .= ' WHERE store_server_id = "'.$item->store_server_id.'" AND objective_code ="'.$item->objective_code.'"';
         $res = mysqli_query($mysqli,$aquery) or die(mysqli_error($mysqli));
         $total = mysqli_num_rows($res);
@@ -857,7 +872,7 @@ function saveObjectives($clientData, $syncDate){
         if ($total > 0){
             //echo 'we found the objective';
             while ($row = mysqli_fetch_object($res)) {
-                $query = 'UPDATE data_objectives SET targetfacings = "'.$item->targetfacings.'", current_percent = "'.$item->current_percent.'",
+                $query = 'UPDATE dxcr2_data_objectives SET targetfacings = "'.$item->targetfacings.'", current_percent = "'.$item->current_percent.'",
                 current_facings = "'.$item->current_facings.'", categorytotal = "'.$item->categorytotal.'", objective_achieved = "'.$item->objective_achieved.'",
               reason_not_achieved = "'.$item->reason_not_achieved.'", action_point ="'.$item->action_point.'", last_sync_date ="'.$syncTime.'" WHERE id = "'.$row->id.'"';
                 $update = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
@@ -895,7 +910,7 @@ function saveObjectives($clientData, $syncDate){
                 );
     	    $columns = array_keys($sqlData);
     		$values = array_values($sqlData);
-    		$query = 'INSERT INTO data_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+    		$query = 'INSERT INTO dxcr2_data_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
     		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
     		if ($insert){
     		    array_push($resultarray, 'objectives added with client_id: '.$item->id);
@@ -953,6 +968,8 @@ function savePerfectChecklist($clientData, $syncDate){
         // save the item to database
         $sqlData = array(
             'client_id' => $item->id,
+            'state' => '1',
+            'ordering' => '1',
             'inputdate' => $item->inputdate,
             'coordinates' => $item->coords,
             'shop_mml' => $item->shop_mml,
@@ -971,7 +988,9 @@ function savePerfectChecklist($clientData, $syncDate){
             'wobbler' => $item->wobbler,
             'posters_place' => $item->posters_place,
             'gondolas_installed' => $item->gondolas_installed,
-            'submitter' => $item->submitter,
+            // 'submitter' => $item->submitter,
+            'created_by' => setUserID($item->submitter),
+            // 'user_id' => setUserID($item->submitter),
             'user_id' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
@@ -982,7 +1001,7 @@ function savePerfectChecklist($clientData, $syncDate){
             );
         $columns = array_keys($sqlData);
         $values = array_values($sqlData);
-        $query = 'INSERT INTO data_perfect_checklist(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+        $query = 'INSERT INTO dxcr2_perfect_checklist(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
         $insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
         if ($insert){
             array_push($resultarray, 'perfect store checklist added with client_id: '.$item->id);
@@ -1056,14 +1075,18 @@ function saveQualityIssues($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
             'client_id' => $item->id,
+            'state' => '1',
+            'ordering' => '1',
             'coordinates' => $item->coords,
             'brand' => $item->brand,
             'brandcode' => $item->brandcode,
             'issue_type' => $item->issue_type,
             'rateofsale' => $item->rateofsale,
             'expiry_date' => $item->expiry_date,
-            'submitter' => $item->submitter,
+            // 'submitter' => $item->submitter,
+            'submitter' => setUserID($item->submitter),
             'user_id' => setUserID($item->submitter),
+            'created_by' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
             'store_server_id' => $item->store_server_id,
@@ -1074,7 +1097,7 @@ function saveQualityIssues($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_quality_issues(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_quality_issues(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'quality issue added with client_id: '.$item->id);
@@ -1139,7 +1162,7 @@ function saveShopCheckin($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_shop_checkin(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_shop_checkin(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'shop checkin added with client_id: '.$item->id);
@@ -1207,7 +1230,11 @@ function saveVOC($clientData, $syncDate){
             'items' => $item->items,
             'commentby' => $item->commentby,
             'isurgent' => $item->isurgent,
-            'submitter' => $item->submitter,
+            // 'submitter' => $item->submitter,
+            'created_by' => setUserID($item->submitter),
+            'submitter' => setUserID($item->submitter),
+            'state' => '1',
+            'ordering' => '1',
             'user_id' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
@@ -1219,7 +1246,7 @@ function saveVOC($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_voc(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_voc(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'voc added with client_id: '.$item->id);

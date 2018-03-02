@@ -99,6 +99,9 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 		// Check the session for previously entered form data.
 		$data = JFactory::getApplication()->getUserState('com_competitor_activities.edit.comp_activity.data', array());
 
+		// var_dump($data);
+		// exit();
+
 		if (empty($data))
 		{
 			if ($this->item === null)
@@ -191,10 +194,19 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 		if ($item = parent::getItem($pk))
 		{
 			// Do any procesing on fields here if needed
-			// var_dump($item);
+			// echo $item;
 		}
 
 		return $item;
+		
+		// $db = JFactory::getDbo();
+		// $query = $db->getQuery(true);
+		// $query->select('*');
+		// $query->from($db->quoteName('#__competitor_activity'));
+		// $query->where($db->quoteName('id')." = ".$db->quote($pk));
+
+		// $db->setQuery($query);
+		// $result = $db->loadResult();
 	}
 
 	/**
@@ -303,13 +315,17 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 
 		$db->setQuery($query);
 		// $result = $db->loadResult();
-		$row = $db->loadRow();
+		$row = $db->loadRowList();
+
+		// print_r($row);
 
 
 		// var_dump($row);
-		// return $row;
+		$result =  $row;
 		// return $db->loadRow();
 
 		// print_r($row);
 	}
+
+
 }

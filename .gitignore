@@ -12,3 +12,5 @@ error_log
 *.zip
 /administrator/tmp
 **/tmp
+**/jsondata
+/sync/error_log.txt

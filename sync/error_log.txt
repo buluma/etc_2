@@ -4,3 +4,5 @@
 [20-Feb-2018 21:28:59 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /Applications/MAMP/htdocs/etc_2/sync/webSqlSyncHandler.php on line 34
 [20-Feb-2018 21:28:59 Europe/Berlin] PHP Warning:  require_once(../connection.php): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 2
 [20-Feb-2018 21:28:59 Europe/Berlin] PHP Fatal error:  require_once(): Failed opening required '../connection.php' (include_path='.:/Applications/MAMP/bin/php/php5.6.31/lib/php') in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 2
+[02-Mar-2018 09:22:58 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 725
+[02-Mar-2018 09:26:20 Europe/Berlin] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 967

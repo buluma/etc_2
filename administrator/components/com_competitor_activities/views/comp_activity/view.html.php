@@ -50,6 +50,7 @@ class Competitor_activitiesViewComp_activity extends JViewLegacy
 		$results = $model->getImage();
 
 		// var_dump($model);
+		// var_dump($this->item);
 		// exit();
 
 		// $model = JModel::getInstance('Competitor_activitiesModel', 'Comp_activity');
@@ -59,8 +60,8 @@ class Competitor_activitiesViewComp_activity extends JViewLegacy
 		// $images = $this->imagesx;
 		
 		// echo '<pre>';
-		// var_dump($model);
-		// echo '<pre/>';
+		// var_dump($this->item);
+		// echo '<pre/>';	
 
 		
 		// $abc = $model->Image();

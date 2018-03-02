@@ -72,13 +72,16 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_UNIQUE_ID', 'a.`unique_id`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_BRAND', 'a.`brand`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_UNIQUE_ID', 'a.`unique_id`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_CATEGORY', 'a.`category`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Image', 'a.`image`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
@@ -151,24 +154,41 @@ $sortFields = $this->getSortFields();
 										<td>
 
 					<?php echo $item->id; ?>
-				</td>				<td>
+				</td>				
+				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'comp_activities.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_competitor_activities&task=comp_activity.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->unique_id); ?></a>
+					<?php echo $this->escape($item->brand); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->unique_id); ?>
+					<?php echo $this->escape($item->brand); ?>
 				<?php endif; ?>
 
 				</td>				<td>
 
-					<?php echo $item->brand; ?>
+					<?php echo $item->unique_id; ?>
 				</td>				<td>
 
 					<?php echo $item->category; ?>
-				</td>				<td>
+				</td>				
+				<td>
+
+					<?php //echo $item->image_id; ?>
+					<?php
+						function data_uri($file, $mime) 
+						{  
+						  // $contents = file_get_contents($file);
+						  $contents = $item->image_id;
+						  $base64   = base64_encode($contents); 
+						  return ('data:' . $mime . ';base64,' . $base64);
+						}
+						?>
+						<!-- <img src="<?php //echo data_uri('elephant.png','image/png'); ?>" alt="An elephant" /> -->
+						<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="An image" />
+				</td>
+				<td>
 
 					<?php echo $item->submitter; ?>
 				</td>				<td>

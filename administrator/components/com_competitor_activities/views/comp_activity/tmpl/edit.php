@@ -89,7 +89,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_competitor_activities/css/for
 			<div class="span10 form-horizontal">
 				<fieldset class="adminform">
 
-									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
+				<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
 				<input type="hidden" name="jform[ordering]" value="<?php echo $this->item->ordering; ?>" />
 				<input type="hidden" name="jform[state]" value="<?php echo $this->item->state; ?>" />
 				<input type="hidden" name="jform[checked_out]" value="<?php echo $this->item->checked_out; ?>" />
