@@ -332,4 +332,20 @@ class ListingsModelListings extends JModelList
 
 		return $items;
 	}
+
+	//export function
+	// public function getCsv()
+	// {
+	// 	$this->populateState();
+	// 	$db  = $this->getDbo();
+	// 	$cols = array_keys($db->getTableColumns('#__listings'));
+	// 	$items = $db->setQuery($this->getListQuery())->loadObjectList();
+	// 	$csv = fopen('php://output', 'w');
+	// 	fputcsv($csv, $cols);
+	// 	foreach ($items as $line)
+	// 	{
+	// 		fputcsv($csv, (array) $line);
+	// 	}
+	// 	return fclose($csv);
+	// }
 }

@@ -162,6 +162,14 @@ class Perfect_checklistModelChecklists extends JModelList
 		}
 		
 
+		// Filtering created_by
+		$filter_created_by = $this->state->get("filter.created_by");
+
+		if ($filter_created_by)
+		{
+			$query->where("a.`created_by` = '" . $db->escape($filter_created_by) . "'");
+		}
+
 		// Filtering sku_available
 		$filter_sku_available = $this->state->get("filter.sku_available");
 		if ($filter_sku_available != '') {

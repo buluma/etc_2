@@ -11,7 +11,7 @@
     </field>
     <field name="checked_out" type="hidden" filter="unset"/>
     <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
-    <field name="created_by" type="createdby" default="0" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_CREATED_BY" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_CREATED_BY" hidden="true" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_CREATED_BY"/>
+    <field name="created_by" type="createdby" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_CREATED_BY" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_CREATED_BY" hidden="true" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_CREATED_BY"/>
     <field name="modified_by" type="modifiedby" default="0" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_MODIFIED_BY" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_MODIFIED_BY" hidden="true" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_MODIFIED_BY"/>
     <field name="inputdate" filter="safehtml" type="text" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_INPUTDATE" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_INPUTDATE" hidden="true" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_INPUTDATE"/>
     <field name="client_id" filter="safehtml" type="text" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_CLIENT_ID" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_CLIENT_ID" hidden="true" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_CLIENT_ID"/>

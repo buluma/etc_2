@@ -104,4 +104,56 @@ class ListingsControllerListings extends JControllerAdmin
 		// Close the application
 		JFactory::getApplication()->close();
 	}
+
+	//export function
+	public function export()
+	{
+		header("Content-type: text/csv");
+		header("Content-Disposition: attachment; filename=listings.csv");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		
+		$this->getModel()->getCsv();
+		
+		jexit();
+	}
+
+	/**
+	 * exportcsv function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function exportcsv()
+	{
+
+	    $jinput = JFactory::getApplication()->input;
+	    $ids = $jinput->get('cid', '', 'array');
+	    $modelitems = $this->getModel();
+	    // echo '<pre>';
+	    // var_dump($ids);
+	    // echo '<pre/>';
+	    // exit();
+
+	    $array = array();
+
+	    foreach($ids as $id)
+	    {
+	        $item = $modelitems->getItem($id);      
+	        $array[$item->id]['itemid'] = $item->id;
+	        $array[$item->listing]['listing'] = $item->listing;
+	        $array[$item->listed]['listed'] = $item->listed;
+	        $array[$item->listed]['listed'] = $item->listed;
+	        $array[$item->store]['store'] = $item->store;
+	        $array[$item->created_by]['created_by'] = $item->created_by;
+	        $array[$item->created_on]['created_on'] = $item->created_on;
+	        // var_dump($array);
+	        // exit();
+	    }
+
+	    $csv = ListingsHelper::exportArrayToCSV($array, "items-report");
+	    // ArrayHelper::exportArrayToCSV($array, "items-report");
+	    $this->setRedirect('index.php?option=bestia&view=items', false);        
+
+	}       
 }

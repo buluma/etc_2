@@ -464,6 +464,8 @@ function saveBrandStocks($clientData, $syncDate,$appversion = null){
             // save the item to database
              $sqlData = array(
                 'client_id' => $item->id,
+                'state' => '1',
+                'ordering' => '1',
                 'stockdate' => Date('Y-m-d',strtotime($item->stockdate)),
                 'coordinates' => $item->coords,
                 'brand' => $item->brand,
@@ -930,14 +932,18 @@ function saveOtherObjectives($clientData, $syncDate){
 		// save the item to database
 	    $sqlData = array(
             'client_id' => $item->id,
+            'state' => '1',
+            'ordering' => '1',
             'inputdate' => $item->inputdate,
             'coordinates' => $item->coords,
             'objective' => $item->objective,
             'objective_achieved' => $item->objective_achieved,
             'challenge' => $item->challenge,
             'next_plan' => $item->next_plan,
-            'submitter' => $item->submitter,
-            'user_id' => setUserID($item->submitter),
+            // 'submitter' => $item->submitter,
+            'submitter' => setUserID($item->submitter),
+            'created_by' => setUserID($item->submitter),
+            // 'user_id' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
             'store_server_id' => $item->store_server_id,
@@ -947,7 +953,7 @@ function saveOtherObjectives($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_other_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_other_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'other objective added with client_id: '.$item->id);
@@ -1146,6 +1152,8 @@ function saveShopCheckin($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
             'client_id' => $item->id,
+            'state' => '1',
+            'ordering' => '1',
             'session_id' => $item->session_id,
             'checkin_time' => $item->checkin_time,
             'checkin_place' => $item->checkin_place,

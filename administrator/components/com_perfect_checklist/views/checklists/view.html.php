@@ -152,6 +152,7 @@ class Perfect_checklistViewChecklists extends JViewLegacy
 			'a.`id`' => JText::_('JGRID_HEADING_ID'),
 			'a.`ordering`' => JText::_('JGRID_HEADING_ORDERING'),
 			'a.`state`' => JText::_('JSTATUS'),
+			'a.`created_by`' => JText::_('COM_PERFECT_CHECKLIST_CHECKLISTS_CREATED_BY'),
 			'a.`shop_mml`' => JText::_('COM_PERFECT_CHECKLIST_CHECKLISTS_SHOP_MML'),
 			'a.`sku_available`' => JText::_('COM_PERFECT_CHECKLIST_CHECKLISTS_SKU_AVAILABLE'),
 			'a.`merchandising`' => JText::_('COM_PERFECT_CHECKLIST_CHECKLISTS_MERCHANDISING'),

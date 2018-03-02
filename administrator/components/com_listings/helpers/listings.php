@@ -85,5 +85,56 @@ class ListingsHelper
 
 		return $result;
 	}
+
+	/**
+	 * exportArrayToCSV function.
+	 * 
+	 * @access public
+	 * @static
+	 * @param mixed $array
+	 * @return void
+	 */
+	public static function exportArrayToCSV($array, $filename, $delimiter=";")
+	{
+	    $config  =   JFactory::getConfig();
+	    $tmppath =   $config->get('tmp_path');
+
+	    $keys    =   array_keys($array);
+
+	    if(is_dir($tmppath)) {
+	    	$filename   =   "$filename.csv";
+	        $filepath   =   "$tmppath/$filename";
+	        $file       =   new SplFileObject($filepath, 'w');
+
+	        $file->fputcsv(array_keys($array[$keys[0]]),$delimiter);
+
+	        foreach ($array as $fields) 
+	        {
+	            $file->fputcsv($fields,$delimiter);
+	        }
+
+	        if(file_exists($filepath)) {
+	        	header ( 'Content-Description: File Transfer' );
+	            header ( 'Content-Type: application/force-download' );
+	            header ( 'Content-Type: application/octet-stream' );
+	            header ( 'Content-Disposition: attachment; filename=' . $filename ); 
+	            header ( 'Expires: 0' );
+	            header ( 'Cache-Control: must-revalidate' );
+	            header ( 'Pragma: public' );
+	            header ( 'Content-Length: ' . filesize ($filepath) );
+	            ob_clean(); 
+	            flush();
+	                readfile ($filepath);
+	                unlink($filepath); 
+	            exit();
+	        } else {
+	        	return false;
+	        }
+	        
+	    } else {
+	    	return false;
+	    }
+	    
+	}  
 }
 

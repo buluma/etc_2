@@ -75,6 +75,9 @@ class Perfect_checklistModelChecklists extends JModelList
 
 		$published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
 		$this->setState('filter.state', $published);
+		// Filtering created_by
+		$this->setState('filter.created_by', $app->getUserStateFromRequest($this->context.'.filter.created_by', 'filter_created_by', '', 'string'));
+
 		// Filtering sku_available
 		$this->setState('filter.sku_available', $app->getUserStateFromRequest($this->context.'.filter.sku_available', 'filter_sku_available', '', 'string'));
 
@@ -177,6 +180,14 @@ class Perfect_checklistModelChecklists extends JModelList
 			}
 		}
 
+
+		// Filtering created_by
+		$filter_created_by = $this->state->get("filter.created_by");
+
+		if ($filter_created_by !== null && !empty($filter_created_by))
+		{
+			$query->where("a.`created_by` = '".$db->escape($filter_created_by)."'");
+		}
 
 		// Filtering sku_available
 		$filter_sku_available = $this->state->get("filter.sku_available");

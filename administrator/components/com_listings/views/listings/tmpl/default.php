@@ -19,6 +19,21 @@ JHtml::_('formbehavior.chosen', 'select');
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'administrator/components/com_listings/assets/css/listings.css');
 $document->addStyleSheet(JUri::root() . 'media/com_listings/css/list.css');
+//datatables
+$document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
+$document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
+$document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
+
+//export pdf
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
+
+
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
@@ -64,27 +79,27 @@ $sortFields = $this->getSortFields();
 					</th>
 					<?php if (isset($this->items[0]->state)): ?>
 						<th width="1%" class="nowrap center">
-								<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.`state`', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('searchtools.sort', 'JSTATUS', '', $listDirn, $listOrder); ?>
 </th>
 					<?php endif; ?>
 
-									<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_ID', 'a.`id`', $listDirn, $listOrder); ?>
+				<th class='left'>
+				<?php echo 'ID'; ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_LISTING', 'a.`listing`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_LISTING', '', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_LISTED', 'a.`listed`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_LISTED', '', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_SUBMITTER', '', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_USER_ID', '', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LISTINGS_LISTINGS_STORE', '', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -171,6 +186,32 @@ $sortFields = $this->getSortFields();
 		</div>
 </form>
 <script>
+
+	// jQuery(document).ready(function(){
+ //    jQuery('#listingList').DataTable();
+	// });
+
+	// jQuery(document).ready(function() {
+	//     jQuery('#listingList').DataTable( {
+	//         dom: 'Bfrtip',
+	//         buttons: [
+	//             'copy', 'csv', 'excel', 'pdf', 'print'
+	//         ]
+	//     } );
+	// } );
+
+	jQuery(document).ready(function() {
+    jQuery('#listingList').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+
     window.toggleField = function (id, task, field) {
 
         var f = document.adminForm, i = 0, cbx, cb = f[ id ];
@@ -200,3 +241,9 @@ $sortFields = $this->getSortFields();
         return false;
     };
 </script>
+
+<style type="text/css">
+	div.btn-wrapper.input-append{
+		display: none;
+	}
+</style>

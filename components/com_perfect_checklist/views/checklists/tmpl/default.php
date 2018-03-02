@@ -42,6 +42,9 @@ $canDelete  = $user->authorise('core.delete', 'com_perfect_checklist');
 				<?php echo JHtml::_('grid.sort',  'COM_PERFECT_CHECKLIST_CHECKLISTS_ID', 'a.id', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_PERFECT_CHECKLIST_CHECKLISTS_CREATED_BY', 'a.created_by', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_PERFECT_CHECKLIST_CHECKLISTS_SHOP_MML', 'a.shop_mml', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
@@ -103,6 +106,9 @@ $canDelete  = $user->authorise('core.delete', 'com_perfect_checklist');
 
 					<?php echo $item->id; ?>
 				</td>
+				<td>
+
+							<?php echo JFactory::getUser($item->created_by)->name; ?>				</td>
 				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'checklists.', $canCheckin); ?>

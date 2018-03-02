@@ -19,6 +19,19 @@ JHtml::_('formbehavior.chosen', 'select');
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'administrator/components/com_shop_checkin/assets/css/shop_checkin.css');
 $document->addStyleSheet(JUri::root() . 'media/com_shop_checkin/css/list.css');
+//datatables
+$document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
+$document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
+$document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
+
+//export pdf
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
@@ -203,6 +216,16 @@ $sortFields = $this->getSortFields();
 		</div>
 </form>
 <script>
+	//export function
+	jQuery(document).ready(function() {
+	    jQuery('#shop_checkinList').DataTable( {
+	        dom: 'Bfrtip',
+	        buttons: [
+	            'copy', 'csv', 'excel', 'pdf', 'print'
+	        ]
+	    } );
+	} );
+
     window.toggleField = function (id, task, field) {
 
         var f = document.adminForm, i = 0, cbx, cb = f[ id ];
@@ -232,3 +255,9 @@ $sortFields = $this->getSortFields();
         return false;
     };
 </script>
+
+<style type="text/css">
+	div.btn-wrapper.input-append{
+		display: none;
+	}
+</style>

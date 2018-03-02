@@ -41,6 +41,9 @@ class ListingsViewListings extends JViewLegacy
 		$this->pagination = $this->get('Pagination');
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
+        // $this->export = $this->get('Csv');
+
+        // var_dump($this->export);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -131,6 +134,9 @@ class ListingsViewListings extends JViewLegacy
 				JToolBarHelper::divider();
 			}
 		}
+
+			//export button
+		JToolBarHelper::custom('listings.exportcsv', 'download', '', 'Export', true);
 
 		if ($canDo->get('core.admin'))
 		{
