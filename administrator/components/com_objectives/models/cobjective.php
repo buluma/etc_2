@@ -17,7 +17,7 @@ jimport('joomla.application.component.modeladmin');
  *
  * @since  1.6
  */
-class ObjectivesModelOther_Objective extends JModelAdmin
+class ObjectivesModelCObjective extends JModelAdmin
 {
 	/**
 	 * @var      string    The prefix to use with controller messages.
@@ -29,7 +29,7 @@ class ObjectivesModelOther_Objective extends JModelAdmin
 	 * @var   	string  	Alias to manage history control
 	 * @since   3.2
 	 */
-	public $typeAlias = 'com_objectives.objective';
+	public $typeAlias = 'com_objectives.cobjective';
 
 	/**
 	 * @var null  Item data
@@ -48,7 +48,7 @@ class ObjectivesModelOther_Objective extends JModelAdmin
 	 *
 	 * @since    1.6
 	 */
-	public function getTable($type = 'Objective', $prefix = 'ObjectivesTable', $config = array())
+	public function getTable($type = 'CObjective', $prefix = 'ObjectivesTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -70,7 +70,7 @@ class ObjectivesModelOther_Objective extends JModelAdmin
 
 		// Get the form.
 		$form = $this->loadForm(
-			'com_objectives.objective', 'objective',
+			'com_objectives.objective', 'cobjective',
 			array('control' => 'jform',
 				'load_data' => $loadData
 			)
@@ -100,7 +100,7 @@ class ObjectivesModelOther_Objective extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_objectives.edit.objective.data', array());
+		$data = JFactory::getApplication()->getUserState('com_objectives.edit.cobjective.data', array());
 
 		if (empty($data))
 		{
@@ -242,7 +242,7 @@ class ObjectivesModelOther_Objective extends JModelAdmin
 			if (@$table->ordering === '')
 			{
 				$db = JFactory::getDbo();
-				$db->setQuery('SELECT MAX(ordering) FROM #__objectives');
+				$db->setQuery('SELECT MAX(ordering) FROM #__data_objectives');
 				$max             = $db->loadResult();
 				$table->ordering = $max + 1;
 			}

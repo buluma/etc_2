@@ -33,13 +33,13 @@ a:hover,a:focus {color: #2f4960;}
 #myTabTabs{ padding-left:20px;margin-top:20px;border:0;}
 #myTabContent{ margin-left:20px;border:0;}
 #myTabTabs li.active,#myTabTabs li.active a {border:0;}
-.subhead-collapse.container-fluid{background:#364150;}
+.subhead-collapse.container-fluid{background:#570200;}
 .subhead .container-fluid {}
-.subhead{background:#364150;border-bottom:0;color: #0c192e;margin-bottom: 10px;min-height: 43px;text-shadow: 0 1px 0 #ffffff;}
-.subhead.subhead-fixed{border-bottom: 1px solid #364150;background-color:transparent;background-image:url(../images/subhead-fixed-bg.png);box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.4); left:0;}
+.subhead{background:#570200;border-bottom:0;color: #0c192e;margin-bottom: 10px;min-height: 43px;text-shadow: 0 1px 0 #ffffff;}
+.subhead.subhead-fixed{border-bottom: 1px solid #570200;background-color:transparent;background-image:url(../images/subhead-fixed-bg.png);box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.4); left:0;}
 .subhead-fixed .container-title{}
 .subhead.subheader_outer .span2{ margin-left:0px;}
-.toolbar-subhead-wrapper{background: #364150;padding:0px;}
+.toolbar-subhead-wrapper{background: #570200;padding:0px;}
 .btn-subhead {margin:10px;}
 /**/
 #j-main-container{}

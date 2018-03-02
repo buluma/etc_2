@@ -27,16 +27,24 @@ class ObjectivesHelper
 	public static function addSubmenu($vName = '')
 	{
 		JHtmlSidebar::addEntry(
+			JText::_('JCATEGORIES') . ' (' . JText::_('COM_OBJECTIVES_TITLE_OBJECTIVES') . ')',
+			"index.php?option=com_categories&extension=com_objectives",
+			$vName == 'categories'
+		);
+
+		JHtmlSidebar::addEntry(
 			JText::_('COM_OBJECTIVES_TITLE_OBJECTIVES'),
 			'index.php?option=com_objectives&view=objectives',
 			$vName == 'objectives'
 		);
 
 		JHtmlSidebar::addEntry(
-			JText::_('JCATEGORIES') . ' (' . JText::_('COM_OBJECTIVES_TITLE_OBJECTIVES') . ')',
-			"index.php?option=com_categories&extension=com_objectives",
-			$vName == 'categories'
+			JText::_('Submitted Data'),
+			'index.php?option=com_objectives&view=cobjectives',
+			$vName == 'cobjectives'
 		);
+
+		
 		if ($vName=='categories') {
 			JToolBarHelper::title('Objectives: JCATEGORIES (COM_OBJECTIVES_TITLE_OBJECTIVES)');
 		}

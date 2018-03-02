@@ -51,7 +51,7 @@ class ObjectivesControllerOther_Objectives extends JControllerAdmin
 			JFactory::getApplication()->enqueueMessage($e->getMessage(), 'warning');
 		}
 
-		$this->setRedirect('index.php?option=com_objectives&view=other_objectives');
+		$this->setRedirect('index.php?option=com_objectives&view=cobjectives');
 	}
 
 	/**

@@ -17,7 +17,7 @@ jimport('joomla.application.component.view');
  *
  * @since  1.6
  */
-class objectivesViewother_objectives extends JViewLegacy
+class objectivesViewcobjectives extends JViewLegacy
 {
 	protected $items;
 
@@ -48,9 +48,11 @@ class objectivesViewother_objectives extends JViewLegacy
 			throw new Exception(implode("\n", $errors));
 		}
 
-		ObjectivesHelper::addSubmenu('objectives');
+		ObjectivesHelper::addSubmenu('cobjectives');
 
 		$this->addToolbar();
+
+		// var_dump($this->items);
 
 		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
@@ -68,7 +70,7 @@ class objectivesViewother_objectives extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = ObjectivesHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_OBJECTIVES_TITLE_OBJECTIVES'), 'objectives.png');
+		JToolBarHelper::title(JText::_('Objectives - Data'), 'objectives.png');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/objective';

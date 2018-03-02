@@ -37,7 +37,7 @@ if ($saveOrder)
 $sortFields = $this->getSortFields();
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_objectives&view=objectives'); ?>" method="post"
+<form action="<?php echo JRoute::_('index.php?option=com_objectives&view=cobjectives'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
@@ -73,19 +73,37 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_OBJECTIVES_OBJECTIVES_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_OBJECTIVES_OBJECTIVES_OBJECTIVE', 'a.`objective`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'Objective Desc', 'a.`objective_desc`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_OBJECTIVES_OBJECTIVES_CATEGORY', 'a.`category`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'Objective Code', 'a.`objective_code`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_OBJECTIVES_OBJECTIVES_TARGET_SCORE', 'a.`target_score`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'Response Type', 'a.`response_type`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_OBJECTIVES_OBJECTIVES_PUBLISHED', 'a.`published`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'Target Score', 'a.`targetscore`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_OBJECTIVES_OBJECTIVES_DELETED', 'a.`deleted`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'category total', 'a.`categorytotal`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Target facings', 'a.`targetfacings`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Current percentage', 'a.`current_percent`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Current facings', 'a.`current_facings`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Achieved', 'a.`objective_achieved`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Submitted By', 'a.`submitter`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Outlet', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -148,24 +166,42 @@ $sortFields = $this->getSortFields();
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'objectives.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_objectives&task=objective.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->objective); ?></a>
+					<a href="<?php echo JRoute::_('index.php?option=com_objectives&task=cobjective.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->objective_desc); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->objective); ?>
+					<?php echo $this->escape($item->objective_desc); ?>
 				<?php endif; ?>
 
-				</td>				<td>
-
-					<?php echo $item->category; ?>
-				</td>				<td>
-
-					<?php echo $item->target_score; ?>
-				</td>				<td>
-
-					<?php echo $item->published; ?>
-				</td>				<td>
-
-					<?php echo $item->deleted; ?>
+				</td>				
+				<td>
+					<?php echo $item->objective_code; ?>
+				</td>				
+				<td>
+					<?php echo $item->response_type; ?>
+				</td>				
+				<td>
+					<?php echo $item->targetscore; ?>
+				</td>
+				<td>
+					<?php echo $item->categorytotal; ?>
+				</td>
+				<td>
+					<?php echo $item->targetfacings; ?>
+				</td>
+				<td>
+					<?php echo $item->current_percent; ?>
+				</td>
+				<td>
+					<?php echo $item->current_facings; ?>
+				</td>
+				<td>
+					<?php echo $item->objective_achieved; ?>
+				</td>
+				<td>
+					<?php echo $item->submitter; ?>
+				</td>
+				<td>
+					<?php echo $item->store; ?>
 				</td>
 
 					</tr>

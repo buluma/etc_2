@@ -16,7 +16,7 @@ jimport('joomla.application.component.modellist');
  *
  * @since  1.6
  */
-class ObjectivesModelOther_Objectives extends JModelList
+class ObjectivesModelcobjectives extends JModelList
 {
 /**
 	* Constructor.
@@ -88,7 +88,7 @@ class ObjectivesModelOther_Objectives extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.objective', 'asc');
+		parent::populateState('a.id', 'asc');
 	}
 
 	/**
@@ -132,7 +132,7 @@ class ObjectivesModelOther_Objectives extends JModelList
 				'list.select', 'DISTINCT a.*'
 			)
 		);
-		$query->from('`#__objectives` AS a');
+		$query->from('`#__data_objectives` AS a');
 
 		// Join over the users for the checked out user
 		$query->select("uc.name AS uEditor");
@@ -207,7 +207,9 @@ class ObjectivesModelOther_Objectives extends JModelList
 			$query->order($db->escape($orderCol . ' ' . $orderDirn));
 		}
 
+		// var_dump($query);
 		return $query;
+
 	}
 
 	/**
@@ -237,8 +239,8 @@ class ObjectivesModelOther_Objectives extends JModelList
 
 				$oneItem->category = !empty($result) ? implode(', ', $result) : '';
 			}
-					$oneItem->published = ($oneItem->published == '') ? '' : JText::_('COM_OBJECTIVES_OBJECTIVES_PUBLISHED_OPTION_' . strtoupper($oneItem->published));
-					$oneItem->deleted = ($oneItem->deleted == '') ? '' : JText::_('COM_OBJECTIVES_OBJECTIVES_DELETED_OPTION_' . strtoupper($oneItem->deleted));
+					// $oneItem->published = ($oneItem->published == '') ? '' : JText::_('COM_OBJECTIVES_OBJECTIVES_PUBLISHED_OPTION_' . strtoupper($oneItem->published));
+					// $oneItem->deleted = ($oneItem->deleted == '') ? '' : JText::_('COM_OBJECTIVES_OBJECTIVES_DELETED_OPTION_' . strtoupper($oneItem->deleted));
 		}
 
 		return $items;

@@ -16,7 +16,7 @@ use Joomla\Utilities\ArrayHelper;
  *
  * @since  1.6
  */
-class ObjectivesTableobjective extends JTable
+class ObjectivesTablecobjective extends JTable
 {
 	
 	/**
@@ -27,7 +27,7 @@ class ObjectivesTableobjective extends JTable
 	public function __construct(&$db)
 	{
 		JObserverMapper::addObserverClassToClass('JTableObserverContenthistory', 'ObjectivesTableobjective', array('typeAlias' => 'com_objectives.objective'));
-		parent::__construct('#__objectives', 'id', $db);
+		parent::__construct('#__data_objectives', 'id', $db);
 	}
 
 	/**
