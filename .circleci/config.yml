@@ -29,6 +29,7 @@ jobs:
           paths:
             - node_modules
 #      - run: touch storage/testing.sqlite
- #     - run: php artisan migrate --env=testing --database=sqlite_testing --force
-      - run: ./vendor/bin/codecept build
-      - run: ./vendor/bin/codecept run
+#     - run: php artisan migrate --env=testing --database=sqlite_testing --force
+#      - run: ./vendor/bin/codecept build
+#      - run: ./vendor/bin/codecept run
+      - phpunit
