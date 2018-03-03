@@ -32,4 +32,5 @@ jobs:
 #     - run: php artisan migrate --env=testing --database=sqlite_testing --force
 #      - run: ./vendor/bin/codecept build
 #      - run: ./vendor/bin/codecept run
-      - run: libraries/vendor/phpunit/phpunit/phpunit --version
+#      - run: libraries/vendor/phpunit/phpunit/phpunit --version
+      - run: pwd
