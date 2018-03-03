@@ -24,6 +24,7 @@ $document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min
 $document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
 $document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
 
+
 //export pdf
 $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
 $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');

@@ -8325,3 +8325,14 @@ ul.pull-right { margin:8px 10px 5px 10px;}
 .alert-info{ margin-right:0px;}
 }
 .btn.hasTooltip{ padding:4px 10px 3px 10px;}
+
+/*@media (min-width: 1200px) {*/
+div.row.icon.cards {
+    margin-left: 0px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+/*}*/

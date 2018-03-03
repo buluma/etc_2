@@ -76,6 +76,19 @@ $document->addStyleSheet(JUri::root() . 'media/com_perfect_checklist/css/form.cs
 				<?php echo $this->form->renderField('shelf_quantity'); ?>
 				<?php echo $this->form->renderField('right_prices'); ?>
 				<?php echo $this->form->renderField('visible_tags'); ?>
+				<?php echo $this->form->renderField('traffic_area'); ?>
+				<?php echo $this->form->renderField('eye_level'); ?>
+				<?php echo $this->form->renderField('priority_gondolas'); ?>
+				<?php echo $this->form->renderField('posm'); ?>
+				<?php echo $this->form->renderField('retailer_informed'); ?>
+				<?php echo $this->form->renderField('promotion_visible'); ?>
+				<?php echo $this->form->renderField('wobbler'); ?>
+				<?php echo $this->form->renderField('posters_place'); ?>
+				<?php echo $this->form->renderField('gondolas_installed'); ?>
+				<?php echo $this->form->renderField('user_id'); ?>
+				<?php echo $this->form->renderField('client_modified_date'); ?>
+				<?php echo $this->form->renderField('created'); ?>
+				<?php echo $this->form->renderField('last_sync_date'); ?>
 				<?php echo $this->form->renderField('store_id'); ?>
 
 			<?php

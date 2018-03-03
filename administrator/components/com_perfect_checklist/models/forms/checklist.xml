@@ -23,9 +23,40 @@
     <field name="merchandising" filter="safehtml" type="text" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_MERCHANDISING" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_MERCHANDISING" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_MERCHANDISING"/>
     <field name="shelf_quantity" filter="safehtml" type="text" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_SHELF_QUANTITY" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_SHELF_QUANTITY" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_SHELF_QUANTITY"/>
     <field name="right_prices" filter="safehtml" type="text" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_RIGHT_PRICES" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_RIGHT_PRICES" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_RIGHT_PRICES"/>
+
+
+    <field name="traffic_area" filter="safehtml" type="text" label="Placed in high traffic area" description="Placed in high traffic area" hint="Placed in high traffic area"/>
+
+    <field name="level_eye" filter="safehtml" type="text" label="Placed in eye level" description="Placed in eye level" hint="Placed in eye level"/>
+
+    <field name="priority_gondolas" filter="safehtml" type="text" label="Gondolas" description="Gondolas" hint="Gondolas"/>
+
+    <field name="posm" filter="safehtml" type="text" label="Posm" description="Posm" hint="Posm"/>
+
+    <field name="retailer_informed" filter="safehtml" type="text" label="Retailer Informed" description="Retailer Informed" hint="Retailer Informed"/>
+
+    <field name="promotion_visible" filter="safehtml" type="text" label="promotion_visible" description="promotion_visible" hint="promotion_visible"/>
+
+    <field name="wobbler" filter="safehtml" type="text" label="wobbler" description="wobbler" hint="wobbler"/>
+
+    <field name="posters_place" filter="safehtml" type="text" label="posters_place" description="posters_place" hint="posters_place"/>
+
+    <field name="gondolas_installed" filter="safehtml" type="text" label="gondolas_installed" description="gondolas_installed" hint="gondolas_installed"/>
+
+    <field name="user_id" type="user" label="user_id" description="user_id" hint="user_id"/>
+
+    <field name="client_modified_date" type="calendar" label="client_modified_date" description="client_modified_date" hint="client_modified_date" readonly="true"/>
+
+    <field name="created" filter="safehtml" type="text" label="created" description="created" hint="created" readonly="true"/>
+
+    <field name="last_sync_date" filter="safehtml" type="last_sync_date" label="last_sync_date" description="last_sync_date" hint="last_sync_date" readonly="true"/>
+
+    <field name="posm" filter="safehtml" type="text" label="Posm" description="Posm" hint="Posm"/>
+    
+
     <field name="visible_tags" filter="safehtml" type="text" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_VISIBLE_TAGS" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_VISIBLE_TAGS" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_VISIBLE_TAGS"/>
-    <field name="store_id" query="SELECT id, shop_name FROM `#__outlets`" key_field="id" value_field="shop_name" type="sql" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_STORE_ID" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_STORE_ID" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_STORE_ID"/>
-    <field name="dateformat" class="inputbox" timeformat="12" filter="server_utc" showtime="false" singleheader="false" todaybutton="true" weeknumbers="true" filltable="true" type="calendar" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_DATEFORMAT" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_DATEFORMAT" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_DATEFORMAT"/>
+    <field name="store_id" query="SELECT id, shop_name FROM `#__outlets`" key_field="id" value_field="shop_name" type="sql" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_STORE_ID" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_STORE_ID" readonly="true" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_STORE_ID"/>
+    <field name="dateformat" class="inputbox" timeformat="12" filter="server_utc" showtime="false" singleheader="false" todaybutton="true" weeknumbers="true" filltable="true" type="calendar" label="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_DATEFORMAT" readonly="true" description="COM_PERFECT_CHECKLIST_FORM_DESC_CHECKLIST_DATEFORMAT" hint="COM_PERFECT_CHECKLIST_FORM_LBL_CHECKLIST_DATEFORMAT"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
   <fieldset name="accesscontrol">

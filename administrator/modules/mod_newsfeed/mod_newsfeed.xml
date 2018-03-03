@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="administrator" method="upgrade">
+    <name>Admin Dashboard Newsfeed</name>
+    <author>Buluma</author>
+    <creationDate>Mar 2018</creationDate>
+    <version>1.0.0</version>
+    <description>Show newsfeed on dashboard.</description>
+    <files>
+        <filename>mod_newsfeed.xml</filename>
+        <filename module="mod_newsfeed">mod_newsfeed.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <config>
+    </config>
+</extension>
