@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_OBJECTIVES_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="category" label="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_CATEGORY" type="category" extension="com_objectives" show_root="1" onchange="this.form.submit();"/>
+<field name="published" label="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_PUBLISHED" type="list" onchange="this.form.submit();" default="COM_OBJECTIVES_OBJECTIVES_PUBLISHED_FILTER">
+  <option value="">COM_OBJECTIVES_OBJECTIVES_PUBLISHED_FILTER</option>
+  <option value="1">COM_OBJECTIVES_OBJECTIVES_PUBLISHED_OPTION_1</option>
+  <option value="0">COM_OBJECTIVES_OBJECTIVES_PUBLISHED_OPTION_0</option>
+</field>
+<field name="deleted" label="COM_OBJECTIVES_FORM_LBL_OBJECTIVE_DELETED" type="list" onchange="this.form.submit();" default="COM_OBJECTIVES_OBJECTIVES_DELETED_FILTER">
+  <option value="">COM_OBJECTIVES_OBJECTIVES_DELETED_FILTER</option>
+  <option value="1">COM_OBJECTIVES_OBJECTIVES_DELETED_OPTION_1</option>
+  <option value="0">COM_OBJECTIVES_OBJECTIVES_DELETED_OPTION_0</option>
+</field>
+
+
+    </fields>
+</form>

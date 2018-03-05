@@ -1,0 +1,15 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+/configuration.php
+error_log
+/node/
+/import-database-sql-file-using-PHP-script-master/
+/cache
+/logs
+/db_dump/filename[0-9].sql
+**/cache
+*.cache
+*.zip
+/administrator/tmp
+**/tmp
+**/jsondata
+/sync/error_log.txt

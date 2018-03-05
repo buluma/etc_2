@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1502394031">
+  <project timestamp="1502394031">
+    <package name="Buluma\Etc">
+      <file name="/Applicationa/MAMP/htdocs/etc_2/src/CodeCoverage.php">
+        <class name="Hello" namespace="Buluma\Etc">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="6" type="method" name="world" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="8" type="stmt" count="1"/>
+        <metrics loc="10" ncloc="10" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+    </package>
+    <metrics files="1" loc="10" ncloc="10" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+  </project>
+</coverage>

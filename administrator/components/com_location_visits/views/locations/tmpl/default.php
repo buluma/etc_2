@@ -195,8 +195,22 @@ $sortFields = $this->getSortFields();
 			<input type="hidden" name="boxchecked" value="0"/>
             <input type="hidden" name="list[fullorder]" value="<?php echo $listOrder; ?> <?php echo $listDirn; ?>"/>
 			<?php echo JHtml::_('form.token'); ?>
+			
+
+			<!-- Locations Map -->
+			<hr>
+				<div class="map">
+					map here
+					<div id="map"></div>
+				</div>
+				<br />
+			<!-- Locations map End -->
 		</div>
 </form>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap"
+    async defer> </script>
+
 <script>
 	//export function
 	jQuery(document).ready(function() {
@@ -236,6 +250,40 @@ $sortFields = $this->getSortFields();
 
         return false;
     };
+
+    //map
+    var map;
+	var latitude=new Array();
+	var longitude=new Array();
+	var myLatLng ={lat: latitude, lng:longitude};
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center:new google.maps.LatLng(36.05178307933835,42.49737373046878),
+          zoom: 3
+        });
+	var start_date=new Array();
+	var title=new Array();
+	var title='test';
+	// var start_date=<?php echo json_encode($start_time); ?>;
+	var start_date= 'test';
+	var latitude =<?php echo json_encode($latitude); ?>;
+	var longitude = '<?php echo json_encode($this->items); ?>';
+	for(i=0;i<latitude.length;i++)
+	{
+	var content="Date:"+start_date[i]+"</br>Title:"+title[i];
+	var infowindow = new google.maps.InfoWindow({});
+	var marker = new google.maps.Marker({
+	    position: {lat:parseFloat(latitude[i]),lng:parseFloat(longitude[i])},
+	    map: map,
+	  });
+	google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+	    return function() {
+	        infowindow.setContent(content);
+	        infowindow.open(map,marker);
+	    };
+	})(marker,content,infowindow));
+	}
+	      }
 </script>
 
 <style type="text/css">

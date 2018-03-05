@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_VOC_FORM_LBL_VOC_CREATED_BY" description="COM_VOC_FORM_DESC_VOC_CREATED_BY" hidden="true" hint="COM_VOC_FORM_LBL_VOC_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_VOC_FORM_LBL_VOC_MODIFIED_BY" description="COM_VOC_FORM_DESC_VOC_MODIFIED_BY" hidden="true" hint="COM_VOC_FORM_LBL_VOC_MODIFIED_BY"/>
+    <field name="submitter" type="createdby" label="COM_VOC_FORM_LBL_VOC_SUBMITTER" description="COM_VOC_FORM_DESC_VOC_SUBMITTER" hidden="true" hint="COM_VOC_FORM_LBL_VOC_SUBMITTER"/>
+    <field name="user_id" type="createdby" label="COM_VOC_FORM_LBL_VOC_USER_ID" description="COM_VOC_FORM_DESC_VOC_USER_ID" hidden="true" hint="COM_VOC_FORM_LBL_VOC_USER_ID"/>
+    <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_VOC_FORM_LBL_VOC_LAST_SYNC_DATE" description="COM_VOC_FORM_DESC_VOC_LAST_SYNC_DATE" hint="COM_VOC_FORM_LBL_VOC_LAST_SYNC_DATE"/>
+    <field name="insert_date" default="0000-00-00 00:00:00" label="COM_VOC_FORM_LBL_VOC_INSERT_DATE" description="COM_VOC_FORM_DESC_VOC_INSERT_DATE" hidden="true" hint="COM_VOC_FORM_LBL_VOC_INSERT_DATE"/>
+    <field name="photos" type="editor" buttons="true" class="inputbox" filter="safehtml" label="COM_VOC_FORM_LBL_VOC_PHOTOS" description="COM_VOC_FORM_DESC_VOC_PHOTOS" hint="COM_VOC_FORM_LBL_VOC_PHOTOS"/>
+    <field name="brand" query="SELECT id as value, product_name as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_BRAND" description="COM_VOC_FORM_DESC_VOC_BRAND" hint="COM_VOC_FORM_LBL_VOC_BRAND"/>
+    <field name="brandcode" query="SELECT id as value, product_code as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_BRANDCODE" description="COM_VOC_FORM_DESC_VOC_BRANDCODE" hint="COM_VOC_FORM_LBL_VOC_BRANDCODE"/>
+    <field name="category" type="list" label="COM_VOC_FORM_LBL_VOC_CATEGORY" description="COM_VOC_FORM_DESC_VOC_CATEGORY" hint="COM_VOC_FORM_LBL_VOC_CATEGORY">
+      <option value="1">COM_VOC_VOCS_CATEGORY_OPTION_1</option>
+      <option value="2">COM_VOC_VOCS_CATEGORY_OPTION_2</option>
+    </field>
+    <field name="items" type="list" label="COM_VOC_FORM_LBL_VOC_ITEMS" description="COM_VOC_FORM_DESC_VOC_ITEMS" hint="COM_VOC_FORM_LBL_VOC_ITEMS">
+      <option value="1">COM_VOC_VOCS_ITEMS_OPTION_1</option>
+      <option value="2">COM_VOC_VOCS_ITEMS_OPTION_2</option>
+      <option value="3">COM_VOC_VOCS_ITEMS_OPTION_3</option>
+      <option value="4">COM_VOC_VOCS_ITEMS_OPTION_4</option>
+      <option value="5">COM_VOC_VOCS_ITEMS_OPTION_5</option>
+      <option value="6">COM_VOC_VOCS_ITEMS_OPTION_6</option>
+    </field>
+    <field name="commentby" type="list" label="COM_VOC_FORM_LBL_VOC_COMMENTBY" description="COM_VOC_FORM_DESC_VOC_COMMENTBY" hint="COM_VOC_FORM_LBL_VOC_COMMENTBY">
+      <option value="1">COM_VOC_VOCS_COMMENTBY_OPTION_1</option>
+      <option value="2">COM_VOC_VOCS_COMMENTBY_OPTION_2</option>
+      <option value="3">COM_VOC_VOCS_COMMENTBY_OPTION_3</option>
+      <option value="4">COM_VOC_VOCS_COMMENTBY_OPTION_4</option>
+    </field>
+    <field name="isurgent" type="radio" buttons="true" class="btn-group btn-group-yesno" default="0" label="COM_VOC_FORM_LBL_VOC_ISURGENT" description="COM_VOC_FORM_DESC_VOC_ISURGENT" hint="COM_VOC_FORM_LBL_VOC_ISURGENT">
+      <option value="1">COM_VOC_VOCS_ISURGENT_OPTION_ON</option>
+      <option value="0">COM_VOC_VOCS_ISURGENT_OPTION_OFF</option>
+    </field>
+    <field name="store" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_STORE" description="COM_VOC_FORM_DESC_VOC_STORE" hint="COM_VOC_FORM_LBL_VOC_STORE"/>
+    <field name="store_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_STORE_ID" description="COM_VOC_FORM_DESC_VOC_STORE_ID" hint="COM_VOC_FORM_LBL_VOC_STORE_ID"/>
+    <field name="store_server_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_STORE_SERVER_ID" description="COM_VOC_FORM_DESC_VOC_STORE_SERVER_ID" hint="COM_VOC_FORM_LBL_VOC_STORE_SERVER_ID"/>
+    <field name="remarks" filter="safehtml" type="textarea" label="COM_VOC_FORM_LBL_VOC_REMARKS" description="COM_VOC_FORM_DESC_VOC_REMARKS" hint="COM_VOC_FORM_LBL_VOC_REMARKS"/>
+    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_VOC_FORM_LBL_VOC_COORDINATES" description="COM_VOC_FORM_DESC_VOC_COORDINATES" hint="COM_VOC_FORM_LBL_VOC_COORDINATES"/>
+    <field name="client_modified_date" type="timecreated" label="COM_VOC_FORM_LBL_VOC_CLIENT_MODIFIED_DATE" description="COM_VOC_FORM_DESC_VOC_CLIENT_MODIFIED_DATE" hint="COM_VOC_FORM_LBL_VOC_CLIENT_MODIFIED_DATE"/>
+    <field name="client_id" filter="safehtml" type="text" readonly="true" label="COM_VOC_FORM_LBL_VOC_CLIENT_ID" description="COM_VOC_FORM_DESC_VOC_CLIENT_ID" hint="COM_VOC_FORM_LBL_VOC_CLIENT_ID"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_SUBMITTED_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="sku_available" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_SKU_AVAILABLE" type="list" onchange="this.form.submit();" default="COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_FILTER">
+  <option value="">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_FILTER</option>
+  <option value="1">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_1</option>
+  <option value="2">COM_SUBMITTED_CHECKLISTS_SKU_AVAILABLE_OPTION_2</option>
+</field>
+<field name="store_id" label="COM_SUBMITTED_FORM_LBL_CHECKLIST_STORE_ID" type="sql" query="SELECT '' AS `id`, 'COM_SUBMITTED_CHECKLISTS_STORE_ID_FILTER' AS `shop_name` UNION (SELECT id, shop_name FROM `#__outlets`)" translate="true" key_field="id" value_field="shop_name" onchange="this.form.submit();"/>
+<field name="dateformat.from" label="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_FROM"/>
+<field name="dateformat.to" label="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_SUBMITTED_CHECKLISTS_DATEFORMAT_FILTER_TO"/>
+
+
+    </fields>
+</form>

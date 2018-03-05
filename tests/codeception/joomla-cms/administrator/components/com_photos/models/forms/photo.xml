@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_PHOTOS_FORM_LBL_PHOTO_CREATED_BY" description="COM_PHOTOS_FORM_DESC_PHOTO_CREATED_BY" hidden="true" hint="COM_PHOTOS_FORM_LBL_PHOTO_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_PHOTOS_FORM_LBL_PHOTO_MODIFIED_BY" description="COM_PHOTOS_FORM_DESC_PHOTO_MODIFIED_BY" hidden="true" hint="COM_PHOTOS_FORM_LBL_PHOTO_MODIFIED_BY"/>
+    <field name="client_id" filter="safehtml" type="text" label="COM_PHOTOS_FORM_LBL_PHOTO_CLIENT_ID" description="COM_PHOTOS_FORM_DESC_PHOTO_CLIENT_ID" hint="COM_PHOTOS_FORM_LBL_PHOTO_CLIENT_ID"/>
+    <field name="imagepath" type="editor" buttons="true" class="inputbox" filter="safehtml" label="COM_PHOTOS_FORM_LBL_PHOTO_IMAGEPATH" description="COM_PHOTOS_FORM_DESC_PHOTO_IMAGEPATH" hint="COM_PHOTOS_FORM_LBL_PHOTO_IMAGEPATH"/>
+    <field name="imagedate" filter="safehtml" type="text" label="COM_PHOTOS_FORM_LBL_PHOTO_IMAGEDATE" description="COM_PHOTOS_FORM_DESC_PHOTO_IMAGEDATE" hint="COM_PHOTOS_FORM_LBL_PHOTO_IMAGEDATE"/>
+    <field name="manufacturer" filter="safehtml" type="text" label="COM_PHOTOS_FORM_LBL_PHOTO_MANUFACTURER" description="COM_PHOTOS_FORM_DESC_PHOTO_MANUFACTURER" hint="COM_PHOTOS_FORM_LBL_PHOTO_MANUFACTURER"/>
+    <field name="brand" query="SELECT id as value, product_name as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_PHOTOS_FORM_LBL_PHOTO_BRAND" description="COM_PHOTOS_FORM_DESC_PHOTO_BRAND" hint="COM_PHOTOS_FORM_LBL_PHOTO_BRAND"/>
+    <field name="brandcode" query="SELECT id as value, product_code as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_PHOTOS_FORM_LBL_PHOTO_BRANDCODE" description="COM_PHOTOS_FORM_DESC_PHOTO_BRANDCODE" hint="COM_PHOTOS_FORM_LBL_PHOTO_BRANDCODE"/>
+    <field name="submitter" type="createdby" label="COM_PHOTOS_FORM_LBL_PHOTO_SUBMITTER" description="COM_PHOTOS_FORM_DESC_PHOTO_SUBMITTER" hidden="true" hint="COM_PHOTOS_FORM_LBL_PHOTO_SUBMITTER"/>
+    <field name="user_id" type="createdby" label="COM_PHOTOS_FORM_LBL_PHOTO_USER_ID" description="COM_PHOTOS_FORM_DESC_PHOTO_USER_ID" hidden="true" hint="COM_PHOTOS_FORM_LBL_PHOTO_USER_ID"/>
+    <field name="store" query="SELECT id as value, shop_name as text FROM dxcr2_outlets" key_field="value" value_field="text" type="sql" label="COM_PHOTOS_FORM_LBL_PHOTO_STORE" description="COM_PHOTOS_FORM_DESC_PHOTO_STORE" hint="COM_PHOTOS_FORM_LBL_PHOTO_STORE"/>
+    <field name="store_id" query="SELECT id as value, shop_name as text FROM dxcr2_outlets" key_field="value" value_field="text" type="sql" label="COM_PHOTOS_FORM_LBL_PHOTO_STORE_ID" description="COM_PHOTOS_FORM_DESC_PHOTO_STORE_ID" hint="COM_PHOTOS_FORM_LBL_PHOTO_STORE_ID"/>
+    <field name="store_server_id" query="SELECT id as value, shop_name as text FROM dxcr2_outlets" key_field="value" value_field="text" type="sql" label="COM_PHOTOS_FORM_LBL_PHOTO_STORE_SERVER_ID" description="COM_PHOTOS_FORM_DESC_PHOTO_STORE_SERVER_ID" hint="COM_PHOTOS_FORM_LBL_PHOTO_STORE_SERVER_ID"/>
+    <field name="remarks" filter="safehtml" type="textarea" label="COM_PHOTOS_FORM_LBL_PHOTO_REMARKS" description="COM_PHOTOS_FORM_DESC_PHOTO_REMARKS" hint="COM_PHOTOS_FORM_LBL_PHOTO_REMARKS"/>
+    <field name="created_on" type="timecreated" label="COM_PHOTOS_FORM_LBL_PHOTO_CREATED_ON" description="COM_PHOTOS_FORM_DESC_PHOTO_CREATED_ON" hidden="true" hint="COM_PHOTOS_FORM_LBL_PHOTO_CREATED_ON"/>
+    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_PHOTOS_FORM_LBL_PHOTO_COORDINATES" description="COM_PHOTOS_FORM_DESC_PHOTO_COORDINATES" hint="COM_PHOTOS_FORM_LBL_PHOTO_COORDINATES"/>
+    <field name="client_modified_date" type="timecreated" label="COM_PHOTOS_FORM_LBL_PHOTO_CLIENT_MODIFIED_DATE" description="COM_PHOTOS_FORM_DESC_PHOTO_CLIENT_MODIFIED_DATE" hint="COM_PHOTOS_FORM_LBL_PHOTO_CLIENT_MODIFIED_DATE"/>
+    <field name="first_insert_date" default="0000-00-00 00:00:00" label="COM_PHOTOS_FORM_LBL_PHOTO_FIRST_INSERT_DATE" description="COM_PHOTOS_FORM_DESC_PHOTO_FIRST_INSERT_DATE" hidden="true" hint="COM_PHOTOS_FORM_LBL_PHOTO_FIRST_INSERT_DATE"/>
+    <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_PHOTOS_FORM_LBL_PHOTO_LAST_SYNC_DATE" description="COM_PHOTOS_FORM_DESC_PHOTO_LAST_SYNC_DATE" hint="COM_PHOTOS_FORM_LBL_PHOTO_LAST_SYNC_DATE"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

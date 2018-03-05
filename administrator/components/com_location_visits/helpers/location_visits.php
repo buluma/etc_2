@@ -32,6 +32,12 @@ class Location_visitsHelper
 			$vName == 'locations'
 		);
 
+		JHtmlSidebar::addEntry(
+			JText::_('Map View'),
+			'index.php?option=com_location_visits&view=maps',
+			$vName == 'maps'
+		);
+
 	}
 
 	/**

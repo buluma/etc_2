@@ -48,6 +48,15 @@ class Location_visitsViewLocations extends JViewLegacy
 			throw new Exception(implode("\n", $errors));
 		}
 
+		// Set up the data to be sent in the response.
+// $data = array( 'some data' );
+// $data2 = $this->items;
+
+// // Output the JSON data.
+// echo '<pre>';
+// echo json_encode( $data2 );
+// echo '<pre/>';
+
 		Location_visitsHelper::addSubmenu('locations');
 
 		$this->addToolbar();

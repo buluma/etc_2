@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_COMPETITOR_ACTIVITIES_TITLE_LIST_VIEW_PROMOIMAGES" option="View">
+        <message>
+                        <![CDATA[COM_COMPETITOR_ACTIVITIES_TITLE_LIST_VIEW_PROMOIMAGES_DESC]]>
+        </message>
+	</layout>
+</metadata>

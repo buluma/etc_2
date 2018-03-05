@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="listing" query="SELECT id as value, product_name as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_LISTINGS_FORM_LBL_LISTING_LISTING" description="COM_LISTINGS_FORM_DESC_LISTING_LISTING" hint="COM_LISTINGS_FORM_LBL_LISTING_LISTING"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" default="0" label="COM_LISTINGS_FORM_LBL_LISTING_CREATED_BY" description="COM_LISTINGS_FORM_DESC_LISTING_CREATED_BY" hidden="true" hint="COM_LISTINGS_FORM_LBL_LISTING_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_LISTINGS_FORM_LBL_LISTING_MODIFIED_BY" description="COM_LISTINGS_FORM_DESC_LISTING_MODIFIED_BY" hidden="true" hint="COM_LISTINGS_FORM_LBL_LISTING_MODIFIED_BY"/>
+    <field name="client_id" label="COM_LISTINGS_FORM_LBL_LISTING_CLIENT_ID" readonly="true" description="COM_LISTINGS_FORM_DESC_LISTING_CLIENT_ID" hint="COM_LISTINGS_FORM_LBL_LISTING_CLIENT_ID"/>
+    <field name="listed" default="0" type="radio" label="COM_LISTINGS_FORM_LBL_LISTING_LISTED" description="COM_LISTINGS_FORM_DESC_LISTING_LISTED" hint="COM_LISTINGS_FORM_LBL_LISTING_LISTED">
+      <option value="1">COM_LISTINGS_LISTINGS_LISTED_OPTION_1</option>
+      <option value="0">COM_LISTINGS_LISTINGS_LISTED_OPTION_0</option>
+    </field>
+    <field name="submitter" type="createdby" label="COM_LISTINGS_FORM_LBL_LISTING_SUBMITTER" description="COM_LISTINGS_FORM_DESC_LISTING_SUBMITTER" hint="COM_LISTINGS_FORM_LBL_LISTING_SUBMITTER"/>
+    <field name="user_id" type="createdby" label="COM_LISTINGS_FORM_LBL_LISTING_USER_ID" description="COM_LISTINGS_FORM_DESC_LISTING_USER_ID" hint="COM_LISTINGS_FORM_LBL_LISTING_USER_ID"/>
+    <field name="store" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_LISTINGS_FORM_LBL_LISTING_STORE" description="COM_LISTINGS_FORM_DESC_LISTING_STORE" hint="COM_LISTINGS_FORM_LBL_LISTING_STORE"/>
+    <field name="store_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_LISTINGS_FORM_LBL_LISTING_STORE_ID" description="COM_LISTINGS_FORM_DESC_LISTING_STORE_ID" hint="COM_LISTINGS_FORM_LBL_LISTING_STORE_ID"/>
+    <field name="store_server_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_LISTINGS_FORM_LBL_LISTING_STORE_SERVER_ID" description="COM_LISTINGS_FORM_DESC_LISTING_STORE_SERVER_ID" hint="COM_LISTINGS_FORM_LBL_LISTING_STORE_SERVER_ID"/>
+    <field name="created_on" type="timecreated" label="COM_LISTINGS_FORM_LBL_LISTING_CREATED_ON" description="COM_LISTINGS_FORM_DESC_LISTING_CREATED_ON" hint="COM_LISTINGS_FORM_LBL_LISTING_CREATED_ON"/>
+    <field name="client_modified_date" type="timecreated" label="COM_LISTINGS_FORM_LBL_LISTING_CLIENT_MODIFIED_DATE" description="COM_LISTINGS_FORM_DESC_LISTING_CLIENT_MODIFIED_DATE" hint="COM_LISTINGS_FORM_LBL_LISTING_CLIENT_MODIFIED_DATE"/>
+    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_LISTINGS_FORM_LBL_LISTING_COORDINATES" description="COM_LISTINGS_FORM_DESC_LISTING_COORDINATES" hint="COM_LISTINGS_FORM_LBL_LISTING_COORDINATES"/>
+    <field name="first_insert" default="0000-00-00 00:00:00" readonly="true" label="COM_LISTINGS_FORM_LBL_LISTING_FIRST_INSERT" description="COM_LISTINGS_FORM_DESC_LISTING_FIRST_INSERT" hint="COM_LISTINGS_FORM_LBL_LISTING_FIRST_INSERT"/>
+    <field name="server_modified_date" type="timecreated" label="COM_LISTINGS_FORM_LBL_LISTING_SERVER_MODIFIED_DATE" description="COM_LISTINGS_FORM_DESC_LISTING_SERVER_MODIFIED_DATE" hint="COM_LISTINGS_FORM_LBL_LISTING_SERVER_MODIFIED_DATE"/>
+    <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_LISTINGS_FORM_LBL_LISTING_LAST_SYNC_DATE" description="COM_LISTINGS_FORM_DESC_LISTING_LAST_SYNC_DATE" hint="COM_LISTINGS_FORM_LBL_LISTING_LAST_SYNC_DATE"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>
