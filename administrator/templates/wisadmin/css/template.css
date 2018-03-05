@@ -8336,3 +8336,8 @@ div.row.icon.cards {
     flex-wrap: wrap;
 }
 /*}*/
+
+div#element-box.login.well img{
+display:block;
+    margin:auto;
+  }

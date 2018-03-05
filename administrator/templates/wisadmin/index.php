@@ -179,7 +179,7 @@ else
 	<div class="row-fluid">
 	<div class="span2">
 		<div class="container-logo">
-			<a class="container-logo" <?php echo 'href="' . $this->baseurl . '"'; ?>><img src="<?php echo $logo; ?>" class="logo" alt="<?php echo $sitename;?>" /></a>
+			<a class="container-logo" <?php echo 'href="' . $this->baseurl . '"'; ?>><!-- <img src="<?php echo $logo; ?>" class="logo" alt="<?php //echo $sitename;?>" /> -->ETC Trade Management</a>
 		</div>
 		</div>
 		<div class="span10"><!-- Top Navigation -->

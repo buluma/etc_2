@@ -715,3 +715,7 @@ hr {
 .text-muted {
     color: #6c757d!important;
 }
+div#element-box.login.well img{
+display:block;
+    margin:auto;
+  }
