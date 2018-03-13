@@ -188,6 +188,8 @@ function savePromotions($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'coordinates' => $item->coords,
             'unique_id' => $item->unique_id,
@@ -211,10 +213,10 @@ function savePromotions($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_eabl_promotions(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_promotions(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
-		    array_push($resultarray, 'eabl promotions_2 added with client_id: '.$item->id);
+		    array_push($resultarray, 'etc promotions added with client_id: '.$item->id);
 		}
     }
 }
@@ -244,10 +246,10 @@ function saveEABLPromotionsImages($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_eabl_promotions_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_promotion_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
-		    array_push($resultarray, 'eabl promotions_2 image added with client_id: '.$item->id);
+		    array_push($resultarray, 'etc promo images added with client_id: '.$item->id);
 		}
     }
 }
@@ -542,6 +544,8 @@ function saveCompeActivity($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'coordinates' => $item->coords,
             'unique_id' => $item->unique_id,
@@ -564,7 +568,7 @@ function saveCompeActivity($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_competitor_activity(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_competitor_activity(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'competitor activity added with client_id: '.$item->id);
@@ -597,10 +601,10 @@ function saveCompeImages($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_competitor_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_competitor_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
-		    array_push($resultarray, 'compe activity image added with client_id: '.$item->id);
+		    array_push($resultarray, 'competitor activity image added with client_id: '.$item->id);
 		}
     }
 }
@@ -688,6 +692,8 @@ function saveAssetManagmnt($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'coordinates' => $item->coords,
             'imagedate' => isset($item->imagedate) ? $item->imagedate : '',
@@ -727,6 +733,8 @@ function saveFocusAreas($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'state' => '1',
             'ordering' => '1',
@@ -764,6 +772,8 @@ function saveTLFocusAreas($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'coordinates' => $item->coords,
             'description' => $item->description,
@@ -798,6 +808,8 @@ function savePhotos($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'coordinates' => $item->coords,
             'imagedate' => $item->imagedate,
@@ -816,7 +828,7 @@ function savePhotos($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_photos(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_photos(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'photo added with client_id: '.$item->id);
@@ -833,6 +845,8 @@ function saveLocations($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'coordinates' => $item->coordinates,
             'submitter' => setUserID($item->submitter),
@@ -887,6 +901,8 @@ function saveObjectives($clientData, $syncDate){
         else {
     		// save the item to database
     	    $sqlData = array(
+                'state' => '1',
+                'ordering' => '1',
                 'client_id' => $item->id,
                 'inputdate' => $item->inputdate,
                 'coordinates' => $item->coords,
@@ -1024,7 +1040,7 @@ function savePriceSurvey($clientData, $syncDate){
 
 	// start processing the data
 	foreach ($clientData as $key => $item) {
-        $aquery = 'SELECT id,type,month,year FROM data_price_survey ';
+        $aquery = 'SELECT id,type,month,year FROM dxcr2_price_survey ';
         $aquery .= ' WHERE store_server_id = "'.$item->store_server_id.'" ';
         $aquery .= ' AND type ="'.$item->type.'" AND month="'.$item->month.'" AND year="'.$item->year.'"';
         $res = mysqli_query($mysqli,$aquery) or die(mysqli_error($mysqli));
@@ -1033,7 +1049,7 @@ function savePriceSurvey($clientData, $syncDate){
         if ($total > 0){
             //echo 'we found one';
             while ($row = mysqli_fetch_object($res)) {
-                $query = 'UPDATE data_price_survey SET brands = "'.mysqli_real_escape_string($mysqli,$item->brands).'", last_sync_date = "'.$syncTime.'" WHERE id = "'.$row->id.'"';
+                $query = 'UPDATE dxcr2_price_survey SET brands = "'.mysqli_real_escape_string($mysqli,$item->brands).'", last_sync_date = "'.$syncTime.'" WHERE id = "'.$row->id.'"';
                 $update = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
                 if ($update){
                     array_push($resultarray, 'price survey updated with id '.$row->id);
@@ -1043,6 +1059,8 @@ function savePriceSurvey($clientData, $syncDate){
         }
         else {
     	    $sqlData = array(
+                'state' => '1',
+                'ordering' => '1',
                 'client_id' => $item->id,
                 'coordinates' => $item->coords,
                 'type' => $item->type,
@@ -1062,7 +1080,7 @@ function savePriceSurvey($clientData, $syncDate){
                 );
     	    $columns = array_keys($sqlData);
     		$values = array_values($sqlData);
-    		$query = 'INSERT INTO data_price_survey(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+    		$query = 'INSERT INTO dxcr2_price_survey(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
     		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
     		if ($insert){
     		    array_push($resultarray, 'price survey added with client_id: '.$item->id);

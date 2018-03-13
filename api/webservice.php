@@ -17,7 +17,7 @@ if (isset($_GET['user_auth'])){
 
    // $query2 = "SELECT dxcr2_users.id as userid, dxcr2_users.name, dxcr2_user_usergroup_map.group_id,dxcr2_usergroups.title FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id WHERE dxcr2_users.username = '".$param."'";
 
-   $query = "SELECT dxcr2_users.id as userid, dxcr2_users.name,dxcr2_users.username, dxcr2_users.email, dxcr2_user_usergroup_map.group_id, dxcr2_usergroups.title as assigned FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id WHERE dxcr2_users.username = '".$param."'";
+   $query = "SELECT dxcr2_users.id as userid, dxcr2_users.name, dxcr2_users.username, dxcr2_users.email, dxcr2_user_usergroup_map.group_id, dxcr2_usergroups.title as assigned FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id WHERE dxcr2_users.username = '".$param."'";
 
 
    // var_dump($query);
