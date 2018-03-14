@@ -5,6 +5,7 @@ error_log
 /import-database-sql-file-using-PHP-script-master/
 /cache
 /logs
+/node_modules
 /db_dump/filename[0-9].sql
 **/cache
 *.cache

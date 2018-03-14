@@ -37,6 +37,7 @@ $visits = ModAdminIconsHelper::getList();
 $photos = ModAdminIconsHelper::getImages();
 $issues = ModAdminIconsHelper::getIssues();
 $outlets = ModAdminIconsHelper::getOutlets();
+$tasks = ModAdminIconsHelper::getTasks();
 // var_dump($photos);
 require JModuleHelper::getLayoutPath('mod_adminicons', $params->get('layout', 'default'));
 ?>

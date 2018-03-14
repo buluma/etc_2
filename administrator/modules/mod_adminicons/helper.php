@@ -94,4 +94,19 @@ class ModAdminIconsHelper
 
         return $count;
     }
+
+    public static function getTasks()
+    {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('COUNT(*)');
+        $query->from($db->quoteName('#__tasks'));
+        // $query->where($db->quoteName('name')." = ".$db->quote($value));
+
+        // Reset the query using our newly populated query object.
+        $db->setQuery($query);
+        $count = $db->loadResult();
+
+        return $count;
+    }
 }

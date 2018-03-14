@@ -503,3 +503,7 @@ ul.nav.nav-user.pull-right{ padding:0px 2px;}
 @media (min-width: 768px) and (max-width: 979px) {.sitename{display:none;}.toolbar-button{display:none;}
 
 }
+
+.input-append input, .input-append select, .input-append .uneditable-input{
+height: 27px ;
+}

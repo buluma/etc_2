@@ -65,9 +65,9 @@ defined('_JEXEC') or die;
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-paper-plane"></i>
               </div>
-              <div class="mr-5"><?php echo $outlets; ?> Outlets</div>
+              <div class="mr-5"><?php echo $tasks; ?> Tasks</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="index.php?option=com_outlets">
+            <a class="card-footer text-white clearfix small z-1" href="index.php?option=com_tasks">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
