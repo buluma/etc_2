@@ -95,7 +95,8 @@ $document->addStyleSheet(JUri::root() . 'media/com_shop_checkin/css/form.css');
 				<input type="hidden" name="jform[checked_out]" value="<?php echo $this->item->checked_out; ?>" />
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
-				<?php echo $this->form->renderField('created_by'); ?>				<?php echo $this->form->renderField('client_id'); ?>
+				<?php echo $this->form->renderField('created_by'); ?>				
+				<?php echo $this->form->renderField('client_id'); ?>
 				<?php echo $this->form->renderField('session_id'); ?>
 				<?php echo $this->form->renderField('day'); ?>
 				<?php echo $this->form->renderField('coordinates'); ?>

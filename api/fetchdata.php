@@ -13,7 +13,7 @@ $mysqli = mysqli_connect($host,$user,$password,$db) or die("Error " . mysqli_err
 if (isset($_GET['data'])){
    //echo $_GET['data'];
    $json = array();
-   $param = $_GET['data'];
+   $param = $_GET['data'];	
 
    if ($param == 'focusmodels'){
        $query = "SELECT * FROM focus_models";

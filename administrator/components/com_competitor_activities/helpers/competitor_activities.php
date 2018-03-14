@@ -41,11 +41,11 @@ class Competitor_activitiesHelper
 			JToolBarHelper::title('Competitor Activities: JCATEGORIES (COM_COMPETITOR_ACTIVITIES_TITLE_COMP_ACTIVITIES)');
 		}
 
-		JHtmlSidebar::addEntry(
-			JText::_('COM_COMPETITOR_ACTIVITIES_TITLE_COMPEIMAGES'),
-			'index.php?option=com_competitor_activities&view=compeimages',
-			$vName == 'compeimages'
-		);
+		// JHtmlSidebar::addEntry(
+		// 	JText::_('COM_COMPETITOR_ACTIVITIES_TITLE_COMPEIMAGES'),
+		// 	'index.php?option=com_competitor_activities&view=compeimages',
+		// 	$vName == 'compeimages'
+		// );
 	}
 
 	/**

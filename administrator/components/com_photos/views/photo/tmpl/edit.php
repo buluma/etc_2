@@ -89,15 +89,16 @@ $document->addStyleSheet(JUri::root() . 'media/com_photos/css/form.css');
 			<div class="span10 form-horizontal">
 				<fieldset class="adminform">
 
-									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
+				<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
 				<input type="hidden" name="jform[ordering]" value="<?php echo $this->item->ordering; ?>" />
 				<input type="hidden" name="jform[state]" value="<?php echo $this->item->state; ?>" />
 				<input type="hidden" name="jform[checked_out]" value="<?php echo $this->item->checked_out; ?>" />
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
 				<?php echo $this->form->renderField('created_by'); ?>
-				<?php echo $this->form->renderField('modified_by'); ?>				<?php echo $this->form->renderField('client_id'); ?>
-				<?php echo $this->form->renderField('imagepath'); ?>
+				<?php echo $this->form->renderField('modified_by'); ?>				
+				<?php echo $this->form->renderField('client_id'); ?>
+				<img src="<?php echo $this->item->imagepath; ?>" />
 				<?php echo $this->form->renderField('imagedate'); ?>
 				<?php echo $this->form->renderField('manufacturer'); ?>
 				<?php echo $this->form->renderField('brand'); ?>
@@ -118,7 +119,8 @@ $document->addStyleSheet(JUri::root() . 'media/com_photos/css/form.css');
 				endforeach;
 			?>
 				<?php echo $this->form->renderField('submitter'); ?>
-				<?php echo $this->form->renderField('user_id'); ?>				<?php echo $this->form->renderField('store'); ?>
+				<?php echo $this->form->renderField('user_id'); ?>				
+				<?php echo $this->form->renderField('store'); ?>
 
 			<?php
 				foreach((array)$this->item->store as $value): 

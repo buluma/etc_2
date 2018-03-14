@@ -32,6 +32,12 @@ class Shop_checkinHelper
 			$vName == 'shop_checkins'
 		);
 
+		JHtmlSidebar::addEntry(
+			JText::_('Map View'),
+			'index.php?option=com_shop_checkin&view=maps',
+			$vName == 'maps'
+		);
+
 	}
 
 	/**

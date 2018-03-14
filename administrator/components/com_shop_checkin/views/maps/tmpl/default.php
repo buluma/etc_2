@@ -1,8 +1,8 @@
 <?php
 /**
  * @version    CVS: 1.0.0
- * @package    Com_Competitor_activities
- * @author     Michael Buluma <michael@buluma.me.ke>
+ * @package    Com_Location_visits
+ * @author     Michael Buluma <michael@buluma.co.ke>
  * @copyright  2018 Michael Buluma
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -17,39 +17,40 @@ JHtml::_('formbehavior.chosen', 'select');
 
 // Import CSS
 $document = JFactory::getDocument();
-$document->addStyleSheet(JUri::root() . 'administrator/components/com_competitor_activities/assets/css/competitor_activities.css');
-$document->addStyleSheet(JUri::root() . 'media/com_competitor_activities/css/list.css');
+$document->addStyleSheet(JUri::root() . 'administrator/components/com_location_visits/assets/css/location_visits.css');
+$document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/list.css');
 //datatables
-$document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
-$document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
-$document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
+// $document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
+// $document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
+// $document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
 
-//export pdf
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');
-$document->addScript('//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js');
-$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js');
-$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
+// //export pdf
+// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
+// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');
+// $document->addScript('//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js');
+// $document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js');
+// $document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
+// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
+// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
+// $document->addScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap');
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
 $listOrder = $this->state->get('list.ordering');
 $listDirn  = $this->state->get('list.direction');
-$canOrder  = $user->authorise('core.edit.state', 'com_competitor_activities');
+$canOrder  = $user->authorise('core.edit.state', 'com_location_visits');
 $saveOrder = $listOrder == 'a.`ordering`';
 
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_competitor_activities&task=comp_activities.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'comp_activityList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+	$saveOrderingUrl = 'index.php?option=com_location_visits&task=locations.saveOrderAjax&tmpl=component';
+	JHtml::_('sortablelist.sortable', 'locationList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 
 $sortFields = $this->getSortFields();
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_competitor_activities&view=comp_activities'); ?>" method="post"
+<form action="<?php echo JRoute::_('index.php?option=com_location_visits&view=locations'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
@@ -63,7 +64,7 @@ $sortFields = $this->getSortFields();
             <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 
 			<div class="clearfix"></div>
-			<table class="table table-striped" id="comp_activityList">
+			<table class="table table-striped hidden" id="locationList">
 				<thead>
 				<tr>
 					<?php if (isset($this->items[0]->ordering)): ?>
@@ -82,34 +83,25 @@ $sortFields = $this->getSortFields();
 					<?php endif; ?>
 
 									<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_ID', 'a.`id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_BRAND', 'a.`brand`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_UNIQUE_ID', 'a.`unique_id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_CATEGORY', 'a.`category`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'Image', 'a.`image`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_START_DATE', 'a.`start_date`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_END_DATE', 'a.`end_date`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_COMPETITOR_ACTIVITIES_COMP_ACTIVITIES_STORE', 'a.`store`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CREATED_ON', 'a.`created_on`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -123,22 +115,12 @@ $sortFields = $this->getSortFields();
 				</tr>
 				</tfoot>
 				<tbody>
-					<?php
-						function data_uri($file, $mime) 
-						{  
-						  // $contents = file_get_contents($file);
-						  $contents = $item->image_id;
-						  $base64   = base64_encode($contents); 
-						  return ('data:' . $mime . ';base64,' . $base64);
-						}
-						?>
-						
 				<?php foreach ($this->items as $i => $item) :
 					$ordering   = ($listOrder == 'a.ordering');
-					$canCreate  = $user->authorise('core.create', 'com_competitor_activities');
-					$canEdit    = $user->authorise('core.edit', 'com_competitor_activities');
-					$canCheckin = $user->authorise('core.manage', 'com_competitor_activities');
-					$canChange  = $user->authorise('core.edit.state', 'com_competitor_activities');
+					$canCreate  = $user->authorise('core.create', 'com_location_visits');
+					$canEdit    = $user->authorise('core.edit', 'com_location_visits');
+					$canCheckin = $user->authorise('core.manage', 'com_location_visits');
+					$canChange  = $user->authorise('core.edit.state', 'com_location_visits');
 					?>
 					<tr class="row<?php echo $i % 2; ?>">
 
@@ -170,40 +152,28 @@ $sortFields = $this->getSortFields();
 						</td>
 						<?php if (isset($this->items[0]->state)): ?>
 							<td class="center">
-								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'comp_activities.', $canChange, 'cb'); ?>
+								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'locations.', $canChange, 'cb'); ?>
 </td>
 						<?php endif; ?>
 
 										<td>
 
 					<?php echo $item->id; ?>
-				</td>				
-				<td>
+				</td>				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'comp_activities.', $canCheckin); ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'locations.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_competitor_activities&task=comp_activity.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->brand); ?></a>
+					<a href="<?php echo JRoute::_('index.php?option=com_location_visits&task=location.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->client_id); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->brand); ?>
+					<?php echo $this->escape($item->client_id); ?>
 				<?php endif; ?>
 
 				</td>				<td>
 
-					<?php echo $item->unique_id; ?>
+					<?php echo $item->coordinates; ?>
 				</td>				<td>
-
-					<?php echo $item->category; ?>
-				</td>				
-				<td>
-
-					<?php //echo $item->image_id; ?>
-					
-						<!-- <img src="<?php //echo data_uri('elephant.png','image/png'); ?>" alt="An elephant" /> -->
-						<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="An image" />
-				</td>
-				<td>
 
 					<?php echo $item->submitter; ?>
 				</td>				<td>
@@ -211,13 +181,10 @@ $sortFields = $this->getSortFields();
 					<?php echo $item->user_id; ?>
 				</td>				<td>
 
-					<?php echo $item->start_date; ?>
-				</td>				<td>
-
-					<?php echo $item->end_date; ?>
-				</td>				<td>
-
 					<?php echo $item->store; ?>
+				</td>				<td>
+
+					<?php echo $item->created_on; ?>
 				</td>
 
 					</tr>
@@ -229,19 +196,39 @@ $sortFields = $this->getSortFields();
 			<input type="hidden" name="boxchecked" value="0"/>
             <input type="hidden" name="list[fullorder]" value="<?php echo $listOrder; ?> <?php echo $listDirn; ?>"/>
 			<?php echo JHtml::_('form.token'); ?>
+			
+
+			<!-- Locations Map -->
+			<hr>
+				<div class="map">
+					<!-- map here -->
+					<div id="map"></div>
+				</div>
+				<br />
+			<!-- Locations map End -->
 		</div>
 </form>
+
+
 <script>
 	//export function
-	jQuery(document).ready(function() {
-	    jQuery('#comp_activityList').DataTable( {
-	        dom: 'Bfrtip',
-	        buttons: [
-	            'copy', 'csv', 'excel', 'pdf', 'print'
-	        ]
-	    } );
-	} );
-	
+	// jQuery(document).ready(function() {
+	//     jQuery('#locationList').DataTable( {
+	//         dom: 'Bfrtip',
+	//         buttons: [
+	//             'copy', 'csv', 'excel', 'pdf', 'print'
+	//         ]
+	//     } );
+	// } );
+
+	var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -1.3571565, lng: 36.6503689},
+          zoom: 8
+        });
+      };
+
     window.toggleField = function (id, task, field) {
 
         var f = document.adminForm, i = 0, cbx, cb = f[ id ];
@@ -270,10 +257,23 @@ $sortFields = $this->getSortFields();
 
         return false;
     };
+
 </script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap"
+    async defer> </script>
+
 <style type="text/css">
-	div.btn-wrapper.input-append{
-		display: none;
+	input#filter_search.js-stools-search-string{
+		display: inline-block;
+		line-height: 50px;
+    padding: 13px;
 	}
+
+	div#map {
+    position: relative;
+    overflow: hidden;
+    height: 444px;
+    /* width: 56%; */
+}
 </style>
