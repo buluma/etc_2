@@ -70,7 +70,7 @@ class Competitor_activitiesViewComp_activities extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Competitor_activitiesHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_COMPETITOR_ACTIVITIES_TITLE_COMP_ACTIVITIES'), 'comp_activities.png');
+		JToolBarHelper::title(JText::_('COM_COMPETITOR_ACTIVITIES_TITLE_COMP_ACTIVITIES'), 'paragraph-left');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/comp_activity';

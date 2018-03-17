@@ -75,7 +75,7 @@ class QissuesViewIssue extends JViewLegacy
 
 		$canDo = QissuesHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_QISSUES_TITLE_ISSUE'), 'issue.png');
+		JToolBarHelper::title(JText::_('COM_QISSUES_TITLE_ISSUE'), 'folder-plus-2');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

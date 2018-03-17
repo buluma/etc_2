@@ -75,7 +75,7 @@ class FocusareasViewFocus_area extends JViewLegacy
 
 		$canDo = FocusareasHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_FOCUSAREAS_TITLE_FOCUS_AREA'), 'focus_area.png');
+		JToolBarHelper::title(JText::_('COM_FOCUSAREAS_TITLE_FOCUS_AREA'), 'eye-open');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

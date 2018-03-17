@@ -68,7 +68,7 @@ class FocusareasViewFocus_areas extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = FocusareasHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_FOCUSAREAS_TITLE_FOCUS_AREAS'), 'focus_areas.png');
+		JToolBarHelper::title(JText::_('COM_FOCUSAREAS_TITLE_FOCUS_AREAS'), 'eye-open');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/focus_area';

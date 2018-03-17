@@ -30,7 +30,7 @@ class QissuesHelper
 			JText::_('COM_QISSUES_TITLE_ISSUES'),
 			'index.php?option=com_qissues&view=issues',
 			$vName == 'issues'
-		);
+		); //JToolBarHelper::title(JText::_('COM_QISSUES_TITLE_ISSUE'), 'folder-plus-2');
 
 	}
 

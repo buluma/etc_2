@@ -68,7 +68,7 @@ class TasksViewTasks extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = TasksHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_TASKS_TITLE_TASKS'), 'tasks.png');
+		JToolBarHelper::title(JText::_('COM_TASKS_TITLE_TASKS'), 'checkmark-circle');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/task';

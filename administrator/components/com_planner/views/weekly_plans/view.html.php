@@ -68,7 +68,7 @@ class PlannerViewWeekly_plans extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = PlannerHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PLANNER_TITLE_WEEKLY_PLANS'), 'weekly_plans.png');
+		JToolBarHelper::title(JText::_('COM_PLANNER_TITLE_WEEKLY_PLANS'), 'home-2');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/weekly_plan';

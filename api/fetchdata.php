@@ -37,7 +37,8 @@ if (isset($_GET['data'])){
 	} // end if $param = focusmodels
 
 	if ($param == 'tasks'){
-       $query = "SELECT * FROM tasks WHERE published = 1 AND expiry_date > CURDATE()";
+       // $query = "SELECT * FROM dxcr2_tasks WHERE published = 1 AND expiry_date > CURDATE()";
+	   $query = "SELECT * FROM dxcr2_tasks";
 	   $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 	   $total = mysqli_num_rows($result);
 	   

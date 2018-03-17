@@ -34,7 +34,7 @@ class OutletsHelper
 
 		JHtmlSidebar::addEntry(
 			JText::_('COM_OUTLETS_TITLE_CHECKINS'),
-			'index.php?option=com_outlets&view=checkins',
+			'index.php?option=com_shop_checkin',
 			$vName == 'checkins'
 		);
 	}

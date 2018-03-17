@@ -68,7 +68,7 @@ class VocViewVocs extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = VocHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_VOC_TITLE_VOCS'), 'vocs.png');
+		JToolBarHelper::title(JText::_('COM_VOC_TITLE_VOCS'), 'comments-2');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/voc';

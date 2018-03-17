@@ -105,7 +105,7 @@ class Competitor_activitiesViewComp_activity extends JViewLegacy
 
 		$canDo = Competitor_activitiesHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_COMPETITOR_ACTIVITIES_TITLE_COMP_ACTIVITY'), 'comp_activity.png');
+		JToolBarHelper::title(JText::_('COM_COMPETITOR_ACTIVITIES_TITLE_COMP_ACTIVITY'), 'paragraph-left');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

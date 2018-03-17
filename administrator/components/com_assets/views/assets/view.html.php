@@ -68,7 +68,7 @@ class AssetsViewAssets extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = AssetsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_ASSETS_TITLE_ASSETS'), 'assets.png');
+		JToolBarHelper::title(JText::_('COM_ASSETS_TITLE_ASSETS'), 'database');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/asset';

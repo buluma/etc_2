@@ -43,14 +43,14 @@ $saveOrder = $listOrder == 'a.`ordering`';
 
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_location_visits&task=locations.saveOrderAjax&tmpl=component';
+	$saveOrderingUrl = 'index.php?option=com_location_visits&task=maps.saveOrderAjax&tmpl=component';
 	JHtml::_('sortablelist.sortable', 'locationList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 
 $sortFields = $this->getSortFields();
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_location_visits&view=locations'); ?>" method="post"
+<form action="<?php echo JRoute::_('index.php?option=com_location_visits&view=maps'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
@@ -64,7 +64,7 @@ $sortFields = $this->getSortFields();
             <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 
 			<div class="clearfix"></div>
-			<table class="table table-striped hidden" id="locationList">
+			<table class="table table-striped hiddenx" id="locationList">
 				<thead>
 				<tr>
 					<?php if (isset($this->items[0]->ordering)): ?>

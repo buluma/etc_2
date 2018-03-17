@@ -75,7 +75,7 @@ class LoginsViewLogin extends JViewLegacy
 
 		$canDo = LoginsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LOGINS_TITLE_LOGIN'), 'login.png');
+		JToolBarHelper::title(JText::_('COM_LOGINS_TITLE_LOGIN'), 'user');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

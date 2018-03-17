@@ -75,7 +75,7 @@ class PhotosViewPhoto extends JViewLegacy
 
 		$canDo = PhotosHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PHOTOS_TITLE_PHOTO'), 'photo.png');
+		JToolBarHelper::title(JText::_('COM_PHOTOS_TITLE_PHOTO'), 'pictures');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

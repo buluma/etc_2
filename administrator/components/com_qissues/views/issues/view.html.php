@@ -68,7 +68,7 @@ class QissuesViewIssues extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = QissuesHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_QISSUES_TITLE_ISSUES'), 'issues.png');
+		JToolBarHelper::title(JText::_('COM_QISSUES_TITLE_ISSUES'), 'folder-plus-2');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/issue';

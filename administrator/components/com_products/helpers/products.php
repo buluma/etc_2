@@ -43,7 +43,7 @@ class ProductsHelper
 
 		JHtmlSidebar::addEntry(
 			JText::_('COM_PRODUCTS_TITLE_BRANDSTOCKS'),
-			'index.php?option=com_products&view=brandstocks',
+			'index.php?option=com_brandstocks&view=tbrandstocks',
 			$vName == 'brandstocks'
 		);
 	}

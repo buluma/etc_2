@@ -68,7 +68,7 @@ class ProductsViewProducts extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = ProductsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PRODUCTS_TITLE_PRODUCTS'), 'products.png');
+		JToolBarHelper::title(JText::_('COM_PRODUCTS_TITLE_PRODUCTS'), 'grid-2');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/product';

@@ -75,7 +75,7 @@ class PlannerViewWeekly_plan extends JViewLegacy
 
 		$canDo = PlannerHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PLANNER_TITLE_WEEKLY_PLAN'), 'weekly_plan.png');
+		JToolBarHelper::title(JText::_('COM_PLANNER_TITLE_WEEKLY_PLAN'), 'home-2');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

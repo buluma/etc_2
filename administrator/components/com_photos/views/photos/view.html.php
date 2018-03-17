@@ -68,7 +68,7 @@ class PhotosViewPhotos extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = PhotosHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PHOTOS_TITLE_PHOTOS'), 'photos.png');
+		JToolBarHelper::title(JText::_('COM_PHOTOS_TITLE_PHOTOS'), 'pictures');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/photo';

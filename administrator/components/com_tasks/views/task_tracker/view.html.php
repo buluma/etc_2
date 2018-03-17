@@ -76,7 +76,7 @@ class tasksViewtask_tracker extends JViewLegacy
 
 		$canDo = TasksHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_TASKS_TITLE_TASK'), 'task.png');
+		JToolBarHelper::title(JText::_('COM_TASKS_TITLE_TASK'), 'checkmark-circle');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

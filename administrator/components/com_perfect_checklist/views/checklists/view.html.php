@@ -68,7 +68,7 @@ class Perfect_checklistViewChecklists extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Perfect_checklistHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PERFECT_CHECKLIST_TITLE_CHECKLISTS'), 'checklists.png');
+		JToolBarHelper::title(JText::_('COM_PERFECT_CHECKLIST_TITLE_CHECKLISTS'), 'file-check');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/checklist';

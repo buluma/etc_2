@@ -13,7 +13,11 @@
     <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
     <field name="created_by" type="createdby" default="0" label="COM_TASKS_FORM_LBL_TASK_CREATED_BY" description="COM_TASKS_FORM_DESC_TASK_CREATED_BY" hidden="true" hint="COM_TASKS_FORM_LBL_TASK_CREATED_BY"/>
     <field name="modified_by" type="modifiedby" default="0" label="COM_TASKS_FORM_LBL_TASK_MODIFIED_BY" description="COM_TASKS_FORM_DESC_TASK_MODIFIED_BY" hidden="true" hint="COM_TASKS_FORM_LBL_TASK_MODIFIED_BY"/>
+
     <field name="task" filter="safehtml" type="text" required="true" message="Please enter task title" label="COM_TASKS_FORM_LBL_TASK_TASK" description="COM_TASKS_FORM_DESC_TASK_TASK" hint="COM_TASKS_FORM_LBL_TASK_TASK"/>
+
+    <field name="task-old" query="SELECT id as value, task as text from #__tasks" key_field="value" value_field="text" type="sql" label="Task" description="Task" hint="Task" required="false"/>
+
     <field name="user" type="user" required="true" message="Please select user to assign task to" label="COM_TASKS_FORM_LBL_TASK_USER" description="COM_TASKS_FORM_DESC_TASK_USER" hint="COM_TASKS_FORM_LBL_TASK_USER"/>
     <field name="description" filter="safehtml" type="textarea" required="true" message="Please describe the task at hand" label="COM_TASKS_FORM_LBL_TASK_DESCRIPTION" description="COM_TASKS_FORM_DESC_TASK_DESCRIPTION" hint="COM_TASKS_FORM_LBL_TASK_DESCRIPTION"/>
     <field name="deadline" class="inputbox" timeformat="12" filter="server_utc" showtime="false" singleheader="false" todaybutton="false" weeknumbers="false" filltable="false" type="calendar" label="COM_TASKS_FORM_LBL_TASK_DEADLINE" description="COM_TASKS_FORM_DESC_TASK_DEADLINE" hint="COM_TASKS_FORM_LBL_TASK_DEADLINE"/>

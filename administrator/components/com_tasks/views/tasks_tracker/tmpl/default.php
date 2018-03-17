@@ -29,14 +29,14 @@ $saveOrder = $listOrder == 'a.`ordering`';
 
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_tasks&task=tasks.saveOrderAjax&tmpl=component';
+	$saveOrderingUrl = 'index.php?option=com_tasks&task=tasks_tracker.saveOrderAjax&tmpl=component';
 	JHtml::_('sortablelist.sortable', 'taskList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 
 $sortFields = $this->getSortFields();
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_tasks&view=tasks'); ?>" method="post"
+<form action="<?php echo JRoute::_('index.php?option=com_tasks&view=tasks_tracker'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
@@ -87,7 +87,7 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'status', 'a.`status`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'completion_date', 'a.`completion_date`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'Completion Date', 'a.`completion_date`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -150,7 +150,7 @@ $sortFields = $this->getSortFields();
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'tasks.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_tasks&task=task.edit&id='.(int) $item->id); ?>">
+					<a href="<?php echo JRoute::_('index.php?option=com_tasks&view=task_tracker&layout=edit&id='.(int) $item->id); ?>">
 					<?php echo $this->escape($item->task); ?></a>
 				<?php else : ?>
 					<?php echo $this->escape($item->task); ?>

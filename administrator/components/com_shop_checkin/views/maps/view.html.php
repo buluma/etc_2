@@ -77,6 +77,26 @@ class Shop_checkinViewmaps extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Shop_checkinHelper::getActions();
 
+		JToolBarHelper::title(JText::_('Map View'), 'compass');
+
+		// Check if the form exists before showing the add/edit buttons
+		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/maps';
+
+		if ($canDo->get('core.admin'))
+		{
+			JToolBarHelper::preferences('com_shop_checkin');
+		}
+
+		// Set sidebar action - New in 3.0
+		JHtmlSidebar::setAction('index.php?option=com_shop_checkin&view=maps');
+	
+	}
+
+	protected function addToolbarold()
+	{
+		$state = $this->get('State');
+		$canDo = Shop_checkinHelper::getActions();
+
 		JToolBarHelper::title(JText::_('Shop checkins'), 'locations.png');
 
 		// Check if the form exists before showing the add/edit buttons

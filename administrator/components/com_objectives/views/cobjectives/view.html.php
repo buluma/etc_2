@@ -70,7 +70,7 @@ class objectivesViewcobjectives extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = ObjectivesHelper::getActions();
 
-		JToolBarHelper::title(JText::_('Objectives - Data'), 'objectives.png');
+		JToolBarHelper::title(JText::_('Objectives - Data'), 'featured');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/objective';

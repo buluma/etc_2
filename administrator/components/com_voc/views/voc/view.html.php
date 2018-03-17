@@ -75,7 +75,7 @@ class VocViewVoc extends JViewLegacy
 
 		$canDo = VocHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_VOC_TITLE_VOC'), 'voc.png');
+		JToolBarHelper::title(JText::_('COM_VOC_TITLE_VOC'), 'comments-2');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

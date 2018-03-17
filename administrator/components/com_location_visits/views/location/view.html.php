@@ -75,7 +75,7 @@ class Location_visitsViewLocation extends JViewLegacy
 
 		$canDo = Location_visitsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATION'), 'location.png');
+		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATION'), 'location');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

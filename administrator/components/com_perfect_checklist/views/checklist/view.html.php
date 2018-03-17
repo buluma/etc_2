@@ -75,7 +75,7 @@ class Perfect_checklistViewChecklist extends JViewLegacy
 
 		$canDo = Perfect_checklistHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PERFECT_CHECKLIST_TITLE_CHECKLIST'), 'checklist.png');
+		JToolBarHelper::title(JText::_('COM_PERFECT_CHECKLIST_TITLE_CHECKLIST'), 'file-check');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

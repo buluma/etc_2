@@ -75,7 +75,7 @@ class ListingsViewListing extends JViewLegacy
 
 		$canDo = ListingsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LISTINGS_TITLE_LISTING'), 'listing.png');
+		JToolBarHelper::title(JText::_('COM_LISTINGS_TITLE_LISTING'), 'list-view');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

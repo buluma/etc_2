@@ -75,7 +75,7 @@ class Price_surveyViewPis extends JViewLegacy
 
 		$canDo = Price_surveyHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PRICE_SURVEY_TITLE_PIS'), 'pis.png');
+		JToolBarHelper::title(JText::_('COM_PRICE_SURVEY_TITLE_PIS'), 'health');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

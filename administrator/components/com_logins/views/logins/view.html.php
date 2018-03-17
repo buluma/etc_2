@@ -68,7 +68,7 @@ class LoginsViewLogins extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = LoginsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LOGINS_TITLE_LOGINS'), 'logins.png');
+		JToolBarHelper::title(JText::_('COM_LOGINS_TITLE_LOGINS'), 'users');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/login';

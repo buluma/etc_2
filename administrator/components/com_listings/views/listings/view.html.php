@@ -71,7 +71,7 @@ class ListingsViewListings extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = ListingsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LISTINGS_TITLE_LISTINGS'), 'listings.png');
+		JToolBarHelper::title(JText::_('COM_LISTINGS_TITLE_LISTINGS'), 'list-view');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/listing';

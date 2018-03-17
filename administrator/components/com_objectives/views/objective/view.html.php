@@ -75,7 +75,7 @@ class ObjectivesViewObjective extends JViewLegacy
 
 		$canDo = ObjectivesHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_OBJECTIVES_TITLE_OBJECTIVE'), 'objective.png');
+		JToolBarHelper::title(JText::_('COM_OBJECTIVES_TITLE_OBJECTIVE'), 'featured');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

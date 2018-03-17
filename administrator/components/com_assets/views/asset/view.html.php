@@ -75,7 +75,7 @@ class AssetsViewAsset extends JViewLegacy
 
 		$canDo = AssetsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_ASSETS_TITLE_ASSET'), 'asset.png');
+		JToolBarHelper::title(JText::_('COM_ASSETS_TITLE_ASSET'), 'database');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

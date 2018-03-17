@@ -68,7 +68,7 @@ class OutletsViewOutlets extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = OutletsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_OUTLETS_TITLE_OUTLETS'), 'outlets.png');
+		JToolBarHelper::title(JText::_('COM_OUTLETS_TITLE_OUTLETS'), 'home-2');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/outlet';

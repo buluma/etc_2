@@ -77,7 +77,7 @@ class Location_visitsViewLocations extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Location_visitsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATIONS'), 'locations.png');
+		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATIONS'), 'location');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/location';

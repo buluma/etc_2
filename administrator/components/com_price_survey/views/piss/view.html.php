@@ -68,7 +68,7 @@ class Price_surveyViewPiss extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Price_surveyHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PRICE_SURVEY_TITLE_PISS'), 'piss.png');
+		JToolBarHelper::title(JText::_('COM_PRICE_SURVEY_TITLE_PISS'), 'health');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/pis';

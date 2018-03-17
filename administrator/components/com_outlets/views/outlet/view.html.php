@@ -77,7 +77,7 @@ class OutletsViewOutlet extends JViewLegacy
 
 		$canDo = OutletsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_OUTLETS_TITLE_OUTLET'), 'outlet.png');
+		JToolBarHelper::title(JText::_('COM_OUTLETS_TITLE_OUTLET'), 'home-2');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

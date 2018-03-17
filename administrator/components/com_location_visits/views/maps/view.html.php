@@ -77,26 +77,47 @@ class location_visitsViewmaps extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Location_visitsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATIONS'), 'locations.png');
+		JToolBarHelper::title(JText::_('Map View'), 'location');
 
 		// Check if the form exists before showing the add/edit buttons
-		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/location';
+		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/maps';
+
+		if ($canDo->get('core.admin'))
+		{
+			JToolBarHelper::preferences('com_location_visits');
+		}
+
+		// Set sidebar action - New in 3.0
+		JHtmlSidebar::setAction('index.php?option=com_location_visits&view=maps');
+	
+	}
+
+
+	protected function addToolbarold()
+	{
+		$state = $this->get('State');
+		$canDo = Location_visitsHelper::getActions();
+
+		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATIONS'), 'location');
+
+		// Check if the form exists before showing the add/edit buttons
+		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/maps';
 
 		if (file_exists($formPath))
 		{
 			if ($canDo->get('core.create'))
 			{
-				JToolBarHelper::addNew('location.add', 'JTOOLBAR_NEW');
+				JToolBarHelper::addNew('map.add', 'JTOOLBAR_NEW');
 
 				if (isset($this->items[0]))
 				{
-					JToolbarHelper::custom('locations.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+					JToolbarHelper::custom('maps.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
 				}
 			}
 
 			if ($canDo->get('core.edit') && isset($this->items[0]))
 			{
-				JToolBarHelper::editList('location.edit', 'JTOOLBAR_EDIT');
+				JToolBarHelper::editList('map.edit', 'JTOOLBAR_EDIT');
 			}
 		}
 
@@ -105,41 +126,41 @@ class location_visitsViewmaps extends JViewLegacy
 			if (isset($this->items[0]->state))
 			{
 				JToolBarHelper::divider();
-				JToolBarHelper::custom('locations.publish', 'publish.png', 'publish_f2.png', 'JTOOLBAR_PUBLISH', true);
-				JToolBarHelper::custom('locations.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);
+				JToolBarHelper::custom('maps.publish', 'publish.png', 'publish_f2.png', 'JTOOLBAR_PUBLISH', true);
+				JToolBarHelper::custom('maps.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);
 			}
 			elseif (isset($this->items[0]))
 			{
 				// If this component does not use state then show a direct delete button as we can not trash
-				JToolBarHelper::deleteList('', 'locations.delete', 'JTOOLBAR_DELETE');
+				JToolBarHelper::deleteList('', 'maps.delete', 'JTOOLBAR_DELETE');
 			}
 
 			if (isset($this->items[0]->state))
 			{
 				JToolBarHelper::divider();
-				JToolBarHelper::archiveList('locations.archive', 'JTOOLBAR_ARCHIVE');
+				JToolBarHelper::archiveList('maps.archive', 'JTOOLBAR_ARCHIVE');
 			}
 
 			if (isset($this->items[0]->checked_out))
 			{
-				JToolBarHelper::custom('locations.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
+				JToolBarHelper::custom('maps.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
 			}
 		}
 
 		// Show trash and delete for components that uses the state field
-		if (isset($this->items[0]->state))
-		{
-			if ($state->get('filter.state') == -2 && $canDo->get('core.delete'))
-			{
-				JToolBarHelper::deleteList('', 'locations.delete', 'JTOOLBAR_EMPTY_TRASH');
-				JToolBarHelper::divider();
-			}
-			elseif ($canDo->get('core.edit.state'))
-			{
-				JToolBarHelper::trash('locations.trash', 'JTOOLBAR_TRASH');
-				JToolBarHelper::divider();
-			}
-		}
+		// if (isset($this->items[0]->state))
+		// {
+		// 	if ($state->get('filter.state') == -2 && $canDo->get('core.delete'))
+		// 	{
+		// 		JToolBarHelper::deleteList('', 'maps.delete', 'JTOOLBAR_EMPTY_TRASH');
+		// 		JToolBarHelper::divider();
+		// 	}
+		// 	elseif ($canDo->get('core.edit.state'))
+		// 	{
+		// 		JToolBarHelper::trash('maps.trash', 'JTOOLBAR_TRASH');
+		// 		JToolBarHelper::divider();
+		// 	}
+		// }
 
 		if ($canDo->get('core.admin'))
 		{
@@ -147,7 +168,7 @@ class location_visitsViewmaps extends JViewLegacy
 		}
 
 		// Set sidebar action - New in 3.0
-		JHtmlSidebar::setAction('index.php?option=com_location_visits&view=locations');
+		JHtmlSidebar::setAction('index.php?option=com_location_visits&view=maps');
 	}
 
 	/**

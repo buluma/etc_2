@@ -75,7 +75,7 @@ class BrandstocksViewTbrandstock extends JViewLegacy
 
 		$canDo = BrandstocksHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_BRANDSTOCKS_TITLE_TBRANDSTOCK'), 'tbrandstock.png');
+		JToolBarHelper::title(JText::_('COM_BRANDSTOCKS_TITLE_TBRANDSTOCK'), 'list-2');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

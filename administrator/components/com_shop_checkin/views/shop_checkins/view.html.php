@@ -68,7 +68,7 @@ class Shop_checkinViewShop_checkins extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Shop_checkinHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_SHOP_CHECKIN_TITLE_SHOP_CHECKINS'), 'shop_checkins.png');
+		JToolBarHelper::title(JText::_('COM_SHOP_CHECKIN_TITLE_SHOP_CHECKINS'), 'compass');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/shop_checkin';

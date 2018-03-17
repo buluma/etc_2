@@ -68,7 +68,7 @@ class BrandstocksViewTbrandstocks extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = BrandstocksHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_BRANDSTOCKS_TITLE_TBRANDSTOCKS'), 'tbrandstocks.png');
+		JToolBarHelper::title(JText::_('COM_BRANDSTOCKS_TITLE_TBRANDSTOCKS'), 'list-2');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/tbrandstock';

@@ -75,7 +75,7 @@ class PromotionsViewPromotion extends JViewLegacy
 
 		$canDo = PromotionsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PROMOTIONS_TITLE_PROMOTION'), 'promotion.png');
+		JToolBarHelper::title(JText::_('COM_PROMOTIONS_TITLE_PROMOTION'), 'calendar-3');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

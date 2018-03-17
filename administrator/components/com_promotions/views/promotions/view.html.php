@@ -68,7 +68,7 @@ class PromotionsViewPromotions extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = PromotionsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_PROMOTIONS_TITLE_PROMOTIONS'), 'promotions.png');
+		JToolBarHelper::title(JText::_('COM_PROMOTIONS_TITLE_PROMOTIONS'), 'calendar-3');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/promotion';
