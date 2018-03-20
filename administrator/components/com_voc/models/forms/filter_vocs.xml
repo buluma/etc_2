@@ -15,8 +15,11 @@
         </field>
 
         <field name="submitter" label="COM_VOC_FORM_LBL_VOC_SUBMITTER" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_VOC_VOCS_SUBMITTER_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/>
+
 <field name="brand" label="COM_VOC_FORM_LBL_VOC_BRAND" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_BRAND_FILTER' AS `text` UNION (SELECT id as value, product_name as text FROM #__products)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
 <field name="brandcode" label="COM_VOC_FORM_LBL_VOC_BRANDCODE" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_BRANDCODE_FILTER' AS `text` UNION (SELECT id as value, product_code as text FROM #__products)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
 <field name="category" label="COM_VOC_FORM_LBL_VOC_CATEGORY" type="list" onchange="this.form.submit();" default="COM_VOC_VOCS_CATEGORY_FILTER">
   <option value="">COM_VOC_VOCS_CATEGORY_FILTER</option>
   <option value="1">COM_VOC_VOCS_CATEGORY_OPTION_1</option>
@@ -44,6 +47,7 @@
   <option value="1">COM_VOC_VOCS_ISURGENT_OPTION_ON</option>
 </field>
 <field name="store" label="COM_VOC_FORM_LBL_VOC_STORE" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
 <field name="store_id" label="COM_VOC_FORM_LBL_VOC_STORE_ID" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_STORE_ID_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
 
 

@@ -74,12 +74,21 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLY_PLANS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
+				<th class='left hidden'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLY_PLANS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PLANNER_WEEKLY_PLANS_FIRST_INSERT', 'a.`first_insert`', $listDirn, $listOrder); ?>
 				</th>
+
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Adherance %', 'a.`adhered`', $listDirn, $listOrder); ?>
+				</th>
+
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Adhered?', 'a.`adhered`', $listDirn, $listOrder); ?>
+				</th>
+
 
 					
 				</tr>
@@ -139,12 +148,36 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->user_id; ?>
-				</td>				<td>
+				</td>				
+				<td class="hidden">
 
 					<?php echo $item->submitter; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->first_insert; ?>
+				</td>
+				<td>
+					<?php 
+					$adherance = '67'; //echo $item->adherance; 
+					if (($adherance <= '50') and ($adherance >= '60')) {
+						echo '<span style="color:green; padding:6px; color: white;">'. $adherance. '</span>';
+					} else {
+						echo '<span style="background:orange; padding:6px; color: white;">'. $adherance. '</span>';
+					}
+					
+
+					?>
+				</td>
+				<td>
+					<?php 
+						$adhered = 'yes';
+
+						if ($adhered == 'yes') {
+							echo '<span style="color:green">True</span>';
+						} else {
+							echo '<span style="color:red">False</span>';
+						}
+						 ?>
 				</td>
 
 					</tr>
