@@ -48,6 +48,8 @@ class PhotosViewPhotos extends JViewLegacy
 			throw new Exception(implode("\n", $errors));
 		}
 
+		// var_dump($this->items);
+
 		PhotosHelper::addSubmenu('photos');
 
 		$this->addToolbar();

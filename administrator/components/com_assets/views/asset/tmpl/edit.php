@@ -78,15 +78,16 @@ $document->addStyleSheet(JUri::root() . 'media/com_assets/css/form.css');
 									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
 				<?php echo $this->form->renderField('asset_type'); ?>
 				<?php echo $this->form->renderField('serial_number'); ?>
-				<?php echo $this->form->renderField('imagepath'); ?>
+				<?php //echo $this->form->renderField('imagepath'); ?>
 				<input type="hidden" name="jform[ordering]" value="<?php echo $this->item->ordering; ?>" />
 				<input type="hidden" name="jform[state]" value="<?php echo $this->item->state; ?>" />
 				<input type="hidden" name="jform[checked_out]" value="<?php echo $this->item->checked_out; ?>" />
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
 				<?php echo $this->form->renderField('created_by'); ?>
-				<?php echo $this->form->renderField('modified_by'); ?>				<?php echo $this->form->renderField('client_id'); ?>
-				<?php echo $this->form->renderField('imagedate'); ?>
+				<?php echo $this->form->renderField('modified_by'); ?>				
+				<?php echo $this->form->renderField('client_id'); ?>
+				<?php //echo $this->form->renderField('imagedate'); ?>
 				<?php echo $this->form->renderField('submitter'); ?>
 				<?php echo $this->form->renderField('user_id'); ?>
 				<?php echo $this->form->renderField('store'); ?>

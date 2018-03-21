@@ -179,7 +179,20 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->submitter; ?>
-				</td>				<td>
+				</td>				
+				<td>
+					<?php //echo $item->imagepath; 
+					$thisimage = $item->photos;
+					if (!empty($thisimage)) {
+						// $showimage = 'Image found';
+						?>
+						<img src="<?php echo strip_tags($item->photos); ?>" width="120" height="100" />
+						<?php
+					} else {
+						echo 'No Image found';
+					}
+					
+					?>
 
 					<?php echo $item->photos; ?>
 				</td>				<td>

@@ -48,6 +48,7 @@ class VocViewVocs extends JViewLegacy
 			throw new Exception(implode("\n", $errors));
 		}
 
+		// var_dump($this->items);
 		VocHelper::addSubmenu('vocs');
 
 		$this->addToolbar();

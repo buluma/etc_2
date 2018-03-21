@@ -90,12 +90,12 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_SERIAL_NUMBER', 'a.`serial_number`', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_IMAGEPATH', 'a.`imagepath`', $listDirn, $listOrder); ?>
+				<!-- <th class='left'>
+				<?php //echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_IMAGEPATH', 'a.`imagepath`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_IMAGEDATE', 'a.`imagedate`', $listDirn, $listOrder); ?>
-				</th>
+				<?php //echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_IMAGEDATE', 'a.`imagedate`', $listDirn, $listOrder); ?>
+				</th> -->
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
@@ -172,10 +172,10 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->serial_number; ?>
-				</td>				<td>
+				</td>				<td class="hidden">
 
 					<?php echo $item->imagepath; ?>
-				</td>				<td>
+				</td>				<td class="hidden">
 
 					<?php echo $item->imagedate; ?>
 				</td>				<td>
