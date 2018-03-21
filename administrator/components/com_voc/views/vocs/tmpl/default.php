@@ -194,7 +194,7 @@ $sortFields = $this->getSortFields();
 					
 					?>
 
-					<?php echo $item->photos; ?>
+					<?php //echo $item->photos; ?>
 				</td>				<td>
 
 					<?php echo $item->brand; ?>
