@@ -1211,6 +1211,8 @@ function saveTLObjectives($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
+            'state' => '1',
+            'ordering' => '1',
             'client_id' => $item->id,
             'inputdate' => $item->inputdate,
             'coordinates' => $item->coords,
@@ -1229,7 +1231,7 @@ function saveTLObjectives($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_tl_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_data_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'team leader objective added with client_id: '.$item->id);
