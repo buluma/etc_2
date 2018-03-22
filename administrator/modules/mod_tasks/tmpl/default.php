@@ -54,16 +54,16 @@ JHtml::_('bootstrap.tooltip');
         </div>
       </div>
       <div class="span3">
-        <div class="small pull-left hasTooltip" title="<?php echo JHtml::_('tooltipText', 'MOD_LOGGED_LAST_ACTIVITY'); ?>">
+        <div class="small pull-left hasTooltip" title="<?php echo JHtml::_('tooltipText', 'Priority'); ?>">
           <span class="icon-calendar" aria-hidden="true"></span> 
           <?php 
 
             if ($user->priority == 1) {
-              echo 'Low';
+              echo '<span style="color:green">Low</span>';
             } elseif ($user->priority == 2) {
-              echo 'Medium';
+              echo '<span style="color:orange">Medium</span>';
             } elseif ($user->priority == 3) {
-              echo 'High';
+              echo '<span style="color:red">High</span>';
             }
             
           //echo JHtml::_('date', $user->deadline, JText::_('DATE_FORMAT_LC5')); ?>

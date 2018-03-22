@@ -1,5 +1,7 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
-/configuration.php
+configuration.php
+**configuration.php
+*configuration.php
 error_log
 /node/
 /import-database-sql-file-using-PHP-script-master/
