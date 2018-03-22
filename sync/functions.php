@@ -902,7 +902,6 @@ function saveObjectives($clientData, $syncDate){
     		// save the item to database
     	    $sqlData = array(
                 'state' => '1',
-                'ordering' => '1',
                 'client_id' => $item->id,
                 'inputdate' => $item->inputdate,
                 'coordinates' => $item->coords,
@@ -1211,15 +1210,20 @@ function saveTLObjectives($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
-            'state' => '1',
-            'ordering' => '1',
             'client_id' => $item->id,
             'inputdate' => $item->inputdate,
             'coordinates' => $item->coords,
-            'objective' => $item->objective,
+            'objective_code' => $item->objective_code,
+            'objective_desc' => $item->objective,
+            'targetscore' => $item->targetscore,
+            'targetfacings' => $item->targetfacings,
+            'current_percent' => $item->current_percent,
+            'current_facings' => $item->current_facings,
+            'categorytotal' => $item->categorytotal,
+            'response_type' => $item->response_type,
             'objective_achieved' => $item->objective_achieved,
-            'challenge' => $item->challenge,
-            'next_plan' => $item->next_plan,
+            'reason_not_achieved' => $item->reason_not_achieved,
+            'action_point' => $item->action_point,
             'submitter' => $item->submitter,
             'user_id' => setUserID($item->submitter),
             'store' => $item->store,

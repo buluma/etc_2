@@ -5978,7 +5978,7 @@ hr.hr-condensed {
 	background-color: #f9fafb;
 }
 .row-striped .row-fluid {
-	width: 97%;
+	width: 100%;
 }
 .row-striped .row-fluid [class*="span"] {
 	min-height: 10px;

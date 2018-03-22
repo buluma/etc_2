@@ -31,7 +31,12 @@ defined('_JEXEC') or die;
 JLoader::register('ModAdminIconsHelper', __DIR__ . '/helper.php');
 
 $document = JFactory::getDocument();
-$document->addStyleSheet('http://localhost:9000/startbootstrap-sb-admin/vendor/font-awesome/css/font-awesome.min.css');
+$csspath = JURI::base().'modules/'.$module->module;
+// var_dump($csspath);
+$document->addStyleSheet($csspath. '/assets/css/font-awesome.min.css');
+
+// $doc = JFactory::getDocument();
+// $doc->addStyleSheet('path/to/style.css');
 
 $visits = ModAdminIconsHelper::getList();
 $photos = ModAdminIconsHelper::getImages();
