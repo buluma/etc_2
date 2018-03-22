@@ -41,6 +41,10 @@ require_once JPATH_BASE . '/includes/framework.php';
 require_once JPATH_BASE . '/includes/helper.php';
 require_once JPATH_BASE . '/includes/toolbar.php';
 
+//register sentry
+require_once '../vendor/sentry/sentry/lib/Raven//Autoloader.php';
+Raven_Autoloader::register();
+
 // Set profiler start time and memory usage and mark afterLoad in the profiler.
 JDEBUG ? JProfiler::getInstance('Application')->setStart($startTime, $startMem)->mark('afterLoad') : null;
 
@@ -49,3 +53,4 @@ $app = JFactory::getApplication('administrator');
 
 // Execute the application.
 $app->execute();
+

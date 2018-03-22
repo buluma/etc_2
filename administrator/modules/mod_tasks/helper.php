@@ -60,10 +60,9 @@ abstract class ModTasksHelper
         {
             $results[$k]->logoutLink = '';
 
-            if ($user->authorise('core.manage', 'com_users'))
+            if ($user->authorise('core.manage', 'com_tasks'))
             {
                 $results[$k]->editLink   = JRoute::_('index.php?option=com_tasks&view=task&layout=edit&id=' . $result->taskid);
-                // $results[$k]->logoutLink = JRoute::_('index.php?option=com_login&task=logout&uid=' . $result->id . '&' . JSession::getFormToken() . '=1');
             }
 
             if ($params->get('name', 1) == 0)

@@ -6,5 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'SimplePie' => array($vendorDir . '/simplepie/simplepie/library'),
+    'Raven_' => array($vendorDir . '/sentry/sentry/lib'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'Joomla\\Session' => array($vendorDir . '/joomla/session'),
 );

@@ -39,6 +39,10 @@ if (!defined('_JDEFINES'))
 
 require_once JPATH_BASE . '/includes/framework.php';
 
+//register sentry
+require_once JPATH_BASE .'/vendor/sentry/sentry/lib/Raven//Autoloader.php';
+Raven_Autoloader::register();
+
 // Set profiler start time and memory usage and mark afterLoad in the profiler.
 JDEBUG ? JProfiler::getInstance('Application')->setStart($startTime, $startMem)->mark('afterLoad') : null;
 

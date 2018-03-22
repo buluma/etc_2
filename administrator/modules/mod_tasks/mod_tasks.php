@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 // Include dependencies.
 JLoader::register('ModTasksHelper', __DIR__ . '/helper.php');
 
-$users = ModTasksHelper::getList($params);
+// $users = ModTasksHelper::getList($params);
 $tasks = ModTasksHelper::getList($params);
 
 if ($params->get('automatic_title', 0))

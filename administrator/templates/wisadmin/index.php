@@ -153,6 +153,27 @@ else
 	{
 		$fontweight = 'bold';
 	}
+
+	$client = new Raven_Client('https://0d302d3271064567b58bd3da16f6bc00:50623b88e371408498787339e8007cf1@sentry.io/285833');
+
+$client->install();
+
+// var_dump($client);
+// Capture an exception
+// $event_id = $client->captureException($ex);
+// $sentryClient->install();
+
+// Capture an exception
+// $event_id = $sentryClient->captureException($ex);
+// $error_handler = new \Raven_ErrorHandler($client);
+// // $error_handler->registerExceptionHandler();
+// $error_handler->registerErrorHandler(true, E_ALL & ~E_DEPRECATED & ~E_NOTICE & ~E_USER_DEPRECATED);
+
+// // Capture a message
+// $client->captureMessage('my log message');
+// Give the user feedback
+// echo "Sorry, there was an error!";
+// echo "Your reference ID is " . $event_id;
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
