@@ -41,7 +41,7 @@ JHtml::_('bootstrap.tooltip');
           <?php if ($user->name === null) : ?>
             <?php // Don't display a client ?>
           <?php elseif ($user->name) : ?>
-            <?php echo $user->name ;//JText::_('JADMINISTRATION'); ?>
+            <?php echo $user->name ; ?>
           <?php else : ?>
             <?php echo JText::_('JSITE'); ?>
           <?php endif; ?>
@@ -49,8 +49,8 @@ JHtml::_('bootstrap.tooltip');
       </div>
 
       <div class="span3">
-        <div class="small pull-left hasTooltip" title="<?php echo JHtml::_('tooltipText', 'Created on'); ?>">
-          <span class="icon-calendar" aria-hidden="true"></span> <?php echo JHtml::_('date', $user->created, JText::_('DATE_FORMAT_LC5')); ?>
+        <div class="small pull-left hasTooltip" title="<?php echo JHtml::_('tooltipText', 'Deadline'); ?>">
+          <span class="icon-calendar" aria-hidden="true"></span> <?php echo JHtml::_('date', $user->deadline, JText::_('DATE_FORMAT_LC5')); ?>
         </div>
       </div>
       <div class="span3">
@@ -65,8 +65,7 @@ JHtml::_('bootstrap.tooltip');
             } elseif ($user->priority == 3) {
               echo '<span style="color:red">High</span>';
             }
-            
-          //echo JHtml::_('date', $user->deadline, JText::_('DATE_FORMAT_LC5')); ?>
+             ?>
         </div>
       </div>
     </div>
