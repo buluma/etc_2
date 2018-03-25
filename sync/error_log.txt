@@ -25,3 +25,10 @@
 [21-Mar-2018 20:11:38 UTC] PHP Notice:  Undefined property: stdClass::$response_type in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1223
 [21-Mar-2018 20:11:38 UTC] PHP Notice:  Undefined property: stdClass::$reason_not_achieved in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1225
 [21-Mar-2018 20:11:38 UTC] PHP Notice:  Undefined property: stdClass::$action_point in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1226
+[25-Mar-2018 04:56:46 UTC] PHP Notice:  Undefined property: stdClass::$objective_code in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1217
+[25-Mar-2018 04:56:46 UTC] PHP Notice:  Undefined property: stdClass::$action_point in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1221
+[25-Mar-2018 05:07:05 UTC] PHP Notice:  Undefined property: stdClass::$objective_code in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1217
+[25-Mar-2018 05:07:05 UTC] PHP Notice:  Undefined property: stdClass::$action_point in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1221
+[25-Mar-2018 05:09:06 UTC] PHP Notice:  Undefined property: stdClass::$objective_code in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1217
+[25-Mar-2018 05:09:06 UTC] PHP Notice:  Undefined property: stdClass::$action_point in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1221
+[25-Mar-2018 05:11:18 UTC] PHP Notice:  Undefined property: stdClass::$objective_code in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1217

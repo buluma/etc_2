@@ -779,7 +779,8 @@ function saveTLFocusAreas($clientData, $syncDate){
             'description' => $item->description,
             'focus_type' => $item->focus_type,
             'action_input' => $item->action_input,
-            'submitter' => $item->submitter,
+            'submitter' => setUserID($item->submitter),
+            // 'submitter' => $item->submitter,
             'user_id' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
@@ -1210,21 +1211,15 @@ function saveTLObjectives($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
+            'state' => '1',
             'client_id' => $item->id,
             'inputdate' => $item->inputdate,
             'coordinates' => $item->coords,
-            'objective_code' => $item->objective_code,
-            'objective_desc' => $item->objective,
-            'targetscore' => $item->targetscore,
-            'targetfacings' => $item->targetfacings,
-            'current_percent' => $item->current_percent,
-            'current_facings' => $item->current_facings,
-            'categorytotal' => $item->categorytotal,
-            'response_type' => $item->response_type,
+            'objective' => $item->objective,
             'objective_achieved' => $item->objective_achieved,
-            'reason_not_achieved' => $item->reason_not_achieved,
-            'action_point' => $item->action_point,
-            'submitter' => $item->submitter,
+            'next_plan' => $item->next_plan,
+            'challenge' => $item->challenge,
+            'submitter' => setUserID($item->submitter),
             'user_id' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
@@ -1235,7 +1230,7 @@ function saveTLObjectives($clientData, $syncDate){
             );
 	    $columns = array_keys($sqlData);
 		$values = array_values($sqlData);
-		$query = 'INSERT INTO dxcr2_data_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+		$query = 'INSERT INTO dxcr2_tl_objectives(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
 		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 		if ($insert){
 		    array_push($resultarray, 'team leader objective added with client_id: '.$item->id);
