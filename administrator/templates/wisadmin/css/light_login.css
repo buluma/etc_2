@@ -64,7 +64,9 @@
 #form-login .btn-group > .btn:hover,#form-login .btn-group > .btn:focus {
 	background-position: 0 -45px;}
 #form-login{ margin-bottom:0;}
-.view-login .input-medium{ }
+.view-login .input-medium{
+        height: auto !important;
+ }
 #form-login .input-prepend,#form-login .input-append{ background:#d3d3d3;display: block;}
 .login .chzn-container, .login .chzn-drop {font-family: Rajdhani,"Lucida Grande",Arial,sans-serif; line-height:28px;   min-width: 232px;}
 .chzn-container-single .chzn-single span{line-height:28px;}

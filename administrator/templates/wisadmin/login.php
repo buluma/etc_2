@@ -71,6 +71,8 @@ function colorIsLight($color)
 				font-size: 13px;
 				padding: 4px 10px 4px;
 			}
+
+			
 		}
 		<?php // Check if debug is on ?>
 		<?php if ($app->get('debug_lang', 1) || $app->get('debug', 1)) : ?>
