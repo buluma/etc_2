@@ -183,6 +183,10 @@ class BrandstocksModelTbrandstocks extends JModelList
 		// Join over the user field 'submitter'
 		$query->select('`submitter`.name AS `submitter`');
 		$query->join('LEFT', '#__users AS `submitter` ON `submitter`.id = a.`submitter`');
+		
+		// Join over the client field 'client_id'
+		$query->select('`client_id`.client_name AS `client_id`');
+		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');

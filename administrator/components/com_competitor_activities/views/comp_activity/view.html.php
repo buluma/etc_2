@@ -60,7 +60,7 @@ class Competitor_activitiesViewComp_activity extends JViewLegacy
 		// $images = $this->imagesx;
 		
 		// echo '<pre>';
-		// var_dump($this->item);
+		// var_dump($imagesx);
 		// echo '<pre/>';	
 
 		

@@ -159,8 +159,9 @@ $sortFields = $this->getSortFields();
 										<td>
 
 					<?php echo $item->id; ?>
-				</td>				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
+				</td>				
+				<!-- <td> -->
+				<?php /*if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'locations.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
@@ -168,13 +169,17 @@ $sortFields = $this->getSortFields();
 					<?php echo $this->escape($item->client_id); ?></a>
 				<?php else : ?>
 					<?php echo $this->escape($item->client_id); ?>
-				<?php endif; ?>
+				<?php endif;*/ ?>
 
-				</td>				<td>
-
+				<!-- </td>				 -->
+				<td>
+					<?php echo $item->client_id; ?>
+				</td>
+				<td>
 					<?php echo $item->coordinates; ?>
-				</td>				<td>
+				</td>
 
+				<td>
 					<?php echo $item->submitter; ?>
 				</td>				<td>
 

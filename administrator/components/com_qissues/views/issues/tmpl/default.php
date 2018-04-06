@@ -111,6 +111,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_QISSUES_ISSUES_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Client Id', 'a.`client_id`', $listDirn, $listOrder); ?>
+				</th>
 
 					
 				</tr>
@@ -176,11 +179,23 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->issue_type; ?>
-				</td>				<td>
+				</td>
 
-					<?php echo $item->expiry_date; ?>
-				</td>				<td>
+				<td>
+					<?php 
 
+					$exp = $item->expiry_date; 
+					if (empty($exp)) {
+						echo 'N/A';
+					} else {
+						echo $exp;
+					}
+					
+
+					?>
+				</td>
+
+				<td>
 					<?php echo $item->store; ?>
 				</td>				<td>
 
@@ -202,6 +217,9 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->submitter; ?>
+				</td>
+				<td>
+					<?php echo $item->client_id; ?>
 				</td>
 
 					</tr>

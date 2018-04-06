@@ -16,8 +16,12 @@
 
         <!-- <field name="imagedate.from" label="COM_ASSETS_ASSETS_IMAGEDATE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_ASSETS_ASSETS_IMAGEDATE_FILTER_FROM"/>
 <field name="imagedate.to" label="COM_ASSETS_ASSETS_IMAGEDATE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_ASSETS_ASSETS_IMAGEDATE_FILTER_TO"/> -->
-<field name="submitter" label="COM_ASSETS_FORM_LBL_ASSET_SUBMITTER" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_ASSETS_ASSETS_SUBMITTER_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/>
-<field name="store" label="COM_ASSETS_FORM_LBL_ASSET_STORE" type="sql" query="SELECT '' AS `id`, 'COM_ASSETS_ASSETS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
+<field name="submitter" label="COM_ASSETS_FORM_LBL_ASSET_SUBMITTER" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_ASSETS_ASSETS_CLIENT_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/>
+
+<field name="client_id" label="Client" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_ASSETS_ASSETS_CLIENT_FILTER&quot; AS `client_name` UNION SELECT `id`, `client_name` FROM `#__clients`" translate="true" key_field="id" value_field="client_name" onchange="this.form.submit();"/>
+
+<!-- <field name="store" label="COM_ASSETS_FORM_LBL_ASSET_STORE" type="sql" query="SELECT '' AS `id`, 'COM_ASSETS_ASSETS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/> -->
 
 
     </fields>

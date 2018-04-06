@@ -38,7 +38,9 @@ if (isset($_GET['data'])){
 
 	if ($param == 'tasks'){
        // $query = "SELECT * FROM dxcr2_tasks WHERE published = 1 AND expiry_date > CURDATE()";
-	   $query = "SELECT * FROM dxcr2_tasks";
+	   // $query = "SELECT * FROM dxcr2_tasks";
+	   // $query = "SELECT id, user, task, description, deadline, priority FROM dxcr2_tasks WHERE user = '".$id."'";
+		$query = "SELECT id, user, task, description, deadline, priority FROM dxcr2_tasks";
 	   $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 	   $total = mysqli_num_rows($result);
 	   

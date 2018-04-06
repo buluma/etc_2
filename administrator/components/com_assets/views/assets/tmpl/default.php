@@ -19,6 +19,7 @@ JHtml::_('formbehavior.chosen', 'select');
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'administrator/components/com_assets/assets/css/assets.css');
 $document->addStyleSheet(JUri::root() . 'media/com_assets/css/list.css');
+
 //datatables
 $document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
 $document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
@@ -90,20 +91,14 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_SERIAL_NUMBER', 'a.`serial_number`', $listDirn, $listOrder); ?>
 				</th>
-				<!-- <th class='left'>
-				<?php //echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_IMAGEPATH', 'a.`imagepath`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php //echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_IMAGEDATE', 'a.`imagedate`', $listDirn, $listOrder); ?>
-				</th> -->
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_ASSETS_ASSETS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Client ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
-
-					
 				</tr>
 				</thead>
 				<tfoot>
@@ -172,18 +167,15 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->serial_number; ?>
-				</td>				<td class="hidden">
-
-					<?php echo $item->imagepath; ?>
-				</td>				<td class="hidden">
-
-					<?php echo $item->imagedate; ?>
-				</td>				<td>
-
+				</td>			
+				<td>
 					<?php echo $item->submitter; ?>
-				</td>				<td>
-
+				</td>
+				<td>
 					<?php echo $item->store; ?>
+				</td>
+				<td>
+					<?php echo $item->client_id; ?>
 				</td>
 
 					</tr>

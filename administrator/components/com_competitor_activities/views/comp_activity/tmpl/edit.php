@@ -171,9 +171,9 @@ $document->addStyleSheet(JUri::root() . 'media/com_competitor_activities/css/for
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'images', JText::_('Images')); ?>
 
 		<?php //echo $this->form->renderField('brand'); ?>
-		<?php echo 'To Do'; 
+		<?php //echo 'To Do'; 
 		// var_dump($this->images);
-		 // var_dump($abc);
+		 print_r($imagesx);
 		?>
 
 		<?php echo JHtml::_('bootstrap.endTabSet'); ?>

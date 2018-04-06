@@ -117,7 +117,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_BRANDSTOCKS_TBRANDSTOCKS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
-
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Client Id', 'a.`client_id`', $listDirn, $listOrder); ?>
+				</th>
 					
 				</tr>
 				</thead>
@@ -167,13 +169,13 @@ $sortFields = $this->getSortFields();
 						<?php if (isset($this->items[0]->state)): ?>
 							<td class="center">
 								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'tbrandstocks.', $canChange, 'cb'); ?>
-</td>
+							</td>
 						<?php endif; ?>
 
-										<td>
-
+				<td>
 					<?php echo $item->id; ?>
-				</td>				<td>
+				</td>				
+				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'tbrandstocks.', $canCheckin); ?>
 				<?php endif; ?>
@@ -183,27 +185,26 @@ $sortFields = $this->getSortFields();
 				<?php else : ?>
 					<?php echo $this->escape($item->brand); ?>
 				<?php endif; ?>
-
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->brandcode; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->currentstock; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->order_placed; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->orderplaced; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->order_date; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->delivered; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php //
 						$stockstatus = $item->stockout;
 						if ($stockstatus == 0) {
@@ -213,18 +214,19 @@ $sortFields = $this->getSortFields();
 							# code...
 							echo 'Yes';
 						}
-						
-
 					//echo $item->stockout; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->submitter; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->stockdate; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->store; ?>
+				</td>
+				<td>
+					<?php echo $item->client_id ; ?>
 				</td>
 
 					</tr>

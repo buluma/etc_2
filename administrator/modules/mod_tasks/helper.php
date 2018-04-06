@@ -36,7 +36,7 @@ abstract class ModTasksHelper
         //     ->where('s.guest = 0');
 
         $query = $db->getQuery(true)
-            ->select('s.id as taskid, s.task, s.created, s.deadline, s.priority, s.user, u.id, u.name, u.username')
+            ->select('s.id as taskid, s.task, s.created, s.deadline, s.priority, s.user, s.status, u.id, u.name, u.username')
             ->from('#__tasks AS s')
             ->join('LEFT', '#__users AS u ON s.user = u.id');
             // ->where('s.guest = 0');

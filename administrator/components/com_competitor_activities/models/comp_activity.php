@@ -207,6 +207,8 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 
 		// $db->setQuery($query);
 		// $result = $db->loadResult();
+
+		// var_dump($result);
 	}
 
 	/**
@@ -322,7 +324,7 @@ class Competitor_activitiesModelComp_activity extends JModelAdmin
 
 		// var_dump($row);
 		$result =  $row;
-		// return $db->loadRow();
+		return $result;
 
 		// print_r($row);
 	}

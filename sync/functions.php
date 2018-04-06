@@ -100,7 +100,8 @@ function saveListings($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'state' => '1',
             'ordering' => '1',
             'coordinates' => $item->coords,
@@ -140,11 +141,12 @@ function saveChecklist($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             //'description' => $item->description,
-	          'beer_bottles' => $item->beer_bottles,
-	          'beer' => $item->beer,
+	        'beer_bottles' => $item->beer_bottles,
+	        'beer' => $item->beer,
             'rtds' => $item->rtds,
             'vodka' => $item->vodka,
             'liqeur' => $item->liqeur,
@@ -190,7 +192,8 @@ function savePromotions($clientData, $syncDate){
 	    $sqlData = array(
             'state' => '1',
             'ordering' => '1',
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'unique_id' => $item->unique_id,
             'brand' => $item->brand,
@@ -231,7 +234,8 @@ function saveEABLPromotionsImages($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             //'coordinates' => $item->coords,
             'activity_id' => $item->activity_id,
             'activity_unique_id' => $item->activity_unique_id,
@@ -465,7 +469,8 @@ function saveBrandStocks($clientData, $syncDate,$appversion = null){
         else {
             // save the item to database
              $sqlData = array(
-                'client_id' => $item->id,
+                // 'client_id' => $item->id,
+                'client_id' => '1',
                 'state' => '1',
                 'ordering' => '1',
                 'stockdate' => Date('Y-m-d',strtotime($item->stockdate)),
@@ -500,6 +505,7 @@ function saveBrandStocks($clientData, $syncDate,$appversion = null){
         }
     }
 }
+
 function saveChallenges($clientData, $syncDate){
     global $resultarray;
     global $mysqli;
@@ -546,7 +552,8 @@ function saveCompeActivity($clientData, $syncDate){
 	    $sqlData = array(
             'state' => '1',
             'ordering' => '1',
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'unique_id' => $item->unique_id,
             'brand' => $item->brand,
@@ -586,7 +593,8 @@ function saveCompeImages($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             //'coordinates' => $item->coords,
             'activity_id' => $item->activity_id,
             'activity_unique_id' => $item->activity_unique_id,
@@ -694,7 +702,8 @@ function saveAssetManagmnt($clientData, $syncDate){
 	    $sqlData = array(
             'state' => '1',
             'ordering' => '1',
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'imagedate' => isset($item->imagedate) ? $item->imagedate : '',
             'imagepath' => isset($item->imagepath) ? $item->imagepath : '',
@@ -735,9 +744,8 @@ function saveFocusAreas($clientData, $syncDate){
 	    $sqlData = array(
             'state' => '1',
             'ordering' => '1',
-            'client_id' => $item->id,
-            'state' => '1',
-            'ordering' => '1',
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'description' => $item->description,
             'focus_type' => $item->focus_type,
@@ -774,7 +782,8 @@ function saveTLFocusAreas($clientData, $syncDate){
 	    $sqlData = array(
             'state' => '1',
             'ordering' => '1',
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'description' => $item->description,
             'focus_type' => $item->focus_type,
@@ -811,7 +820,8 @@ function savePhotos($clientData, $syncDate){
 	    $sqlData = array(
             'state' => '1',
             'ordering' => '1',
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'imagedate' => $item->imagedate,
             'imagepath' => $item->imagepath,
@@ -848,7 +858,8 @@ function saveLocations($clientData, $syncDate){
 	    $sqlData = array(
             'state' => '1',
             'ordering' => '1',
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coordinates,
             'submitter' => setUserID($item->submitter),
             'created_by' => setUserID($item->submitter),
@@ -903,7 +914,8 @@ function saveObjectives($clientData, $syncDate){
     		// save the item to database
     	    $sqlData = array(
                 'state' => '1',
-                'client_id' => $item->id,
+                // 'client_id' => $item->id,
+                'client_id' => '1',
                 'inputdate' => $item->inputdate,
                 'coordinates' => $item->coords,
                 'objective_code' => $item->objective_code,
@@ -947,7 +959,8 @@ function saveOtherObjectives($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 		// save the item to database
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'state' => '1',
             'ordering' => '1',
             'inputdate' => $item->inputdate,
@@ -989,7 +1002,8 @@ function savePerfectChecklist($clientData, $syncDate){
     foreach ($clientData as $key => $item) {
         // save the item to database
         $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'state' => '1',
             'ordering' => '1',
             'inputdate' => $item->inputdate,
@@ -1061,7 +1075,8 @@ function savePriceSurvey($clientData, $syncDate){
     	    $sqlData = array(
                 'state' => '1',
                 'ordering' => '1',
-                'client_id' => $item->id,
+                // 'client_id' => $item->id,
+                'client_id' => '1',
                 'coordinates' => $item->coords,
                 'type' => $item->type,
                 'brands' => mysqli_real_escape_string($mysqli,$item->brands),
@@ -1098,7 +1113,8 @@ function saveQualityIssues($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'state' => '1',
             'ordering' => '1',
             'coordinates' => $item->coords,
@@ -1138,7 +1154,8 @@ function saveRecommendations($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'description' => $item->description,
             'submitter' => $item->submitter,
@@ -1169,7 +1186,8 @@ function saveShopCheckin($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'state' => '1',
             'ordering' => '1',
             'session_id' => $item->session_id,
@@ -1212,7 +1230,8 @@ function saveTLObjectives($clientData, $syncDate){
 		// save the item to database
 	    $sqlData = array(
             'state' => '1',
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'inputdate' => $item->inputdate,
             'coordinates' => $item->coords,
             'objective' => $item->objective,
@@ -1248,7 +1267,8 @@ function saveVOC($clientData, $syncDate){
 	// start processing the data
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
-            'client_id' => $item->id,
+            // 'client_id' => $item->id,
+            'client_id' => '1',
             'coordinates' => $item->coords,
             'photos' => $item->photos,
             'brand' => $item->brand,
@@ -1281,6 +1301,68 @@ function saveVOC($clientData, $syncDate){
     }
 }
 
+//sync tasks
+function saveTasks($clientData, $syncDate){
+    global $resultarray;
+    global $mysqli;
+    global $handler;
+    $syncTime =  $syncDate/1000; // convert from milliseconds to seconds
+    $count = count($clientData);
+    // var_dump($count);
+    // exit();
 
+    // start processing the data
+    foreach ($clientData as $key => $item) {
+        //$newstock = $item->currentstock;
+        $tstatus = $item->status;
+        $completion_date = $item->completion_date;
+        $remarks = $item->remarks;
+        // check if this brandcode data exists for this outlet
+
+        $aquery = 'SELECT id,task,description,deadline,priority,status,completion_date,remarks FROM dxcr2_tasks';
+        $aquery .= ' WHERE user = "'.$item->user.'" AND id ="'.$item->id.'"';
+        $res = mysqli_query($mysqli,$aquery) or die(mysqli_error($mysqli));
+        $total = mysqli_num_rows($res);
+
+        if ($total > 0){
+            //echo 'we found the tasks';
+            while ($row = mysqli_fetch_object($res)) {
+                // synced from tasks interface
+                $query = 'UPDATE dxcr2_tasks SET status = "'.$tstatus.'", completion_date = "'.$completion_date.'", remarks = "'.$remarks.'" WHERE id = "'.$row->id.'"';
+                $update = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+                if ($update){
+                    array_push($resultarray, 'task updated with id '.$row->id.'');
+                }
+            }
+
+        }
+        else {
+            // save the item to database
+             $sqlData = array(
+                // 'client_id' => $item->id,
+                // 'client_id' => '1',
+                'state' => '1',
+                'ordering' => '1',
+                'task' => $item->task,
+                'description' => $item->description,
+                'deadline' => $item->deadline,
+                'priority' => $item->priority,
+                'status' => $item->status,
+                'completion_date' => $item->completion_date,
+                'remarks' => $item->remarks,
+                'created' => $item->created,
+                'created_by' => setUserID($item->submitter),
+                'last_sync_date' => $syncTime
+                );
+            $columns = array_keys($sqlData);
+            $values = array_values($sqlData);
+            $query = 'INSERT INTO dxcr2_tasks(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+            $insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+            if ($insert){
+                array_push($resultarray, 'task added with client_id: '.$item->id);
+            }
+        }
+    }
+}
 
 ?>

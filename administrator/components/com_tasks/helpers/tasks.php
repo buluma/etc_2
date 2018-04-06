@@ -32,11 +32,11 @@ class TasksHelper
 			$vName == 'tasks'
 		);
 
-		JHtmlSidebar::addEntry(
-			JText::_('COM_TASKS_TITLE_TASKS_TRACKER'),
-			'index.php?option=com_tasks&view=tasks_tracker',
-			$vName == 'tasks_tracker'
-		);
+		// JHtmlSidebar::addEntry(
+		// 	JText::_('COM_TASKS_TITLE_TASKS_TRACKER'),
+		// 	'index.php?option=com_tasks&view=tasks_tracker',
+		// 	$vName == 'tasks_tracker'
+		// );
 	}
 
 	/**

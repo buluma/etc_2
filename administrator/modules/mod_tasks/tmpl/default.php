@@ -13,7 +13,7 @@ JHtml::_('bootstrap.tooltip');
 ?>
 <div class="row-striped">
   <div class="row-fluid">
-      <div class="span6">
+      <div class="span3">
         <strong>Task</strong>
       </div>
       <div class="span3">
@@ -22,12 +22,15 @@ JHtml::_('bootstrap.tooltip');
       <div class="span3">
         <strong>Priority</strong>
       </div>
+      <div class="span3">
+        <strong>Status</strong>
+      </div>
     </div>
   <?php
   // var_dump($tasks);
    foreach ($tasks as $user) : ?>
     <div class="row-fluid">
-      <div class="span6">
+      <div class="span3">
         <span class="row-title">
           <?php if (isset($user->editLink)) : ?>
             <a href="<?php echo $user->editLink; ?>" class="hasTooltip" title="<?php echo JHtml::_('tooltipText', 'JGRID_HEADING_ID'); ?> : <?php echo $user->taskid; ?>">
@@ -64,6 +67,20 @@ JHtml::_('bootstrap.tooltip');
               echo '<span style="color:orange">Medium</span>';
             } elseif ($user->priority == 3) {
               echo '<span style="color:red">High</span>';
+            }
+             ?>
+        </div>
+      </div>
+
+    <div class="span3">
+        <div class="small pull-left hasTooltip" title="<?php echo JHtml::_('tooltipText', 'Status'); ?>">
+          <span class="icon-calendar" aria-hidden="true"></span> 
+          <?php 
+
+            if ($user->status == 1) {
+              echo '<span style="color:green">Done</span>';
+            } else {
+              echo '<span style="color:red">Not Done</span>';
             }
              ?>
         </div>

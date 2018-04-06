@@ -167,6 +167,12 @@ class FocusareasModelFocus_areas extends JModelList
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
 
+		// Join over the client field 'client_id'
+		$query->select('`client_id`.client_name AS `client_id`');
+		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
+
+		
+
 		// Filter by published state
 		$published = $this->getState('filter.state');
 

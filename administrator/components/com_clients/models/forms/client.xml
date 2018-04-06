@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="created_by" type="createdby" label="COM_CLIENTS_FORM_LBL_CLIENT_CREATED_BY" description="COM_CLIENTS_FORM_DESC_CLIENT_CREATED_BY" hidden="true" hint="COM_CLIENTS_FORM_LBL_CLIENT_CREATED_BY"/>
+    <field name="modified_by" type="modifiedby" default="0" label="COM_CLIENTS_FORM_LBL_CLIENT_MODIFIED_BY" description="COM_CLIENTS_FORM_DESC_CLIENT_MODIFIED_BY" hidden="true" hint="COM_CLIENTS_FORM_LBL_CLIENT_MODIFIED_BY"/>
+    <field name="client_logo" directory="" type="media" label="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_LOGO" description="COM_CLIENTS_FORM_DESC_CLIENT_CLIENT_LOGO" hint="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_LOGO"/>
+    <field name="client_name" filter="safehtml" type="text" required="true" label="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_NAME" description="COM_CLIENTS_FORM_DESC_CLIENT_CLIENT_NAME" hint="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_NAME"/>
+    <field name="client_email" validate="email" type="email" required="true" label="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_EMAIL" description="COM_CLIENTS_FORM_DESC_CLIENT_CLIENT_EMAIL" hint="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_EMAIL"/>
+    <field name="client_location" filter="safehtml" type="text" required="true" label="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_LOCATION" description="COM_CLIENTS_FORM_DESC_CLIENT_CLIENT_LOCATION" hint="COM_CLIENTS_FORM_LBL_CLIENT_CLIENT_LOCATION"/>
+    <field name="contact_person" filter="safehtml" type="text" label="COM_CLIENTS_FORM_LBL_CLIENT_CONTACT_PERSON" description="COM_CLIENTS_FORM_DESC_CLIENT_CONTACT_PERSON" hint="COM_CLIENTS_FORM_LBL_CLIENT_CONTACT_PERSON"/>
+    <field name="contact_person_email" validate="email" type="email" label="COM_CLIENTS_FORM_LBL_CLIENT_CONTACT_PERSON_EMAIL" description="COM_CLIENTS_FORM_DESC_CLIENT_CONTACT_PERSON_EMAIL" hint="COM_CLIENTS_FORM_LBL_CLIENT_CONTACT_PERSON_EMAIL"/>
+    <field name="created_on" type="timecreated" label="COM_CLIENTS_FORM_LBL_CLIENT_CREATED_ON" description="COM_CLIENTS_FORM_DESC_CLIENT_CREATED_ON" hint="COM_CLIENTS_FORM_LBL_CLIENT_CREATED_ON"/>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+  <fieldset name="accesscontrol">
+    <field name="asset_id" type="hidden" filter="unset"/>
+    <field name="rules" type="rules" label="JFIELD_RULES_LABEL" translate_label="false" filter="rules" validate="rules" class="inputbox" component="com_clients" section="client"/>
+  </fieldset>
+</form>

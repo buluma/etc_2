@@ -46,6 +46,7 @@ class TasksViewTask extends JViewLegacy
 			throw new Exception(implode("\n", $errors));
 		}
 
+		// var_dump($this->item);
 		$this->addToolbar();
 		parent::display($tpl);
 	}

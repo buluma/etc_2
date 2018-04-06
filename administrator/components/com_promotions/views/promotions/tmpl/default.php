@@ -111,6 +111,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PROMOTIONS_PROMOTIONS_END_DATE', 'a.`end_date`', $listDirn, $listOrder); ?>
 				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Client ID', 'a.`client_id`', $listDirn, $listOrder); ?>
+				</th>
 
 					
 				</tr>
@@ -202,6 +205,9 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->end_date; ?>
+				</td> <td>
+
+					<?php echo $item->client_id; ?>
 				</td>
 
 					</tr>

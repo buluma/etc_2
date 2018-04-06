@@ -145,6 +145,10 @@ class ObjectivesModelObjectives extends JModelList
 		// Join over the user field 'modified_by'
 		$query->select('`modified_by`.name AS `modified_by`');
 		$query->join('LEFT', '#__users AS `modified_by` ON `modified_by`.id = a.`modified_by`');
+		
+		// Join over the client field 'client_id'
+		$query->select('`client_id`.client_name AS `client_id`');
+		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');

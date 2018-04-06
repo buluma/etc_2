@@ -77,9 +77,25 @@ function myJob($handler){
 			saveBrandStocks($input->data->brandstocks, $handler->syncDate,null);
 		}
 	}
+
+	if (isset($input->data->tasks)){
+		if (isset($sync_info->app_version)){
+		    	//echo $sync_info->app_version;
+		    	saveTasks($input->data->tasks, $handler->syncDate,$sync_info->app_version); // array of objects
+		}
+		else {
+			saveTasks($input->data->tasks, $handler->syncDate,null);
+		}
+	}
+
+	// if (isset($input->data->tasks)){
+	// 	saveTasks2($input->data->tasks, $handler->syncDate);
+	// }
+
 	if (isset($input->data->objectives)){
 		saveObjectives($input->data->objectives, $handler->syncDate);
 	}
+
 	if (isset($input->data->other_objectives)){
 		saveOtherObjectives($input->data->other_objectives, $handler->syncDate);
 	}

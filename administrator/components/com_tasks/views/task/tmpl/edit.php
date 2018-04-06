@@ -51,7 +51,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_tasks/css/form.css');
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_TASKS_TITLE_TASK', true)); ?>
 		<div class="row-fluid">
-			<div class="span10 form-horizontal">
+			<div class="span6 form-horizontal">
 				<fieldset class="adminform">
 
 									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
@@ -75,6 +75,25 @@ $document->addStyleSheet(JUri::root() . 'media/com_tasks/css/form.css');
 					</div>
 					<?php endif; ?>
 				</fieldset>
+			</div>
+			<div class="span6">
+				<h3>Task Completion Status</h3>
+				<hr>
+				<?php 
+				if ($this->item->status == 1){ ?>
+					<p>Task Status : <?php echo 'Completed';?>
+					<p>Completed On : <?php echo $this->item->completion_date;?></p>
+					<p>User Remarks : <?php echo $this->item->remarks;?></p>
+				<?php } else{
+					echo 'Not Completed';
+				};?></p>
+
+				<?php 
+
+				?>
+				
+				<hr>
+				
 			</div>
 		</div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>

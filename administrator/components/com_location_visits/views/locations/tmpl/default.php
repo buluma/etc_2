@@ -85,7 +85,7 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
@@ -94,13 +94,13 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CREATED_ON', 'a.`created_on`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Client ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -158,32 +158,38 @@ $sortFields = $this->getSortFields();
 										<td>
 
 					<?php echo $item->id; ?>
-				</td>				<td>
+				</td>	
+				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'locations.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_location_visits&task=location.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->client_id); ?></a>
+					<?php echo $this->escape($item->user_id); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->client_id); ?>
+					<?php echo $this->escape($item->user_id); ?>
 				<?php endif; ?>
 
-				</td>				<td>
+				</td>
+							
+				<td>
 
 					<?php echo $item->coordinates; ?>
-				</td>				<td>
+				</td>
+
+								<td>
 
 					<?php echo $item->submitter; ?>
-				</td>				<td>
-
-					<?php echo $item->user_id; ?>
-				</td>				<td>
+				</td>								<td>
 
 					<?php echo $item->store; ?>
 				</td>				<td>
 
 					<?php echo $item->created_on; ?>
+				</td>
+				<td>
+
+					<?php echo $item->client_id; ?>
 				</td>
 
 					</tr>
@@ -198,12 +204,12 @@ $sortFields = $this->getSortFields();
 			
 
 			<!-- Locations Map -->
-			<hr>
+			<!-- <hr>
 				<div class="map">
 					map here
 					<div id="map"></div>
 				</div>
-				<br />
+				<br /> -->
 			<!-- Locations map End -->
 		</div>
 </form>

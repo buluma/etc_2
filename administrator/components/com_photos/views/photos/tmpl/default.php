@@ -85,9 +85,6 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_PHOTOS_PHOTOS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_PHOTOS_PHOTOS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PHOTOS_PHOTOS_BRAND', 'a.`brand`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -95,6 +92,9 @@ $sortFields = $this->getSortFields();
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'Image', 'a.`imagepath`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_PHOTOS_PHOTOS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PHOTOS_PHOTOS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
@@ -176,21 +176,21 @@ $sortFields = $this->getSortFields();
 										<td>
 
 					<?php echo $item->id; ?>
-				</td>				<td>
+				</td>				
+
+				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'photos.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_photos&task=photo.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->client_id); ?></a>
+					<?php echo $this->escape($item->brand); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->client_id); ?>
+					<?php echo $this->escape($item->brand); ?>
 				<?php endif; ?>
 
-				</td>				<td>
-
-					<?php echo $item->brand; ?>
-				</td>				<td>
+				</td>
+				<td>
 
 					<?php echo $item->brandcode; ?>
 				</td>				
@@ -208,6 +208,9 @@ $sortFields = $this->getSortFields();
 					
 					?>
 					
+				</td>
+				<td>
+					<?php echo $item->client_id; ?>
 				</td>
 				<td>
 					<?php echo $item->user_id; ?>

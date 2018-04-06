@@ -4,7 +4,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'ETC Trade Management';
+	public $sitename = 'Trade Management Sys';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '20';
@@ -20,7 +20,7 @@ class JConfig {
 	public $live_site = '';
 	public $secret = 'iElE64RuAAWOhdZq';
 	public $gzip = '0';
-	public $error_reporting = 'maximum';
+	public $error_reporting = 'simple';
 	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
 	public $ftp_host = '';
 	public $ftp_port = '';

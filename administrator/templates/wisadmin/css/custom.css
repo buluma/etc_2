@@ -719,3 +719,15 @@ div#element-box.login.well img{
 display:block;
     margin:auto;
   }
+
+  div.media-preview.add-on{
+    height: auto !important;
+  }
+
+  input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="tel"], input[type="color"], .uneditable-input{
+   height: auto ; 
+  }
+
+  input#filter_search.js-stools-search-string{
+    height: 23px;
+  }

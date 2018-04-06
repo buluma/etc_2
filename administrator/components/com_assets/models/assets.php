@@ -103,6 +103,9 @@ class AssetsModelAssets extends JModelList
 		// Filtering store_server_id
 		$this->setState('filter.store_server_id', $app->getUserStateFromRequest($this->context.'.filter.store_server_id', 'filter_store_server_id', '', 'string'));
 
+		// Filtering store_server_id
+		$this->setState('filter.client_id', $app->getUserStateFromRequest($this->context.'.filter.client_id', 'client_id', '', 'string'));
+
 
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_assets');
@@ -174,6 +177,10 @@ class AssetsModelAssets extends JModelList
 		// Join over the user field 'user_id'
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
+
+		// Join over the client field 'client_id'
+		$query->select('`client_id`.client_name AS `client_id`');
+		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');

@@ -83,6 +83,12 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_TASKS_TASKS_PRIORITY', 'a.`priority`', $listDirn, $listOrder); ?>
 				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Status', 'a.`status`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Completion Date', 'a.`completion_date`', $listDirn, $listOrder); ?>
+				</th>
 
 					
 				</tr>
@@ -156,9 +162,23 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->deadline; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->priority; ?>
+				</td>
+				<td>
+					<?php 
+						if ($item->status == 1) {
+							echo 'Completed';
+						} else {
+							echo 'Not Completed';
+						}
+						
+
+					 ?>
+				</td>
+				<td>
+					<?php echo $item->completion_date; ?>
 				</td>
 
 					</tr>

@@ -120,6 +120,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_VOC_VOCS_CLIENT_MODIFIED_DATE', 'a.`client_modified_date`', $listDirn, $listOrder); ?>
 				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Client ID', 'a.`client_id`', $listDirn, $listOrder); ?>
+				</th>
 
 					
 				</tr>
@@ -229,9 +232,12 @@ $sortFields = $this->getSortFields();
 					<?php echo $this->escape($item->coordinates); ?>
 				<?php endif; ?>
 
-				</td>				<td>
-
+				</td>
+				<td>
 					<?php echo $item->client_modified_date; ?>
+				</td>
+				<td>
+					<?php echo $item->client_id; ?>
 				</td>
 
 					</tr>

@@ -45,7 +45,9 @@ class Shop_checkinViewShop_checkin extends JViewLegacy
 		{
 			throw new Exception(implode("\n", $errors));
 		}
-
+		// echo '<pre>';
+		// var_dump($this->item);
+		// echo '<pre/>';
 		$this->addToolbar();
 		parent::display($tpl);
 	}
