@@ -1,2 +1,18 @@
-ugly.bat
-wishlist.txt
+# Add any directories, files, or patterns you don't want to be tracked by version control
+configuration.php
+**configuration.php
+*configuration.php
+error_log
+/node/
+/import-database-sql-file-using-PHP-script-master/
+/cache
+/logs
+node_modules/
+/db_dump/filename[0-9].sql
+**/cache
+*.cache
+*.zip
+/administrator/tmp
+**/tmp
+**/jsondata
+/sync/error_log.txt
