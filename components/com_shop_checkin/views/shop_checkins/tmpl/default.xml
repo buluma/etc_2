@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_SHOP_CHECKIN_TITLE_LIST_VIEW_SHOP_CHECKINS" option="View">
+        <message>
+                        <![CDATA[COM_SHOP_CHECKIN_TITLE_LIST_VIEW_SHOP_CHECKINS_DESC]]>
+        </message>
+	</layout>
+</metadata>

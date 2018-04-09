@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.0" type="plugin" group="content" method="upgrade">
+    <name>Content - Aimy Charts </name>
+    <creationDate>2017-10-04</creationDate>
+    <author>Aimy Extensions (Lingua-Systems Software GmbH)</author>
+    <authorEmail>info@aimy-extensions.com</authorEmail>
+    <authorUrl>http://www.aimy-extensions.com/</authorUrl>
+    <copyright>2013-2017 Aimy Extensions, Lingua-Systems Software GmbH</copyright>
+    <license>GNU General Public License (GPL) v2</license>
+    <version>3.11.0</version>
+    <description>Generates nice HTML5 Charts </description>
+    <scriptfile>install-hints.php</scriptfile>
+    <files>
+        <filename plugin="aimycharts">aimycharts.php</filename>
+        <filename>index.html</filename>
+        <filename>contentpluginhelper.php</filename>
+    </files>
+    <media destination="plg_aimycharts" folder="media">
+        <filename>aimy-logo_340x327.png</filename>
+        <filename>aimycharts.js</filename>
+        <filename>index.html</filename>
+    </media>
+    <languages>
+        <language tag="de-DE">i18n/de-DE.plg_content_aimycharts.ini</language>
+        <language tag="en-GB">i18n/en-GB.plg_content_aimycharts.ini</language>
+        <language tag="es-ES">i18n/es-ES.plg_content_aimycharts.ini</language>
+        <language tag="fa-IR">i18n/fa-IR.plg_content_aimycharts.ini</language>
+        <language tag="hr-HR">i18n/hr-HR.plg_content_aimycharts.ini</language>
+        <language tag="nl-NL">i18n/nl-NL.plg_content_aimycharts.ini</language>
+        <language tag="cs-CZ">i18n/cs-CZ.plg_content_aimycharts.ini</language>
+        <language tag="pl-PL">i18n/pl-PL.plg_content_aimycharts.ini</language>
+        <language tag="sl-SI">i18n/sl-SI.plg_content_aimycharts.ini</language>
+    </languages>
+    <config>
+      <fields name="params">
+        <fieldset name="basic">
+          <field name="width" type="text" default="440"
+            label="AIMY_CHARTS_WIDTH_LBL"
+            description="AIMY_CHARTS_WIDTH_DSC"
+            filter="integer" />
+          <field name="height" type="text" default="320"
+            label="AIMY_CHARTS_HEIGHT_LBL"
+            description="AIMY_CHARTS_HEIGHT_DSC"
+            filter="integer" />
+          <field name="animate" type="radio" class="btn-group"
+            label="AIMY_CHARTS_ANIMATE_LBL"
+            description="AIMY_CHARTS_ANIMATE_DSC"
+            default="1">
+            <option value="1">JON</option>
+            <option value="0">JOFF</option>
+          </field>
+        </fieldset>
+      </fields>
+    </config>
+    <updateservers>
+      <server
+        type="extension"
+        priority="1"
+        name="Aimy Charts Update Server">http://updates.aimy-extensions.com/joomla/plg_aimycharts.xml</server>
+    </updateservers>
+</extension>

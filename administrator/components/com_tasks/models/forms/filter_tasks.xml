@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_TASKS_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="state"
+               type="status"
+               label="COM_TASKS_FILTER_STATE"
+               description="COM_TASKS_FILTER_STATE_DESC"
+               onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+
+        <field name="user" label="COM_TASKS_FORM_LBL_TASK_USER" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_TASKS_TASKS_USER_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/>
+<field name="deadline.from" label="COM_TASKS_TASKS_DEADLINE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_TASKS_TASKS_DEADLINE_FILTER_FROM"/>
+<field name="deadline.to" label="COM_TASKS_TASKS_DEADLINE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_TASKS_TASKS_DEADLINE_FILTER_TO"/>
+<field name="priority" label="COM_TASKS_FORM_LBL_TASK_PRIORITY" type="list" onchange="this.form.submit();" default="COM_TASKS_TASKS_PRIORITY_FILTER">
+  <option value="">COM_TASKS_TASKS_PRIORITY_FILTER</option>
+  <option value="1">COM_TASKS_TASKS_PRIORITY_OPTION_1</option>
+  <option value="2">COM_TASKS_TASKS_PRIORITY_OPTION_2</option>
+  <option value="3">COM_TASKS_TASKS_PRIORITY_OPTION_3</option>
+</field>
+
+
+    </fields>
+
+    <fields name="list">
+
+        <field name="fullordering"
+               type="list"
+               label="COM_CONTENT_LIST_FULL_ORDERING"
+               description="COM_CONTENT_LIST_FULL_ORDERING_DESC"
+               onchange="this.form.submit();"
+               default="a.id DESC"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.`id` ASC">ID Ascending</option><option value="a.`id` DESC">ID Descending</option><option value="a.`ordering` ASC">Order Ascending</option><option value="a.`ordering` DESC">Order Descending</option><option value="a.`state` ASC">State Ascending</option><option value="a.`state` DESC">State Descending</option><option value="a.`task` ASC">Task Ascending</option><option value="a.`task` DESC">Task Descending</option><option value="a.`user` ASC">Assigned User Ascending</option><option value="a.`user` DESC">Assigned User Descending</option><option value="a.`deadline` ASC">Deadlines Ascending</option><option value="a.`deadline` DESC">Deadlines Descending</option><option value="a.`priority` ASC">Priority Ascending</option><option value="a.`priority` DESC">Priority Descending</option>
+
+        </field>
+
+        <field name="limit"
+               type="limitbox"
+               class="input-mini"
+               default="25"
+               onchange="this.form.submit();"
+        />
+
+    </fields>
+
+</form>

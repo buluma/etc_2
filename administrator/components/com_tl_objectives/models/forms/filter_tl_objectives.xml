@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_TL_OBJECTIVES_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="state"
+               type="status"
+               label="COM_TL_OBJECTIVES_FILTER_STATE"
+               description="COM_TL_OBJECTIVES_FILTER_STATE_DESC"
+               onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+
+        <field name="inputdate.from" label="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_FROM"/>
+<field name="inputdate.to" label="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_TO"/>
+<field name="objective_achieved" label="COM_TL_OBJECTIVES_FORM_LBL_TL_OBJECTIVE_OBJECTIVE_ACHIEVED" type="list" onchange="this.form.submit();" default="COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_FILTER">
+  <option value="">COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_FILTER</option>
+  <option value="1">COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_OPTION_1</option>
+  <option value="0">COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_OPTION_0</option>
+</field>
+<field name="submitter" label="COM_TL_OBJECTIVES_FORM_LBL_TL_OBJECTIVE_SUBMITTER" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_TL_OBJECTIVES_TL_OBJECTIVES_SUBMITTER_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/>
+<field name="store" label="COM_TL_OBJECTIVES_FORM_LBL_TL_OBJECTIVE_STORE" type="sql" query="SELECT '' AS `id`, 'COM_TL_OBJECTIVES_TL_OBJECTIVES_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
+
+    </fields>
+
+    <fields name="list">
+
+        <field name="fullordering"
+               type="list"
+               label="COM_CONTENT_LIST_FULL_ORDERING"
+               description="COM_CONTENT_LIST_FULL_ORDERING_DESC"
+               onchange="this.form.submit();"
+               default="a.id DESC"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.`id` ASC">ID Ascending</option><option value="a.`id` DESC">ID Descending</option><option value="a.`client_id` ASC">Client ID Ascending</option><option value="a.`client_id` DESC">Client ID Descending</option><option value="a.`ordering` ASC">Order Ascending</option><option value="a.`ordering` DESC">Order Descending</option><option value="a.`state` ASC">State Ascending</option><option value="a.`state` DESC">State Descending</option><option value="a.`inputdate` ASC">Date Ascending</option><option value="a.`inputdate` DESC">Date Descending</option><option value="a.`objective` ASC">Objective Ascending</option><option value="a.`objective` DESC">Objective Descending</option><option value="a.`objective_achieved` ASC">Objective achieved? Ascending</option><option value="a.`objective_achieved` DESC">Objective achieved? Descending</option><option value="a.`submitter` ASC">Submitted by Ascending</option><option value="a.`submitter` DESC">Submitted by Descending</option><option value="a.`store` ASC">Store Ascending</option><option value="a.`store` DESC">Store Descending</option>
+
+        </field>
+
+        <field name="limit"
+               type="limitbox"
+               class="input-mini"
+               default="25"
+               onchange="this.form.submit();"
+        />
+
+    </fields>
+
+</form>

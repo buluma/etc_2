@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_PRODUCTS_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="category" label="COM_PRODUCTS_FORM_LBL_PRODUCT_CATEGORY" type="category" extension="com_products.products" onchange="this.form.submit();" default="">
+  <option value=""/>
+  <option value="">JOPTION_SELECT_CATEGORY</option>
+</field>
+<field name="published" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED" type="list" onchange="this.form.submit();" default="COM_PRODUCTS_PRODUCTS_PUBLISHED_FILTER">
+  <option value="">COM_PRODUCTS_PRODUCTS_PUBLISHED_FILTER</option>
+  <option value="1">COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_1</option>
+  <option value="0">COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_0</option>
+</field>
+<field name="must_have" label="COM_PRODUCTS_FORM_LBL_PRODUCT_MUST_HAVE" type="list" onchange="this.form.submit();" default="COM_PRODUCTS_PRODUCTS_MUST_HAVE_FILTER">
+  <option value="">COM_PRODUCTS_PRODUCTS_MUST_HAVE_FILTER</option>
+  <option value="0">COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_0</option>
+  <option value="1">COM_PRODUCTS_PRODUCTS_MUST_HAVE_OPTION_1</option>
+</field>
+<field name="deleted" label="COM_PRODUCTS_FORM_LBL_PRODUCT_DELETED" type="list" onchange="this.form.submit();" default="COM_PRODUCTS_PRODUCTS_DELETED_FILTER">
+  <option value="">COM_PRODUCTS_PRODUCTS_DELETED_FILTER</option>
+  <option value="0">COM_PRODUCTS_PRODUCTS_DELETED_OPTION_0</option>
+  <option value="1">COM_PRODUCTS_PRODUCTS_DELETED_OPTION_1</option>
+</field>
+
+
+    </fields>
+</form>

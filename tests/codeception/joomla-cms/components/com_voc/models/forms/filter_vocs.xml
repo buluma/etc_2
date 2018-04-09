@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_VOC_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="brand" label="COM_VOC_FORM_LBL_VOC_BRAND" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_BRAND_FILTER' AS `text` UNION (SELECT id as value, product_name as text FROM #__products)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+<field name="brandcode" label="COM_VOC_FORM_LBL_VOC_BRANDCODE" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_BRANDCODE_FILTER' AS `text` UNION (SELECT id as value, product_code as text FROM #__products)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+<field name="category" label="COM_VOC_FORM_LBL_VOC_CATEGORY" type="list" onchange="this.form.submit();" default="COM_VOC_VOCS_CATEGORY_FILTER">
+  <option value="">COM_VOC_VOCS_CATEGORY_FILTER</option>
+  <option value="1">COM_VOC_VOCS_CATEGORY_OPTION_1</option>
+  <option value="2">COM_VOC_VOCS_CATEGORY_OPTION_2</option>
+</field>
+<field name="items" label="COM_VOC_FORM_LBL_VOC_ITEMS" type="list" onchange="this.form.submit();" default="COM_VOC_VOCS_ITEMS_FILTER">
+  <option value="">COM_VOC_VOCS_ITEMS_FILTER</option>
+  <option value="1">COM_VOC_VOCS_ITEMS_OPTION_1</option>
+  <option value="2">COM_VOC_VOCS_ITEMS_OPTION_2</option>
+  <option value="3">COM_VOC_VOCS_ITEMS_OPTION_3</option>
+  <option value="4">COM_VOC_VOCS_ITEMS_OPTION_4</option>
+  <option value="5">COM_VOC_VOCS_ITEMS_OPTION_5</option>
+  <option value="6">COM_VOC_VOCS_ITEMS_OPTION_6</option>
+</field>
+<field name="commentby" label="COM_VOC_FORM_LBL_VOC_COMMENTBY" type="list" onchange="this.form.submit();" default="COM_VOC_VOCS_COMMENTBY_FILTER">
+  <option value="">COM_VOC_VOCS_COMMENTBY_FILTER</option>
+  <option value="1">COM_VOC_VOCS_COMMENTBY_OPTION_1</option>
+  <option value="2">COM_VOC_VOCS_COMMENTBY_OPTION_2</option>
+  <option value="3">COM_VOC_VOCS_COMMENTBY_OPTION_3</option>
+  <option value="4">COM_VOC_VOCS_COMMENTBY_OPTION_4</option>
+</field>
+<field name="isurgent" label="COM_VOC_FORM_LBL_VOC_ISURGENT" type="list" onchange="this.form.submit();" default="COM_VOC_VOCS_ISURGENT_FILTER">
+  <option value="">COM_VOC_VOCS_ISURGENT_FILTER</option>
+  <option value="0">COM_VOC_VOCS_ISURGENT_OPTION_OFF</option>
+  <option value="1">COM_VOC_VOCS_ISURGENT_OPTION_ON</option>
+</field>
+<field name="store" label="COM_VOC_FORM_LBL_VOC_STORE" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+<field name="store_id" label="COM_VOC_FORM_LBL_VOC_STORE_ID" type="sql" query="SELECT '' AS `id`, 'COM_VOC_VOCS_STORE_ID_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
+
+    </fields>
+</form>

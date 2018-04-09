@@ -1,0 +1,29 @@
+{
+    "name": "joomla/data",
+    "type": "joomla-package",
+    "description": "Joomla Data Package",
+    "keywords": ["joomla", "framework", "data"],
+    "homepage": "https://github.com/joomla-framework/data",
+    "license": "GPL-2.0+",
+    "require": {
+        "php": ">=5.3.10|>=7.0",
+        "joomla/compat": "~1.0",
+        "joomla/registry": "~1.0"
+    },
+    "require-dev": {
+        "joomla/test": "~1.0",
+        "phpunit/phpunit": "~4.8|~5.0",
+        "squizlabs/php_codesniffer": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Joomla\\Data\\": "src/",
+            "Joomla\\Data\\Tests\\": "Tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}

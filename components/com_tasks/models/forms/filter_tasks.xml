@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_TASKS_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="deadline.from" label="COM_TASKS_TASKS_DEADLINE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_TASKS_TASKS_DEADLINE_FILTER_FROM"/>
+<field name="deadline.to" label="COM_TASKS_TASKS_DEADLINE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_TASKS_TASKS_DEADLINE_FILTER_TO"/>
+<field name="priority" label="COM_TASKS_FORM_LBL_TASK_PRIORITY" type="list" onchange="this.form.submit();" default="COM_TASKS_TASKS_PRIORITY_FILTER">
+  <option value="">COM_TASKS_TASKS_PRIORITY_FILTER</option>
+  <option value="1">COM_TASKS_TASKS_PRIORITY_OPTION_1</option>
+  <option value="2">COM_TASKS_TASKS_PRIORITY_OPTION_2</option>
+  <option value="3">COM_TASKS_TASKS_PRIORITY_OPTION_3</option>
+</field>
+
+
+    </fields>
+</form>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_TL_OBJECTIVES_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="inputdate.from" label="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_FROM"/>
+<field name="inputdate.to" label="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_TL_OBJECTIVES_TL_OBJECTIVES_INPUTDATE_FILTER_TO"/>
+<field name="objective_achieved" label="COM_TL_OBJECTIVES_FORM_LBL_TL_OBJECTIVE_OBJECTIVE_ACHIEVED" type="list" onchange="this.form.submit();" default="COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_FILTER">
+  <option value="">COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_FILTER</option>
+  <option value="1">COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_OPTION_1</option>
+  <option value="0">COM_TL_OBJECTIVES_TL_OBJECTIVES_OBJECTIVE_ACHIEVED_OPTION_0</option>
+</field>
+<field name="store" label="COM_TL_OBJECTIVES_FORM_LBL_TL_OBJECTIVE_STORE" type="sql" query="SELECT '' AS `id`, 'COM_TL_OBJECTIVES_TL_OBJECTIVES_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+
+
+    </fields>
+</form>

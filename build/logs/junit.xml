@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="tests/unit/suites/libraries/joomla/feed" tests="95" assertions="201" errors="0" failures="1" skipped="1" time="0.446765">
+    <testsuite name="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" tests="16" assertions="24" errors="0" failures="0" skipped="0" time="0.318784">
+      <testcase name="testMagicGetSet" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="32" assertions="1" time="0.277357"/>
+      <testcase name="testMagicGetNull" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="50" assertions="1" time="0.000546"/>
+      <testcase name="testMagicSetUpdatedDateString" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="62" assertions="1" time="0.000577"/>
+      <testcase name="testMagicSetUpdatedDateJDateObject" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="78" assertions="2" time="0.000534"/>
+      <testcase name="testMagicSetAuthorWithPerson" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="96" assertions="2" time="0.020847"/>
+      <testcase name="testMagicSetAuthorWithInvalidAuthor" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="116" assertions="1" time="0.000916"/>
+      <testcase name="testMagicSetSourceWithInvalidSource" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="129" assertions="1" time="0.000559"/>
+      <testcase name="testMagicSetCategoriesWithInvalidProperty" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="142" assertions="1" time="0.000540"/>
+      <testcase name="testMagicSetGeneral" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="154" assertions="1" time="0.000495"/>
+      <testcase name="testAddCategory" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="170" assertions="1" time="0.000500"/>
+      <testcase name="testAddContributor" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="186" assertions="2" time="0.000556"/>
+      <testcase name="testAddLink" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="215" assertions="2" time="0.013924"/>
+      <testcase name="testRemoveCategory" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="245" assertions="1" time="0.000337"/>
+      <testcase name="testRemoveContributor" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="267" assertions="2" time="0.000367"/>
+      <testcase name="testRemoveLink" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="292" assertions="2" time="0.000366"/>
+      <testcase name="testSetAuthor" class="JFeedEntryTest" classname="JFeedEntryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedEntryTest.php" line="317" assertions="3" time="0.000363"/>
+    </testsuite>
+    <testsuite name="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" tests="10" assertions="10" errors="0" failures="1" skipped="1" time="0.084502">
+      <testcase name="testGetFeedBad" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="53" assertions="0" time="0.014285">
+        <skipped/>
+      </testcase>
+      <testcase name="testGetFeedNoParser" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="66" assertions="1" time="0.039105"/>
+      <testcase name="testGetFeedIdn" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="79" assertions="1" time="0.014323">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">JFeedFactoryTest::testGetFeedIdn
+Failed asserting that exception of type "Error" matches expected exception "RuntimeException". Message was: "Class 'PHPUnit_Util_ErrorHandler' not found" at
+/Applications/MAMP/htdocs/etc_2/tests/unit/core/helper.php:55
+/Applications/MAMP/htdocs/etc_2/libraries/src/Feed/FeedFactory.php:46
+/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php:81
+.
+
+</failure>
+      </testcase>
+      <testcase name="testGetFeedMockParser" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="89" assertions="1" time="0.013016"/>
+      <testcase name="testGetFeed" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="105" assertions="1" time="0.002220"/>
+      <testcase name="testRegisterParser" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="118" assertions="1" time="0.000172"/>
+      <testcase name="testRegisterParserWithInvalidClass" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="136" assertions="1" time="0.000273"/>
+      <testcase name="testRegisterParserWithInvalidTag" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="154" assertions="1" time="0.000132"/>
+      <testcase name="test_fetchFeedParser" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="168" assertions="2" time="0.000813"/>
+      <testcase name="test_fetchFeedParserWithInvalidTag" class="JFeedFactoryTest" classname="JFeedFactoryTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedFactoryTest.php" line="188" assertions="1" time="0.000163"/>
+    </testsuite>
+    <testsuite name="JFeedLinkTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedLinkTest.php" tests="2" assertions="7" errors="0" failures="0" skipped="0" time="0.000896">
+      <testcase name="testConstruct" class="JFeedLinkTest" classname="JFeedLinkTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedLinkTest.php" line="26" assertions="6" time="0.000387"/>
+      <testcase name="testConstructWithInvalidLength" class="JFeedLinkTest" classname="JFeedLinkTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedLinkTest.php" line="46" assertions="1" time="0.000509"/>
+    </testsuite>
+    <testsuite name="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" tests="10" assertions="45" errors="0" failures="0" skipped="0" time="0.010547">
+      <testcase name="testParse" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="42" assertions="1" time="0.003219"/>
+      <testcase name="testRegisterNamespace" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="77" assertions="3" time="0.000984"/>
+      <testcase name="testProcessElementWithElement" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="109" assertions="2" time="0.002524"/>
+      <testcase name="testProcessElementWithEntry" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="144" assertions="3" time="0.000868"/>
+      <testcase name="testFetchNamespace" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="183" assertions="3" time="0.000564"/>
+      <testcase name="testMoveToNextElement" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="207" assertions="8" time="0.000540"/>
+      <testcase name="testMoveToNextElementByName" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="243" assertions="4" time="0.000481"/>
+      <testcase name="testMoveToClosingElement" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="266" assertions="3" time="0.000447"/>
+      <testcase name="testMoveToClosingElementWithInternalElements" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="288" assertions="10" time="0.000464"/>
+      <testcase name="testMoveToClosingElementWithSelfClosingTag" class="JFeedParserTest" classname="JFeedParserTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedParserTest.php" line="335" assertions="8" time="0.000456"/>
+    </testsuite>
+    <testsuite name="JFeedPersonTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedPersonTest.php" tests="1" assertions="4" errors="0" failures="0" skipped="0" time="0.000301">
+      <testcase name="testConstruct" class="JFeedPersonTest" classname="JFeedPersonTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedPersonTest.php" line="26" assertions="4" time="0.000301"/>
+    </testsuite>
+    <testsuite name="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" tests="20" assertions="30" errors="0" failures="0" skipped="0" time="0.010593">
+      <testcase name="testMagicGetSet" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="32" assertions="1" time="0.000359"/>
+      <testcase name="testMagicGetNull" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="50" assertions="1" time="0.000407"/>
+      <testcase name="testMagicSetUpdatedDateString" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="62" assertions="1" time="0.000552"/>
+      <testcase name="testMagicSetUpdatedDateJDateObject" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="78" assertions="2" time="0.001032"/>
+      <testcase name="testMagicSetAuthorWithPerson" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="96" assertions="2" time="0.000657"/>
+      <testcase name="testMagicSetAuthorWithInvalidAuthor" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="116" assertions="1" time="0.000647"/>
+      <testcase name="testMagicSetCategoriesWithInvalidProperty" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="129" assertions="1" time="0.000533"/>
+      <testcase name="testMagicSetGeneral" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="141" assertions="1" time="0.000445"/>
+      <testcase name="testAddCategory" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="157" assertions="1" time="0.000458"/>
+      <testcase name="testAddContributor" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="173" assertions="2" time="0.000594"/>
+      <testcase name="testAddEntry" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="202" assertions="2" time="0.000434"/>
+      <testcase name="testOffsetExists" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="230" assertions="2" time="0.001459"/>
+      <testcase name="testOffsetGet" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="259" assertions="2" time="0.000457"/>
+      <testcase name="testOffsetSetWithString" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="289" assertions="1" time="0.000405"/>
+      <testcase name="testOffsetSet" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="301" assertions="1" time="0.000377"/>
+      <testcase name="testOffsetUnset" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="322" assertions="1" time="0.000351"/>
+      <testcase name="testRemoveCategory" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="344" assertions="1" time="0.000329"/>
+      <testcase name="testRemoveContributor" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="366" assertions="2" time="0.000339"/>
+      <testcase name="testRemoveEntry" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="391" assertions="2" time="0.000335"/>
+      <testcase name="testSetAuthor" class="JFeedTest" classname="JFeedTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/JFeedTest.php" line="415" assertions="3" time="0.000422"/>
+    </testsuite>
+    <testsuite name="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" tests="12" assertions="19" errors="0" failures="0" skipped="0" time="0.007707">
+      <testcase name="testHandleAuthor" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="53" assertions="1" time="0.000643"/>
+      <testcase name="testHandleContributor" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="75" assertions="1" time="0.000540"/>
+      <testcase name="testHandleGenerator" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="94" assertions="1" time="0.000427"/>
+      <testcase name="testHandleId" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="115" assertions="1" time="0.000514"/>
+      <testcase name="testHandleLink" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="136" assertions="1" time="0.000893"/>
+      <testcase name="testHandleRights" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="158" assertions="1" time="0.000790"/>
+      <testcase name="testHandleSubtitle" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="179" assertions="1" time="0.000953"/>
+      <testcase name="testHandleTitle" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="200" assertions="1" time="0.000934"/>
+      <testcase name="testHandleUpdated" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="221" assertions="1" time="0.000599"/>
+      <testsuite name="JFeedParserAtomTest::testInitialise" tests="2" assertions="6" errors="0" failures="0" skipped="0" time="0.000947">
+        <testcase name="testInitialise with data set #0" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="247" assertions="3" time="0.000499"/>
+        <testcase name="testInitialise with data set #1" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="247" assertions="3" time="0.000448"/>
+      </testsuite>
+      <testcase name="testProcessFeedEntry" class="JFeedParserAtomTest" classname="JFeedParserAtomTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserAtomTest.php" line="286" assertions="4" time="0.000467"/>
+    </testsuite>
+    <testsuite name="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" tests="24" assertions="62" errors="0" failures="0" skipped="0" time="0.013436">
+      <testcase name="testHandleCategory" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="71" assertions="2" time="0.000337"/>
+      <testcase name="testHandleCloud" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="95" assertions="6" time="0.000487"/>
+      <testcase name="testHandleCopyright" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="135" assertions="1" time="0.000434"/>
+      <testcase name="testHandleDescription" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="156" assertions="1" time="0.000409"/>
+      <testcase name="testHandleGenerator" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="177" assertions="1" time="0.000429"/>
+      <testcase name="testHandleImage" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="198" assertions="4" time="0.000389"/>
+      <testcase name="testHandleLanguage" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="232" assertions="1" time="0.000373"/>
+      <testcase name="testHandleLastBuildDate" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="253" assertions="1" time="0.000397"/>
+      <testcase name="testHandleLink" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="275" assertions="1" time="0.000474"/>
+      <testcase name="testHandleManagingEditor" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="297" assertions="1" time="0.000484"/>
+      <testcase name="testHandlePubDate" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="318" assertions="1" time="0.000399"/>
+      <testcase name="testHandleSkipDays" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="340" assertions="2" time="0.000438"/>
+      <testcase name="testHandleSkipHours" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="364" assertions="2" time="0.000417"/>
+      <testcase name="testHandleTitle" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="388" assertions="1" time="0.000542"/>
+      <testcase name="testHandleTtl" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="409" assertions="1" time="0.000477"/>
+      <testcase name="testHandleWebmaster" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="430" assertions="1" time="0.000471"/>
+      <testsuite name="JFeedParserRssTest::testInitialise" tests="3" assertions="9" errors="0" failures="0" skipped="0" time="0.004267">
+        <testcase name="testInitialise with data set #0" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="453" assertions="3" time="0.000833"/>
+        <testcase name="testInitialise with data set #1" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="453" assertions="3" time="0.001901"/>
+        <testcase name="testInitialise with data set #2" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="453" assertions="3" time="0.001533"/>
+      </testsuite>
+      <testcase name="testProcessFeedEntry" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="492" assertions="14" time="0.000581"/>
+      <testsuite name="JFeedParserRssTest::testProcessPerson" tests="4" assertions="12" errors="0" failures="0" skipped="0" time="0.001631">
+        <testcase name="testProcessPerson with data set #0" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="537" assertions="3" time="0.000428"/>
+        <testcase name="testProcessPerson with data set #1" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="537" assertions="3" time="0.000398"/>
+        <testcase name="testProcessPerson with data set #2" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="537" assertions="3" time="0.000405"/>
+        <testcase name="testProcessPerson with data set #3" class="JFeedParserRssTest" classname="JFeedParserRssTest" file="/Applications/MAMP/htdocs/etc_2/tests/unit/suites/libraries/joomla/feed/parser/JFeedParserRssTest.php" line="537" assertions="3" time="0.000400"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

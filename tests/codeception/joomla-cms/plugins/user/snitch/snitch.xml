@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+  <name>Joomla Snitch</name>
+  <author>Michael Buluma</author>
+  <creationDate>Feb 2018</creationDate>
+  <copyright>Copyright (C) 2018 Open Source Matters. All rights reserved.</copyright>
+  <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+  <authorEmail>me@buluma.me.ke</authorEmail>
+  <authorUrl>www.buluma.me.ke</authorUrl>
+  <version>3.0.0</version>
+  <description>Joomla! Back End Snitch</description>
+  <files>
+    <filename plugin="snitch">snitch.php</filename>
+  </files>
+  <!-- <languages>
+    <language tag="en-GB">en-GB.plg_system_sef.ini</language>
+    <language tag="en-GB">en-GB.plg_system_sef.sys.ini</language>
+  </languages> -->
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field
+          name="sendto"
+          type="text"
+          label="Mail to notify login"
+          description="Mail to notify login"
+          hint="ops@buluma.me.ke"
+          size="25"
+        />
+      </fieldset>
+    </fields>
+  </config>
+</extension>

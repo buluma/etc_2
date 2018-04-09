@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>Outlet visits!</name>
+    <author>Buluma</author>
+    <version>1.0.0</version>
+    <description>Show outlet visits on a map.</description>
+    <files>
+        <filename>mod_visits.xml</filename>
+        <filename module="mod_visits">mod_visits.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <config>
+    </config>
+</extension>
