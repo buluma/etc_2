@@ -32,3 +32,9 @@
 [25-Mar-2018 05:09:06 UTC] PHP Notice:  Undefined property: stdClass::$objective_code in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1217
 [25-Mar-2018 05:09:06 UTC] PHP Notice:  Undefined property: stdClass::$action_point in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1221
 [25-Mar-2018 05:11:18 UTC] PHP Notice:  Undefined property: stdClass::$objective_code in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1217
+[07-Apr-2018 08:53:03 UTC] PHP Notice:  Undefined property: stdClass::$created in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1353
+[07-Apr-2018 08:53:03 UTC] PHP Notice:  Undefined property: stdClass::$submitter in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1354
+[07-Apr-2018 08:53:03 UTC] PHP Notice:  Trying to get property 'id' of non-object in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 18
+[07-Apr-2018 08:53:03 UTC] PHP Notice:  Undefined property: stdClass::$created in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1353
+[07-Apr-2018 08:53:03 UTC] PHP Notice:  Undefined property: stdClass::$submitter in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 1354
+[07-Apr-2018 08:53:03 UTC] PHP Notice:  Trying to get property 'id' of non-object in /Applications/MAMP/htdocs/etc_2/sync/functions.php on line 18
