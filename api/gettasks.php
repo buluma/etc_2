@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Authorization, Origin, X-Requested-With, Content-Type, Accept");
 error_reporting(1);
 require_once 'connection.php';
 
