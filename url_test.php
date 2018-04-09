@@ -3,7 +3,6 @@
  * PHP/cURL function to check a web site status. If HTTP status is not 200 or 302, or
  * the requests takes longer than 10 seconds, the website is unreachable.
  * 
- * Follow me on Twitter: @HertogJanR
  *
  * @param string $url URL that must be checked
  */
