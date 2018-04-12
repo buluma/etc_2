@@ -51,6 +51,7 @@ class AssetsViewAssets extends JViewLegacy
 		AssetsHelper::addSubmenu('assets');
 
 		$this->addToolbar();
+		// var_dump($this->items);
 
 		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);

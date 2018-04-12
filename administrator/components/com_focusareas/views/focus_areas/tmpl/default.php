@@ -94,6 +94,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_FOCUSAREAS_FOCUS_AREAS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Created On', 'a.`created_on`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_FOCUSAREAS_FOCUS_AREAS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -172,8 +175,11 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->user_id; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
+					<?php echo $item->created_on; ?>
+				</td>
+				<td>
 					<?php echo $item->store; ?>
 				</td>
 				<td>

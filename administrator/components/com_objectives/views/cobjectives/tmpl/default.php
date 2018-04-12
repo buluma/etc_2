@@ -116,6 +116,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'Submitted By', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Created On', 'a.`created`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'Outlet', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -215,6 +218,9 @@ $sortFields = $this->getSortFields();
 				</td>
 				<td>
 					<?php echo $item->submitter; ?>
+				</td>
+				<td>
+					<?php echo $item->created; ?>
 				</td>
 				<td>
 					<?php echo $item->store; ?>

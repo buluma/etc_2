@@ -52,6 +52,8 @@ class ObjectivesViewObjectives extends JViewLegacy
 
 		$this->addToolbar();
 
+		// var_dump($this->items);
+
 		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
 	}

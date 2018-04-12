@@ -22,7 +22,8 @@
     <field name="brandcode" query="SELECT id as value, product_code as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_BRANDCODE" description="COM_VOC_FORM_DESC_VOC_BRANDCODE" hint="COM_VOC_FORM_LBL_VOC_BRANDCODE"/>
     <field name="category" type="list" label="COM_VOC_FORM_LBL_VOC_CATEGORY" description="COM_VOC_FORM_DESC_VOC_CATEGORY" hint="COM_VOC_FORM_LBL_VOC_CATEGORY">
       <option value="1">COM_VOC_VOCS_CATEGORY_OPTION_1</option>
-      <option value="2">COM_VOC_VOCS_CATEGORY_OPTION_2</option>
+      <option value="2">Recommendation</option>
+      <option value="3">Request</option>
     </field>
     <field name="items" type="list" label="COM_VOC_FORM_LBL_VOC_ITEMS" description="COM_VOC_FORM_DESC_VOC_ITEMS" hint="COM_VOC_FORM_LBL_VOC_ITEMS">
       <option value="1">COM_VOC_VOCS_ITEMS_OPTION_1</option>

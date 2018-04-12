@@ -140,9 +140,11 @@ class LoginsModelLogins extends JModelList
 		$query->select('`modified_by`.name AS `modified_by`');
 		$query->join('LEFT', '#__users AS `modified_by` ON `modified_by`.id = a.`modified_by`');
 
-		// Join over the user field 'username'
-		$query->select('`username`.name AS `username`');
-		$query->join('LEFT', '#__users AS `username` ON `username`.id = a.`username`');
+		// // Join over the user field 'username'
+
+		//hide for now
+		// $query->select('`username`.name AS `username`');
+		// $query->join('LEFT', '#__users AS `username` ON `username`.id = a.`username`');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');

@@ -87,6 +87,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'Status', 'a.`status`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Created On', 'a.`created`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'Completion Date', 'a.`completion_date`', $listDirn, $listOrder); ?>
 				</th>
 
@@ -176,6 +179,9 @@ $sortFields = $this->getSortFields();
 						
 
 					 ?>
+				</td>
+				<td>
+					<?php echo $item->created; ?>
 				</td>
 				<td>
 					<?php echo $item->completion_date; ?>

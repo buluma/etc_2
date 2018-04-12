@@ -100,6 +100,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_OBJECTIVES_OBJECTIVES_DELETED', 'a.`deleted`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Created On', 'a.`created_on`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'Client ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
 
@@ -181,6 +184,9 @@ $sortFields = $this->getSortFields();
 				</td>				
 				<td>
 					<?php echo $item->deleted; ?>
+				</td>
+				<td>
+					<?php echo $item->created_on; ?>
 				</td>
 				<td>
 					<?php echo $item->client_id; ?>

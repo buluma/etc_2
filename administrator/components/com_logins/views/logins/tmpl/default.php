@@ -89,12 +89,14 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOGINS_LOGINS_USERNAME', 'a.`username`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Login Time', 'a.`login_time`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOGINS_LOGINS_DAY', 'a.`day`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOGINS_LOGINS_LOGIN_COORDS', 'a.`login_coords`', $listDirn, $listOrder); ?>
 				</th>
-
 					
 				</tr>
 				</thead>
@@ -153,10 +155,18 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->username; ?>
-				</td>				<td>
+				</td>				
 
-					<?php echo $item->day; ?>
-				</td>				<td>
+				<td>
+					<?php echo $item->login_time; ?>
+				</td>				
+				<td>
+					<?php //echo $item->day; 
+						echo JHtml::_('date', $item->day, 'Y-m-d');
+					?>
+				</td>				
+
+				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'logins.', $canCheckin); ?>
 				<?php endif; ?>
