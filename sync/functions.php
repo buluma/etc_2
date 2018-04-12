@@ -1332,7 +1332,7 @@ function saveTasks($clientData, $syncDate){
         // check if this brandcode data exists for this outlet
 
         $aquery = 'SELECT id,task,description,deadline,priority,status,completion_date,remarks FROM dxcr2_tasks';
-        $aquery .= ' WHERE user = "'.$item->user.'" AND id ="'.$item->id.'"';
+        $aquery .= ' WHERE user = "'.$item->user.'" AND id ="'.$item->task_id.'"';
         $res = mysqli_query($mysqli,$aquery) or die(mysqli_error($mysqli));
         $total = mysqli_num_rows($res);
 
