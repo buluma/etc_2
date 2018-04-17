@@ -255,4 +255,34 @@ class Location_visitsModelLocation extends JModelAdmin
 			}
 		}
 	}
+
+	//outlet details
+	 public static function getOutlet()
+    {
+
+    	// var_dump($data);
+    	// exit();
+    	// $outlet_id = '1';
+    	$visit_id = JRequest::getVar('id','0');
+        
+        $db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query->select('*');
+		$query->from($db->quoteName('#__locations'));
+
+		// Join over the user field 'modified_by'
+		$query->select('`outlet`.shop_name AS `outlet_details`');
+		$query->join('LEFT', '#__outlets AS `outlet` ON `outlet`.id = '.$visit_id.'');
+
+
+		// $query->where($db->quoteName('id')." = ".$db->quote($visit_id));
+
+		$db->setQuery($query);
+		// var_dump($query);
+		$result = $db->loadRow();
+
+
+
+        // var_dump($result);
+    }
 }

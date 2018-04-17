@@ -39,6 +39,9 @@ class Location_visitsViewLocation extends JViewLegacy
 		$this->state = $this->get('State');
 		$this->item  = $this->get('Item');
 		$this->form  = $this->get('Form');
+		$this->outlet  = $this->get('Outlet');
+
+		// var_dump($this->outlet);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))

@@ -61,7 +61,8 @@ $document->addStyleSheet(JUri::root() . 'media/com_outlets/css/form.css');
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
 				<?php echo $this->form->renderField('created_by'); ?>
-				<?php echo $this->form->renderField('modified_by'); ?>				<?php echo $this->form->renderField('account'); ?>
+				<?php echo $this->form->renderField('modified_by'); ?>				
+				<?php echo $this->form->renderField('account'); ?>
 				<?php echo $this->form->renderField('shop_name'); ?>
 				<?php echo $this->form->renderField('category'); ?>
 				<?php echo $this->form->renderField('region'); ?>

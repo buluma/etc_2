@@ -16,11 +16,16 @@
     <field name="product_code" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CODE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_CODE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CODE"/>
     <field name="product_name" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_NAME" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_NAME" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_NAME"/>
     <field name="category" extension="com_products.products" type="category" required="true" message="Please select Product category" label="COM_PRODUCTS_FORM_LBL_PRODUCT_CATEGORY" description="COM_PRODUCTS_FORM_DESC_PRODUCT_CATEGORY" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_CATEGORY"/>
-    <field name="product_classification" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CLASSIFICATION" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_CLASSIFICATION" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CLASSIFICATION"/>
-    <field name="product_type" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_TYPE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_TYPE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_TYPE"/>
+
+    <field name="product_classification" extension="com_products.products" type="category" required="true" message="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CLASSIFICATION" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CLASSIFICATION" description="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CLASSIFICATION" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_CATEGORY"/>
+
+    <field name="product_type" extension="com_products.products" type="category" required="true" message="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CLASSIFICATION" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_TYPE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_TYPE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_TYPE"/>
+
+
     <field name="product_uom" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_UOM" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_UOM" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_UOM"/>
-    <field name="product_price" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_PRICE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_PRICE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_PRICE"/>
-    <field name="product_size" filter="safehtml" type="text" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_SIZE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_SIZE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_SIZE"/>
+
+    <field name="product_price" filter="safehtml" type="number" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_PRICE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_PRICE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_PRICE"/>
+    <field name="product_size" filter="safehtml" type="number" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_SIZE" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_SIZE" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_SIZE"/>
     <field name="product_cases" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CASES" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PRODUCT_CASES" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PRODUCT_CASES"/>
     <field name="published" default="1" type="list" label="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED" description="COM_PRODUCTS_FORM_DESC_PRODUCT_PUBLISHED" hint="COM_PRODUCTS_FORM_LBL_PRODUCT_PUBLISHED">
       <option value="1">COM_PRODUCTS_PRODUCTS_PUBLISHED_OPTION_1</option>

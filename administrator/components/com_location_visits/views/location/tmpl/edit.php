@@ -26,6 +26,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/form.css'
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&callback=initMap">
     </script>
 
+
 <script type="text/javascript">
 	js = jQuery.noConflict();
 	js(document).ready(function () {
@@ -74,10 +75,10 @@ $document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/form.css'
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 200px;
+        height: 250px;
         position: relative;
     	overflow: hidden;
-    	width: 500px;
+    	width: 100%;
     	margin-bottom: 10px;
       }
     </style>
@@ -91,10 +92,10 @@ $document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/form.css'
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_LOCATION_VISITS_TITLE_LOCATION', true)); ?>
 		<div class="row-fluid">
-			<div class="span10 form-horizontal">
+			<div class="span6 form-horizontal">
 				<fieldset class="adminform">
 
-									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
+				<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
 				<input type="hidden" name="jform[ordering]" value="<?php echo $this->item->ordering; ?>" />
 				<input type="hidden" name="jform[state]" value="<?php echo $this->item->state; ?>" />
 				<input type="hidden" name="jform[checked_out]" value="<?php echo $this->item->checked_out; ?>" />
@@ -103,44 +104,6 @@ $document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/form.css'
 				<?php echo $this->form->renderField('created_by'); ?>				
 				<?php echo $this->form->renderField('client_id'); ?>
 				<?php echo $this->form->renderField('coordinates'); ?>
-
-				<div class="control-group">
-					<div class="control-label">Actual User Location</div>
-					<div class="controls">
-				<?php
-
-				$coordinates = $this->item->coordinates;
-				$coordinatesSplit = explode(",", $coordinates);
-
-				 $long =  floatval($coordinatesSplit[0]); // cast string to float
-
-				 $lat = floatval($coordinatesSplit[1]); // case string to float
-
-				 // echo "Long : ".$long."\r\n";
-
-				 // echo "Lat : ".$lat."\r\n";
-				?>
-
-				<div id="map">Map</div>
-			    <script>
-
-			      function initMap() {
-			        var myLatLng = {lat: -1.3605566, lng: 36.6529826};
-
-			        var map = new google.maps.Map(document.getElementById('map'), {
-			          zoom: 18,
-			          center: myLatLng
-			        });
-
-			        var marker = new google.maps.Marker({
-			          position: myLatLng,
-			          map: map,
-			          title: '<?php echo $this->item->created_on; ?>'
-			        });
-			      }
-			    </script>
-			</div>
-				</div>
 
 				<?php echo $this->form->renderField('client_modified_date'); ?>
 				<?php echo $this->form->renderField('submitter'); ?>
@@ -180,6 +143,56 @@ $document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/form.css'
 						<div class="controls"><?php echo $this->form->getInput('version_note'); ?></div>
 					</div>
 					<?php endif; ?>
+				</fieldset>
+			</div>
+			<div class="span6">
+				<fieldset class="adminform">
+					<div class="control-group">
+					<div class="controlsx">
+						<?php
+
+						$coordinates = $this->item->coordinates;
+						$coordinatesSplit = explode(",", $coordinates);
+
+						$lat = floatval($coordinatesSplit[0]); // case string to float
+						$long =  floatval($coordinatesSplit[1]); // cast string to float
+
+						$act_location_head = "Actual User Location: <small>Lat : ".$lat."\r\n" . "Long : ".$long."\r\n</small>";
+
+						$outlet_location_head = "Outlet Location: <small>Lat : ".$lat."\r\n" . "Long : ".$long."\r\n</small>";
+
+						 echo $act_location_head;
+
+						 // echo "Long : ".$long."\r\n";
+
+						 
+						?>
+
+						<div id="map">Map</div>
+						<hr>
+						<div id="map2">Outlet Location</div>
+					    <script>
+
+					      function initMap() {
+					        var myLatLng = {lat: <?php echo $lat ?>, lng: <?php echo $long ?>};
+
+					        var map = new google.maps.Map(document.getElementById('map'), {
+					          zoom: 18,
+					          center: myLatLng
+					        });
+
+					        var marker = new google.maps.Marker({
+					          position: myLatLng,
+					          map: map,
+					          title: '<?php echo $this->item->created_on; ?>'
+					        });
+					      }
+
+					      //outlet map
+
+					    </script>
+					</div>
+				</div>
 				</fieldset>
 			</div>
 		</div>
