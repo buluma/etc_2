@@ -246,6 +246,6 @@ $sortFields = $this->getSortFields();
 </script>
 <style type="text/css">
 	div.btn-wrapper.input-append{
-		display: none;
+		/*display: none;*/
 	}
 </style>

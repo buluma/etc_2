@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field name="id" type="text" readonly="true" class="readonly" default="0" description="JGLOBAL_FIELD_ID_DESC"/>
+    <field name="ordering"/>
+    <field name="state" default="1" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+      <option value="2">JARCHIVED</option>
+      <option value="-2">JTRASHED</option>
+    </field>
+    <field name="checked_out" type="hidden" filter="unset"/>
+    <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
+    <field name="product_code" filter="safehtml" type="text" label="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_CODE" description="COM_BTS_PRODUCTS_FORM_DESC_BTS_PRODUCT_PRODUCT_CODE" hint="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_CODE"/>
+    <field name="product_name" filter="safehtml" type="text" label="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_NAME" description="COM_BTS_PRODUCTS_FORM_DESC_BTS_PRODUCT_PRODUCT_NAME" hint="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_NAME"/>
+    <field name="product_sku" filter="safehtml" type="text" label="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_SKU" description="COM_BTS_PRODUCTS_FORM_DESC_BTS_PRODUCT_PRODUCT_SKU" hint="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_SKU"/>
+    <field name="category" extension="com_bts_products.bts_products" type="category" required="true" message="Please select Product category" label="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_CATEGORY" description="COM_BTS_PRODUCTS_FORM_DESC_BTS_PRODUCT_CATEGORY" hint="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_CATEGORY"/>
+    <field name="product_target" filter="safehtml" type="text" label="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_TARGET" description="COM_BTS_PRODUCTS_FORM_DESC_BTS_PRODUCT_PRODUCT_TARGET" hint="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PRODUCT_TARGET"/>
+    <field name="published" default="1" type="list" label="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PUBLISHED" description="COM_BTS_PRODUCTS_FORM_DESC_BTS_PRODUCT_PUBLISHED" hint="COM_BTS_PRODUCTS_FORM_LBL_BTS_PRODUCT_PUBLISHED">
+      <option value="1">COM_BTS_PRODUCTS_BTS_PRODUCTS_PUBLISHED_OPTION_1</option>
+      <option value="0">COM_BTS_PRODUCTS_BTS_PRODUCTS_PUBLISHED_OPTION_0</option>
+    </field>
+    <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
+  </fieldset>
+</form>

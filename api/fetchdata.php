@@ -167,6 +167,38 @@ if (isset($_GET['data'])){
         echo json_encode($response);
 
 	} // end if $param = eablproducts
+
+	if ($param == 'btsproducts'){
+		// Client expects json response here!
+		// $lastmodified = $_GET['last_modified'];
+		$lastmodified = 'none'; //get all
+		if ($lastmodified == 'none'){
+			$query = "SELECT * FROM dxcr2_bts_products";
+		}
+		else {
+			$query = "SELECT * FROM dxcr2_bts_products WHERE modified_on > '$lastmodified'"; 
+		}
+       
+	    $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+	    $total = mysqli_num_rows($result);
+	   
+		if ($total == 0) {
+		   		header("Content-Type: application/json");
+		        $json['btsproducts'] = array(); // create an empty array
+		}
+		else {
+			while($row = mysqli_fetch_object($result)){
+	           //cast results to specific data types		
+	            $json['btsproducts'][] = $row;
+	        } 	   
+		}	   
+	    
+        $response = $json;
+        header("Content-Type: application/json");
+        echo json_encode($response);
+
+	} // end if $param = btsproducts
+
 	if ($param == 'eablobjectives'){
 		// Client expects json response here!
 		// $lastmodified = $_GET['last_modified'];
