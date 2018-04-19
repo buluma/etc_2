@@ -145,8 +145,8 @@ if (isset($_GET['data'])){
 
 	if ($param == 'btsproducts'){
 		// Client expects json response here!
-		$lastmodified = $_GET['last_modified'];
-		// $lastmodified = 'none'; //get all
+		// $lastmodified = $_GET['last_modified'];
+		$lastmodified = 'none'; //get all
 		if ($lastmodified == 'none'){
 			$query = "SELECT * FROM dxcr2_bts_products";
 		}
