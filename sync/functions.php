@@ -278,15 +278,16 @@ function saveBTSPromotions($clientData, $syncDate){
             'client_id' => '1',
             'coordinates' => $item->coords,
             'unique_id' => $item->unique_id,
-            'product' => $item->brand,
+            'product' => $item->brandcode,
             // 'brandcode' => $item->brandcode,
-            'sku' => $item->sku,
-            'target' => '',
+            // 'sku' => $item->sku,
+            // 'target' => $item->target,
             'actual' => $item->actual,
             'date' => $item->date,
             'outlet' => $item->store_server_id,
             'ba_name' => setUserID($item->submitter),
             'user_id' => setUserID($item->submitter),
+            'submitter' => setUserID($item->submitter),
             'store' => $item->store,
             'store_id' => $item->store_id,
             'store_server_id' => $item->store_server_id,
@@ -299,6 +300,42 @@ function saveBTSPromotions($clientData, $syncDate){
         $insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
         if ($insert){
             array_push($resultarray, 'bts promotions added with client_id: '.$item->id);
+        }
+    }
+}
+
+function saveBTSPromotionsImages($clientData, $syncDate){
+    global $resultarray;
+    global $mysqli;
+    global $handler;
+    $syncTime =  $syncDate/1000; // convert from milliseconds to seconds
+    $count = count($clientData);
+
+    // start processing the data
+    foreach ($clientData as $key => $item) {
+        // save the item to database
+        $sqlData = array(
+            // 'client_id' => $item->id,
+            'client_id' => '1',
+            //'coordinates' => $item->coords,
+            'activity_id' => $item->activity_id,
+            'activity_unique_id' => $item->activity_unique_id,
+            'image' => $item->image,
+            'submitter' => setUserID($item->submitter),
+            // 'submitter' => $item->submitter,
+            'user_id' => setUserID($item->submitter),
+            'store' => $item->store,
+            'store_id' => $item->store_id,
+            'store_server_id' => $item->store_server_id,
+            'created_on' => $item->created_on,
+            'last_sync_date' => $syncTime
+            );
+        $columns = array_keys($sqlData);
+        $values = array_values($sqlData);
+        $query = 'INSERT INTO dxcr2_promotion_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+        $insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+        if ($insert){
+            array_push($resultarray, 'bts promo images added with client_id: '.$item->id);
         }
     }
 }

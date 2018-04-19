@@ -16,7 +16,11 @@
     <field name="date" class="inputbox" timeformat="12" filter="server_utc" showtime="false" singleheader="false" todaybutton="false" weeknumbers="false" filltable="false" type="calendar" label="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_DATE" description="COM_BTS_ITEMS_FORM_DESC_BTS_ITEM_DATE" hint="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_DATE"/>
     <field name="outlet" sql_select="id, shop_name" sql_from="#__outlets" sql_where="state=1" key_field="id" value_field="shop_name" type="sql" label="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_OUTLET" description="COM_BTS_ITEMS_FORM_DESC_BTS_ITEM_OUTLET" hint="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_OUTLET"/>
     <field name="ba_name" type="user" label="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_BA_NAME" description="COM_BTS_ITEMS_FORM_DESC_BTS_ITEM_BA_NAME" hint="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_BA_NAME"/>
-    <field name="product" sql_select="id, product_name" sql_from="#__bts_products" sql_where="state=1" sql_order="id ASC" key_field="id" value_field="product_name" header="Select Variant" type="sql" label="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_PRODUCT" description="COM_BTS_ITEMS_FORM_DESC_BTS_ITEM_PRODUCT" hint="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_PRODUCT"/>
+
+    <field name="product" sql_select="id, product_code, product_name" sql_from="#__bts_products" sql_where="state=1" sql_order="id ASC" key_field="product_code" value_field="product_name" header="Select Variant" type="sql" label="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_PRODUCT" description="COM_BTS_ITEMS_FORM_DESC_BTS_ITEM_PRODUCT" hint="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_PRODUCT"/>
+
+    <!-- <field name="sku" sql_select="id, sku" sql_from="#__bts_products" sql_where="state=1" sql_order="id ASC" key_field="product_code" value_field="sku" header="Select SKU" type="sql" label="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_SKU" description="COM_BTS_ITEMS_FORM_DESC_BTS_ITEM_SKU" hint="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_SKU"/> -->
+
     <field name="sku" type="list" label="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_SKU" description="COM_BTS_ITEMS_FORM_DESC_BTS_ITEM_SKU" hint="COM_BTS_ITEMS_FORM_LBL_BTS_ITEM_SKU">
       <option value="200ML">COM_BTS_ITEMS_BTS_ITEMS_SKU_OPTION_200ML</option>
       <option value="400ML">COM_BTS_ITEMS_BTS_ITEMS_SKU_OPTION_400ML</option>

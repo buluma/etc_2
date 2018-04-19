@@ -42,6 +42,10 @@ class Bts_itemsViewBts_items extends JViewLegacy
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
 
+        // echo '<pre>';
+        // var_dump($this->items);
+        // echo '<pre/>';
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{

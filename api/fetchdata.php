@@ -36,31 +36,6 @@ if (isset($_GET['data'])){
 
 	} // end if $param = focusmodels
 
-	if ($param == 'tasks'){
-       // $query = "SELECT * FROM dxcr2_tasks WHERE published = 1 AND expiry_date > CURDATE()";
-	   // $query = "SELECT * FROM dxcr2_tasks";
-	   // $query = "SELECT id, user, task, description, deadline, priority FROM dxcr2_tasks WHERE user = '".$id."'";
-		$query = "SELECT id, user, task, description, deadline, priority FROM dxcr2_tasks";
-	   $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
-	   $total = mysqli_num_rows($result);
-	   
-	   if ($total == 0) {
-	        echo "No Tasks Found";
-				
-	   }
-	   else {
-			// we found some tasks
-	   	   while($row = mysqli_fetch_object($result)){
-	           //cast results to specific data types		
-	           $json['tasks'][] = $row;
-	       }
-	       $tasks = $json;
-	       header("Content-Type: application/json");
-	       echo json_encode($tasks);
-	   }
-
-	} // end if $param = tasks
-
 	if ($param == 'routeplan'){
 	   $promoter = $_GET['username'];
        $query = "SELECT * FROM routeplan WHERE promoter = '".$promoter."' ";
@@ -170,8 +145,8 @@ if (isset($_GET['data'])){
 
 	if ($param == 'btsproducts'){
 		// Client expects json response here!
-		// $lastmodified = $_GET['last_modified'];
-		$lastmodified = 'none'; //get all
+		$lastmodified = $_GET['last_modified'];
+		// $lastmodified = 'none'; //get all
 		if ($lastmodified == 'none'){
 			$query = "SELECT * FROM dxcr2_bts_products";
 		}
@@ -184,12 +159,12 @@ if (isset($_GET['data'])){
 	   
 		if ($total == 0) {
 		   		header("Content-Type: application/json");
-		        $json['btsproducts'] = array(); // create an empty array
+		        $json['bts_products'] = array(); // create an empty array
 		}
 		else {
 			while($row = mysqli_fetch_object($result)){
 	           //cast results to specific data types		
-	            $json['btsproducts'][] = $row;
+	            $json['bts_products'][] = $row;
 	        } 	   
 		}	   
 	    
@@ -198,6 +173,36 @@ if (isset($_GET['data'])){
         echo json_encode($response);
 
 	} // end if $param = btsproducts
+
+	if ($param == 'usertasks'){
+		// Client expects json response here!
+		// $lastmodified = $_GET['last_modified'];
+		$lastmodified = 'none'; //get all
+		if ($lastmodified == 'none'){
+			$query = "SELECT * FROM dxcr2_tasks";
+		}
+		else {
+			$query = "SELECT * FROM dxcr2_tasks WHERE modified_on > '$lastmodified'"; 
+		}
+       
+	    $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+	    $total = mysqli_num_rows($result);
+	   
+		if ($total == 0) {
+	   		header("Content-Type: application/json");
+	        $json['user_tasks'] = array(); // create an empty array
+		}
+		else {
+			while($row = mysqli_fetch_object($result)){
+	           //cast results to specific data types		
+	            $json['user_tasks'][] = $row;
+	        } 	   
+		}	   
+	    
+        $response = $json;
+        header("Content-Type: application/json");
+        echo json_encode($response);
+	} // end if $param = tasks
 
 	if ($param == 'eablobjectives'){
 		// Client expects json response here!

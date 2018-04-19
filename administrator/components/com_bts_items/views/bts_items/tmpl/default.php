@@ -82,7 +82,7 @@ $sortFields = $this->getSortFields();
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_SKU', 'a.`sku`', $listDirn, $listOrder); ?>
-				</th>
+				</th> 
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_TARGET', 'a.`target`', $listDirn, $listOrder); ?>
 				</th>
@@ -95,9 +95,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_CREATED', 'a.`created`', $listDirn, $listOrder); ?>
-				</th>
+				<!-- <th class='left'>
+				<?php //echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_CREATED', 'a.`created`', $listDirn, $listOrder); ?>
+				</th> -->
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
@@ -160,37 +160,38 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->date; ?>
-				</td>				<td>
+				</td>				
+				<td>
+				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'bts_items.', $canCheckin); ?>
+				<?php endif; ?>
+				<?php if ($canEdit) : ?>
+					<a href="<?php echo JRoute::_('index.php?option=com_bts_items&task=bts_item.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->ba_name); ?></a>
+				<?php else : ?>
+					<?php echo $this->escape($item->ba_name); ?>
+				<?php endif; ?>
 
-					<?php echo $item->ba_name; ?>
-				</td>				<td>
-
+				</td>			
+				<td>
 					<?php echo $item->product; ?>
-				</td>				<td>
-
-					<?php echo $item->sku; ?>
-				</td>				<td>
-
-					<?php echo $item->target; ?>
+				</td>				
+				<td class="">
+					<?php echo $item->product_sku; ?>
+				</td>				
+				<td>
+					<?php echo $item->product_target; ?>
 				</td>				<td>
 
 					<?php echo $item->actual; ?>
 				</td>				<td>
 
 					<?php echo $item->store; ?>
-				</td>				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'bts_items.', $canCheckin); ?>
-				<?php endif; ?>
-				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_bts_items&task=bts_item.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->coordinates); ?></a>
-				<?php else : ?>
-					<?php echo $this->escape($item->coordinates); ?>
-				<?php endif; ?>
-
-				</td>				<td>
-
+				</td>	
+				<td>
+					<?php echo $item->coordinates; ?>
+				</td>					
+				<td class="hidden">
 					<?php echo $item->created; ?>
 				</td>				<td>
 

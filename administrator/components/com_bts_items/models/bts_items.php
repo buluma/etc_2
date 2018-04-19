@@ -184,6 +184,18 @@ class Bts_itemsModelBts_items extends JModelList
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
 
+		// Join over the product field 'product'
+		$query->select('`product`.product_name AS `product_details`');
+		$query->join('LEFT', '#__bts_products AS `product` ON `product`.id = a.`product`');
+
+		// Join over the product field 'product' for product sku
+		$query->select('`productx`.product_sku AS `product_sku`');
+		$query->join('LEFT', '#__bts_products AS `productx` ON `productx`.id = a.`product`');
+
+		// Join over the product field 'product' for product target
+		$query->select('`productt`.product_target AS `product_target`');
+		$query->join('LEFT', '#__bts_products AS `productt` ON `productt`.id = a.`product`');
+
 		// Filter by published state
 		$published = $this->getState('filter.state');
 
@@ -316,7 +328,7 @@ class Bts_itemsModelBts_items extends JModelList
 					if (!empty($value))
 					{
 						$db = JFactory::getDbo();
-						$query = "SELECT id, product_name FROM #__bts_products WHERE state=1 AND id LIKE '" . $value . "' ORDER BY id ASC";
+						$query = "SELECT product_code, product_name FROM #__bts_products WHERE state=1 AND id LIKE '" . $value . "' ORDER BY id ASC";
 						$db->setQuery($query);
 						$results = $db->loadObject();
 
