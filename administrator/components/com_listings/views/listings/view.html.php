@@ -45,6 +45,8 @@ class ListingsViewListings extends JViewLegacy
 
         // var_dump($this->export);
 
+        // var_dump($this->items);
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{

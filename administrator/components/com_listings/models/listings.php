@@ -176,6 +176,10 @@ class ListingsModelListings extends JModelList
 		$query->select('`client_id`.client_name AS `client_id`');
 		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
 
+		// Join over the product field 'product_code'
+		$query->select('`products`.product_name AS `product`');
+		$query->join('LEFT', '#__products AS `products` ON `products`.product_code = a.`listing`');
+
 		// Filter by published state
 		$published = $this->getState('filter.state');
 

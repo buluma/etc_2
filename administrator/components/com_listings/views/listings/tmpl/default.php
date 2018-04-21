@@ -165,7 +165,7 @@ $sortFields = $this->getSortFields();
 					<?php echo $item->id; ?>
 				</td>				<td>
 
-					<?php echo $item->listing; ?>
+					<?php echo $item->product; ?>
 				</td>				<td>
 
 					<?php echo $item->listed; ?>
