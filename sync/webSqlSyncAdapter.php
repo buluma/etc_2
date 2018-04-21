@@ -61,8 +61,8 @@ function myJob($handler){
 	if (isset($input->data->data_bts_promotions)){
 	    saveBTSPromotions($input->data->data_bts_promotions, $handler->syncDate);
 	}
-	if (isset($input->data->bts_promotions_images)){
-	    saveBTSPromotionsImages($input->data->bts_promotions_images, $handler->syncDate);
+	if (isset($input->data->data_bts_promotions_images)){
+	    saveBTSPromotionsImages($input->data->data_bts_promotions_images, $handler->syncDate);
 	}
 	//save performance
 	if (isset($input->data->performance)){

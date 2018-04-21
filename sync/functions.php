@@ -275,7 +275,7 @@ function saveBTSPromotions($clientData, $syncDate){
             'state' => '1',
             'ordering' => '1',
             // 'client_id' => $item->id,
-            'client_id' => '1',
+            'client_id' => '2',
             'coordinates' => $item->coords,
             'unique_id' => $item->unique_id,
             'product' => $item->brandcode,
@@ -316,7 +316,7 @@ function saveBTSPromotionsImages($clientData, $syncDate){
         // save the item to database
         $sqlData = array(
             // 'client_id' => $item->id,
-            'client_id' => '1',
+            'client_id' => '2',
             //'coordinates' => $item->coords,
             'activity_id' => $item->activity_id,
             'activity_unique_id' => $item->activity_unique_id,
@@ -340,40 +340,6 @@ function saveBTSPromotionsImages($clientData, $syncDate){
     }
 }
 
-
-/*function savePromotions($clientData, $syncDate){
-    global $resultarray;
-    global $mysqli;
-    global $handler;
-	$syncTime =  $syncDate/1000; // convert from milliseconds to seconds
-	$count = count($clientData);
-
-	// start processing the data
-	foreach ($clientData as $key => $item) {
-		// save the item to database
-	    $sqlData = array(
-            'client_id' => $item->id,
-            'coordinates' => $item->coords,
-            'unique_id' => $item->unique_id,
-            'brand' => $item->brand,
-            'promos' => $item->promos,
-            'submitter' => $item->submitter,
-            'user_id' => setUserID($item->submitter),
-            'store' => $item->store,
-            'store_id' => $item->store_id,
-            'store_server_id' => $item->store_server_id,
-            'created_on' => $item->created_on,
-            'last_sync_date' => $syncTime
-            );
-	    $columns = array_keys($sqlData);
-		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_tl_promotions(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
-		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
-		if ($insert){
-		    array_push($resultarray, 'promotions added with client_id: '.$item->id);
-		}
-    }
-}*/
 
 ##savePerformance function
 function savePerformance($clientData, $syncDate){
