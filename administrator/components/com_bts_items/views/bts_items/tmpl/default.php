@@ -92,6 +92,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_BA_NAME', 'a.`ba_name`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Image', 'a.`image_id`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_PRODUCT', 'a.`product`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -183,7 +186,10 @@ $sortFields = $this->getSortFields();
 					<?php echo $this->escape($item->ba_name); ?>
 				<?php endif; ?>
 
-				</td>			
+				</td>		
+				<td>
+				<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="An image" />
+				</td>	
 				<td>
 					<?php echo $item->product; ?>
 				</td>				

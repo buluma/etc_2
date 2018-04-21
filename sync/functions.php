@@ -332,7 +332,7 @@ function saveBTSPromotionsImages($clientData, $syncDate){
             );
         $columns = array_keys($sqlData);
         $values = array_values($sqlData);
-        $query = 'INSERT INTO dxcr2_promotion_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+        $query = 'INSERT INTO dxcr2_bts_promotion_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
         $insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
         if ($insert){
             array_push($resultarray, 'bts promo images added with client_id: '.$item->id);

@@ -196,6 +196,10 @@ class Bts_itemsModelBts_items extends JModelList
 		$query->select('`productt`.product_target AS `product_target`');
 		$query->join('LEFT', '#__bts_products AS `productt` ON `productt`.id = a.`product`');
 
+		// Join over the images field 'image_id'
+		$query->select('`bts_images`.image AS `image_id`');
+		$query->join('LEFT', '#__bts_promotion_images AS `bts_images` ON `bts_images`.activity_unique_id = a.`unique_id`');
+
 		// Filter by published state
 		$published = $this->getState('filter.state');
 
