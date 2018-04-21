@@ -18,6 +18,7 @@ JHtml::_('behavior.keepalive');
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'media/com_brandstocks/css/form.css');
+// var_dump($this->item);
 ?>
 <script type="text/javascript">
 	js = jQuery.noConflict();
@@ -106,6 +107,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_brandstocks/css/form.css');
 			?>				<?php echo $this->form->renderField('store_server_id'); ?>
 
 			<?php
+
 				foreach((array)$this->item->store_server_id as $value): 
 					if(!is_array($value)):
 						echo '<input type="hidden" class="store_server_id" name="jform[store_server_idhidden]['.$value.']" value="'.$value.'" />';

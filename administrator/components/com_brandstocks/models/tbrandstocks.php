@@ -305,8 +305,11 @@ class BrandstocksModelTbrandstocks extends JModelList
 
 		foreach ($items as $oneItem)
 		{
-					$oneItem->order_placed = ($oneItem->order_placed == '') ? '' : JText::_('COM_BRANDSTOCKS_TBRANDSTOCKS_ORDER_PLACED_OPTION_' . strtoupper($oneItem->order_placed));
-					$oneItem->delivered = ($oneItem->delivered == '') ? '' : JText::_('COM_BRANDSTOCKS_TBRANDSTOCKS_DELIVERED_OPTION_' . strtoupper($oneItem->delivered));
+			// $oneItem->order_placed = ($oneItem->order_placed == '') ? '' : JText::_('COM_BRANDSTOCKS_TBRANDSTOCKS_ORDER_PLACED_OPTION_' . strtoupper($oneItem->order_placed));
+			// $oneItem->delivered = ($oneItem->delivered == '') ? '' : JText::_('COM_BRANDSTOCKS_TBRANDSTOCKS_DELIVERED_OPTION_' . strtoupper($oneItem->delivered));
+			$oneItem->order_placed = ($oneItem->order_placed == '') ? '' : JText::_($oneItem->order_placed);
+			$oneItem->delivered = ($oneItem->delivered == '') ? '' : JText::_($oneItem->delivered);
+
 
 			if (isset($oneItem->store))
 			{

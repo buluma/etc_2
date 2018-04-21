@@ -1302,6 +1302,7 @@ function saveVOC($clientData, $syncDate){
             'photos' => $item->photos,
             'brand' => $item->brand,
             'brandcode' => $item->brandcode,
+            'unique_id' => $item->unique_id,
             'category' => $item->category,
             'items' => $item->items,
             'commentby' => $item->commentby,

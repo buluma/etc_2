@@ -204,17 +204,15 @@ $sortFields = $this->getSortFields();
 				<td>
 					<?php echo $item->delivered; ?>
 				</td>				
-				<td>
+				
 					<?php //
 						$stockstatus = $item->stockout;
 						if ($stockstatus == 0) {
-							# code...
-							echo 'No';
+							echo '<td style="background:#9c0612; color: white; text-align:center; vertical-align:middle;">No</td>';
 						} else {
-							# code...
-							echo 'Yes';
+							echo '<td style="background:#32C5D2; color: white; text-align:center; vertical-align:middle;">Yes</td>';
 						}
-					//echo $item->stockout; ?>
+					?>
 				</td>				
 				<td>
 					<?php echo $item->submitter; ?>
