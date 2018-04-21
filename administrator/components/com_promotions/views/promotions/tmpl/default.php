@@ -97,6 +97,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_PROMOTIONS_PROMOTIONS_CATEGORY', 'a.`category`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Image', 'a.`image_id`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_PROMOTIONS_PROMOTIONS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -193,7 +196,21 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->category; ?>
-				</td>				<td>
+				</td>				
+				<td>
+					<?php //var_dump($item); ?>
+					
+						<?php
+					// var_dump($item->image_id);
+					if (empty($item->image_id)) {
+						echo 'No Image Found';
+					} else { ?>
+						<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="<?php echo $item->product;?> Image" />
+					<?php };
+				
+					?>
+				</td>
+				<td>
 
 					<?php echo $item->submitter; ?>
 				</td>				<td>

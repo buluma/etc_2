@@ -14,6 +14,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
+JHTML::_('behavior.modal');
 
 // Import CSS
 $document = JFactory::getDocument();
@@ -64,6 +65,7 @@ $sortFields = $this->getSortFields();
             <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 
 			<div class="clearfix"></div>
+
 			<table class="table table-striped" id="bts_itemList">
 				<thead>
 				<tr>
@@ -188,7 +190,22 @@ $sortFields = $this->getSortFields();
 
 				</td>		
 				<td>
-				<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="<?php echo $item->product;?> Image" />
+				<!-- <a href="#mod" class="modal"> -->
+					<?php
+					// var_dump($item->image_id);
+					if (empty($item->image_id)) {
+						echo 'No Image Found';
+					} else { ?>
+						<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="<?php echo $item->product;?> Image" />
+					<?php };
+				
+					?>
+				
+
+				<!--<div id="mod" class="hiddenx"><img src="<?php //var_dump($item->image_id); //echo $item->image_id; ?>" width="120" height="100" alt="<?php //echo $item->product;?> Image" /></div> -->
+				<!-- <a href="#myModal" class="btn" data-toggle="modal"> Click here to see my image</a> -->
+
+<?php echo JHTML::_('bootstrap.renderModal', 'myModal', array(), '<img src="'. $item->image_id . '" />'); ?>
 				</td>	
 				<td>
 					<?php echo $item->product; ?>

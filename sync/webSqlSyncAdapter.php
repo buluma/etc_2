@@ -128,6 +128,9 @@ function myJob($handler){
 	if (isset($input->data->voc)){
 		saveVOC($input->data->voc, $handler->syncDate);
 	}
+	if (isset($input->data->data_voc_images)){
+		saveVOCImages($input->data->data_voc_images, $handler->syncDate);
+	}
 	if (isset($input->data->competitor_activity)){
 		saveCompeActivity($input->data->competitor_activity, $handler->syncDate);
 	}

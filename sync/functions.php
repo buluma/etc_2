@@ -1330,6 +1330,43 @@ function saveVOC($clientData, $syncDate){
     }
 }
 
+//voc images
+function saveVOCImages($clientData, $syncDate){
+    global $resultarray;
+    global $mysqli;
+    global $handler;
+    $syncTime =  $syncDate/1000; // convert from milliseconds to seconds
+    $count = count($clientData);
+
+    // start processing the data
+    foreach ($clientData as $key => $item) {
+        // save the item to database
+        $sqlData = array(
+            // 'client_id' => $item->id,
+            'client_id' => '1',
+            //'coordinates' => $item->coords,
+            'activity_id' => $item->activity_id,
+            'activity_unique_id' => $item->activity_unique_id,
+            'image' => $item->image,
+            // 'submitter' => $item->submitter,
+            'submitter' => setUserID($item->submitter),
+            'user_id' => setUserID($item->submitter),
+            'store' => $item->store,
+            'store_id' => $item->store_id,
+            'store_server_id' => $item->store_server_id,
+            'created_on' => $item->created_on,
+            'last_sync_date' => $syncTime
+            );
+        $columns = array_keys($sqlData);
+        $values = array_values($sqlData);
+        $query = 'INSERT INTO dxcr2_voc_images(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
+        $insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+        if ($insert){
+            array_push($resultarray, 'voc image added with client_id: '.$item->id);
+        }
+    }
+}
+
 //sync tasks
 function saveTasks($clientData, $syncDate){
     global $resultarray;

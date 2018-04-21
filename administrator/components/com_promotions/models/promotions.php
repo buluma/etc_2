@@ -196,6 +196,12 @@ class PromotionsModelPromotions extends JModelList
 		$query->select('`client_id`.client_name AS `client_id`');
 		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
 
+		// Join over the images field 'image_id'
+		$query->select('`promo_images`.image AS `image_id`');
+		$query->join('LEFT', '#__promotion_images AS `promo_images` ON `promo_images`.activity_unique_id = a.`unique_id`');
+
+		// var_dump($query);
+		// exit();
 		// Filter by published state
 		$published = $this->getState('filter.state');
 
@@ -326,6 +332,8 @@ class PromotionsModelPromotions extends JModelList
 		}
 
 		return $query;
+
+		// var_dump($query);
 	}
 
 	/**

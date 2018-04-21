@@ -207,7 +207,16 @@ $sortFields = $this->getSortFields();
 					<?php //echo $item->image_id; ?>
 					
 						<!-- <img src="<?php //echo data_uri('elephant.png','image/png'); ?>" alt="An elephant" /> -->
-						<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="An image" />
+						<!-- <img src="<?php //echo $item->image_id; ?>" width="120" height="100" alt="An image" /> -->
+						<?php
+					// var_dump($item->image_id);
+					if (empty($item->image_id)) {
+						echo 'No Image Found';
+					} else { ?>
+						<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="<?php echo $item->product;?> Image" />
+					<?php };
+				
+					?>
 				</td>
 				<td>
 

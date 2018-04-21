@@ -42,6 +42,8 @@ class PromotionsViewPromotions extends JViewLegacy
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
 
+        // var_dump($this->items);
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
