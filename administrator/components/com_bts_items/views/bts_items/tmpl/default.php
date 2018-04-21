@@ -188,7 +188,7 @@ $sortFields = $this->getSortFields();
 
 				</td>		
 				<td>
-				<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="An image" />
+				<img src="<?php echo $item->image_id; ?>" width="120" height="100" alt="<?php echo $item->product;?> Image" />
 				</td>	
 				<td>
 					<?php echo $item->product; ?>
