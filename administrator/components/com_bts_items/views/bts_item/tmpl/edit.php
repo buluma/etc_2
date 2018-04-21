@@ -19,6 +19,22 @@ JHtml::_('behavior.keepalive');
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'media/com_bts_items/css/form.css');
 ?>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&callback=initMap">
+    </script>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map, #map-canvas-left, #map-canvas-right {
+        height: 350px;
+        position: relative;
+    	overflow: hidden;
+    	width: 100%;
+    	margin-bottom: 10px;
+      }
+    </style>
+
 <script type="text/javascript">
 	js = jQuery.noConflict();
 	js(document).ready(function () {
@@ -86,7 +102,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_bts_items/css/form.css');
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_BTS_ITEMS_TITLE_BTS_ITEM', true)); ?>
 		<div class="row-fluid">
-			<div class="span10 form-horizontal">
+			<div class="span6 form-horizontal">
 				<fieldset class="adminform">
 
 									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
@@ -159,6 +175,104 @@ $document->addStyleSheet(JUri::root() . 'media/com_bts_items/css/form.css');
 					<?php endif; ?>
 				</fieldset>
 			</div>
+
+			<div class="span6">
+
+				<!-- <table width="100%">
+					<tbody>
+						<tr>
+							<td>BA Name</td>
+							<td><?php //echo $this->data->product_name ;?></td>
+						</tr>
+						<tr>
+							<td>Outlet</td>
+							<td>Product</td>
+						</tr>
+						<tr>
+							<td>Variant</td>
+							<td>Product</td>
+						</tr>
+						<tr>
+							<td>Product SKU</td>
+							<td>Product</td>
+						</tr>
+						<tr>
+							<td>Product Target</td>
+							<td>Product</td>
+						</tr>
+						<tr>
+							<td>Achieved</td>
+							<td>Product</td>
+						</tr>
+						<tr>
+							<td>Date</td>
+							<td>Product</td>
+						</tr>
+					</tbody>
+				</table> -->
+				<br>
+				<hr>
+				<?php
+					// echo '<pre>';
+        // var_dump($this->data);
+					// // var_dump($this->item);
+     //    echo '<pre/>';
+						// var_dump($this->item->checkin_place);
+						$chkinPlace = $this->item->coordinates;
+
+						// echo '<pre>';
+						// var_dump($chkinPlace);
+						// // var_dump($chkinPlace->[0]);
+						// echo '<pre/>';
+
+						// foreach ($chkinPlace as $key => $row) {
+						// 	# code...
+						// 	var_dump($row);
+						// 	// echo $row['0'];
+						// 	// echo $row['1'];
+						// }
+						$coordinates = $this->item->coordinates;
+						$coordinatesSplit = explode(",", $coordinates);
+
+						$lat = floatval($coordinatesSplit[0]); // case string to float
+						$long =  floatval($coordinatesSplit[1]); // cast string to float
+
+						$act_location_head = "Actual User Location: <small>Lat : ".$lat."\r\n" . "Long : ".$long."\r\n</small>";
+
+						$outlet_location_head = "Outlet Location: <small>Lat : ".$lat."\r\n" . "Long : ".$long."\r\n</small>";
+
+						echo $act_location_head;
+
+						 // echo "Long : ".$long."\r\n";
+
+						 
+						?>
+
+						<div id="map">Map</div>
+						<hr>
+						<!-- <div id="map2">Outlet Location</div> -->
+					    <script>
+
+					      function initMap() {
+					        var myLatLng = {lat: <?php echo $lat ?>, lng: <?php echo $long ?>};
+
+					        var map = new google.maps.Map(document.getElementById('map'), {
+					          zoom: 18,
+					          center: myLatLng
+					        });
+
+					        var marker = new google.maps.Marker({
+					          position: myLatLng,
+					          map: map,
+					          title: '<?php echo $this->item->created_on; ?>'
+					        });
+					      }
+
+					      //outlet map
+
+					    </script>
+
+					</div>
 		</div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 

@@ -294,4 +294,40 @@ class Bts_itemsModelBts_item extends JModelAdmin
 			}
 		}
 	}
+
+	//get product associated
+	public function getProduct1(){
+		$some_value = 13;
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query->select('*');
+		$query->from($db->quoteName('#__bts_items'));
+		$query->where($db->quoteName('id')." = ".$db->quote($some_value));
+
+		$db->setQuery($query);
+		$row = $db->loadRow();
+		print_r($row);
+
+		// var_dump($result);
+	}
+
+	public function getProduct(){
+		// $id = 13;
+		$id = JRequest::getVar('id','0');
+		$db = JFactory::getDBO();
+		$query = $db->getQuery(true);
+		$query->select(array('a.*', 'b.*'));
+		$query->from($db->quoteName('#__bts_items', 'a'));
+
+		$query->join('LEFT', $db->quoteName('#__bts_products', 'b') . ' ON (' . $db->quoteName('a.product') . ' = ' . $db->quoteName('b.id') . ')');
+
+		$query->where($db->quoteName('a.id') . ' = '.$id);
+
+		$db->setQuery($query);
+		$row = $db->loadRow();
+		// $row = $db->loadObjectList();
+
+		return $row;
+		// print_r($row);
+	}
 }

@@ -39,9 +39,21 @@ class Bts_itemsViewBts_item extends JViewLegacy
 		$this->state = $this->get('State');
 		$this->item  = $this->get('Item');
 		$this->form  = $this->get('Form');
+		$this->product  = $this->get('Product');
+
+		// $model   = $this->getModel();
+		// $project = $model->getProject($user_id);
+
+		$thisproduct = $this->product;
+
+		$this->assign('data', $thisproduct);
+
+		$allproducts = $this->data;
+
+		// var_dump($this->data);
 
 		// echo '<pre>';
-  //       var_dump($this->item);
+  //       var_dump($this->data);
   //       echo '<pre/>';
 
 		// Check for errors.

@@ -370,4 +370,6 @@ class Bts_itemsModelBts_items extends JModelList
 
 		return $items;
 	}
+
+	
 }
