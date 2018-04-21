@@ -415,6 +415,7 @@ function savePerformance($clientData, $syncDate){
     }
 
 }
+
 ##saveCallage function
 function saveOTR($clientData, $syncDate){
     global $resultarray;
@@ -592,39 +593,7 @@ function saveBrandStocks($clientData, $syncDate,$appversion = null){
     }
 }
 
-function saveChallenges($clientData, $syncDate){
-    global $resultarray;
-    global $mysqli;
-    global $handler;
-	$syncTime = $syncDate/1000; // convert from milliseconds to seconds
-	$count = count($clientData);
 
-	// start processing the data
-	foreach ($clientData as $key => $item) {
-	    $sqlData = array(
-            'client_id' => $item->id,
-            'coordinates' => $item->coords,
-            'challenge' => $item->challenge,
-            'action' => $item->action,
-            'by_who' => $item->by_who,
-            'submitter' => $item->submitter,
-            'user_id' => setUserID($item->submitter),
-            'store' => $item->store,
-            'store_id' => $item->store_id,
-            'store_server_id' => $item->store_server_id,
-            //'client_modified_date' => $item->modified,
-            'created_on' => $item->created_on,
-            'last_sync_date' => $syncTime
-            );
-	    $columns = array_keys($sqlData);
-		$values = array_values($sqlData);
-		$query = 'INSERT INTO data_challenges(' .implode(',', $columns). ') VALUES ("' .implode('","',$values). '")';
-		$insert = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
-		if ($insert){
-		    array_push($resultarray, 'challenge added with client_id: '.$item->id);
-		}
-    }
-}
 function saveCompeActivity($clientData, $syncDate){
     global $resultarray;
     global $mysqli;

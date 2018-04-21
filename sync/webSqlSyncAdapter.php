@@ -53,8 +53,8 @@ function myJob($handler){
 	if (isset($input->data->data_eabl_promotions)){
 	    savePromotions($input->data->data_eabl_promotions, $handler->syncDate);
 	}
-	if (isset($input->data->eabl_promotions_images)){
-	    saveEABLPromotionsImages($input->data->eabl_promotions_images, $handler->syncDate);
+	if (isset($input->data->data_eabl_promotions_images)){
+	    saveEABLPromotionsImages($input->data->data_eabl_promotions_images, $handler->syncDate);
 	}
 
 	//bts promotions

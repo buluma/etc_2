@@ -195,7 +195,7 @@ class Competitor_activitiesModelComp_activities extends JModelList
 
 		// Join over the images field 'image_id'
 		$query->select('`comp_images`.image AS `image_id`');
-		$query->join('LEFT', '#__competitor_images AS `comp_images` ON `comp_images`.activity_unique_id LIKE a.`unique_id`');
+		$query->join('LEFT', '#__competitor_images AS `comp_images` ON `comp_images`.activity_unique_id = a.`unique_id`');
 
 		// var_dump($query);
 
