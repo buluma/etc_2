@@ -14,12 +14,12 @@
             <option value="">JOPTION_SELECT_PUBLISHED</option>
         </field>
 
-        <field name="submitter" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_SUBMITTER" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_LOCATION_VISITS_LOCATIONS_SUBMITTER_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/>
+        <!-- <field name="submitter" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_SUBMITTER" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_LOCATION_VISITS_LOCATIONS_SUBMITTER_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/> -->
 
 <field name="user_id" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_USER_ID" type="sql" query="SELECT &quot;&quot; AS `id`, &quot;COM_LOCATION_VISITS_LOCATIONS_USER_ID_FILTER&quot; AS `name` UNION SELECT `id`, `name` FROM `#__users`" translate="true" key_field="id" value_field="name" onchange="this.form.submit();"/>
 
-<field name="store" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_STORE" type="sql" query="SELECT '' AS `id`, 'COM_LOCATION_VISITS_LOCATIONS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="text" value_field="text" onchange="this.form.submit();"/>
-
+<!-- <field name="store" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_STORE" type="sql" query="SELECT '' AS `id`, 'COM_LOCATION_VISITS_LOCATIONS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="text" value_field="text" onchange="this.form.submit();"/>
+ -->
 <field name="created_on.from" label="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_FROM"/>
 
 <field name="created_on.to" label="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_TO"/>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="administrator" method="upgrade">
+    <name>Quality Issues Dashboard Graph</name>
+    <author>Buluma</author>
+    <creationDate>Apr 2018</creationDate>
+    <version>1.0.0</version>
+    <description>Show Quality Issues on dashboard.</description>
+    <files>
+        <filename>mod_qissues.xml</filename>
+        <filename module="mod_qissues">mod_qissues.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <config>
+    </config>
+</extension>

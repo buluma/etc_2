@@ -42,6 +42,18 @@ class location_visitsViewmaps extends JViewLegacy
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
 
+        // var_dump($this->items);
+
+
+		// Set up the data to be sent in the response.
+		// $data2 = array( 'some data' );
+		$data2 = array( $this->items );
+		
+		// $data3 = $arrayName = array('' => , );
+
+		// Output the JSON data.
+		// echo json_encode( $data2 );
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -86,6 +98,11 @@ class location_visitsViewmaps extends JViewLegacy
 		{
 			JToolBarHelper::preferences('com_location_visits');
 		}
+
+		// JToolBarHelper::divider();
+		// JToolBarHelper::custom('', '', '', 'Scroll Down to See Map', false);
+		// JToolBarHelper::custom( 'Hello Component', 'generic.png', 'Scroll' );
+		// JToolBarHelper::custom('hellos.extrahello', 'extrahello.png', 'extrahello_f2.png', 'Extra Hello', true);
 
 		// Set sidebar action - New in 3.0
 		JHtmlSidebar::setAction('index.php?option=com_location_visits&view=maps');

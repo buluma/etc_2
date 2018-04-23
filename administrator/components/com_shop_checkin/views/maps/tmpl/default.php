@@ -1,7 +1,7 @@
 <?php
 /**
  * @version    CVS: 1.0.0
- * @package    Com_Location_visits
+ * @package    Com_Shop_checkin
  * @author     Michael Buluma <michael@buluma.co.ke>
  * @copyright  2018 Michael Buluma
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
@@ -17,40 +17,40 @@ JHtml::_('formbehavior.chosen', 'select');
 
 // Import CSS
 $document = JFactory::getDocument();
-$document->addStyleSheet(JUri::root() . 'administrator/components/com_location_visits/assets/css/location_visits.css');
-$document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/list.css');
+$document->addStyleSheet(JUri::root() . 'administrator/components/com_shop_checkin/assets/css/shop_checkin.css');
+$document->addStyleSheet(JUri::root() . 'media/com_shop_checkin/css/list.css');
 //datatables
-// $document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
-// $document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
-// $document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
+$document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
+$document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
+$document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
 
-// //export pdf
-// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
-// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');
-// $document->addScript('//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js');
-// $document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js');
-// $document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
-// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
-// $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
-// $document->addScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap');
+//export pdf
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js');
+$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
+$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
+$document->addScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap');
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
 $listOrder = $this->state->get('list.ordering');
 $listDirn  = $this->state->get('list.direction');
-$canOrder  = $user->authorise('core.edit.state', 'com_location_visits');
+$canOrder  = $user->authorise('core.edit.state', 'com_shop_checkin');
 $saveOrder = $listOrder == 'a.`ordering`';
 
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_location_visits&task=locations.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'locationList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+	$saveOrderingUrl = 'index.php?option=com_shop_checkin&task=maps.saveOrderAjax&tmpl=component';
+	JHtml::_('sortablelist.sortable', 'shop_checkinList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 
 $sortFields = $this->getSortFields();
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_location_visits&view=locations'); ?>" method="post"
+<form action="<?php echo JRoute::_('index.php?option=com_shop_checkin&view=maps'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
@@ -63,8 +63,9 @@ $sortFields = $this->getSortFields();
 
             <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 
+            <small class="red">Scroll Down to see the map</small>
 			<div class="clearfix"></div>
-			<table class="table table-striped hidden" id="locationList">
+			<table class="table table-striped" id="shop_checkinList">
 				<thead>
 				<tr>
 					<?php if (isset($this->items[0]->ordering)): ?>
@@ -83,25 +84,37 @@ $sortFields = $this->getSortFields();
 					<?php endif; ?>
 
 									<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_ID', 'a.`id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_DAY', 'a.`day`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_CHECKIN_TIME', 'a.`checkin_time`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_CHECKIN_PLACE', 'a.`checkin_place`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_CHECKOUT_TIME', 'a.`checkout_time`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CREATED_ON', 'a.`created_on`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_CHECKOUT_PLACE', 'a.`checkout_place`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_CREATED_ON', 'a.`created_on`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SHOP_CHECKIN_SHOP_CHECKINS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'Client ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -117,10 +130,10 @@ $sortFields = $this->getSortFields();
 				<tbody>
 				<?php foreach ($this->items as $i => $item) :
 					$ordering   = ($listOrder == 'a.ordering');
-					$canCreate  = $user->authorise('core.create', 'com_location_visits');
-					$canEdit    = $user->authorise('core.edit', 'com_location_visits');
-					$canCheckin = $user->authorise('core.manage', 'com_location_visits');
-					$canChange  = $user->authorise('core.edit.state', 'com_location_visits');
+					$canCreate  = $user->authorise('core.create', 'com_shop_checkin');
+					$canEdit    = $user->authorise('core.edit', 'com_shop_checkin');
+					$canCheckin = $user->authorise('core.manage', 'com_shop_checkin');
+					$canChange  = $user->authorise('core.edit.state', 'com_shop_checkin');
 					?>
 					<tr class="row<?php echo $i % 2; ?>">
 
@@ -152,7 +165,7 @@ $sortFields = $this->getSortFields();
 						</td>
 						<?php if (isset($this->items[0]->state)): ?>
 							<td class="center">
-								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'locations.', $canChange, 'cb'); ?>
+								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'maps.', $canChange, 'cb'); ?>
 </td>
 						<?php endif; ?>
 
@@ -161,30 +174,42 @@ $sortFields = $this->getSortFields();
 					<?php echo $item->id; ?>
 				</td>				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'locations.', $canCheckin); ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'maps.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_location_visits&task=location.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->client_id); ?></a>
+					<a href="<?php echo JRoute::_('index.php?option=com_shop_checkin&task=shop_checkin.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->day); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->client_id); ?>
+					<?php echo $this->escape($item->day); ?>
 				<?php endif; ?>
 
-				</td>				<td>
-
+				</td>
+				<td>
 					<?php echo $item->coordinates; ?>
+				</td>				
+				<td>
+					<?php echo $item->checkin_time; ?>
 				</td>				<td>
 
-					<?php echo $item->submitter; ?>
+					<?php echo $item->checkin_place; ?>
 				</td>				<td>
 
-					<?php echo $item->user_id; ?>
+					<?php echo $item->checkout_time; ?>
 				</td>				<td>
 
-					<?php echo $item->store; ?>
+					<?php echo $item->checkout_place; ?>
 				</td>				<td>
 
 					<?php echo $item->created_on; ?>
+				</td>				<td>
+
+					<?php echo $item->store; ?>
+				</td>				
+				<td>
+					<?php echo $item->submitter; ?>
+				</td>
+				<td>
+					<?php echo $item->client_id; ?>
 				</td>
 
 					</tr>
@@ -196,38 +221,49 @@ $sortFields = $this->getSortFields();
 			<input type="hidden" name="boxchecked" value="0"/>
             <input type="hidden" name="list[fullorder]" value="<?php echo $listOrder; ?> <?php echo $listDirn; ?>"/>
 			<?php echo JHtml::_('form.token'); ?>
-			
 
 			<!-- Locations Map -->
+			<h4>Outlet Checkin/Out Map View</h4>
 			<hr>
 				<div class="map">
 					<!-- map here -->
-					<div id="map"></div>
+					<!-- <div id="map"></div> -->
+
+					<div id="map-canvas" style="height: 500px; width: auto;">
 				</div>
 				<br />
-			<!-- Locations map End -->
+
+			<?php
+				$locations=array(); 
+
+				foreach ($this->items as $i => $item) {
+				$idd = $item->id;
+				$name = $item->user_id;
+				$cords = $item->checkin_place;
+				$coordinatesSplit = explode(",", $cords);
+
+		        $latitude = floatval($coordinatesSplit[0]); // case string to float
+		        $longitude =  floatval($coordinatesSplit[1]); // cast string to float
+				// $latitude = 0.0;
+				// $longitude = 7.0;
+				$outlet = $item->store;
+				$link = 'hgh';
+				$locations[]=array( 'name'=>$name, 'lat'=>$latitude, 'lng'=>$longitude, 'lnk'=>$outlet );
+				// print_r($locations);
+			}
+			?>
 		</div>
 </form>
-
-
 <script>
 	//export function
-	// jQuery(document).ready(function() {
-	//     jQuery('#locationList').DataTable( {
-	//         dom: 'Bfrtip',
-	//         buttons: [
-	//             'copy', 'csv', 'excel', 'pdf', 'print'
-	//         ]
-	//     } );
-	// } );
-
-	var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -1.3571565, lng: 36.6503689},
-          zoom: 8
-        });
-      };
+	jQuery(document).ready(function() {
+	    jQuery('#shop_checkinList').DataTable( {
+	        dom: 'Bfrtip',
+	        buttons: [
+	            'copy', 'csv', 'excel', 'pdf', 'print'
+	        ]
+	    } );
+	} );
 
     window.toggleField = function (id, task, field) {
 
@@ -257,23 +293,64 @@ $sortFields = $this->getSortFields();
 
         return false;
     };
-
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap"
-    async defer> </script>
+<script type="text/javascript">
+    var map;
+    var Markers = {};
+    var infowindow;
+    var locations = [
+        <?php for($i=0;$i<sizeof($locations);$i++){ $j=$i+1;?>
+        [
+            'Location Visit',
+            // '<p><a href="<?php //echo $locations[0]['lnk'];?>">Book this Person Now</a></p>',
+            '<p>User: <?php echo $locations[0]['name'];?></p>',
+            <?php echo $locations[$i]['lat'];?>,
+            <?php echo $locations[$i]['lng'];?>,
+            0
+        ]<?php if($j!=sizeof($locations))echo ","; }?>
+    ];
+
+    var origin = new google.maps.LatLng(locations[0][2], locations[0][3]);
+    function initialize() {
+      var mapOptions = {
+        zoom: 9,
+        center: origin
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        infowindow = new google.maps.InfoWindow();
+        for(i=0; i<locations.length; i++) {
+            var position = new google.maps.LatLng(locations[i][2], locations[i][3]);
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infowindow.setContent(locations[i][1]);
+                    infowindow.setOptions({maxWidth: 200});
+                    infowindow.open(map, marker);
+                }
+            }) (marker, i));
+            Markers[locations[i][4]] = marker;
+        }
+        locate(0);
+    }
+    function locate(marker_id) {
+        var myMarker = Markers[marker_id];
+        var markerPosition = myMarker.getPosition();
+        map.setCenter(markerPosition);
+        google.maps.event.trigger(myMarker, 'click');
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
 <style type="text/css">
-	input#filter_search.js-stools-search-string{
-		display: inline-block;
-		line-height: 50px;
-    padding: 13px;
+	div.btn-wrapper.input-append{
+		display: none;
 	}
-
-	div#map {
-    position: relative;
-    overflow: hidden;
-    height: 444px;
-    /* width: 56%; */
-}
+	small.red{
+		color: red;
+		font-weight: bold;
+	}
 </style>

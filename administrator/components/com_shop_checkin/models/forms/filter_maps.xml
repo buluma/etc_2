@@ -14,7 +14,8 @@
             <option value="">JOPTION_SELECT_PUBLISHED</option>
         </field>
 
-        <field name="checkin_place" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKIN_PLACE" type="sql" query="SELECT '' AS `id`, 'COM_SHOP_CHECKIN_SHOP_CHECKINS_CHECKIN_PLACE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
+        <!-- <field name="checkin_place" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_CHECKIN_PLACE" type="sql" query="SELECT '' AS `id`, 'COM_SHOP_CHECKIN_SHOP_CHECKINS_CHECKIN_PLACE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/> -->
+        
 <field name="created_on.from" label="COM_SHOP_CHECKIN_SHOP_CHECKINS_CREATED_ON_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_SHOP_CHECKIN_SHOP_CHECKINS_CREATED_ON_FILTER_FROM"/>
 <field name="created_on.to" label="COM_SHOP_CHECKIN_SHOP_CHECKINS_CREATED_ON_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_SHOP_CHECKIN_SHOP_CHECKINS_CREATED_ON_FILTER_TO"/>
 <field name="store" label="COM_SHOP_CHECKIN_FORM_LBL_SHOP_CHECKIN_STORE" type="sql" query="SELECT '' AS `id`, 'COM_SHOP_CHECKIN_SHOP_CHECKINS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>

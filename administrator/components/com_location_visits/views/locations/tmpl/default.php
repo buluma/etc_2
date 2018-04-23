@@ -91,9 +91,6 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -176,12 +173,7 @@ $sortFields = $this->getSortFields();
 
 					<?php echo $item->coordinates; ?>
 				</td>
-
-								<td>
-
-					<?php echo $item->submitter; ?>
-				</td>								<td>
-
+				<td>
 					<?php echo $item->store; ?>
 				</td>				<td>
 

@@ -47,7 +47,7 @@ class Shop_checkinViewmaps extends JViewLegacy
 		{
 			throw new Exception(implode("\n", $errors));
 		}
-
+		// var_dump($this->items);
 		// Set up the data to be sent in the response.
 // $data = array( 'some data' );
 // $data2 = $this->items;
@@ -77,7 +77,7 @@ class Shop_checkinViewmaps extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Shop_checkinHelper::getActions();
 
-		JToolBarHelper::title(JText::_('Map View'), 'compass');
+		JToolBarHelper::title(JText::_('Checkin Map View'), 'compass');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/maps';

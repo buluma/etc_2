@@ -92,6 +92,7 @@ class Location_visitsModelMaps extends JModelList
 
 		// Filtering created_on
 		$this->setState('filter.created_on.from', $app->getUserStateFromRequest($this->context.'.filter.created_on.from', 'filter_from_created_on', '', 'string'));
+
 		$this->setState('filter.created_on.to', $app->getUserStateFromRequest($this->context.'.filter.created_on.to', 'filter_to_created_on', '', 'string'));
 
 
@@ -100,7 +101,7 @@ class Location_visitsModelMaps extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.id', 'asc');
+		parent::populateState('a.id', 'desc');
 	}
 
 	/**

@@ -32,7 +32,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/list.css'
 // $document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
 // $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
 // $document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
-// $document->addScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap');
+ $document->addScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap');
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
@@ -50,6 +50,7 @@ if ($saveOrder)
 $sortFields = $this->getSortFields();
 ?>
 
+
 <form action="<?php echo JRoute::_('index.php?option=com_location_visits&view=maps'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
@@ -63,6 +64,7 @@ $sortFields = $this->getSortFields();
 
             <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 
+			<small class="red">Scroll Down to see the map</small>
 			<div class="clearfix"></div>
 			<table class="table table-striped hiddenx" id="locationList">
 				<thead>
@@ -90,9 +92,6 @@ $sortFields = $this->getSortFields();
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_SUBMITTER', 'a.`submitter`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
@@ -153,7 +152,7 @@ $sortFields = $this->getSortFields();
 						<?php if (isset($this->items[0]->state)): ?>
 							<td class="center">
 								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'locations.', $canChange, 'cb'); ?>
-</td>
+							</td>
 						<?php endif; ?>
 
 										<td>
@@ -178,14 +177,11 @@ $sortFields = $this->getSortFields();
 				<td>
 					<?php echo $item->coordinates; ?>
 				</td>
-
 				<td>
-					<?php echo $item->submitter; ?>
-				</td>				<td>
 
 					<?php echo $item->user_id; ?>
-				</td>				<td>
-
+				</td>				
+				<td>
 					<?php echo $item->store; ?>
 				</td>				<td>
 
@@ -202,17 +198,56 @@ $sortFields = $this->getSortFields();
             <input type="hidden" name="list[fullorder]" value="<?php echo $listOrder; ?> <?php echo $listDirn; ?>"/>
 			<?php echo JHtml::_('form.token'); ?>
 			
-
 			<!-- Locations Map -->
+			<h4>Outlet Visit Map View</h4>
 			<hr>
 				<div class="map">
 					<!-- map here -->
-					<div id="map"></div>
+					<!-- <div id="map"></div> -->
+
+					<div id="map-canvas" style="height: 500px; width: auto;">
 				</div>
 				<br />
 			<!-- Locations map End -->
+
+			<?php
+				// foreach ($this->items as $key => $value) {
+				// 	# code...
+				// 	$name = $value->user_id;
+				// 	$cords = $value->coordinates;
+				// 	$coordinatesSplit = explode(",", $cords);
+
+			 //        $latitude = floatval($coordinatesSplit[0]); // case string to float
+			 //        $longitude =  floatval($coordinatesSplit[1]); // cast string to float
+				// 	var_dump($value);
+				// 	$locations[]=array( 'name'=>$name, 'lat'=>$latitude, 'lng'=>$longitude, 'lnk'=>$link );
+				// 	// print_r($locations);
+				// 	$data3 = array( $locations );
+				// 	// echo json_encode( $data2 );
+				// }
+				$locations=array(); 
+
+				foreach ($this->items as $i => $item) {
+				$idd = $item->id;
+				$name = $item->user_id;
+				$cords = $item->coordinates;
+				$coordinatesSplit = explode(",", $cords);
+
+		        $latitude = floatval($coordinatesSplit[0]); // case string to float
+		        $longitude =  floatval($coordinatesSplit[1]); // cast string to float
+				// $latitude = 0.0;
+				// $longitude = 7.0;
+				$outlet = $item->store;
+				$link = 'hgh';
+				$locations[]=array( 'name'=>$name, 'lat'=>$latitude, 'lng'=>$longitude, 'lnk'=>$outlet );
+				// print_r($locations);
+				}
+			?>
+
+			
 		</div>
 </form>
+
 
 
 <script>
@@ -226,13 +261,14 @@ $sortFields = $this->getSortFields();
 	//     } );
 	// } );
 
-	var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -1.3571565, lng: 36.6503689},
-          zoom: 8
-        });
-      };
+	//first map
+	// var map;
+ //      function initMap() {
+ //        map = new google.maps.Map(document.getElementById('map'), {
+ //          center: {lat: -1.3571565, lng: 36.6503689},
+ //          zoom: 8
+ //        });
+ //      };
 
     window.toggleField = function (id, task, field) {
 
@@ -264,9 +300,60 @@ $sortFields = $this->getSortFields();
     };
 
 </script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap"
+    async defer> </script> -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap"
-    async defer> </script>
+<script type="text/javascript">
+    var map;
+    var Markers = {};
+    var infowindow;
+    var locations = [
+        <?php for($i=0;$i<sizeof($locations);$i++){ $j=$i+1;?>
+        [
+            'Location Visit',
+            // '<p><a href="<?php //echo $locations[0]['lnk'];?>">Book this Person Now</a></p>',
+            '<p>User: <?php echo $locations[0]['name'];?></p>',
+            <?php echo $locations[$i]['lat'];?>,
+            <?php echo $locations[$i]['lng'];?>,
+            0
+        ]<?php if($j!=sizeof($locations))echo ","; }?>
+    ];
+
+    var origin = new google.maps.LatLng(locations[0][2], locations[0][3]);
+    function initialize() {
+      var mapOptions = {
+        zoom: 9,
+        center: origin
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        infowindow = new google.maps.InfoWindow();
+        for(i=0; i<locations.length; i++) {
+            var position = new google.maps.LatLng(locations[i][2], locations[i][3]);
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infowindow.setContent(locations[i][1]);
+                    infowindow.setOptions({maxWidth: 200});
+                    infowindow.open(map, marker);
+                }
+            }) (marker, i));
+            Markers[locations[i][4]] = marker;
+        }
+        locate(0);
+    }
+    function locate(marker_id) {
+        var myMarker = Markers[marker_id];
+        var markerPosition = myMarker.getPosition();
+        map.setCenter(markerPosition);
+        google.maps.event.trigger(myMarker, 'click');
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
 
 <style type="text/css">
 	input#filter_search.js-stools-search-string{
@@ -280,5 +367,9 @@ $sortFields = $this->getSortFields();
     overflow: hidden;
     height: 444px;
     /* width: 56%; */
-}
+	}
+	small.red{
+		color: red;
+		font-weight: bold;
+	}
 </style>

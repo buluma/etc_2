@@ -104,4 +104,5 @@ class Location_visitsControllerLocations extends JControllerAdmin
 		// Close the application
 		JFactory::getApplication()->close();
 	}
+
 }
