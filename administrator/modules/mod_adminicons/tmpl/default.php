@@ -75,5 +75,5 @@ defined('_JEXEC') or die;
             </a>
           </div>
         </div>
-        <small>Data for the last 12 hours</small>
+        <!-- <small>Data for the last 12 hours</small> -->
       </div>
