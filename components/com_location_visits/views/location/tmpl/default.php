@@ -18,16 +18,6 @@ defined('_JEXEC') or die;
 		
 
 		<tr>
-			<th><?php echo JText::_('COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID'); ?></th>
-			<td><?php echo $this->item->client_id; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_LOCATION_VISITS_FORM_LBL_LOCATION_COORDINATES'); ?></th>
-			<td><?php echo $this->item->coordinates; ?></td>
-		</tr>
-
-		<tr>
 			<th><?php echo JText::_('COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_MODIFIED_DATE'); ?></th>
 			<td><?php echo $this->item->client_modified_date; ?></td>
 		</tr>
@@ -63,6 +53,11 @@ defined('_JEXEC') or die;
 		</tr>
 
 		<tr>
+			<th><?php echo JText::_('COM_LOCATION_VISITS_FORM_LBL_LOCATION_COORDINATES'); ?></th>
+			<td><?php echo $this->item->coordinates; ?></td>
+		</tr>
+
+		<tr>
 			<th><?php echo JText::_('COM_LOCATION_VISITS_FORM_LBL_LOCATION_LAST_SYNC_DATE'); ?></th>
 			<td><?php echo $this->item->last_sync_date; ?></td>
 		</tr>
@@ -70,6 +65,11 @@ defined('_JEXEC') or die;
 		<tr>
 			<th><?php echo JText::_('COM_LOCATION_VISITS_FORM_LBL_LOCATION_FIRST_INSERT_DATE'); ?></th>
 			<td><?php echo $this->item->first_insert_date; ?></td>
+		</tr>
+
+		<tr>
+			<th><?php echo JText::_('COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID'); ?></th>
+			<td><?php echo $this->item->client_id; ?></td>
 		</tr>
 
 	</table>

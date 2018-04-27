@@ -19,19 +19,6 @@ JHtml::_('formbehavior.chosen', 'select');
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'administrator/components/com_location_visits/assets/css/location_visits.css');
 $document->addStyleSheet(JUri::root() . 'media/com_location_visits/css/list.css');
-//datatables
-$document->addStyleSheet('//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css');
-$document->addStyleSheet('//cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css');
-$document->addScript('//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
-
-//export pdf
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js');
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js');
-$document->addScript('//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js');
-$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js');
-$document->addScript('//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js');
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js');
-$document->addScript('//cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js');
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
@@ -88,16 +75,16 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_USER_ID', 'a.`user_id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_STORE', 'a.`store`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CREATED_ON', 'a.`created_on`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'Client ID', 'a.`client_id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -155,31 +142,27 @@ $sortFields = $this->getSortFields();
 										<td>
 
 					<?php echo $item->id; ?>
-				</td>	
-				<td>
+				</td>				<td>
+
+					<?php echo $item->user_id; ?>
+				</td>				<td>
+
+					<?php echo $item->store; ?>
+				</td>				<td>
+
+					<?php echo $item->created_on; ?>
+				</td>				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'locations.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_location_visits&task=location.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->user_id); ?></a>
+					<?php echo $this->escape($item->coordinates); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->user_id); ?>
+					<?php echo $this->escape($item->coordinates); ?>
 				<?php endif; ?>
 
-				</td>
-							
-				<td>
-
-					<?php echo $item->coordinates; ?>
-				</td>
-				<td>
-					<?php echo $item->store; ?>
 				</td>				<td>
-
-					<?php echo $item->created_on; ?>
-				</td>
-				<td>
 
 					<?php echo $item->client_id; ?>
 				</td>
@@ -193,33 +176,9 @@ $sortFields = $this->getSortFields();
 			<input type="hidden" name="boxchecked" value="0"/>
             <input type="hidden" name="list[fullorder]" value="<?php echo $listOrder; ?> <?php echo $listDirn; ?>"/>
 			<?php echo JHtml::_('form.token'); ?>
-			
-
-			<!-- Locations Map -->
-			<!-- <hr>
-				<div class="map">
-					map here
-					<div id="map"></div>
-				</div>
-				<br /> -->
-			<!-- Locations map End -->
 		</div>
 </form>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAymgz0AXCj6ipuLijePEpi72_QcUga23Q&callback=initMap"
-    async defer> </script>
-
 <script>
-	//export function
-	jQuery(document).ready(function() {
-	    jQuery('#locationList').DataTable( {
-	        dom: 'Bfrtip',
-	        buttons: [
-	            'copy', 'csv', 'excel', 'pdf', 'print'
-	        ]
-	    } );
-	} );
-
     window.toggleField = function (id, task, field) {
 
         var f = document.adminForm, i = 0, cbx, cb = f[ id ];
@@ -248,44 +207,4 @@ $sortFields = $this->getSortFields();
 
         return false;
     };
-
-    //map
-    var map;
-	var latitude=new Array();
-	var longitude=new Array();
-	var myLatLng ={lat: latitude, lng:longitude};
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center:new google.maps.LatLng(36.05178307933835,42.49737373046878),
-          zoom: 3
-        });
-	var start_date=new Array();
-	var title=new Array();
-	var title='test';
-	// var start_date=<?php echo json_encode($start_time); ?>;
-	var start_date= 'test';
-	var latitude =<?php echo json_encode($latitude); ?>;
-	var longitude = '<?php echo json_encode($this->items); ?>';
-	for(i=0;i<latitude.length;i++)
-	{
-	var content="Date:"+start_date[i]+"</br>Title:"+title[i];
-	var infowindow = new google.maps.InfoWindow({});
-	var marker = new google.maps.Marker({
-	    position: {lat:parseFloat(latitude[i]),lng:parseFloat(longitude[i])},
-	    map: map,
-	  });
-	google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
-	    return function() {
-	        infowindow.setContent(content);
-	        infowindow.open(map,marker);
-	    };
-	})(marker,content,infowindow));
-	}
-	      }
 </script>
-
-<style type="text/css">
-	div.btn-wrapper.input-append{
-		display: none;
-	}
-</style>

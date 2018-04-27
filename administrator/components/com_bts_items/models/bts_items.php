@@ -114,7 +114,7 @@ class Bts_itemsModelBts_items extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.product', 'asc');
+		parent::populateState('a.id', 'asc');
 	}
 
 	/**
@@ -200,11 +200,16 @@ class Bts_itemsModelBts_items extends JModelList
 		$query->select('`bts_images`.image AS `image_id`');
 		$query->join('LEFT', '#__bts_promotion_images AS `bts_images` ON `bts_images`.activity_unique_id = a.`unique_id`');
 
+		// Join over the clients field 'client_id'
+		$query->select('`clients`.client_name AS `clientName`');
+		$query->join('LEFT', '#__clients AS `clients` ON `clients`.id = a.`client_id`');
+
 		// Filter by published state
 		$published = $this->getState('filter.state');
 
 		if (is_numeric($published))
 		{
+			// $query->where('a.ba_name != ''');
 			$query->where('a.state = ' . (int) $published);
 		}
 		elseif ($published === '')
@@ -299,15 +304,40 @@ class Bts_itemsModelBts_items extends JModelList
 			$query->where("a.`user_id` = '".$db->escape($filter_user_id)."'");
 		}
 		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering');
-		$orderDirn = $this->state->get('list.direction');
+		// $orderCol  = $this->state->get('list.ordering', 'a.id');
+		// $orderDirn = $this->state->get('list.direction', 'desc');
 
-		if ($orderCol && $orderDirn)
-		{
-			$query->order($db->escape($orderCol . ' ' . $orderDirn));
-		}
+		// if ($orderCol && $orderDirn)
+		// {
+		// 	$query->order($db->escape($orderCol . ' ' . $orderDirn));
+		// }
 
-		return $query;
+		// return $query;
+		// Add the list ordering clause.
+	      $orderCol = $this->state->get('list.ordering', 'a.id');
+	      $orderDirn = $this->state->get('list.direction', 'desc');
+
+	      if ($orderCol == 'a.ordering' || $orderCol == 'id')
+	      {
+	         $orderCol = 'a.id ' . $orderDirn . ', a.ordering';
+	      }
+
+	      // SQL server change
+	      // if ($orderCol == 'language')
+	      // {
+	      //    $orderCol = 'l.title';
+	      // }
+
+	      // if ($orderCol == 'access_level')
+	      // {
+	      //    $orderCol = 'ag.title';
+	                                                                    
+	      // }
+
+	      $query->order($db->escape($orderCol . ' ' . $orderDirn));
+
+	      return $query;
+	  // }
 	}
 
 	/**

@@ -38,8 +38,6 @@ class Location_visitsModelLocations extends JModelList
 				'ordering', 'a.ordering',
 				'state', 'a.state',
 				'created_by', 'a.created_by',
-				'client_id', 'a.client_id',
-				'coordinates', 'a.coordinates',
 				'client_modified_date', 'a.client_modified_date',
 				'submitter', 'a.submitter',
 				'user_id', 'a.user_id',
@@ -47,8 +45,10 @@ class Location_visitsModelLocations extends JModelList
 				'store_server_id', 'a.store_server_id',
 				'store_id', 'a.store_id',
 				'created_on', 'a.created_on',
+				'coordinates', 'a.coordinates',
 				'last_sync_date', 'a.last_sync_date',
 				'first_insert_date', 'a.first_insert_date',
+				'client_id', 'a.client_id',
 			);
 		}
 
@@ -165,14 +165,6 @@ class Location_visitsModelLocations extends JModelList
 		}
 		
 
-		// Filtering submitter
-		$filter_submitter = $this->state->get("filter.submitter");
-
-		if ($filter_submitter)
-		{
-			$query->where("a.`submitter` = '" . $db->escape($filter_submitter) . "'");
-		}
-
 		// Filtering user_id
 		$filter_user_id = $this->state->get("filter.user_id");
 
@@ -203,6 +195,12 @@ class Location_visitsModelLocations extends JModelList
 		if ($filter_Qcreated_on_to != null)
 		{
 			$query->where("a.created_on <= '" . $db->escape($filter_Qcreated_on_to) . "'");
+		}
+
+		// Filtering client_id
+		$filter_client_id = $this->state->get("filter.client_id");
+		if ($filter_client_id != '') {
+			$query->where("a.`client_id` = '".$db->escape($filter_client_id)."'");
 		}
 
 		// Add the list ordering clause.
@@ -302,6 +300,31 @@ class Location_visitsModelLocations extends JModelList
 				}
 
 				$item->store_id = !empty($textValue) ? implode(', ', $textValue) : $item->store_id;
+			}
+
+			if (isset($item->client_id))
+			{
+				$values    = explode(',', $item->client_id);
+				$textValue = array();
+
+				foreach ($values as $value)
+				{
+					if (!empty($value))
+					{
+						$db    = Factory::getDbo();
+						$query = "SELECT id as value, client_name as text from #__clients HAVING id LIKE '" . $value . "'";
+
+						$db->setQuery($query);
+						$results = $db->loadObject();
+
+						if ($results)
+						{
+							$textValue[] = $results->client_name;
+						}
+					}
+				}
+
+				$item->client_id = !empty($textValue) ? implode(', ', $textValue) : $item->client_id;
 			}
 		}
 

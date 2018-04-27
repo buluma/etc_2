@@ -42,20 +42,13 @@ class Location_visitsViewLocations extends JViewLegacy
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
 
+        // var_dump($this->items);
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new Exception(implode("\n", $errors));
 		}
-
-		// Set up the data to be sent in the response.
-// $data = array( 'some data' );
-// $data2 = $this->items;
-
-// // Output the JSON data.
-// echo '<pre>';
-// echo json_encode( $data2 );
-// echo '<pre/>';
 
 		Location_visitsHelper::addSubmenu('locations');
 
@@ -77,7 +70,7 @@ class Location_visitsViewLocations extends JViewLegacy
 		$state = $this->get('State');
 		$canDo = Location_visitsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATIONS'), 'location');
+		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATIONS'), 'locations.png');
 
 		// Check if the form exists before showing the add/edit buttons
 		$formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/location';
@@ -161,12 +154,11 @@ class Location_visitsViewLocations extends JViewLegacy
 			'a.`id`' => JText::_('JGRID_HEADING_ID'),
 			'a.`ordering`' => JText::_('JGRID_HEADING_ORDERING'),
 			'a.`state`' => JText::_('JSTATUS'),
-			'a.`client_id`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID'),
-			'a.`coordinates`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_COORDINATES'),
-			'a.`submitter`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_SUBMITTER'),
 			'a.`user_id`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_USER_ID'),
 			'a.`store`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_STORE'),
 			'a.`created_on`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_CREATED_ON'),
+			'a.`coordinates`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_COORDINATES'),
+			'a.`client_id`' => JText::_('COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID'),
 		);
 	}
 

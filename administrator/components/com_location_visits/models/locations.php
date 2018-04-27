@@ -35,8 +35,6 @@ class Location_visitsModelLocations extends JModelList
 				'ordering', 'a.`ordering`',
 				'state', 'a.`state`',
 				'created_by', 'a.`created_by`',
-				'client_id', 'a.`client_id`',
-				'coordinates', 'a.`coordinates`',
 				'client_modified_date', 'a.`client_modified_date`',
 				'submitter', 'a.`submitter`',
 				'user_id', 'a.`user_id`',
@@ -44,8 +42,10 @@ class Location_visitsModelLocations extends JModelList
 				'store_server_id', 'a.`store_server_id`',
 				'store_id', 'a.`store_id`',
 				'created_on', 'a.`created_on`',
+				'coordinates', 'a.`coordinates`',
 				'last_sync_date', 'a.`last_sync_date`',
 				'first_insert_date', 'a.`first_insert_date`',
+				'client_id', 'a.`client_id`',
 			);
 		}
 
@@ -75,7 +75,6 @@ class Location_visitsModelLocations extends JModelList
 
 		$published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
 		$this->setState('filter.state', $published);
-		
 		// Filtering submitter
 		$this->setState('filter.submitter', $app->getUserStateFromRequest($this->context.'.filter.submitter', 'filter_submitter', '', 'string'));
 
@@ -95,13 +94,16 @@ class Location_visitsModelLocations extends JModelList
 		$this->setState('filter.created_on.from', $app->getUserStateFromRequest($this->context.'.filter.created_on.from', 'filter_from_created_on', '', 'string'));
 		$this->setState('filter.created_on.to', $app->getUserStateFromRequest($this->context.'.filter.created_on.to', 'filter_to_created_on', '', 'string'));
 
+		// Filtering client_id
+		$this->setState('filter.client_id', $app->getUserStateFromRequest($this->context.'.filter.client_id', 'filter_client_id', '', 'string'));
+
 
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_location_visits');
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.id', 'asc');
+		parent::populateState('a.id', 'DESC');
 	}
 
 	/**
@@ -162,10 +164,6 @@ class Location_visitsModelLocations extends JModelList
 		// Join over the user field 'user_id'
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
-
-		// Join over the client field 'client_id'
-		$query->select('`client_id`.client_name AS `client_id`');
-		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');
@@ -249,6 +247,14 @@ class Location_visitsModelLocations extends JModelList
 		{
 			$query->where("a.`created_on` <= '".$db->escape($filter_created_on_to)."'");
 		}
+
+		// Filtering client_id
+		$filter_client_id = $this->state->get("filter.client_id");
+
+		if ($filter_client_id !== null && (is_numeric($filter_client_id) || !empty($filter_client_id)))
+		{
+			$query->where("a.`client_id` = '".$db->escape($filter_client_id)."'");
+		}
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
 		$orderDirn = $this->state->get('list.direction');
@@ -295,6 +301,30 @@ class Location_visitsModelLocations extends JModelList
 				}
 
 				$oneItem->store = !empty($textValue) ? implode(', ', $textValue) : $oneItem->store;
+			}
+
+			if (isset($oneItem->client_id))
+			{
+				$values    = explode(',', $oneItem->client_id);
+				$textValue = array();
+
+				foreach ($values as $value)
+				{
+					if (!empty($value))
+					{
+						$db = JFactory::getDbo();
+						$query = "SELECT id as value, client_name as text from #__clients HAVING id LIKE '" . $value . "'";
+						$db->setQuery($query);
+						$results = $db->loadObject();
+
+						if ($results)
+						{
+							$textValue[] = $results->client_name;
+						}
+					}
+				}
+
+				$oneItem->client_id = !empty($textValue) ? implode(', ', $textValue) : $oneItem->client_id;
 			}
 		}
 

@@ -137,6 +137,27 @@ class Location_visitsTablelocation extends JTable
 			$array['created_on'] = $date->toSql();
 		}
 
+		// Support for multiple field: client_id
+		if (isset($array['client_id']))
+		{
+			if (is_array($array['client_id']))
+			{
+				$array['client_id'] = implode(',',$array['client_id']);
+			}
+			elseif (strpos($array['client_id'], ',') != false)
+			{
+				$array['client_id'] = explode(',',$array['client_id']);
+			}
+			elseif (strlen($array['client_id']) == 0)
+			{
+				$array['client_id'] = '';
+			}
+		}
+		else
+		{
+			$array['client_id'] = '';
+		}
+
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			$registry = new JRegistry;

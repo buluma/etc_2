@@ -12,8 +12,6 @@
     <field name="checked_out" type="hidden" filter="unset"/>
     <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
     <field name="created_by" type="createdby" default="0" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CREATED_BY" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CREATED_BY" hidden="true" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CREATED_BY"/>
-    <field name="client_id" filter="safehtml" type="text" readonly="true" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID"/>
-    <field name="coordinates" filter="safehtml" type="text" readonly="true" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_COORDINATES" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_COORDINATES" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_COORDINATES"/>
     <field name="client_modified_date" type="timecreated" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_MODIFIED_DATE" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_MODIFIED_DATE" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_MODIFIED_DATE"/>
     <field name="submitter" type="createdby" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_SUBMITTER" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_SUBMITTER" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_SUBMITTER"/>
     <field name="user_id" type="createdby" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_USER_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_USER_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_USER_ID"/>
@@ -21,8 +19,14 @@
     <field name="store_server_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_STORE_SERVER_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_STORE_SERVER_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_STORE_SERVER_ID"/>
     <field name="store_id" query="SELECT id as value, shop_name as text from #__outlets" key_field="value" value_field="text" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_STORE_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_STORE_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_STORE_ID"/>
     <field name="created_on" type="timecreated" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CREATED_ON" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CREATED_ON" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CREATED_ON"/>
+    <field name="coordinates" filter="safehtml" type="text" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_COORDINATES" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_COORDINATES" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_COORDINATES"/>
     <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_LAST_SYNC_DATE" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_LAST_SYNC_DATE" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_LAST_SYNC_DATE"/>
     <field name="first_insert_date" filter="safehtml" type="text" readonly="true" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_FIRST_INSERT_DATE" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_FIRST_INSERT_DATE" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_FIRST_INSERT_DATE"/>
+
+   <!--  <field name="client_id" query="SELECT id as value, client_name as text from #__clients" key_field="value" value_field="text" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID"/> -->
+
+   <field name="client_id" query="SELECT id, client_name from #__clients" key_field="id" value_field="client_name" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID"/>
+
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
 </form>

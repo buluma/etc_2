@@ -42,15 +42,6 @@ $canDelete  = $user->authorise('core.delete', 'com_location_visits');
 				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_ID', 'a.id', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', 'a.client_id', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.coordinates', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_SUBMITTER', 'a.submitter', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_USER_ID', 'a.user_id', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
@@ -58,6 +49,12 @@ $canDelete  = $user->authorise('core.delete', 'com_location_visits');
 				</th>
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_CREATED_ON', 'a.created_on', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.coordinates', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', 'a.client_id', $listDirn, $listOrder); ?>
 				</th>
 
 
@@ -101,20 +98,6 @@ $canDelete  = $user->authorise('core.delete', 'com_location_visits');
 					<?php echo $item->id; ?>
 				</td>
 				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'locations.', $canCheckin); ?>
-				<?php endif; ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_location_visits&view=location&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->client_id); ?></a>
-				</td>
-				<td>
-
-					<?php echo $item->coordinates; ?>
-				</td>
-				<td>
-
-							<?php echo JFactory::getUser($item->submitter)->name; ?>				</td>
-				<td>
 
 							<?php echo JFactory::getUser($item->user_id)->name; ?>				</td>
 				<td>
@@ -124,6 +107,17 @@ $canDelete  = $user->authorise('core.delete', 'com_location_visits');
 				<td>
 
 					<?php echo $item->created_on; ?>
+				</td>
+				<td>
+				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'locations.', $canCheckin); ?>
+				<?php endif; ?>
+				<a href="<?php echo JRoute::_('index.php?option=com_location_visits&view=location&id='.(int) $item->id); ?>">
+				<?php echo $this->escape($item->coordinates); ?></a>
+				</td>
+				<td>
+
+					<?php echo $item->client_id; ?>
 				</td>
 
 

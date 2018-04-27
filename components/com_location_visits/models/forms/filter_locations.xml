@@ -8,6 +8,7 @@
         <field name="store" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_STORE" type="sql" query="SELECT '' AS `id`, 'COM_LOCATION_VISITS_LOCATIONS_STORE_FILTER' AS `text` UNION (SELECT id as value, shop_name as text from #__outlets)" translate="true" key_field="value" value_field="text" onchange="this.form.submit();"/>
 <field name="created_on.from" label="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_FROM"/>
 <field name="created_on.to" label="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="true" translateformat="true" hint="COM_LOCATION_VISITS_LOCATIONS_CREATED_ON_FILTER_TO"/>
+<field name="client_id" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" type="sql" query="SELECT '' AS `id`, 'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID_FILTER' AS `client_name` UNION (SELECT id as value, client_name as text from #__clients)" translate="true" key_field="id" value_field="client_name" onchange="this.form.submit();"/>
 
 
     </fields>

@@ -214,6 +214,34 @@ class Location_visitsModelLocation extends JModelItem
 			$this->_item->store_id = !empty($textValue) ? implode(', ', $textValue) : $this->_item->store_id;
 		}
 
+		if (isset($this->_item->client_id) && $this->_item->client_id != '')
+		{
+			if (is_object($this->_item->client_id))
+			{
+				$this->_item->client_id = ArrayHelper::fromObject($this->_item->client_id);
+			}
+
+			$values = (is_array($this->_item->client_id)) ? $this->_item->client_id : explode(',',$this->_item->client_id);
+
+			$textValue = array();
+
+			foreach ($values as $value)
+			{
+				$db    = Factory::getDbo();
+				$query = "SELECT id as value, client_name as text from #__clients HAVING id LIKE '" . $value . "'";
+
+				$db->setQuery($query);
+				$results = $db->loadObject();
+
+				if ($results)
+				{
+					$textValue[] = $results->client_name;
+				}
+			}
+
+			$this->_item->client_id = !empty($textValue) ? implode(', ', $textValue) : $this->_item->client_id;
+		}
+
 		return $this->_item;
 	}
 

@@ -39,9 +39,6 @@ class Location_visitsViewLocation extends JViewLegacy
 		$this->state = $this->get('State');
 		$this->item  = $this->get('Item');
 		$this->form  = $this->get('Form');
-		$this->outlet  = $this->get('Outlet');
-
-		// var_dump($this->outlet);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -78,7 +75,7 @@ class Location_visitsViewLocation extends JViewLegacy
 
 		$canDo = Location_visitsHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATION'), 'location');
+		JToolBarHelper::title(JText::_('COM_LOCATION_VISITS_TITLE_LOCATION'), 'location.png');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))

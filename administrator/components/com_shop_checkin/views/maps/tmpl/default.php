@@ -302,7 +302,7 @@ $sortFields = $this->getSortFields();
     var locations = [
         <?php for($i=0;$i<sizeof($locations);$i++){ $j=$i+1;?>
         [
-            'Location Visit',
+            'Outlet Checkin',
             // '<p><a href="<?php //echo $locations[0]['lnk'];?>">Book this Person Now</a></p>',
             '<p>User: <?php echo $locations[0]['name'];?></p>',
             <?php echo $locations[$i]['lat'];?>,

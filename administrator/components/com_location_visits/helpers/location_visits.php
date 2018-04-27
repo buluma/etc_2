@@ -31,7 +31,6 @@ class Location_visitsHelper
 			'index.php?option=com_location_visits&view=locations',
 			$vName == 'locations'
 		);
-
 		JHtmlSidebar::addEntry(
 			JText::_('Map View'),
 			'index.php?option=com_location_visits&view=maps',
