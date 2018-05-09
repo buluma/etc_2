@@ -23,9 +23,9 @@
     <field name="last_sync_date" filter="safehtml" type="text" readonly="true" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_LAST_SYNC_DATE" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_LAST_SYNC_DATE" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_LAST_SYNC_DATE"/>
     <field name="first_insert_date" filter="safehtml" type="text" readonly="true" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_FIRST_INSERT_DATE" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_FIRST_INSERT_DATE" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_FIRST_INSERT_DATE"/>
 
-   <!--  <field name="client_id" query="SELECT id as value, client_name as text from #__clients" key_field="value" value_field="text" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID"/> -->
+    <field name="client_id" query="SELECT id as value, client_name as text from #__clients" key_field="value" value_field="text" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID"/> 
 
-   <field name="client_id" query="SELECT id, client_name from #__clients" key_field="id" value_field="client_name" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID"/>
+   <!-- <field name="client_id" query="SELECT id, client_name from #__clients" key_field="id" value_field="client_name" type="sql" label="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID" description="COM_LOCATION_VISITS_FORM_DESC_LOCATION_CLIENT_ID" hint="COM_LOCATION_VISITS_FORM_LBL_LOCATION_CLIENT_ID"/> -->
 
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>

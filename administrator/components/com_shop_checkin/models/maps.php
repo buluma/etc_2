@@ -177,9 +177,14 @@ class Shop_checkinModelmaps extends JModelList
 		// Filter by published state
 		$published = $this->getState('filter.state');
 
+		// $query->where('a.coordinates != ""');
+
+		$query->where('a.checkin_place != "null"');
+
 		if (is_numeric($published))
 		{
 			$query->where('a.state = ' . (int) $published);
+			// $query->where('a.coordinates != ''');
 		}
 		elseif ($published === '')
 		{

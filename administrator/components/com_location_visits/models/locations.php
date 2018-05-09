@@ -92,6 +92,7 @@ class Location_visitsModelLocations extends JModelList
 
 		// Filtering created_on
 		$this->setState('filter.created_on.from', $app->getUserStateFromRequest($this->context.'.filter.created_on.from', 'filter_from_created_on', '', 'string'));
+
 		$this->setState('filter.created_on.to', $app->getUserStateFromRequest($this->context.'.filter.created_on.to', 'filter_to_created_on', '', 'string'));
 
 		// Filtering client_id
@@ -164,6 +165,29 @@ class Location_visitsModelLocations extends JModelList
 		// Join over the user field 'user_id'
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
+
+		// Join over the client field 'client_id'
+		$query->select('`client_id`.client_name AS `client_id`');
+		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
+
+		// Join over the client field 'client_id'
+		//$sql = "SELECT * FROM `dxcr2_fields_values` WHERE field_id != 5";
+		// $query->select('`fvalues`.value AS `client_id`');
+		// $query->join('LEFT', '#__fields_values AS `fvalues` ON `fvalues`.item_id = a.`user_id`');	
+
+		//$query->select('`b`.value AS `client_name`');
+		// $query->join('LEFT', $db->quoteName('#__fields_values', 'b') . ' ON (' . $db->quoteName('b.item_id') . ' = ' . $db->quoteName('a.user_id') . ')' . ' AND (' . $db->quoteName('b.field_id')  . ' = 5)');	
+
+		// SELECT
+		// fv.user_id,
+		// (SELECT ifv.value FROM cho36984_community_fields_values AS ifv WHERE ifv.field_id = '2' AND ifv.user_id = fv.user_id) AS field_2,
+		// (SELECT ifv.value FROM cho36984_community_fields_values AS ifv WHERE ifv.field_id = '17' AND ifv.user_id = fv.user_id) AS field_17
+		// FROM cho36984_community_fields AS f
+		// LEFT JOIN cho36984_community_fields_values AS fv ON fv.field_id = f.id
+		// GROUP by fv.user_id
+
+		// print_r($query);
+		// exit();
 
 		// Filter by published state
 		$published = $this->getState('filter.state');
@@ -265,6 +289,7 @@ class Location_visitsModelLocations extends JModelList
 		}
 
 		return $query;
+		// var_dump($query);
 	}
 
 	/**
@@ -277,6 +302,7 @@ class Location_visitsModelLocations extends JModelList
 		$items = parent::getItems();
 
 		foreach ($items as $oneItem)
+			// var_dump($oneItem);
 		{
 
 			if (isset($oneItem->store))
@@ -329,5 +355,32 @@ class Location_visitsModelLocations extends JModelList
 		}
 
 		return $items;
+
+		// var_dump($items);
+	}
+
+	public function getCustomList (){
+		// Create a new query object.
+		$db    = $this->getDbo();
+		// $query = $db->getQuery(true);
+        $subQuery = $db->getQuery(true);
+
+        $subQuery->select($db->quoteName('id').', COUNT(*) as team')
+            ->from($db->quoteName('#__locations'). ' as b')
+            ->group($db->quote('id'));
+
+		// Create the base select statement.
+        $query
+            ->select(
+                'v.*,  c.client_name, t.team'
+                )
+
+            ->from($db->quoteName('#__clients').' as c')
+
+            ->leftJoin($db->quoteName('#__fields_values').' as v on v.ls_id=c.ls_id')
+            
+            ->leftJoin( '('. $subQuery .') as t on v.ls_id = t.ls_id')
+            
+            ->where($db->quoteName('c.ls_user_id') . ' = ' . $oUser->id);
 	}
 }

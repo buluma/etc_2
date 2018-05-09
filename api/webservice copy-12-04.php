@@ -17,12 +17,8 @@ if (isset($_GET['user_auth'])){
 
    // $query2 = "SELECT dxcr2_users.id as userid, dxcr2_users.name, dxcr2_user_usergroup_map.group_id,dxcr2_usergroups.title FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id WHERE dxcr2_users.username = '".$param."'";
 
-   $queryOld = "SELECT dxcr2_users.id as userid, dxcr2_users.name, dxcr2_users.username, dxcr2_users.email, dxcr2_user_usergroup_map.group_id, dxcr2_usergroups.title as assigned FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id WHERE dxcr2_users.username = '".$param."'";
+   $query = "SELECT dxcr2_users.id as userid, dxcr2_users.name, dxcr2_users.username, dxcr2_users.email, dxcr2_user_usergroup_map.group_id, dxcr2_usergroups.title as assigned FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id WHERE dxcr2_users.username = '".$param."'";
 
-   //second sql - adding client id - 1st May
-   //SELECT dxcr2_users.id as userid, dxcr2_users.name, dxcr2_user_usergroup_map.group_id,dxcr2_usergroups.title,dxcr2_fields_values.value as user_client_id FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id LEFT OUTER JOIN dxcr2_fields_values ON dxcr2_fields_values.item_id=dxcr2_users.id WHERE dxcr2_users.username = 'tmuoka' and dxcr2_fields_values.field_id = 5
-
-   $query = "SELECT  dxcr2_users.id as userid, dxcr2_users.name, dxcr2_users.username, dxcr2_users.email, dxcr2_user_usergroup_map.group_id, dxcr2_usergroups.title as assigned,dxcr2_fields_values.value as user_client_id FROM dxcr2_users LEFT OUTER JOIN dxcr2_user_usergroup_map ON dxcr2_users.id=dxcr2_user_usergroup_map.user_id LEFT OUTER JOIN dxcr2_usergroups ON dxcr2_user_usergroup_map.group_id=dxcr2_usergroups.id LEFT OUTER JOIN dxcr2_fields_values ON dxcr2_fields_values.item_id=dxcr2_users.id WHERE dxcr2_users.username = '".$param."' and dxcr2_fields_values.field_id = 5";
 
    // var_dump($query);
    // exit();
@@ -61,7 +57,6 @@ if (isset($_GET['user_auth'])){
 			   'shop'         => $promoter->shop,
 			   'shopid'       => $promoter->shop_id,
 			   'assigned'     => $promoter->assigned,
-         'user_client_id' => $promoter->user_client_id,
 			   'is_promoter'  => true
 		   );
        // echo '<pre>';

@@ -292,6 +292,7 @@ function saveBTSPromotions($clientData, $syncDate){
             'store_id' => $item->store_id,
             'store_server_id' => $item->store_server_id,
             'created' => $item->created_on,
+            'first_insert_date' => $item->time_created,
             'last_sync_date' => $syncTime
             );
         $columns = array_keys($sqlData);
@@ -328,6 +329,7 @@ function saveBTSPromotionsImages($clientData, $syncDate){
             'store_id' => $item->store_id,
             'store_server_id' => $item->store_server_id,
             'created_on' => $item->created_on,
+            'first_insert_date' => $item->time_created,
             'last_sync_date' => $syncTime
             );
         $columns = array_keys($sqlData);
@@ -885,7 +887,8 @@ function saveLocations($clientData, $syncDate){
             'state' => '1',
             'ordering' => '1',
             // 'client_id' => $item->id,
-            'client_id' => '1',
+            // 'client_id' => '1',
+            'client_id' => $item->user_client_id,
             'coordinates' => $item->coordinates,
             'submitter' => setUserID($item->submitter),
             'created_by' => setUserID($item->submitter),
@@ -895,6 +898,7 @@ function saveLocations($clientData, $syncDate){
             'store_server_id' => $item->store_server_id,
             'client_modified_date' => $item->modified,
             'created_on' => $item->created_on,
+            'first_insert_date' => $item->time_created,
             'last_sync_date' => $syncTime
             );
 	    $columns = array_keys($sqlData);
@@ -963,6 +967,7 @@ function saveObjectives($clientData, $syncDate){
                 'store_server_id' => $item->store_server_id,
                 'client_modified_date' => $item->modified,
                 'created' => $item->created,
+                'first_insert' => $item->time_created,
                 'last_sync_date' => $syncTime
                 );
     	    $columns = array_keys($sqlData);
@@ -1215,9 +1220,12 @@ function saveShopCheckin($clientData, $syncDate){
 	foreach ($clientData as $key => $item) {
 	    $sqlData = array(
             // 'client_id' => $item->id,
-            'client_id' => '1',
+            // 'client_id' => '1',
+            'created_by' => setUserID($item->submitter),
+            'client_id' => $item->user_client_id,
             'state' => '1',
             'ordering' => '1',
+            'coordinates' => $item->checkin_place,
             'session_id' => $item->session_id,
             'checkin_time' => $item->checkin_time,
             'checkin_place' => $item->checkin_place,
@@ -1231,6 +1239,7 @@ function saveShopCheckin($clientData, $syncDate){
             'store_server_id' => $item->store_server_id,
             'day' => $item->day,
             'created_on' => $item->created,
+            'first_insert_date' => $item->time_created,
             'last_sync_date' => $syncTime
             );
 	    $columns = array_keys($sqlData);

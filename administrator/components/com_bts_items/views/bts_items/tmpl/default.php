@@ -114,9 +114,6 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_BTS_ITEMS_BTS_ITEMS_CLIENT_ID', 'a.`clientName`', $listDirn, $listOrder); ?>
-				</th>
 
 					
 				</tr>
@@ -224,10 +221,7 @@ $sortFields = $this->getSortFields();
 				</td>	
 				<td>
 					<?php echo $item->coordinates; ?>
-				</td>						
-				<td>
-					<?php echo $item->clientName; ?>
-				</td>
+				</td>	
 
 					</tr>
 				<?php endforeach; ?>

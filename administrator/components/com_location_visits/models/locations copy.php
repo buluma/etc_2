@@ -2,7 +2,7 @@
 
 /**
  * @version    CVS: 1.0.0
- * @package    Com_Shop_checkin
+ * @package    Com_Location_visits
  * @author     Michael Buluma <michael@buluma.co.ke>
  * @copyright  2018 Michael Buluma
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
@@ -12,11 +12,11 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.modellist');
 
 /**
- * Methods supporting a list of Shop_checkin records.
+ * Methods supporting a list of Location_visits records.
  *
  * @since  1.6
  */
-class Shop_checkinModelShop_checkins extends JModelList
+class Location_visitsModelLocations extends JModelList
 {
 /**
 	* Constructor.
@@ -35,26 +35,17 @@ class Shop_checkinModelShop_checkins extends JModelList
 				'ordering', 'a.`ordering`',
 				'state', 'a.`state`',
 				'created_by', 'a.`created_by`',
-				'client_id', 'a.`client_id`',
-				'session_id', 'a.`session_id`',
-				'day', 'a.`day`',
-				'coordinates', 'a.`coordinates`',
-				'checkin_time', 'a.`checkin_time`',
-				'checkin_place', 'a.`checkin_place`',
-				'checkout_time', 'a.`checkout_time`',
-				'checkout_place', 'a.`checkout_place`',
-				'comments', 'a.`comments`',
-				'accompaniment', 'a.`accompaniment`',
-				'quality', 'a.`quality`',
-				'created_on', 'a.`created_on`',
-				'store', 'a.`store`',
-				'store_id', 'a.`store_id`',
-				'store_server_id', 'a.`store_server_id`',
-				'first_insert_date', 'a.`first_insert_date`',
-				'last_sync_date', 'a.`last_sync_date`',
 				'client_modified_date', 'a.`client_modified_date`',
 				'submitter', 'a.`submitter`',
 				'user_id', 'a.`user_id`',
+				'store', 'a.`store`',
+				'store_server_id', 'a.`store_server_id`',
+				'store_id', 'a.`store_id`',
+				'created_on', 'a.`created_on`',
+				'coordinates', 'a.`coordinates`',
+				'last_sync_date', 'a.`last_sync_date`',
+				'first_insert_date', 'a.`first_insert_date`',
+				'client_id', 'a.`client_id`',
 			);
 		}
 
@@ -84,38 +75,35 @@ class Shop_checkinModelShop_checkins extends JModelList
 
 		$published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
 		$this->setState('filter.state', $published);
-		// Filtering checkin_place
-		$this->setState('filter.checkin_place', $app->getUserStateFromRequest($this->context.'.filter.checkin_place', 'filter_checkin_place', '', 'string'));
-
-		// Filtering created_on
-		$this->setState('filter.created_on.from', $app->getUserStateFromRequest($this->context.'.filter.created_on.from', 'filter_from_created_on', '', 'string'));
-		$this->setState('filter.created_on.to', $app->getUserStateFromRequest($this->context.'.filter.created_on.to', 'filter_to_created_on', '', 'string'));
-
-		// Filtering store
-		$this->setState('filter.store', $app->getUserStateFromRequest($this->context.'.filter.store', 'filter_store', '', 'string'));
-
-		// Filtering store_id
-		$this->setState('filter.store_id', $app->getUserStateFromRequest($this->context.'.filter.store_id', 'filter_store_id', '', 'string'));
-
-		// Filtering store_server_id
-		$this->setState('filter.store_server_id', $app->getUserStateFromRequest($this->context.'.filter.store_server_id', 'filter_store_server_id', '', 'string'));
-
 		// Filtering submitter
 		$this->setState('filter.submitter', $app->getUserStateFromRequest($this->context.'.filter.submitter', 'filter_submitter', '', 'string'));
 
 		// Filtering user_id
 		$this->setState('filter.user_id', $app->getUserStateFromRequest($this->context.'.filter.user_id', 'filter_user_id', '', 'string'));
 
+		// Filtering store
+		$this->setState('filter.store', $app->getUserStateFromRequest($this->context.'.filter.store', 'filter_store', '', 'string'));
+
+		// Filtering store_server_id
+		$this->setState('filter.store_server_id', $app->getUserStateFromRequest($this->context.'.filter.store_server_id', 'filter_store_server_id', '', 'string'));
+
+		// Filtering store_id
+		$this->setState('filter.store_id', $app->getUserStateFromRequest($this->context.'.filter.store_id', 'filter_store_id', '', 'string'));
+
+		// Filtering created_on
+		$this->setState('filter.created_on.from', $app->getUserStateFromRequest($this->context.'.filter.created_on.from', 'filter_from_created_on', '', 'string'));
+		$this->setState('filter.created_on.to', $app->getUserStateFromRequest($this->context.'.filter.created_on.to', 'filter_to_created_on', '', 'string'));
+
 		// Filtering client_id
 		$this->setState('filter.client_id', $app->getUserStateFromRequest($this->context.'.filter.client_id', 'filter_client_id', '', 'string'));
 
 
 		// Load the parameters.
-		$params = JComponentHelper::getParams('com_shop_checkin');
+		$params = JComponentHelper::getParams('com_location_visits');
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.id', 'desc');
+		parent::populateState('a.id', 'DESC');
 	}
 
 	/**
@@ -159,7 +147,7 @@ class Shop_checkinModelShop_checkins extends JModelList
 				'list.select', 'DISTINCT a.*'
 			)
 		);
-		$query->from('`#__shop_checkin` AS a');
+		$query->from('`#__locations` AS a');
 
 		// Join over the users for the checked out user
 		$query->select("uc.name AS uEditor");
@@ -176,10 +164,6 @@ class Shop_checkinModelShop_checkins extends JModelList
 		// Join over the user field 'user_id'
 		$query->select('`user_id`.name AS `user_id`');
 		$query->join('LEFT', '#__users AS `user_id` ON `user_id`.id = a.`user_id`');
-		
-		// Join over the client field 'client_id'
-		$query->select('`client_id`.client_name AS `client_id`');
-		$query->join('LEFT', '#__clients AS `client_id` ON `client_id`.id = a.`client_id`');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');
@@ -210,12 +194,44 @@ class Shop_checkinModelShop_checkins extends JModelList
 		}
 
 
-		// Filtering checkin_place
-		$filter_checkin_place = $this->state->get("filter.checkin_place");
+		// Filtering submitter
+		$filter_submitter = $this->state->get("filter.submitter");
 
-		if ($filter_checkin_place !== null && (is_numeric($filter_checkin_place) || !empty($filter_checkin_place)))
+		if ($filter_submitter !== null && !empty($filter_submitter))
 		{
-			$query->where("a.`checkin_place` = '".$db->escape($filter_checkin_place)."'");
+			$query->where("a.`submitter` = '".$db->escape($filter_submitter)."'");
+		}
+
+		// Filtering user_id
+		$filter_user_id = $this->state->get("filter.user_id");
+
+		if ($filter_user_id !== null && !empty($filter_user_id))
+		{
+			$query->where("a.`user_id` = '".$db->escape($filter_user_id)."'");
+		}
+
+		// Filtering store
+		$filter_store = $this->state->get("filter.store");
+
+		if ($filter_store !== null && (is_numeric($filter_store) || !empty($filter_store)))
+		{
+			$query->where("a.`store` = '".$db->escape($filter_store)."'");
+		}
+
+		// Filtering store_server_id
+		$filter_store_server_id = $this->state->get("filter.store_server_id");
+
+		if ($filter_store_server_id !== null && (is_numeric($filter_store_server_id) || !empty($filter_store_server_id)))
+		{
+			$query->where("a.`store_server_id` = '".$db->escape($filter_store_server_id)."'");
+		}
+
+		// Filtering store_id
+		$filter_store_id = $this->state->get("filter.store_id");
+
+		if ($filter_store_id !== null && (is_numeric($filter_store_id) || !empty($filter_store_id)))
+		{
+			$query->where("a.`store_id` = '".$db->escape($filter_store_id)."'");
 		}
 
 		// Filtering created_on
@@ -232,52 +248,12 @@ class Shop_checkinModelShop_checkins extends JModelList
 			$query->where("a.`created_on` <= '".$db->escape($filter_created_on_to)."'");
 		}
 
-		// Filtering store
-		$filter_store = $this->state->get("filter.store");
-
-		if ($filter_store !== null && (is_numeric($filter_store) || !empty($filter_store)))
-		{
-			$query->where("a.`store` = '".$db->escape($filter_store)."'");
-		}
-
-		// Filtering store_id
-		$filter_store_id = $this->state->get("filter.store_id");
-
-		if ($filter_store_id !== null && (is_numeric($filter_store_id) || !empty($filter_store_id)))
-		{
-			$query->where("a.`store_id` = '".$db->escape($filter_store_id)."'");
-		}
-
-		// Filtering store_server_id
-		$filter_store_server_id = $this->state->get("filter.store_server_id");
-
-		if ($filter_store_server_id !== null && (is_numeric($filter_store_server_id) || !empty($filter_store_server_id)))
-		{
-			$query->where("a.`store_server_id` = '".$db->escape($filter_store_server_id)."'");
-		}
-
-		// Filtering submitter
-		$filter_submitter = $this->state->get("filter.submitter");
-
-		if ($filter_submitter !== null && !empty($filter_submitter))
-		{
-			$query->where("a.`submitter` = '".$db->escape($filter_submitter)."'");
-		}
-
 		// Filtering client_id
 		$filter_client_id = $this->state->get("filter.client_id");
 
 		if ($filter_client_id !== null && (is_numeric($filter_client_id) || !empty($filter_client_id)))
 		{
 			$query->where("a.`client_id` = '".$db->escape($filter_client_id)."'");
-		}
-
-		// Filtering user_id
-		$filter_user_id = $this->state->get("filter.user_id");
-
-		if ($filter_user_id !== null && !empty($filter_user_id))
-		{
-			$query->where("a.`user_id` = '".$db->escape($filter_user_id)."'");
 		}
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
@@ -303,54 +279,6 @@ class Shop_checkinModelShop_checkins extends JModelList
 		foreach ($items as $oneItem)
 		{
 
-			if (isset($oneItem->checkin_place))
-			{
-				$values    = explode(',', $oneItem->checkin_place);
-				$textValue = array();
-
-				foreach ($values as $value)
-				{
-					if (!empty($value))
-					{
-						$db = JFactory::getDbo();
-						$query = "SELECT id as value, shop_name as text from #__outlets HAVING value LIKE '" . $value . "'";
-						$db->setQuery($query);
-						$results = $db->loadObject();
-
-						if ($results)
-						{
-							$textValue[] = $results->text;
-						}
-					}
-				}
-
-				$oneItem->checkin_place = !empty($textValue) ? implode(', ', $textValue) : $oneItem->checkin_place;
-			}
-
-			if (isset($oneItem->checkout_place))
-			{
-				$values    = explode(',', $oneItem->checkout_place);
-				$textValue = array();
-
-				foreach ($values as $value)
-				{
-					if (!empty($value))
-					{
-						$db = JFactory::getDbo();
-						$query = "SELECT id as value, shop_name as text from #__outlets HAVING value LIKE '" . $value . "'";
-						$db->setQuery($query);
-						$results = $db->loadObject();
-
-						if ($results)
-						{
-							$textValue[] = $results->text;
-						}
-					}
-				}
-
-				$oneItem->checkout_place = !empty($textValue) ? implode(', ', $textValue) : $oneItem->checkout_place;
-			}
-
 			if (isset($oneItem->store))
 			{
 				$values    = explode(',', $oneItem->store);
@@ -375,7 +303,6 @@ class Shop_checkinModelShop_checkins extends JModelList
 				$oneItem->store = !empty($textValue) ? implode(', ', $textValue) : $oneItem->store;
 			}
 
-			//client id
 			if (isset($oneItem->client_id))
 			{
 				$values    = explode(',', $oneItem->client_id);

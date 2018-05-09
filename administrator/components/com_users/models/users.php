@@ -427,7 +427,7 @@ class UsersModelUsers extends JModelList
 		}
 
 		// Add the list ordering clause.
-		$query->order($db->qn($db->escape($this->getState('list.ordering', 'a.name'))) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
+		$query->order($db->qn($db->escape($this->getState('list.ordering', 'a.id'))) . ' ' . $db->escape($this->getState('list.direction', 'DESC')));
 
 		return $query;
 	}

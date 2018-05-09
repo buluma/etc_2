@@ -41,8 +41,11 @@ class Location_visitsViewLocations extends JViewLegacy
 		$this->pagination = $this->get('Pagination');
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
+        // $this->customList = $this->get('CustomList');
 
-        // var_dump($this->items);
+        // echo '<pre>';
+        // var_dump($this->customList);
+        // echo '<pre/>';
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))

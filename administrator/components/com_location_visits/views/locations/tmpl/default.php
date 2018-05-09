@@ -84,7 +84,7 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_COORDINATES', 'a.`coordinates`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', 'a.`client_id`', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('searchtools.sort',  'COM_LOCATION_VISITS_LOCATIONS_CLIENT_ID', '`a.client_id`', $listDirn, $listOrder); ?>
 				</th>
 
 					
@@ -107,7 +107,11 @@ $sortFields = $this->getSortFields();
 					?>
 					<tr class="row<?php echo $i % 2; ?>">
 
-						<?php if (isset($this->items[0]->ordering)) : ?>
+						<?php 
+						// var_dump($item);
+						// exit();
+
+						if (isset($this->items[0]->ordering)) : ?>
 							<td class="order nowrap center hidden-phone">
 								<?php if ($canChange) :
 									$disableClassName = '';
@@ -162,9 +166,9 @@ $sortFields = $this->getSortFields();
 					<?php echo $this->escape($item->coordinates); ?>
 				<?php endif; ?>
 
-				</td>				<td>
-
-					<?php echo $item->client_id; ?>
+				</td>		
+				<td>
+					<?php /*var_dump($item);*/ echo $item->client_id; ?>
 				</td>
 
 					</tr>
