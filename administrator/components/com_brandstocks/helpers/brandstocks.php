@@ -32,6 +32,12 @@ class BrandstocksHelper
 			$vName == 'tbrandstocks'
 		);
 
+		JHtmlSidebar::addEntry(
+			JText::_('Products'),
+			'index.php?option=com_products&view=products',
+			$vName == 'products'
+		);
+
 	}
 
 	/**

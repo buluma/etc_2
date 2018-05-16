@@ -94,7 +94,7 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOGINS_LOGINS_DAY', 'a.`day`', $listDirn, $listOrder); ?>
 				</th>
-				<th class='left'>
+				<th class='left hidden'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_LOGINS_LOGINS_LOGIN_COORDS', 'a.`login_coords`', $listDirn, $listOrder); ?>
 				</th>
 					
@@ -166,7 +166,7 @@ $sortFields = $this->getSortFields();
 					?>
 				</td>				
 
-				<td>
+				<td class="hidden">
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'logins.', $canCheckin); ?>
 				<?php endif; ?>

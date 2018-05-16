@@ -21,23 +21,23 @@
     <field name="brand" query="SELECT id as value, product_name as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_BRAND" description="COM_VOC_FORM_DESC_VOC_BRAND" hint="COM_VOC_FORM_LBL_VOC_BRAND"/>
     <field name="brandcode" query="SELECT id as value, product_code as text FROM #__products" key_field="value" value_field="text" type="sql" label="COM_VOC_FORM_LBL_VOC_BRANDCODE" description="COM_VOC_FORM_DESC_VOC_BRANDCODE" hint="COM_VOC_FORM_LBL_VOC_BRANDCODE"/>
     <field name="category" type="list" label="COM_VOC_FORM_LBL_VOC_CATEGORY" description="COM_VOC_FORM_DESC_VOC_CATEGORY" hint="COM_VOC_FORM_LBL_VOC_CATEGORY">
-      <option value="1">COM_VOC_VOCS_CATEGORY_OPTION_1</option>
-      <option value="2">Recommendation</option>
-      <option value="3">Request</option>
+      <option value="Complaint">Complaint</option>
+      <option value="Recommendation">Recommendation</option>
+      <option value="Request">Request</option>
     </field>
     <field name="items" type="list" label="COM_VOC_FORM_LBL_VOC_ITEMS" description="COM_VOC_FORM_DESC_VOC_ITEMS" hint="COM_VOC_FORM_LBL_VOC_ITEMS">
-      <option value="1">COM_VOC_VOCS_ITEMS_OPTION_1</option>
-      <option value="2">COM_VOC_VOCS_ITEMS_OPTION_2</option>
-      <option value="3">COM_VOC_VOCS_ITEMS_OPTION_3</option>
-      <option value="4">COM_VOC_VOCS_ITEMS_OPTION_4</option>
-      <option value="5">COM_VOC_VOCS_ITEMS_OPTION_5</option>
-      <option value="6">COM_VOC_VOCS_ITEMS_OPTION_6</option>
+      <option value="1">Branding</option>
+      <option value="2">Incentive</option>
+      <option value="3">Sell-Out</option>
+      <option value="4">Stock</option>
+      <option value="5">Training</option>
+      <option value="6">Others</option>
     </field>
     <field name="commentby" type="list" label="COM_VOC_FORM_LBL_VOC_COMMENTBY" description="COM_VOC_FORM_DESC_VOC_COMMENTBY" hint="COM_VOC_FORM_LBL_VOC_COMMENTBY">
-      <option value="1">COM_VOC_VOCS_COMMENTBY_OPTION_1</option>
-      <option value="2">COM_VOC_VOCS_COMMENTBY_OPTION_2</option>
-      <option value="3">COM_VOC_VOCS_COMMENTBY_OPTION_3</option>
-      <option value="4">COM_VOC_VOCS_COMMENTBY_OPTION_4</option>
+      <option value="1">Customer</option>
+      <option value="2">Sales Force</option>
+      <option value="3">Sales Person</option>
+      <option value="4">Sales Force</option>
     </field>
     <field name="isurgent" type="radio" buttons="true" class="btn-group btn-group-yesno" default="0" label="COM_VOC_FORM_LBL_VOC_ISURGENT" description="COM_VOC_FORM_DESC_VOC_ISURGENT" hint="COM_VOC_FORM_LBL_VOC_ISURGENT">
       <option value="1">COM_VOC_VOCS_ISURGENT_OPTION_ON</option>
