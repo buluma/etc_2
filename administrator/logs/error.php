@@ -22,3 +22,8 @@
 2018-05-15T13:21:36+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.
 2018-05-15T13:22:41+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.
 2018-05-15T18:07:37+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-05-29T23:59:53+00:00	INFO ::1	joomlafailure	Empty password not allowed.
+2018-06-05T02:26:19+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-06-05T02:26:27+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-06-05T02:26:33+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-06-05T02:37:49+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.

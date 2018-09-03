@@ -147,6 +147,26 @@ class PhotosModelPhotos extends JModelList
 	 */
 	protected function getListQuery()
 	{
+
+		$user   = JFactory::getUser();
+		$groups = $user->get('groups');
+
+
+
+		foreach ($groups as $group)
+		{
+			// var_dump($group);
+		    $customGrp = $group ;
+		}
+
+		// exit();
+
+		if ($customGrp == 15) {
+			$group = 1;
+		} else {
+			$group = 2;
+		}
+
 		// Create a new query object.
 		$db    = $this->getDbo();
 		$query = $db->getQuery(true);
@@ -158,6 +178,8 @@ class PhotosModelPhotos extends JModelList
 			)
 		);
 		$query->from('`#__photos` AS a');
+
+		$query->where('a.client_id = ' . (int) $group);
 
 		// Join over the users for the checked out user
 		$query->select("uc.name AS uEditor");

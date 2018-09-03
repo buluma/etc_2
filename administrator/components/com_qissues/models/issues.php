@@ -119,7 +119,7 @@ class QissuesModelIssues extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.id', 'asc');
+		parent::populateState('a.id', 'desc');
 	}
 
 	/**
@@ -153,6 +153,35 @@ class QissuesModelIssues extends JModelList
 	 */
 	protected function getListQuery()
 	{
+
+		$user   = JFactory::getUser();
+		$groups = $user->get('groups');
+
+
+
+		foreach ($groups as $group)
+		{
+			// var_dump($group);
+		    $customGrp = $group ;
+		}
+
+		// exit();
+
+		if ($customGrp == 15) {
+			$group = 1;
+		} else {
+			$group = 2;
+		}
+		
+		// var_dump($groups);
+		// var_dump($group);
+		// exit();
+
+		// foreach ($groups as $group)
+		// {
+		//     echo '<p>Group = ' . $group . '</p>';
+		// }
+
 		// Create a new query object.
 		$db    = $this->getDbo();
 		$query = $db->getQuery(true);
@@ -164,6 +193,8 @@ class QissuesModelIssues extends JModelList
 			)
 		);
 		$query->from('`#__quality_issues` AS a');
+
+		$query->where('a.client_id = ' . (int) $group);
 
 		// Join over the users for the checked out user
 		$query->select("uc.name AS uEditor");
@@ -195,10 +226,12 @@ class QissuesModelIssues extends JModelList
 		if (is_numeric($published))
 		{
 			$query->where('a.state = ' . (int) $published);
+			// $query->where('a.client_id = ' . (int) $group);
 		}
 		elseif ($published === '')
 		{
 			$query->where('(a.state IN (0, 1))');
+			// $query->where('a.client_id = ' . (int) $group);
 		}
 
 		// Filter by search in title
